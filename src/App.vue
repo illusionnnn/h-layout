@@ -3,19 +3,32 @@
  * @Author: Hedgehog96
  * @Date: 2022-05-05 21:19:48
  * @LastEditors: Hedgehog96
- * @LastEditTime: 2022-05-05 21:32:41
+ * @LastEditTime: 2022-05-07 16:38:17
 -->
 <script setup lang="ts">
-import HelloWorld from './components/HelloWorld.vue'
+import AppLayout from './layouts/AppLayout.vue'
 </script>
 
 <template>
-  <HelloWorld msg="Hello Vue 3 + TypeScript + Vite" />
+  <app-layout></app-layout>
 </template>
 
 <style>
-html, body, #app {
-  width: 100%;
-  height: 100%;
+::-webkit-scrollbar-track {
+  background: rgba(0, 0, 0, 0.1);
+  border-radius: 0;
+}
+
+::-webkit-scrollbar {
+  -webkit-appearance: none;
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-thumb {
+  cursor: pointer;
+  border-radius: 5px;
+  background: rgba(0, 0, 0, 0.15);
+  transition: color 0.2s ease;
 }
 </style>
