@@ -3,17 +3,21 @@
  * @Author: Hedgehog96
  * @Date: 2022-05-05 21:19:48
  * @LastEditors: Hedgehog96
- * @LastEditTime: 2022-05-07 16:38:17
+ * @LastEditTime: 2022-05-09 17:25:23
 -->
 <script setup lang="ts">
-import AppLayout from './layouts/AppLayout.vue'
+import HLayout from "./layouts/HLayout.vue";
 </script>
 
 <template>
-  <app-layout></app-layout>
+  <h-layout></h-layout>
 </template>
 
 <style>
+#app {
+  background-color: #f0f0f0;
+}
+
 ::-webkit-scrollbar-track {
   background: rgba(0, 0, 0, 0.1);
   border-radius: 0;
