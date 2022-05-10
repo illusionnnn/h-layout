@@ -3,12 +3,18 @@
  * @Author: Hedgehog96
  * @Date: 2022-05-07 16:43:27
  * @LastEditors: Hedgehog96
- * @LastEditTime: 2022-05-09 15:13:41
+ * @LastEditTime: 2022-05-10 18:15:57
 -->
 <template>
-  <div class="h-base-main"></div>
+  <div class="h-base-main"><h-main></h-main></div>
 </template>
 
-<script setup lang="ts"></script>
+<script setup lang="ts">
+import HMain from "../views/HMain.vue";
+</script>
 
-<style lang="scss" scoped></style>
+<style scoped>
+.h-base-main {
+  height: 100%;
+}
+</style>

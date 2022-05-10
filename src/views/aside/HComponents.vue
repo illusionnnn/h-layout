@@ -3,12 +3,64 @@
  * @Author: Hedgehog96
  * @Date: 2022-05-09 15:33:03
  * @LastEditors: Hedgehog96
- * @LastEditTime: 2022-05-09 15:33:40
+ * @LastEditTime: 2022-05-10 18:01:35
 -->
 <template>
-  <div class="h-components">components</div>
+  <div class="h-components">
+    <div
+      v-for="config in componentsConfig"
+      :key="config.id"
+      class="h-components-area"
+    >
+      <div class="h-components-area-title">{{ config.title }}</div>
+      <div class="h-components-area-container">
+        <draggable
+          class="h-components-drag-area"
+          item-key="name"
+          :list="config.components"
+          :group="{ name: 'componentItem', pull: 'clone', put: false }"
+        >
+          <template #item="{ element }">
+            <div :key="element.cid" class="h-components-drag-area-item">
+              <span :data-id="element.component">{{ element.name }}</span>
+            </div>
+          </template>
+        </draggable>
+      </div>
+    </div>
+  </div>
 </template>
 
-<script setup lang="ts"></script>
+<script setup lang="ts">
+import draggable from "vuedraggable";
+import componentsConfig from "../../config/draggleableComponents.js";
+</script>
 
-<style scoped></style>
+<style lang="scss" scoped>
+.h-components {
+  padding: 0 10px;
+  .h-components-area {
+    margin-bottom: 10px;
+
+    .h-components-area-title {
+      margin-bottom: 10px;
+    }
+  }
+
+  .h-components-drag-area {
+    display: flex;
+    flex-wrap: wrap;
+    font-size: 12px;
+
+    .h-components-drag-area-item {
+      margin: 5px;
+      margin-left: 0;
+      padding: 4px 6px;
+      color: #5b5b5b;
+      border: 1px solid #ccc;
+      border-radius: $global-border-radius;
+      cursor: move;
+    }
+  }
+}
+</style>
