@@ -3,7 +3,7 @@
  * @Author: Hedgehog96
  * @Date: 2022-05-07 16:43:27
  * @LastEditors: Hedgehog96
- * @LastEditTime: 2022-05-10 18:15:57
+ * @LastEditTime: 2022-05-11 14:33:40
 -->
 <template>
   <div class="h-base-main"><h-main></h-main></div>
@@ -16,5 +16,6 @@ import HMain from "../views/HMain.vue";
 <style scoped>
 .h-base-main {
   height: 100%;
+  overflow-y: auto;
 }
 </style>

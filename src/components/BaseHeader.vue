@@ -3,12 +3,15 @@
  * @Author: Hedgehog96
  * @Date: 2022-05-07 16:34:02
  * @LastEditors: Hedgehog96
- * @LastEditTime: 2022-05-09 15:13:33
+ * @LastEditTime: 2022-05-11 17:31:17
 -->
 <template>
   <div class="h-base-header">
     <div class="h-base-header-title">h-layout</div>
     <div class="h-base-header-btns">
+      <el-button size="small" @click="handleFullScreen"
+        ><el-icon><zoom-in /></el-icon>全屏</el-button
+      >
       <el-button size="small"
         ><el-icon><show /></el-icon>预览</el-button
       >
@@ -23,7 +26,37 @@
 </template>
 
 <script setup lang="ts">
-import { View as Show, Delete, CircleCheck } from "@element-plus/icons-vue";
+import { ElMessage } from "element-plus";
+import {
+  ZoomIn,
+  View as Show,
+  Delete,
+  CircleCheck,
+} from "@element-plus/icons-vue";
+
+interface FullScreenHTMLElement extends HTMLElement {
+  mozRequestFullScreen?: () => void;
+  msRequestFullscreen?: () => void;
+  webkitRequestFullscreen?: () => void;
+}
+
+const handleFullScreen = () => {
+  const elem = document.querySelector("html") as FullScreenHTMLElement;
+  if (elem.requestFullscreen) {
+    elem.requestFullscreen();
+  } else if (elem.mozRequestFullScreen) {
+    elem.mozRequestFullScreen();
+  } else if (elem.msRequestFullscreen) {
+    elem.msRequestFullscreen();
+  } else if (elem.webkitRequestFullscreen) {
+    elem.webkitRequestFullscreen();
+  } else {
+    ElMessage({
+      message: "使用该功能请配合最新版chrome浏览器食用",
+      type: "warning",
+    });
+  }
+};
 </script>
 
 <style lang="scss" scoped>

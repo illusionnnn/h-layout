@@ -3,24 +3,24 @@
  * @Author: Hedgehog96
  * @Date: 2022-05-09 14:22:35
  * @LastEditors: Hedgehog96
- * @LastEditTime: 2022-05-09 17:18:19
+ * @LastEditTime: 2022-05-11 14:13:50
 -->
 <template>
   <div class="h-aside">
     <div class="h-aside-tabs">
       <div
-        class="h-aside-tab h-aside-tabs-components"
+        class="h-aside-tab h-aside-tabs-component-config"
         :class="currentCompsTabClass"
         @click="handleTabClick('c')"
       >
-        <el-icon :color="currentCompsTabColor"><goods /></el-icon>
+        <el-icon :color="currentCompsTabColor"><doc /></el-icon>
       </div>
       <div
-        class="h-aside-tab h-aside-tabs-setting"
+        class="h-aside-tab h-aside-tabs-layout-config"
         :class="currentSettingTabClass"
-        @click="handleTabClick('s')"
+        @click="handleTabClick('l')"
       >
-        <el-icon :color="currentSettingTabColor"><setting /></el-icon>
+        <el-icon :color="currentSettingTabColor"><files /></el-icon>
       </div>
     </div>
     <div class="h-aside-container">
@@ -31,20 +31,20 @@
 
 <script setup lang="ts">
 import { reactive, computed, shallowRef } from "vue";
-import { Goods, Setting } from "@element-plus/icons-vue";
-import HComponents from "./HComponents.vue";
-import HSettings from "./HSettings.vue";
+import { Document as doc, Files } from "@element-plus/icons-vue";
+import HComponentConfig from "./HComponentConfig.vue";
+import HLayoutConfig from "./HLayoutConfig.vue";
 
 const ACTIVATING_CLASS = "activating";
 const NOTACTIVE_CLASS = "";
 const ACTIVATING_COLOR = "#409eff";
 const NOTACTIVE_COLOR = "#000";
 const C = "c";
-const S = "s";
+const L = "l";
 
 const state = reactive({
   currentTabName: C,
-  currentComponent: shallowRef(HComponents),
+  currentComponent: shallowRef(HComponentConfig),
 });
 
 const currentCompsTabClass = computed(() => {
@@ -55,15 +55,15 @@ const currentCompsTabColor = computed(() => {
 });
 
 const currentSettingTabClass = computed(() => {
-  return state.currentTabName === S ? ACTIVATING_CLASS : NOTACTIVE_CLASS;
+  return state.currentTabName === L ? ACTIVATING_CLASS : NOTACTIVE_CLASS;
 });
 const currentSettingTabColor = computed(() => {
-  return state.currentTabName === S ? ACTIVATING_COLOR : NOTACTIVE_COLOR;
+  return state.currentTabName === L ? ACTIVATING_COLOR : NOTACTIVE_COLOR;
 });
 
 const handleTabClick = (tabName: string) => {
   state.currentTabName = tabName;
-  const currentComponent = tabName === C ? HComponents : HSettings;
+  const currentComponent = tabName === C ? HComponentConfig : HLayoutConfig;
   state.currentComponent = currentComponent;
 };
 </script>

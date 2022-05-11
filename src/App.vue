@@ -3,7 +3,7 @@
  * @Author: Hedgehog96
  * @Date: 2022-05-05 21:19:48
  * @LastEditors: Hedgehog96
- * @LastEditTime: 2022-05-09 17:25:23
+ * @LastEditTime: 2022-05-11 17:22:39
 -->
 <script setup lang="ts">
 import HLayout from "./layouts/HLayout.vue";
@@ -14,6 +14,11 @@ import HLayout from "./layouts/HLayout.vue";
 </template>
 
 <style>
+:-webkit-full-screen body {
+  width: 100%;
+  height: 100%;
+}
+
 #app {
   background-color: #f0f0f0;
 }
