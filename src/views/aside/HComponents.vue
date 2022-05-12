@@ -3,7 +3,7 @@
  * @Author: Hedgehog96
  * @Date: 2022-05-09 15:33:03
  * @LastEditors: Hedgehog96
- * @LastEditTime: 2022-05-11 17:51:23
+ * @LastEditTime: 2022-05-12 16:52:15
 -->
 <template>
   <div class="h-components">
@@ -22,8 +22,12 @@
           :group="{ name: 'componentItem', pull: 'clone', put: false }"
         >
           <template #item="{ element }">
-            <div :key="element.cid" class="h-components-drag-area-item">
-              <span :data-id="uniqueId()">{{ element.title }}</span>
+            <div
+              :key="element.cid"
+              :data-id="element.name"
+              class="h-components-drag-area-item"
+            >
+              <span>{{ element.title }}</span>
             </div>
           </template>
         </draggable>
@@ -34,7 +38,6 @@
 
 <script setup lang="ts">
 import draggable from "vuedraggable";
-import uniqueId from "lodash-es/uniqueId";
 import componentsConfig from "../../config/globalComponents";
 </script>
 

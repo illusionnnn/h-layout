@@ -3,7 +3,7 @@
  * @Author: Hedgehog96
  * @Date: 2022-05-09 17:24:21
  * @LastEditors: Hedgehog96
- * @LastEditTime: 2022-05-11 18:36:52
+ * @LastEditTime: 2022-05-12 18:23:15
 -->
 <template>
   <div class="h-main">
@@ -13,13 +13,10 @@
       item-key="name"
       :group="{ name: 'componentItem', pull: true, put: true }"
       :list="components"
+      @add.stop="handleAddComponent"
     >
       <template #item="{ element }">
-        <div
-          class="h-main-layout-item"
-          :data-id="uniqueId()"
-          @click="handleClickCompeont"
-        >
+        <div class="h-main-layout-item" @click="handleClickCompeont">
           <component
             :is="element.component"
             v-bind="element.attrs"
@@ -39,11 +36,16 @@ import uniqueId from "lodash-es/uniqueId";
 
 const components = ref([]);
 const state = reactive({
-  selectComponentId: null,
+  selectDataId: null,
 });
 
 const handleClickCompeont = (evt: any) => {
+  state.selectDataId = evt.currentTarget.getAttribute("data-id");
   console.log(evt.currentTarget.getAttribute("data-id"));
+};
+
+const handleAddComponent = (evt: any) => {
+  console.log(evt);
 };
 </script>
 

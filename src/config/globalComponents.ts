@@ -3,7 +3,7 @@
  * @Author: Hedgehog96
  * @Date: 2022-05-09 17:30:41
  * @LastEditors: Hedgehog96
- * @LastEditTime: 2022-05-11 18:04:43
+ * @LastEditTime: 2022-05-12 16:52:09
  */
 import {
   ElContainer,
@@ -22,6 +22,7 @@ export default [
       {
         cid: "0-0",
         title: "布局",
+        name: "ElContainer",
         showTitle: false,
         component: ElContainer,
         attrs: {},
@@ -31,6 +32,7 @@ export default [
       {
         cid: "0-1",
         title: "卡片",
+        name: "ElCard",
         showTitle: false,
         component: ElCard,
         attrs: {},
@@ -46,6 +48,7 @@ export default [
       {
         cid: "1-0",
         title: "单行输入",
+        name: "ElInput",
         showTitle: false,
         component: ElInput,
         attrs: {},
@@ -55,6 +58,7 @@ export default [
       {
         cid: "1-1",
         title: "多行输入",
+        name: "ElInput",
         showTitle: false,
         component: ElInput,
         attrs: { type: "textarea" },
@@ -64,6 +68,7 @@ export default [
       {
         cid: "1-2",
         title: "按钮",
+        name: "ElButton",
         showTitle: true,
         component: ElButton,
         attrs: {},
@@ -73,6 +78,7 @@ export default [
       {
         cid: "1-3",
         title: "开关",
+        name: "ElSwitch",
         showTitle: false,
         component: ElSwitch,
         attrs: {},
@@ -82,6 +88,7 @@ export default [
       {
         cid: "1-4",
         title: "评分",
+        name: "ElRate",
         showTitle: false,
         component: ElRate,
         attrs: {},
