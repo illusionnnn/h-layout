@@ -3,16 +3,10 @@
  * @Author: Hedgehog96
  * @Date: 2022-05-09 17:30:41
  * @LastEditors: Hedgehog96
- * @LastEditTime: 2022-05-12 16:52:09
+ * @LastEditTime: 2022-05-15 17:43:45
  */
-import {
-  ElContainer,
-  ElCard,
-  ElButton,
-  ElInput,
-  ElSwitch,
-  ElRate,
-} from "element-plus";
+import { ElCard, ElButton, ElInput, ElSwitch, ElRate } from "element-plus";
+import BaseContainer from "../components/BaseContainer.vue";
 
 export default [
   {
@@ -22,9 +16,9 @@ export default [
       {
         cid: "0-0",
         title: "布局",
-        name: "ElContainer",
+        name: "Container",
         showTitle: false,
-        component: ElContainer,
+        component: BaseContainer,
         attrs: {},
         evt: {},
         children: [],
@@ -32,7 +26,7 @@ export default [
       {
         cid: "0-1",
         title: "卡片",
-        name: "ElCard",
+        name: "Card",
         showTitle: false,
         component: ElCard,
         attrs: {},
@@ -48,7 +42,7 @@ export default [
       {
         cid: "1-0",
         title: "单行输入",
-        name: "ElInput",
+        name: "Input",
         showTitle: false,
         component: ElInput,
         attrs: {},
@@ -58,7 +52,7 @@ export default [
       {
         cid: "1-1",
         title: "多行输入",
-        name: "ElInput",
+        name: "Input",
         showTitle: false,
         component: ElInput,
         attrs: { type: "textarea" },
@@ -68,7 +62,7 @@ export default [
       {
         cid: "1-2",
         title: "按钮",
-        name: "ElButton",
+        name: "Button",
         showTitle: true,
         component: ElButton,
         attrs: {},
@@ -78,7 +72,7 @@ export default [
       {
         cid: "1-3",
         title: "开关",
-        name: "ElSwitch",
+        name: "Switch",
         showTitle: false,
         component: ElSwitch,
         attrs: {},
@@ -88,7 +82,7 @@ export default [
       {
         cid: "1-4",
         title: "评分",
-        name: "ElRate",
+        name: "Rate",
         showTitle: false,
         component: ElRate,
         attrs: {},

@@ -3,7 +3,7 @@
  * @Author: Hedgehog96
  * @Date: 2022-05-09 15:33:03
  * @LastEditors: Hedgehog96
- * @LastEditTime: 2022-05-12 16:52:15
+ * @LastEditTime: 2022-05-15 17:01:36
 -->
 <template>
   <div class="h-components">
@@ -22,13 +22,13 @@
           :group="{ name: 'componentItem', pull: 'clone', put: false }"
         >
           <template #item="{ element }">
-            <div
+            <el-tag
               :key="element.cid"
               :data-id="element.name"
               class="h-components-drag-area-item"
             >
-              <span>{{ element.title }}</span>
-            </div>
+              {{ element.title }}
+            </el-tag>
           </template>
         </draggable>
       </div>
@@ -55,15 +55,10 @@ import componentsConfig from "../../config/globalComponents";
   .h-components-drag-area {
     display: flex;
     flex-wrap: wrap;
-    font-size: 12px;
 
     .h-components-drag-area-item {
       margin: 5px;
       margin-left: 0;
-      padding: 4px 6px;
-      color: #5b5b5b;
-      border: 1px solid #ccc;
-      border-radius: $global-border-radius;
       cursor: move;
     }
   }
