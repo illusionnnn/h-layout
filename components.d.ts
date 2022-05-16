@@ -5,14 +5,12 @@ import '@vue/runtime-core'
 
 declare module '@vue/runtime-core' {
   export interface GlobalComponents {
-    BaseAside: typeof import('./src/components/BaseAside.vue')['default']
     BaseContainer: typeof import('./src/components/BaseContainer.vue')['default']
     BaseFooter: typeof import('./src/components/BaseFooter.vue')['default']
     BaseHeader: typeof import('./src/components/BaseHeader.vue')['default']
     BaseLaside: typeof import('./src/components/BaseLaside.vue')['default']
     BaseMain: typeof import('./src/components/BaseMain.vue')['default']
     BaseRaside: typeof import('./src/components/BaseRaside.vue')['default']
-    BaseTabs: typeof import('./src/components/BaseTabs.vue')['default']
     ElAside: typeof import('element-plus/es')['ElAside']
     ElButton: typeof import('element-plus/es')['ElButton']
     ElContainer: typeof import('element-plus/es')['ElContainer']
@@ -20,14 +18,7 @@ declare module '@vue/runtime-core' {
     ElHeader: typeof import('element-plus/es')['ElHeader']
     ElIcon: typeof import('element-plus/es')['ElIcon']
     ElMain: typeof import('element-plus/es')['ElMain']
-    ElTabPane: typeof import('element-plus/es')['ElTabPane']
-    ElTabs: typeof import('element-plus/es')['ElTabs']
     ElTag: typeof import('element-plus/es')['ElTag']
-    TheAside: typeof import('./src/components/TheAside.vue')['default']
-    TheFooter: typeof import('./src/components/TheFooter.vue')['default']
-    TheHeader: typeof import('./src/components/TheHeader.vue')['default']
-    TheMain: typeof import('./src/components/TheMain.vue')['default']
-    TheTabs: typeof import('./src/components/TheTabs.vue')['default']
   }
 }
 

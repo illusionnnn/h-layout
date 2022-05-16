@@ -3,14 +3,14 @@
  * @Author: Hedgehog96
  * @Date: 2022-05-07 16:34:02
  * @LastEditors: Hedgehog96
- * @LastEditTime: 2022-05-11 17:31:17
+ * @LastEditTime: 2022-05-16 17:52:06
 -->
 <template>
   <div class="h-base-header">
     <div class="h-base-header-title">h-layout</div>
     <div class="h-base-header-btns">
       <el-button size="small" @click="handleFullScreen"
-        ><el-icon><zoom-in /></el-icon>全屏</el-button
+        ><el-icon><full-screen /></el-icon>全屏</el-button
       >
       <el-button size="small"
         ><el-icon><show /></el-icon>预览</el-button
@@ -28,7 +28,7 @@
 <script setup lang="ts">
 import { ElMessage } from "element-plus";
 import {
-  ZoomIn,
+  FullScreen,
   View as Show,
   Delete,
   CircleCheck,

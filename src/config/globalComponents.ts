@@ -3,7 +3,7 @@
  * @Author: Hedgehog96
  * @Date: 2022-05-09 17:30:41
  * @LastEditors: Hedgehog96
- * @LastEditTime: 2022-05-15 17:43:45
+ * @LastEditTime: 2022-05-16 16:08:53
  */
 import { ElCard, ElButton, ElInput, ElSwitch, ElRate } from "element-plus";
 import BaseContainer from "../components/BaseContainer.vue";
@@ -21,7 +21,35 @@ export default [
         component: BaseContainer,
         attrs: {},
         evt: {},
-        children: [],
+        children: [
+          {
+            cid: "0-0-0",
+            title: "单行输入",
+            name: "Input",
+            showTitle: false,
+            component: ElInput,
+            attrs: {},
+            evt: {},
+          },
+          {
+            cid: "0-0-1",
+            title: "单行输入",
+            name: "Input",
+            showTitle: false,
+            component: ElInput,
+            attrs: {},
+            evt: {},
+          },
+          {
+            cid: "0-0-2",
+            title: "多行输入",
+            name: "Input",
+            showTitle: false,
+            component: ElInput,
+            attrs: { type: "textarea" },
+            evt: {},
+          },
+        ],
       },
       {
         cid: "0-1",
@@ -47,7 +75,6 @@ export default [
         component: ElInput,
         attrs: {},
         evt: {},
-        children: [],
       },
       {
         cid: "1-1",
@@ -57,7 +84,6 @@ export default [
         component: ElInput,
         attrs: { type: "textarea" },
         evt: {},
-        children: [],
       },
       {
         cid: "1-2",
@@ -67,7 +93,6 @@ export default [
         component: ElButton,
         attrs: {},
         evt: {},
-        children: [],
       },
       {
         cid: "1-3",
@@ -77,7 +102,6 @@ export default [
         component: ElSwitch,
         attrs: {},
         evt: {},
-        children: [],
       },
       {
         cid: "1-4",
@@ -87,7 +111,6 @@ export default [
         component: ElRate,
         attrs: {},
         evt: {},
-        children: [],
       },
     ],
   },

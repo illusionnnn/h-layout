@@ -3,7 +3,7 @@
  * @Author: Hedgehog96
  * @Date: 2022-05-09 17:24:21
  * @LastEditors: Hedgehog96
- * @LastEditTime: 2022-05-16 00:04:17
+ * @LastEditTime: 2022-05-16 16:00:16
 -->
 <template>
   <div class="h-main">
@@ -13,24 +13,47 @@
       item-key="name"
       :group="{
         name: 'componentItem',
-        animation: 150,
-        fallbackOnBody: true,
-        swapThreshold: 0.65,
         pull: true,
         put: true,
       }"
       :list="components"
-      @add.stop="handleAddComponent"
     >
       <template #item="{ element }">
-        <div class="h-main-layout-item" @click="handleClickCompeont">
-          <component
-            :is="element.component"
-            v-bind="element.attrs"
-            v-on="element.evt"
-            >{{ element.showTitle ? element.title : null }}</component
+        <template v-if="element.name === 'Container'">
+          <div
+            class="h-main-layout-item h-main-layout-item-container"
+            @click="handleClickCompeont"
           >
-        </div>
+            <component
+              :is="element.component"
+              v-bind="element.attrs"
+              v-on="element.evt"
+            >
+              <slot
+                ><div
+                  v-for="(c, idx) in element.children"
+                  :key="idx"
+                  class="h-main-layout-item"
+                  @click="handleClickCompeont"
+                >
+                  <component :is="c.component" v-bind="c.attrs" v-on="c.evt">{{
+                    c.showTitle ? c.title : null
+                  }}</component>
+                </div></slot
+              >
+            </component>
+          </div>
+        </template>
+        <template v-else>
+          <div class="h-main-layout-item" @click="handleClickCompeont">
+            <component
+              :is="element.component"
+              v-bind="element.attrs"
+              v-on="element.evt"
+              >{{ element.showTitle ? element.title : null }}</component
+            >
+          </div>
+        </template>
       </template>
     </draggable>
   </div>
@@ -38,19 +61,12 @@
 
 <script setup lang="ts">
 import { ref } from "vue";
-import draggable from "vuedraggable";
+import Draggable from "vuedraggable";
 import uniqueId from "lodash-es/uniqueId";
 
 import { isPath } from "../utils";
 
 const components = ref([]);
-
-const loopRenderComponents = (comps: any[]) => {
-  comps.forEach((c: any, idx: number) => {
-    if (c.name === "Container") {
-    }
-  });
-};
 
 const handleClickCompeont = (evt: any) => {
   console.log(evt.currentTarget);
@@ -67,10 +83,15 @@ const handleAddComponent = (evt: any) => {
   const newPath = parentPath ? `${parentPath}-${newIndex}` : newIndex;
   console.log(nameOrIndex, parentPath, newIndex, newPath);
 
-  // 判断是否为路径 路径执行移动，非路径为新增
+  // 判断是否为路径（是路径执行移动，非路径为新增）
   if (isPath(nameOrIndex)) {
-    console.log(1);
+    // TODO:
+
     return false;
+  }
+
+  if (nameOrIndex === "Container") {
+    // TODO:
   }
 };
 </script>
@@ -79,7 +100,8 @@ const handleAddComponent = (evt: any) => {
 .h-main,
 .h-main-layout {
   padding: 20px;
-  height: 100%;
+  height: calc(100% - 40px);
+  overflow-y: auto;
 
   .h-main-layout-item {
     margin-bottom: 10px;
