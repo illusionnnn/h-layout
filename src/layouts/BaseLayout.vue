@@ -3,7 +3,7 @@
  * @Author: Hedgehog96
  * @Date: 2022-05-07 15:11:38
  * @LastEditors: Hedgehog96
- * @LastEditTime: 2022-05-11 14:33:27
+ * @LastEditTime: 2022-05-17 10:52:52
 -->
 <template>
   <div class="h-base-layout">
@@ -52,7 +52,6 @@
   padding: 0;
   height: calc(100vh - 140px);
   border-radius: $global-border-radius;
-  background-color: $global-bg-color;
   overflow: initial;
 }
 

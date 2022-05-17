@@ -3,7 +3,7 @@
  * @Author: Hedgehog96
  * @Date: 2022-05-15 17:42:07
  * @LastEditors: Hedgehog96
- * @LastEditTime: 2022-05-16 18:01:04
+ * @LastEditTime: 2022-05-17 16:21:47
 -->
 <template>
   <div class="h-base-container">
@@ -30,9 +30,8 @@ defineProps({});
 <style lang="scss" scoped>
 .h-base-container {
   position: relative;
-  width: 100%;
   min-height: 200px;
-  padding: 5px;
+  margin: 5px;
   border: 1px solid #ccc;
 
   .container-action {

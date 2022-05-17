@@ -1,9 +1,9 @@
 <!--
- * @Description: 
+ * @Description: 主拖曳区域
  * @Author: Hedgehog96
  * @Date: 2022-05-09 17:24:21
  * @LastEditors: Hedgehog96
- * @LastEditTime: 2022-05-16 16:00:16
+ * @LastEditTime: 2022-05-17 18:17:06
 -->
 <template>
   <div class="h-main">
@@ -13,36 +13,72 @@
       item-key="name"
       :group="{
         name: 'componentItem',
-        pull: true,
-        put: true,
       }"
       :list="components"
     >
       <template #item="{ element }">
-        <template v-if="element.name === 'Container'">
-          <div
-            class="h-main-layout-item h-main-layout-item-container"
-            @click="handleClickCompeont"
+        <template
+          v-if="element.name === 'Container' || element.name === 'Card'"
+        >
+          <component
+            :is="element.component"
+            v-bind="element.attrs"
+            v-on="element.evt"
           >
-            <component
-              :is="element.component"
-              v-bind="element.attrs"
-              v-on="element.evt"
-            >
-              <slot
-                ><div
-                  v-for="(c, idx) in element.children"
-                  :key="idx"
-                  class="h-main-layout-item"
-                  @click="handleClickCompeont"
-                >
-                  <component :is="c.component" v-bind="c.attrs" v-on="c.evt">{{
-                    c.showTitle ? c.title : null
-                  }}</component>
-                </div></slot
+            <slot>
+              <draggable
+                :key="uniqueId()"
+                item-key="name"
+                :group="{
+                  name: 'componentItem',
+                }"
+                :empty-insert-threshold="100"
+                :list="element.children"
               >
-            </component>
-          </div>
+                <template #item="{ element: c_element }">
+                  <div
+                    class="h-main-layout-item h-main-layout-item-container"
+                    @click="handleClickCompeont"
+                  >
+                    <template
+                      v-if="c_element.children && c_element.children.length"
+                    >
+                      <div
+                        v-for="(c, idx) in c_element.children"
+                        :key="idx"
+                        class="h-main-layout-item"
+                        @click="handleClickCompeont"
+                      >
+                        <component
+                          :is="c_element.component"
+                          v-bind="c_element.attrs"
+                          v-on="c_element.evt"
+                          >{{
+                            c_element.showTitle ? c_element.title : null
+                          }}</component
+                        >
+                      </div>
+                    </template>
+                    <template v-else>
+                      <div
+                        class="h-main-layout-item"
+                        @click="handleClickCompeont"
+                      >
+                        <component
+                          :is="c_element.component"
+                          v-bind="c_element.attrs"
+                          v-on="c_element.evt"
+                          >{{
+                            c_element.showTitle ? c_element.title : null
+                          }}</component
+                        >
+                      </div>
+                    </template>
+                  </div>
+                </template>
+              </draggable>
+            </slot>
+          </component>
         </template>
         <template v-else>
           <div class="h-main-layout-item" @click="handleClickCompeont">
@@ -75,37 +111,26 @@ const handleClickCompeont = (evt: any) => {
 const handleAddComponent = (evt: any) => {
   // 组件名或路径
   const nameOrIndex = evt.clone.getAttribute("data-id");
-  // 父节点路径
-  const parentPath = evt.path[1].getAttribute("data-id");
   // 拖拽元素的目标路径
   const { newIndex } = evt;
-  // 新路径为根节点时直接使用index
-  const newPath = parentPath ? `${parentPath}-${newIndex}` : newIndex;
-  console.log(nameOrIndex, parentPath, newIndex, newPath);
-
-  // 判断是否为路径（是路径执行移动，非路径为新增）
-  if (isPath(nameOrIndex)) {
-    // TODO:
-
-    return false;
-  }
-
-  if (nameOrIndex === "Container") {
-    // TODO:
-  }
 };
 </script>
 
 <style lang="scss" scoped>
-.h-main,
-.h-main-layout {
+.h-main {
   padding: 20px;
-  height: calc(100% - 40px);
-  overflow-y: auto;
+  height: calc(100% - 90px);
+  background-color: $global-bg-color;
+  border-radius: $global-border-radius;
+
+  .h-main-layout {
+    height: 100%;
+    overflow-y: auto;
+  }
 
   .h-main-layout-item {
     margin-bottom: 10px;
-    padding: 5px 0;
+    padding: 5px;
   }
 }
 </style>

@@ -3,7 +3,7 @@
  * @Author: Hedgehog96
  * @Date: 2022-05-07 16:34:02
  * @LastEditors: Hedgehog96
- * @LastEditTime: 2022-05-16 17:52:06
+ * @LastEditTime: 2022-05-17 14:07:45
 -->
 <template>
   <div class="h-base-header">
@@ -12,14 +12,9 @@
       <el-button size="small" @click="handleFullScreen"
         ><el-icon><full-screen /></el-icon>全屏</el-button
       >
-      <el-button size="small"
-        ><el-icon><show /></el-icon>预览</el-button
-      >
-      <el-button size="small"
-        ><el-icon><delete /></el-icon>清空</el-button
-      >
+
       <el-button size="small" type="primary"
-        ><el-icon><circle-check /></el-icon>保存</el-button
+        ><el-icon><circle-check /></el-icon>存档</el-button
       >
     </div>
   </div>
@@ -27,12 +22,7 @@
 
 <script setup lang="ts">
 import { ElMessage } from "element-plus";
-import {
-  FullScreen,
-  View as Show,
-  Delete,
-  CircleCheck,
-} from "@element-plus/icons-vue";
+import { FullScreen, CircleCheck } from "@element-plus/icons-vue";
 
 interface FullScreenHTMLElement extends HTMLElement {
   mozRequestFullScreen?: () => void;
