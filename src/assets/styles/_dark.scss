@@ -1,0 +1,12 @@
+.dark {
+  .theme-toggler {
+    .theme-switch-action {
+      transform: translate(24px) !important;
+    }
+
+    .dark-icon {
+      opacity: 1 !important;
+      color: #303133;
+    }
+  }
+}
