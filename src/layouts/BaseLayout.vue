@@ -3,7 +3,7 @@
  * @Author: Hedgehog96
  * @Date: 2022-05-07 15:11:38
  * @LastEditors: Hedgehog96
- * @LastEditTime: 2022-05-17 10:52:52
+ * @LastEditTime: 2022-05-24 14:28:41
 -->
 <template>
   <div class="h-base-layout">
@@ -51,28 +51,28 @@
 .h-base-layout-main {
   padding: 0;
   height: calc(100vh - 140px);
-  border-radius: $global-border-radius;
+  border-radius: $base-border-radius;
   overflow: initial;
 }
 
 .h-base-layout-l-aside {
-  border-top-right-radius: $global-border-radius;
-  border-bottom-right-radius: $global-border-radius;
-  background-color: $global-bg-color;
+  border-top-right-radius: $base-border-radius;
+  border-bottom-right-radius: $base-border-radius;
+  background-color: $base-bg-color;
 }
 
 .h-base-layout-r-aside {
   margin-left: 20px;
-  border-top-left-radius: $global-border-radius;
-  border-bottom-left-radius: $global-border-radius;
-  background-color: $global-bg-color;
+  border-top-left-radius: $base-border-radius;
+  border-bottom-left-radius: $base-border-radius;
+  background-color: $base-bg-color;
 }
 
 .h-base-layout-footer {
   margin-top: 20px;
-  border-top-left-radius: $global-border-radius;
-  border-top-right-radius: $global-border-radius;
-  background-color: $global-bg-color;
+  border-top-left-radius: $base-border-radius;
+  border-top-right-radius: $base-border-radius;
+  background-color: $base-bg-color;
 }
 
 .el-header {

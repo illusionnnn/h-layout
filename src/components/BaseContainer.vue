@@ -3,7 +3,7 @@
  * @Author: Hedgehog96
  * @Date: 2022-05-15 17:42:07
  * @LastEditors: Hedgehog96
- * @LastEditTime: 2022-05-17 16:21:47
+ * @LastEditTime: 2022-05-24 14:50:34
 -->
 <template>
   <div class="h-base-container">
@@ -21,10 +21,7 @@
 </template>
 
 <script setup lang="ts">
-import { defineProps } from "vue";
 import { Position, Delete } from "@element-plus/icons-vue";
-
-defineProps({});
 </script>
 
 <style lang="scss" scoped>
@@ -41,7 +38,7 @@ defineProps({});
     height: 16px;
     display: flex;
     color: #fff;
-    background-color: $global-base-color;
+    background-color: $base-color;
     z-index: 99;
 
     i {
@@ -56,7 +53,7 @@ defineProps({});
     height: 16px;
     display: flex;
     color: #fff;
-    background-color: $global-base-color;
+    background-color: $base-color;
     z-index: 9;
 
     i {

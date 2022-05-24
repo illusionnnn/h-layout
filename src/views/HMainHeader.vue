@@ -3,7 +3,7 @@
  * @Author: Hedgehog96
  * @Date: 2022-05-17 10:46:19
  * @LastEditors: Hedgehog96
- * @LastEditTime: 2022-05-17 14:27:23
+ * @LastEditTime: 2022-05-24 14:28:45
 -->
 <template>
   <div class="h-main-header">
@@ -41,9 +41,9 @@ import {
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: $global-bg-color;
+  background-color: $base-bg-color;
   text-align: center;
-  border-radius: $global-border-radius;
+  border-radius: $base-border-radius;
 
   .el-icon {
     cursor: pointer;

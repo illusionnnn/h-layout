@@ -3,7 +3,7 @@
  * @Author: Hedgehog96
  * @Date: 2022-05-09 14:22:35
  * @LastEditors: Hedgehog96
- * @LastEditTime: 2022-05-11 14:13:50
+ * @LastEditTime: 2022-05-24 14:30:57
 -->
 <template>
   <div class="h-aside">
@@ -81,7 +81,7 @@ const handleTabClick = (tabName: string) => {
       cursor: pointer;
 
       &.activating {
-        border-bottom: 1.5px solid $global-base-color;
+        border-bottom: 1.5px solid $base-color;
       }
     }
   }

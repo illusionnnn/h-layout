@@ -3,19 +3,19 @@
  * @Author: Hedgehog96
  * @Date: 2022-05-09 17:30:41
  * @LastEditors: Hedgehog96
- * @LastEditTime: 2022-05-17 15:58:21
+ * @LastEditTime: 2022-05-23 18:25:09
  */
 import { ElCard, ElButton, ElInput, ElSwitch, ElRate } from "element-plus";
 import BaseContainer from "../components/BaseContainer.vue";
 
 export default [
   {
-    id: "0",
+    pid: "0",
     title: "容器",
     name: "Wrapper",
     components: [
       {
-        cid: "0-0",
+        id: 1,
         title: "布局",
         name: "Container",
         showTitle: false,
@@ -25,7 +25,7 @@ export default [
         children: [],
       },
       {
-        cid: "0-1",
+        id: 2,
         title: "卡片",
         name: "Card",
         showTitle: false,
@@ -37,12 +37,12 @@ export default [
     ],
   },
   {
-    id: "1",
+    pid: "1",
     title: "实体",
     name: "components",
     components: [
       {
-        cid: "1-0",
+        id: 3,
         title: "单行输入",
         name: "Input",
         showTitle: false,
@@ -51,7 +51,7 @@ export default [
         evt: {},
       },
       {
-        cid: "1-1",
+        id: 4,
         title: "多行输入",
         name: "Input",
         showTitle: false,
@@ -60,7 +60,7 @@ export default [
         evt: {},
       },
       {
-        cid: "1-2",
+        id: 5,
         title: "按钮",
         name: "Button",
         showTitle: true,
@@ -69,7 +69,7 @@ export default [
         evt: {},
       },
       {
-        cid: "1-3",
+        id: 6,
         title: "开关",
         name: "Switch",
         showTitle: false,
@@ -78,7 +78,7 @@ export default [
         evt: {},
       },
       {
-        cid: "1-4",
+        id: 7,
         title: "评分",
         name: "Rate",
         showTitle: false,
