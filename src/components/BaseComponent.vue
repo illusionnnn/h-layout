@@ -1,24 +1,25 @@
 <!--
- * @Description: 容器组件
+ * @Description: 实体组件
  * @Author: Hedgehog96
- * @Date: 2022-05-15 17:42:07
+ * @Date: 2022-05-25 15:37:32
  * @LastEditors: Hedgehog96
- * @LastEditTime: 2022-05-25 16:04:11
+ * @LastEditTime: 2022-05-25 16:15:25
 -->
 <template>
   <div
-    class="h-base-container"
+    class="h-base-component"
     :class="activated ? 'activated' : 'unactivated'"
   >
+    <div class="component-name">{{ name }}</div>
     <slot></slot>
 
-    <div v-show="activated" class="container-action">
+    <div v-show="activated" class="component-action">
       <el-icon><delete /></el-icon>
     </div>
 
-    <div v-show="activated" class="container-drag-handler">
+    <div v-show="activated" class="component-drag-handler">
       <el-icon><position /></el-icon>
-      <span class="container-title">容器</span>
+      <span class="component-title">{{ title }}</span>
     </div>
   </div>
 </template>
@@ -28,6 +29,14 @@ import { defineProps } from "vue";
 import { Position, Delete } from "@element-plus/icons-vue";
 
 defineProps({
+  name: {
+    type: String,
+    default: () => "",
+  },
+  title: {
+    type: String,
+    default: () => "",
+  },
   activated: {
     type: Boolean,
     default: () => false,
@@ -36,12 +45,16 @@ defineProps({
 </script>
 
 <style lang="scss" scoped>
-.h-base-container {
+.h-base-component {
   position: relative;
-  min-height: 200px;
-  border: 1px solid #ccc;
+  display: flex;
+  align-items: center;
 
-  .container-action {
+  .component-name {
+    margin-right: 30px;
+  }
+
+  .component-action {
     position: absolute;
     bottom: 0;
     right: -2px;
@@ -56,7 +69,7 @@ defineProps({
     }
   }
 
-  .container-drag-handler {
+  .component-drag-handler {
     position: absolute;
     top: -2px;
     left: -2px;
@@ -70,7 +83,7 @@ defineProps({
       cursor: move;
     }
 
-    .container-title {
+    .component-title {
       font-size: 12px;
     }
   }

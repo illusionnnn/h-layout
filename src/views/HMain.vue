@@ -3,7 +3,7 @@
  * @Author: Hedgehog96
  * @Date: 2022-05-09 17:24:21
  * @LastEditors: Hedgehog96
- * @LastEditTime: 2022-05-24 14:37:22
+ * @LastEditTime: 2022-05-25 10:40:59
 -->
 <template>
   <div class="h-main">
@@ -21,10 +21,6 @@ import { ref } from "vue";
 import HDraggable from "../components/HDraggable.vue";
 
 const components = ref([]);
-
-const handleClickCompeont = (evt: any) => {
-  console.log(evt.currentTarget);
-};
 
 const handleAddComponent = (evt: any) => {
   // 组件名或路径

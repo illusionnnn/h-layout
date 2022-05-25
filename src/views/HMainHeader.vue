@@ -3,7 +3,7 @@
  * @Author: Hedgehog96
  * @Date: 2022-05-17 10:46:19
  * @LastEditors: Hedgehog96
- * @LastEditTime: 2022-05-24 14:28:45
+ * @LastEditTime: 2022-05-25 11:51:35
 -->
 <template>
   <div class="h-main-header">
@@ -38,6 +38,7 @@ import {
   width: 100%;
   height: 30px;
   margin-bottom: 20px;
+  padding: 4px 0;
   display: flex;
   align-items: center;
   justify-content: center;

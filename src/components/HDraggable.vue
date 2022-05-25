@@ -3,7 +3,7 @@
  * @Author: Hedgehog96
  * @Date: 2022-05-20 16:47:09
  * @LastEditors: Hedgehog96
- * @LastEditTime: 2022-05-24 15:00:41
+ * @LastEditTime: 2022-05-25 16:02:59
 -->
 <template>
   <draggable
@@ -14,29 +14,40 @@
   >
     <template #item="{ element }">
       <template v-if="element.name === 'Container' || element.name === 'Card'">
-        <component
-          :is="element.component"
-          v-bind="element.attrs"
-          v-on="element.evt"
+        <div
+          class="h-main-layout-item"
+          @click="(e) => handleClickComponent(e, element)"
         >
-          <h-draggable
-            :item-key="'id'"
-            :group="{
-              name: 'componentItem',
-            }"
-            :components="element.children"
-          />
-        </component>
-      </template>
-      <template v-else>
-        <div class="h-main-layout-item">
-          <div class="h-main-layout-item-name">{{ element.name }}</div>
           <component
             :is="element.component"
             v-bind="element.attrs"
-            v-on="element.evt"
-            >{{ element.showTitle ? element.title : null }}</component
+            :activated="element.id === state.currentComponentId"
           >
+            <h-draggable
+              :item-key="'id'"
+              :group="{
+                name: 'componentItem',
+              }"
+              :components="element.children"
+            />
+          </component>
+        </div>
+      </template>
+      <!-- 实体组件 -->
+      <template v-else>
+        <div
+          class="h-main-layout-item"
+          @click="(e) => handleClickComponent(e, element)"
+        >
+          <base-component
+            :name="element.name"
+            :title="element.title"
+            :activated="element.id === state.currentComponentId"
+          >
+            <component :is="element.component" v-bind="element.attrs">{{
+              element.showTitle ? element.title : null
+            }}</component>
+          </base-component>
         </div>
       </template>
     </template>
@@ -44,8 +55,11 @@
 </template>
 
 <script setup lang="ts">
-import { defineProps, defineEmits } from "vue";
+import { reactive, defineProps, defineEmits } from "vue";
 import Draggable from "vuedraggable";
+
+import BaseComponent from "./BaseComponent.vue";
+import { ComponentConfig } from "../config/interfaces";
 
 defineProps({
   itemKey: {
@@ -65,8 +79,17 @@ defineProps({
 });
 const $_emits = defineEmits(["add"]);
 
-const handleAddComponent = (evt: any) => {
+const state = reactive({
+  currentComponentId: -1,
+});
+
+const handleAddComponent = (evt: Event) => {
   $_emits("add", evt);
+};
+
+const handleClickComponent = (evt: Event, elem: ComponentConfig) => {
+  state.currentComponentId = elem.id;
+  console.log(elem);
 };
 </script>
 
@@ -80,11 +103,22 @@ const handleAddComponent = (evt: any) => {
 .h-main-layout-item {
   margin-bottom: 10px;
   padding: 5px;
-  display: flex;
-  align-items: center;
+
+  .h-main-layout-item-inner {
+    display: flex;
+    align-items: center;
+  }
 
   .h-main-layout-item-name {
     margin-right: 20px;
   }
 }
+
+// .activated > div {
+//   outline: 2px dotted $base-color;
+// }
+
+// .unactivated > div {
+//   outline: none;
+// }
 </style>
