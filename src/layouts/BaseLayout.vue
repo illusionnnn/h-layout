@@ -3,7 +3,7 @@
  * @Author: Hedgehog96
  * @Date: 2022-05-07 15:11:38
  * @LastEditors: Hedgehog96
- * @LastEditTime: 2022-05-24 14:28:41
+ * @LastEditTime: 2022-06-02 14:52:45
 -->
 <template>
   <div class="h-base-layout">
@@ -19,9 +19,6 @@
           <el-main class="h-base-layout-main">
             <slot name="main"></slot>
           </el-main>
-          <el-footer class="h-base-layout-footer">
-            <slot name="footer"></slot>
-          </el-footer>
         </el-container>
         <el-aside width="256px" class="h-base-layout-r-aside">
           <slot name="rAside"></slot>
@@ -50,7 +47,7 @@
 
 .h-base-layout-main {
   padding: 0;
-  height: calc(100vh - 140px);
+  height: calc(100vh - 70px);
   border-radius: $base-border-radius;
   overflow: initial;
 }

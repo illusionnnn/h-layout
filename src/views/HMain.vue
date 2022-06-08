@@ -3,32 +3,18 @@
  * @Author: Hedgehog96
  * @Date: 2022-05-09 17:24:21
  * @LastEditors: Hedgehog96
- * @LastEditTime: 2022-05-25 10:40:59
+ * @LastEditTime: 2022-06-06 14:47:01
 -->
 <template>
   <div class="h-main">
-    <h-draggable
-      item-key="id"
-      :group="{ name: 'componentItem' }"
-      :components="components"
-    ></h-draggable>
+    <h-draggable :components="components"></h-draggable>
   </div>
 </template>
 
 <script setup lang="ts">
 import { ref } from "vue";
 
-import HDraggable from "../components/HDraggable.vue";
-
 const components = ref([]);
-
-const handleAddComponent = (evt: any) => {
-  // 组件名或路径
-  const nameOrIndex = evt.clone.getAttribute("data-id");
-  // 拖拽元素的目标路径
-  const { newIndex } = evt;
-  console.log(components.value);
-};
 </script>
 
 <style lang="scss" scoped>

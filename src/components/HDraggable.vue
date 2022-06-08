@@ -3,13 +3,15 @@
  * @Author: Hedgehog96
  * @Date: 2022-05-20 16:47:09
  * @LastEditors: Hedgehog96
- * @LastEditTime: 2022-05-25 16:02:59
+ * @LastEditTime: 2022-06-08 17:38:44
 -->
 <template>
   <draggable
     class="h-main-layout"
-    :item-key="itemKey"
-    :group="group"
+    item-key="id"
+    handle=".component-drag-handler"
+    :animation="200"
+    :group="{ name: 'componentItem' }"
     :list="components"
   >
     <template #item="{ element }">
@@ -23,17 +25,10 @@
             v-bind="element.attrs"
             :activated="element.id === state.currentComponentId"
           >
-            <h-draggable
-              :item-key="'id'"
-              :group="{
-                name: 'componentItem',
-              }"
-              :components="element.children"
-            />
+            <h-draggable :components="element.children" />
           </component>
         </div>
       </template>
-      <!-- 实体组件 -->
       <template v-else>
         <div
           class="h-main-layout-item"
@@ -62,16 +57,6 @@ import BaseComponent from "./BaseComponent.vue";
 import { ComponentConfig } from "../config/interfaces";
 
 defineProps({
-  itemKey: {
-    type: String,
-    default: () => "id",
-  },
-  group: {
-    type: Object,
-    default: () => {
-      "draggable";
-    },
-  },
   components: {
     type: Array,
     default: () => [],
@@ -113,12 +98,4 @@ const handleClickComponent = (evt: Event, elem: ComponentConfig) => {
     margin-right: 20px;
   }
 }
-
-// .activated > div {
-//   outline: 2px dotted $base-color;
-// }
-
-// .unactivated > div {
-//   outline: none;
-// }
 </style>

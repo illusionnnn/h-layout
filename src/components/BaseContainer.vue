@@ -3,7 +3,7 @@
  * @Author: Hedgehog96
  * @Date: 2022-05-15 17:42:07
  * @LastEditors: Hedgehog96
- * @LastEditTime: 2022-05-25 16:04:11
+ * @LastEditTime: 2022-06-08 16:32:48
 -->
 <template>
   <div
@@ -65,10 +65,7 @@ defineProps({
     color: #fff;
     background-color: $base-color;
     z-index: 9;
-
-    i {
-      cursor: move;
-    }
+    cursor: move;
 
     .container-title {
       font-size: 12px;

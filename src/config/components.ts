@@ -3,14 +3,14 @@
  * @Author: Hedgehog96
  * @Date: 2022-05-09 17:30:41
  * @LastEditors: Hedgehog96
- * @LastEditTime: 2022-05-25 16:16:16
+ * @LastEditTime: 2022-06-02 14:10:33
  */
-import { ElCard, ElButton, ElInput, ElSwitch, ElRate } from "element-plus";
+import { ElButton, ElInput, ElSwitch, ElRate } from "element-plus";
 import BaseContainer from "../components/BaseContainer.vue";
 
 export default [
   {
-    pid: "0",
+    pid: 0,
     title: "容器",
     name: "Wrapper",
     components: [
@@ -27,7 +27,7 @@ export default [
     ],
   },
   {
-    pid: "1",
+    pid: 1,
     title: "实体",
     name: "components",
     components: [

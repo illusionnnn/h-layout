@@ -3,11 +3,11 @@
  * @Author: Hedgehog96
  * @Date: 2022-05-09 14:46:15
  * @LastEditors: Hedgehog96
- * @LastEditTime: 2022-05-09 15:12:15
+ * @LastEditTime: 2022-06-08 15:37:49
  */
 module.exports = {
   printWidth: 120,
-  tabWidth: 2,
+  tabWidth: 4,
   tabs: true,
   semi: false,
   singleQuote: true,

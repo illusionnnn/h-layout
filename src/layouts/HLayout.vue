@@ -3,7 +3,7 @@
  * @Author: Hedgehog96
  * @Date: 2022-05-07 16:36:50
  * @LastEditors: Hedgehog96
- * @LastEditTime: 2022-05-09 17:18:58
+ * @LastEditTime: 2022-06-02 14:52:57
 -->
 <template>
   <base-layout>
@@ -15,9 +15,6 @@
     </template>
     <template #main>
       <base-main></base-main>
-    </template>
-    <template #footer>
-      <base-footer></base-footer>
     </template>
     <template #rAside>
       <base-raside></base-raside>
@@ -31,5 +28,4 @@ import BaseHeader from "../components/BaseHeader.vue";
 import BaseLaside from "../components/BaseLaside.vue";
 import BaseRaside from "../components/BaseRaside.vue";
 import BaseMain from "../components/BaseMain.vue";
-import BaseFooter from "../components/BaseFooter.vue";
 </script>

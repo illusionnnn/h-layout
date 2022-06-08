@@ -3,7 +3,7 @@
  * @Author: Hedgehog96
  * @Date: 2022-05-25 15:37:32
  * @LastEditors: Hedgehog96
- * @LastEditTime: 2022-05-25 16:15:25
+ * @LastEditTime: 2022-06-08 18:22:06
 -->
 <template>
   <div
@@ -14,7 +14,9 @@
     <slot></slot>
 
     <div v-show="activated" class="component-action">
-      <el-icon><delete /></el-icon>
+      <el-icon @click="() => showMessageBox(messageBoxParams)"
+        ><delete
+      /></el-icon>
     </div>
 
     <div v-show="activated" class="component-drag-handler">
@@ -27,6 +29,8 @@
 <script setup lang="ts">
 import { defineProps } from "vue";
 import { Position, Delete } from "@element-plus/icons-vue";
+
+import { showMessageBox, showMessageBoxInterface } from "../utils";
 
 defineProps({
   name: {
@@ -42,6 +46,16 @@ defineProps({
     default: () => false,
   },
 });
+
+const messageBoxParams: showMessageBoxInterface = {
+  title: "删除组件",
+  content: "是否确定删除该组件",
+  type: "warning",
+  confirmButtonText: "确认",
+  cancelButtonText: "取消",
+  confirmMessageType: "warning",
+  confirmMessageText: "删除中",
+};
 </script>
 
 <style lang="scss" scoped>
@@ -78,10 +92,7 @@ defineProps({
     color: #fff;
     background-color: $base-color;
     z-index: 9;
-
-    i {
-      cursor: move;
-    }
+    cursor: move;
 
     .component-title {
       font-size: 12px;
