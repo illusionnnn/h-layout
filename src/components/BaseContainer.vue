@@ -3,7 +3,7 @@
  * @Author: Hedgehog96
  * @Date: 2022-05-15 17:42:07
  * @LastEditors: Hedgehog96
- * @LastEditTime: 2022-06-09 14:50:37
+ * @LastEditTime: 2022-06-09 15:58:36
 -->
 <template>
   <div
@@ -63,9 +63,13 @@ defineProps({
     height: 16px;
     display: flex;
     color: #fff;
+    opacity: 0.6;
     background-color: $base-color;
     z-index: 9;
     cursor: move;
+    &:hover {
+      opacity: 1;
+    }
 
     .container-title {
       margin-left: 6px;

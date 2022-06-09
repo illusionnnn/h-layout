@@ -3,7 +3,7 @@
  * @Author: Hedgehog96
  * @Date: 2022-05-25 15:37:32
  * @LastEditors: Hedgehog96
- * @LastEditTime: 2022-06-09 14:50:48
+ * @LastEditTime: 2022-06-09 15:58:13
 -->
 <template>
   <div
@@ -60,6 +60,7 @@ const messageBoxParams: showMessageBoxInterface = {
 
 <style lang="scss" scoped>
 .h-base-component {
+  padding: 2px 0;
   position: relative;
   display: flex;
   align-items: center;
@@ -90,9 +91,13 @@ const messageBoxParams: showMessageBoxInterface = {
     height: 16px;
     display: flex;
     color: #fff;
+    opacity: 0.6;
     background-color: $base-color;
     z-index: 9;
     cursor: move;
+    &:hover {
+      opacity: 1;
+    }
 
     .component-title {
       margin-left: 6px;

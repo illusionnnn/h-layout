@@ -3,7 +3,7 @@
  * @Author: Hedgehog96
  * @Date: 2022-05-05 21:19:48
  * @LastEditors: Hedgehog96
- * @LastEditTime: 2022-06-09 15:17:41
+ * @LastEditTime: 2022-06-09 18:07:04
  */
 import { defineConfig } from "vite";
 import { resolve } from "path";
@@ -33,7 +33,7 @@ export default defineConfig({
     preprocessorOptions: {
       scss: {
         charset: false,
-        additionalData: '@import "./src/assets/styles/index.scss";',
+        additionalData: '@import "./src/styles/index.scss";',
       },
     },
   },
