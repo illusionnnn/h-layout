@@ -3,16 +3,12 @@
  * @Author: Hedgehog96
  * @Date: 2022-05-07 16:42:18
  * @LastEditors: Hedgehog96
- * @LastEditTime: 2022-05-09 17:22:55
+ * @LastEditTime: 2022-06-09 15:18:59
 -->
 <template>
-  <div class="h-base-l-aside">
-    <h-laside></h-laside>
-  </div>
+  <h-laside></h-laside>
 </template>
 
 <script setup lang="ts">
-import HLaside from "../views/aside/HLaside.vue";
+import HLaside from "@/views/l-aside/HLaside.vue";
 </script>
-
-<style lang="scss" scoped></style>

@@ -3,10 +3,10 @@
  * @Author: Hedgehog96
  * @Date: 2022-05-09 14:22:35
  * @LastEditors: Hedgehog96
- * @LastEditTime: 2022-05-24 14:31:03
+ * @LastEditTime: 2022-06-09 15:08:50
 -->
 <template>
-  <div class="h-aside">
+  <div class="h-aside-l">
     <div class="h-aside-tabs">
       <div
         class="h-aside-tab h-aside-tabs-components"
@@ -69,7 +69,7 @@ const handleTabClick = (tabName: string) => {
 </script>
 
 <style lang="scss" scoped>
-.h-aside {
+.h-aside-l {
   .h-aside-tabs {
     display: flex;
     justify-content: center;

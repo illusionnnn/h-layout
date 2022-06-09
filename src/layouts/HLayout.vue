@@ -3,7 +3,7 @@
  * @Author: Hedgehog96
  * @Date: 2022-05-07 16:36:50
  * @LastEditors: Hedgehog96
- * @LastEditTime: 2022-06-02 14:52:57
+ * @LastEditTime: 2022-06-09 15:19:48
 -->
 <template>
   <base-layout>
@@ -24,8 +24,8 @@
 
 <script setup lang="ts">
 import BaseLayout from "./BaseLayout.vue";
-import BaseHeader from "../components/BaseHeader.vue";
-import BaseLaside from "../components/BaseLaside.vue";
-import BaseRaside from "../components/BaseRaside.vue";
-import BaseMain from "../components/BaseMain.vue";
+import BaseHeader from "@/components/BaseHeader.vue";
+import BaseLaside from "@/components/BaseLaside.vue";
+import BaseRaside from "@/components/BaseRaside.vue";
+import BaseMain from "@/components/BaseMain.vue";
 </script>

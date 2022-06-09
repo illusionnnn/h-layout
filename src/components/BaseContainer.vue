@@ -3,7 +3,7 @@
  * @Author: Hedgehog96
  * @Date: 2022-05-15 17:42:07
  * @LastEditors: Hedgehog96
- * @LastEditTime: 2022-06-08 16:32:48
+ * @LastEditTime: 2022-06-09 14:50:37
 -->
 <template>
   <div
@@ -68,6 +68,7 @@ defineProps({
     cursor: move;
 
     .container-title {
+      margin-left: 6px;
       font-size: 12px;
     }
   }

@@ -3,7 +3,7 @@
  * @Author: Hedgehog96
  * @Date: 2022-05-20 16:47:09
  * @LastEditors: Hedgehog96
- * @LastEditTime: 2022-06-08 17:38:44
+ * @LastEditTime: 2022-06-09 15:19:26
 -->
 <template>
   <draggable
@@ -54,7 +54,7 @@ import { reactive, defineProps, defineEmits } from "vue";
 import Draggable from "vuedraggable";
 
 import BaseComponent from "./BaseComponent.vue";
-import { ComponentConfig } from "../config/interfaces";
+import { ComponentConfig } from "@/config/interfaces";
 
 defineProps({
   components: {

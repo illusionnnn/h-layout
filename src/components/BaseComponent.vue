@@ -3,7 +3,7 @@
  * @Author: Hedgehog96
  * @Date: 2022-05-25 15:37:32
  * @LastEditors: Hedgehog96
- * @LastEditTime: 2022-06-08 18:22:06
+ * @LastEditTime: 2022-06-09 14:50:48
 -->
 <template>
   <div
@@ -95,6 +95,7 @@ const messageBoxParams: showMessageBoxInterface = {
     cursor: move;
 
     .component-title {
+      margin-left: 6px;
       font-size: 12px;
     }
   }

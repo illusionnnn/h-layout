@@ -3,7 +3,7 @@
  * @Author: Hedgehog96
  * @Date: 2022-05-09 15:33:03
  * @LastEditors: Hedgehog96
- * @LastEditTime: 2022-05-24 14:47:05
+ * @LastEditTime: 2022-06-09 15:20:19
 -->
 <template>
   <div class="h-components">
@@ -40,8 +40,8 @@
 <script setup lang="ts">
 import draggable from "vuedraggable";
 import { cloneDeep } from "lodash-es";
-import componentsConfig from "../../config/components";
-import { ComponentConfig } from "../../config/interfaces";
+import componentsConfig from "@/config/components";
+import { ComponentConfig } from "@/config/interfaces";
 
 let $_ID_GLOBAL = 8;
 

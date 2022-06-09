@@ -3,16 +3,12 @@
  * @Author: Hedgehog96
  * @Date: 2022-05-09 17:16:44
  * @LastEditors: Hedgehog96
- * @LastEditTime: 2022-05-09 17:23:54
+ * @LastEditTime: 2022-06-09 15:18:49
 -->
 <template>
-  <div class="h-base-r-aside">
-    <h-raside></h-raside>
-  </div>
+  <h-raside></h-raside>
 </template>
 
 <script setup lang="ts">
-import HRaside from "../views/aside/HRaside.vue";
+import HRaside from "@/views/r-aside/HRaside.vue";
 </script>
-
-<style lang="scss" scoped></style>

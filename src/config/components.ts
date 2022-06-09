@@ -3,10 +3,10 @@
  * @Author: Hedgehog96
  * @Date: 2022-05-09 17:30:41
  * @LastEditors: Hedgehog96
- * @LastEditTime: 2022-06-02 14:10:33
+ * @LastEditTime: 2022-06-09 15:19:58
  */
 import { ElButton, ElInput, ElSwitch, ElRate } from "element-plus";
-import BaseContainer from "../components/BaseContainer.vue";
+import BaseContainer from "@/components/BaseContainer.vue";
 
 export default [
   {

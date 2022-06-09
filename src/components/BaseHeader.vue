@@ -3,26 +3,12 @@
  * @Author: Hedgehog96
  * @Date: 2022-05-07 16:34:02
  * @LastEditors: Hedgehog96
- * @LastEditTime: 2022-05-24 14:28:59
+ * @LastEditTime: 2022-06-09 14:32:49
 -->
 <template>
   <div class="h-base-header">
     <div class="h-base-header-title">h-layout</div>
     <div class="h-base-header-btns">
-      <el-button
-        v-if="lightTheme"
-        :icon="Sunrise"
-        size="small"
-        circle
-        @click="handleThemeChange"
-      ></el-button>
-      <el-button
-        v-else
-        :icon="MoonNight"
-        size="small"
-        circle
-        @click="handleThemeChange"
-      ></el-button>
       <el-button size="small" @click="handleFullScreen"
         ><el-icon><full-screen /></el-icon>全屏</el-button
       >
@@ -34,33 +20,14 @@
 </template>
 
 <script setup lang="ts">
-import { ref } from "vue";
 import { ElMessage } from "element-plus";
-import {
-  Sunrise,
-  MoonNight,
-  FullScreen,
-  CircleCheck,
-} from "@element-plus/icons-vue";
+import { FullScreen, CircleCheck } from "@element-plus/icons-vue";
 
 interface FullScreenHTMLElement extends HTMLElement {
   mozRequestFullScreen?: () => void;
   msRequestFullscreen?: () => void;
   webkitRequestFullscreen?: () => void;
 }
-
-const lightTheme = ref(true);
-const handleThemeChange = () => {
-  const elem = document.querySelector("html") as HTMLElement;
-
-  if (lightTheme.value) {
-    elem.className = "dark";
-    lightTheme.value = false;
-  } else {
-    elem.className && elem.removeAttribute("class");
-    lightTheme.value = true;
-  }
-};
 
 const handleFullScreen = () => {
   const elem = document.querySelector("html") as FullScreenHTMLElement;
@@ -84,7 +51,7 @@ const handleFullScreen = () => {
 <style lang="scss" scoped>
 .h-base-header {
   height: 40px;
-  padding: 0 20px;
+  padding: 0 10px;
   display: flex;
   align-items: center;
   background-color: $base-bg-color;
