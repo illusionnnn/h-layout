@@ -3,7 +3,7 @@
  * @Author: Hedgehog96
  * @Date: 2022-05-25 15:37:32
  * @LastEditors: Hedgehog96
- * @LastEditTime: 2022-06-09 15:58:13
+ * @LastEditTime: 2022-06-15 18:05:55
 -->
 <template>
   <div
@@ -30,7 +30,7 @@
 import { defineProps } from "vue";
 import { Position, Delete } from "@element-plus/icons-vue";
 
-import { showMessageBox, showMessageBoxInterface } from "../utils";
+import { showMessageBox, showMessageBoxInterface } from "../utils/Message";
 
 defineProps({
   name: {

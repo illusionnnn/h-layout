@@ -3,7 +3,7 @@
  * @Author: Hedgehog96
  * @Date: 2022-05-09 14:22:35
  * @LastEditors: Hedgehog96
- * @LastEditTime: 2022-05-24 14:30:57
+ * @LastEditTime: 2022-06-15 17:23:26
 -->
 <template>
   <div class="h-aside">
@@ -14,6 +14,7 @@
         @click="handleTabClick('c')"
       >
         <el-icon :color="currentCompsTabColor"><doc /></el-icon>
+        <span>组件配置</span>
       </div>
       <div
         class="h-aside-tab h-aside-tabs-layout-config"
@@ -21,6 +22,7 @@
         @click="handleTabClick('l')"
       >
         <el-icon :color="currentSettingTabColor"><files /></el-icon>
+        <span>页面配置</span>
       </div>
     </div>
     <div class="h-aside-container">
@@ -76,12 +78,22 @@ const handleTabClick = (tabName: string) => {
 
     .h-aside-tab {
       flex: 1;
-      margin: 10px 40px;
-      text-align: center;
+      margin: 10px 16px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
       cursor: pointer;
 
       &.activating {
-        border-bottom: 1.5px solid $base-color;
+        color: $base-color;
+      }
+
+      i {
+        margin-right: 4px;
+      }
+
+      span {
+        font-size: 14px;
       }
     }
   }

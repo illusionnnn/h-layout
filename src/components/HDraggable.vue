@@ -3,7 +3,7 @@
  * @Author: Hedgehog96
  * @Date: 2022-05-20 16:47:09
  * @LastEditors: Hedgehog96
- * @LastEditTime: 2022-06-09 15:19:26
+ * @LastEditTime: 2022-06-15 18:22:42
 -->
 <template>
   <draggable
@@ -12,7 +12,7 @@
     handle=".component-drag-handler"
     :animation="200"
     :group="{ name: 'componentItem' }"
-    :list="components"
+    :list="$_components"
   >
     <template #item="{ element }">
       <template v-if="element.name === 'Container' || element.name === 'Card'">
@@ -40,7 +40,7 @@
             :activated="element.id === state.currentComponentId"
           >
             <component :is="element.component" v-bind="element.attrs">{{
-              element.showTitle ? element.title : null
+              element.title
             }}</component>
           </base-component>
         </div>
@@ -50,7 +50,7 @@
 </template>
 
 <script setup lang="ts">
-import { reactive, defineProps, defineEmits } from "vue";
+import { ref, reactive, defineProps, inject } from "vue";
 import Draggable from "vuedraggable";
 
 import BaseComponent from "./BaseComponent.vue";
@@ -62,19 +62,17 @@ defineProps({
     default: () => [],
   },
 });
-const $_emits = defineEmits(["add"]);
 
+const EVENT_BUS: any = inject("eventBus");
+
+const $_components = ref([]);
 const state = reactive({
   currentComponentId: -1,
 });
 
-const handleAddComponent = (evt: Event) => {
-  $_emits("add", evt);
-};
-
 const handleClickComponent = (evt: Event, elem: ComponentConfig) => {
   state.currentComponentId = elem.id;
-  console.log(elem);
+  EVENT_BUS.emit("clickComponent");
 };
 </script>
 

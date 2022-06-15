@@ -3,7 +3,7 @@
  * @Author: Hedgehog96
  * @Date: 2022-06-09 16:47:32
  * @LastEditors: Hedgehog96
- * @LastEditTime: 2022-06-14 14:15:15
+ * @LastEditTime: 2022-06-15 16:58:13
  */
 class BaseComponent {
   key: string; // 唯一名称

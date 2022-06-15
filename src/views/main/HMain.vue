@@ -3,19 +3,13 @@
  * @Author: Hedgehog96
  * @Date: 2022-05-09 17:24:21
  * @LastEditors: Hedgehog96
- * @LastEditTime: 2022-06-06 14:47:01
+ * @LastEditTime: 2022-06-15 17:20:16
 -->
 <template>
   <div class="h-main">
-    <h-draggable :components="components"></h-draggable>
+    <h-draggable></h-draggable>
   </div>
 </template>
-
-<script setup lang="ts">
-import { ref } from "vue";
-
-const components = ref([]);
-</script>
 
 <style lang="scss" scoped>
 .h-main {
