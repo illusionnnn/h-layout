@@ -3,7 +3,7 @@
  * @Author: Hedgehog96
  * @Date: 2022-05-09 14:22:35
  * @LastEditors: Hedgehog96
- * @LastEditTime: 2022-06-15 17:23:26
+ * @LastEditTime: 2022-06-16 17:18:54
 -->
 <template>
   <div class="h-aside">
@@ -26,7 +26,9 @@
       </div>
     </div>
     <div class="h-aside-container">
-      <component :is="state.currentComponent" />
+      <keep-alive>
+        <component :is="state.currentComponent" />
+      </keep-alive>
     </div>
   </div>
 </template>
@@ -72,6 +74,7 @@ const handleTabClick = (tabName: string) => {
 
 <style lang="scss" scoped>
 .h-aside {
+  height: 100%;
   .h-aside-tabs {
     display: flex;
     justify-content: center;
@@ -96,6 +99,10 @@ const handleTabClick = (tabName: string) => {
         font-size: 14px;
       }
     }
+  }
+
+  .h-aside-container {
+    height: calc(100% - 40px);
   }
 }
 </style>

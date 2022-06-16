@@ -3,7 +3,7 @@
  * @Author: Hedgehog96
  * @Date: 2022-05-20 16:47:09
  * @LastEditors: Hedgehog96
- * @LastEditTime: 2022-06-15 18:22:42
+ * @LastEditTime: 2022-06-16 15:44:25
 -->
 <template>
   <draggable
@@ -72,7 +72,7 @@ const state = reactive({
 
 const handleClickComponent = (evt: Event, elem: ComponentConfig) => {
   state.currentComponentId = elem.id;
-  EVENT_BUS.emit("clickComponent");
+  EVENT_BUS.emit("clickComponent", elem);
 };
 </script>
 

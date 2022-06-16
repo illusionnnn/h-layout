@@ -3,7 +3,7 @@
  * @Author: Hedgehog96
  * @Date: 2022-05-07 16:34:02
  * @LastEditors: Hedgehog96
- * @LastEditTime: 2022-06-09 14:32:49
+ * @LastEditTime: 2022-06-16 17:14:30
 -->
 <template>
   <div class="h-base-header">
@@ -13,7 +13,7 @@
         ><el-icon><full-screen /></el-icon>全屏</el-button
       >
       <el-button size="small" type="primary"
-        ><el-icon><circle-check /></el-icon>存档</el-button
+        ><i class="iconfont icon-h-baocun"></i>保存</el-button
       >
     </div>
   </div>
@@ -21,7 +21,7 @@
 
 <script setup lang="ts">
 import { ElMessage } from "element-plus";
-import { FullScreen, CircleCheck } from "@element-plus/icons-vue";
+import { FullScreen } from "@element-plus/icons-vue";
 
 interface FullScreenHTMLElement extends HTMLElement {
   mozRequestFullScreen?: () => void;
@@ -66,8 +66,12 @@ const handleFullScreen = () => {
     margin-left: auto;
     display: flex;
 
-    .el-icon {
+    .el-icon,
+    .iconfont {
       margin-right: 4px;
+    }
+    .iconfont {
+      font-size: 12px;
     }
   }
 }
