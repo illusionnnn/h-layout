@@ -3,7 +3,7 @@
  * @Author: Hedgehog96
  * @Date: 2022-05-09 15:33:03
  * @LastEditors: Hedgehog96
- * @LastEditTime: 2022-06-15 17:29:02
+ * @LastEditTime: 2022-06-17 17:13:31
 -->
 <template>
   <div class="h-components">
@@ -27,7 +27,9 @@
               :key="element.id"
               :data-id="element.name"
               class="h-components-drag-area-item"
+              type="warning"
             >
+              <i :class="['iconfont', element.icon]"></i>
               {{ element.title }}
             </el-tag>
           </template>
@@ -49,7 +51,7 @@ const handleCloneComponentsConfig = (d: ComponentConfig) => {
   return cloneDeep({
     ...d,
     id: $_ID_GLOBAL++,
-    uniqueKey: random(99, 999),
+    uniqueKey: d.name + random(1, 999),
   });
 };
 </script>
@@ -73,6 +75,15 @@ const handleCloneComponentsConfig = (d: ComponentConfig) => {
       margin: 5px;
       margin-left: 0;
       cursor: move;
+
+      ::v-deep .el-tag__content {
+        display: flex;
+        align-items: center;
+
+        i {
+          margin-right: 4px;
+        }
+      }
     }
   }
 }

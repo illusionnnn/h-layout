@@ -1,17 +1,41 @@
 @font-face {
   font-family: "iconfont"; /* Project id 3383636 */
-  src: url("iconfont.woff2?t=1655370236538") format("woff2"),
-    url("iconfont.woff?t=1655370236538") format("woff"),
-    url("iconfont.ttf?t=1655370236538") format("truetype"),
-    url("iconfont.svg?t=1655370236538#iconfont") format("svg");
+  src: url('iconfont.woff2?t=1655456565211') format('woff2'),
+       url('iconfont.woff?t=1655456565211') format('woff'),
+       url('iconfont.ttf?t=1655456565211') format('truetype'),
+       url('iconfont.svg?t=1655456565211#iconfont') format('svg');
 }
 
 .iconfont {
   font-family: "iconfont" !important;
-  font-size: 14px;
+  font-size: 16px;
   font-style: normal;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-h-huadonganniux:before {
+  content: "\e62e";
+}
+
+.icon-h-shangebuju:before {
+  content: "\e6d3";
+}
+
+.icon-h-input:before {
+  content: "\e619";
+}
+
+.icon-h-textarea:before {
+  content: "\e62f";
+}
+
+.icon-h-anniu:before {
+  content: "\e638";
+}
+
+.icon-h-pingfen1:before {
+  content: "\e61b";
 }
 
 .icon-h-redo:before {
@@ -25,3 +49,4 @@
 .icon-h-baocun:before {
   content: "\e644";
 }
+
