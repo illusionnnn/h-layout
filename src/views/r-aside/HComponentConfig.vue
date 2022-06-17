@@ -3,7 +3,7 @@
  * @Author: Hedgehog96
  * @Date: 2022-05-11 14:08:14
  * @LastEditors: Hedgehog96
- * @LastEditTime: 2022-06-17 11:30:30
+ * @LastEditTime: 2022-06-17 17:36:19
 -->
 <template>
   <div v-if="Object.keys(state.currentElem).length" class="h-component-config">
@@ -58,10 +58,10 @@ EVENT_BUS.on("clickComponent", (elem: ComponentConfig) => {
   height: 100%;
   overflow-y: auto;
 
-  ::v-deep .el-collapse {
+  :deep(.el-collapse) {
     border-top: none;
   }
-  ::v-deep .el-collapse-item {
+  :deep(.el-collapse-item) {
     & > div {
       border-top: 1px solid #fff !important;
     }
@@ -70,7 +70,7 @@ EVENT_BUS.on("clickComponent", (elem: ComponentConfig) => {
       padding-bottom: 0;
     }
   }
-  ::v-deep .el-collapse-item__header {
+  :deep(.el-collapse-item__header) {
     padding-left: 8px;
     font-size: 16px;
   }

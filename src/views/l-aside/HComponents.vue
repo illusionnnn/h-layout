@@ -3,7 +3,7 @@
  * @Author: Hedgehog96
  * @Date: 2022-05-09 15:33:03
  * @LastEditors: Hedgehog96
- * @LastEditTime: 2022-06-17 17:13:31
+ * @LastEditTime: 2022-06-17 17:34:32
 -->
 <template>
   <div class="h-components">
@@ -76,7 +76,7 @@ const handleCloneComponentsConfig = (d: ComponentConfig) => {
       margin-left: 0;
       cursor: move;
 
-      ::v-deep .el-tag__content {
+      :deep(.el-tag__content) {
         display: flex;
         align-items: center;
 
