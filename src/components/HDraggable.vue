@@ -3,7 +3,7 @@
  * @Author: Hedgehog96
  * @Date: 2022-05-20 16:47:09
  * @LastEditors: Hedgehog96
- * @LastEditTime: 2022-06-16 15:44:25
+ * @LastEditTime: 2022-06-19 23:05:49
 -->
 <template>
   <draggable
@@ -16,10 +16,12 @@
   >
     <template #item="{ element }">
       <template v-if="element.name === 'Container' || element.name === 'Card'">
+        {{ element.id }}-{{ state.currentComponentId }}
         <div
           class="h-main-layout-item"
-          @click="(e) => handleClickComponent(e, element)"
+          @click.stop="(e) => handleClickComponent(e, element)"
         >
+          {{ element.id }}-{{ state.currentComponentId }}
           <component
             :is="element.component"
             v-bind="element.attrs"
@@ -32,7 +34,7 @@
       <template v-else>
         <div
           class="h-main-layout-item"
-          @click="(e) => handleClickComponent(e, element)"
+          @click.stop="(e) => handleClickComponent(e, element)"
         >
           <base-component
             :name="element.name"
@@ -50,7 +52,7 @@
 </template>
 
 <script setup lang="ts">
-import { ref, reactive, defineProps, inject } from "vue";
+import { ref, reactive, defineProps, inject, nextTick } from "vue";
 import Draggable from "vuedraggable";
 
 import BaseComponent from "./BaseComponent.vue";
@@ -71,7 +73,12 @@ const state = reactive({
 });
 
 const handleClickComponent = (evt: Event, elem: ComponentConfig) => {
+  console.log(elem.id);
+  console.log(elem);
   state.currentComponentId = elem.id;
+  nextTick(() => {
+    console.log(state.currentComponentId);
+  });
   EVENT_BUS.emit("clickComponent", elem);
 };
 </script>
