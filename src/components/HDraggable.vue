@@ -3,7 +3,7 @@
  * @Author: Hedgehog96
  * @Date: 2022-05-20 16:47:09
  * @LastEditors: Hedgehog96
- * @LastEditTime: 2022-06-19 23:05:49
+ * @LastEditTime: 2022-06-20 18:27:38
 -->
 <template>
   <draggable
@@ -16,18 +16,19 @@
   >
     <template #item="{ element }">
       <template v-if="element.name === 'Container' || element.name === 'Card'">
-        {{ element.id }}-{{ state.currentComponentId }}
         <div
           class="h-main-layout-item"
           @click.stop="(e) => handleClickComponent(e, element)"
         >
-          {{ element.id }}-{{ state.currentComponentId }}
           <component
             :is="element.component"
             v-bind="element.attrs"
-            :activated="element.id === state.currentComponentId"
+            :activated="element.id === componentId"
           >
-            <h-draggable :components="element.children" />
+            <h-draggable
+              :component-id="componentId"
+              :components="element.children"
+            />
           </component>
         </div>
       </template>
@@ -39,7 +40,7 @@
           <base-component
             :name="element.name"
             :title="element.title"
-            :activated="element.id === state.currentComponentId"
+            :activated="element.id === componentId"
           >
             <component :is="element.component" v-bind="element.attrs">{{
               element.title
@@ -52,33 +53,32 @@
 </template>
 
 <script setup lang="ts">
-import { ref, reactive, defineProps, inject, nextTick } from "vue";
+import { ref, defineProps, inject } from "vue";
 import Draggable from "vuedraggable";
 
 import BaseComponent from "./BaseComponent.vue";
 import { ComponentConfig } from "@/config/interfaces";
 
 defineProps({
+  componentId: {
+    type: String,
+    default: () => -1,
+  },
   components: {
     type: Array,
     default: () => [],
+  },
+  changeComponentId: {
+    type: Object,
+    default: () => Function,
   },
 });
 
 const EVENT_BUS: any = inject("eventBus");
 
 const $_components = ref([]);
-const state = reactive({
-  currentComponentId: -1,
-});
-
 const handleClickComponent = (evt: Event, elem: ComponentConfig) => {
-  console.log(elem.id);
-  console.log(elem);
-  state.currentComponentId = elem.id;
-  nextTick(() => {
-    console.log(state.currentComponentId);
-  });
+  EVENT_BUS.emit("changeComponentId", elem.id);
   EVENT_BUS.emit("clickComponent", elem);
 };
 </script>

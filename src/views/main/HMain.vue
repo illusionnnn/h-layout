@@ -3,13 +3,31 @@
  * @Author: Hedgehog96
  * @Date: 2022-05-09 17:24:21
  * @LastEditors: Hedgehog96
- * @LastEditTime: 2022-06-15 17:20:16
+ * @LastEditTime: 2022-06-20 18:25:48
 -->
 <template>
   <div class="h-main">
-    <h-draggable></h-draggable>
+    <h-draggable
+      :component-id="currentComponentId"
+      @change-component-id="handleChangeComponetId"
+    ></h-draggable>
   </div>
 </template>
+
+<script setup lang="ts">
+import { ref, inject } from "vue";
+
+const EVENT_BUS: any = inject("eventBus");
+EVENT_BUS.on("changeComponentId", (id: number) => {
+  currentComponentId.value = id;
+});
+
+const currentComponentId = ref(-1);
+const handleChangeComponetId = (id: number) => {
+  console.log(id);
+  currentComponentId.value = id;
+};
+</script>
 
 <style lang="scss" scoped>
 .h-main {
