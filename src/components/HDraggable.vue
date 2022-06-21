@@ -3,7 +3,7 @@
  * @Author: Hedgehog96
  * @Date: 2022-05-20 16:47:09
  * @LastEditors: Hedgehog96
- * @LastEditTime: 2022-06-20 18:27:38
+ * @LastEditTime: 2022-06-21 10:28:31
 -->
 <template>
   <draggable
@@ -61,7 +61,7 @@ import { ComponentConfig } from "@/config/interfaces";
 
 defineProps({
   componentId: {
-    type: String,
+    type: Number,
     default: () => -1,
   },
   components: {
@@ -69,7 +69,7 @@ defineProps({
     default: () => [],
   },
   changeComponentId: {
-    type: Object,
+    type: Function,
     default: () => Function,
   },
 });

@@ -3,7 +3,7 @@
  * @Author: Hedgehog96
  * @Date: 2022-05-17 10:46:19
  * @LastEditors: Hedgehog96
- * @LastEditTime: 2022-06-16 17:13:07
+ * @LastEditTime: 2022-06-21 18:25:00
 -->
 <template>
   <div class="h-main-header">
@@ -11,21 +11,17 @@
     <i class="iconfont icon-h-redo" title="恢复"></i>
     <div class="h-main-header-btns">
       <el-button size="small"
-        ><el-icon><folder-opened /></el-icon>结构</el-button
+        ><i class="iconfont icon-h-jiegou"></i>结构</el-button
       >
       <el-button size="small"
-        ><el-icon><show /></el-icon>预览</el-button
+        ><i class="iconfont icon-h-yulan"></i>预览</el-button
       >
       <el-button size="small" type="danger"
-        ><el-icon><delete /></el-icon>清空</el-button
+        ><i class="iconfont icon-h-shanchu"></i>清空</el-button
       >
     </div>
   </div>
 </template>
-
-<script setup lang="ts">
-import { FolderOpened, View as Show, Delete } from "@element-plus/icons-vue";
-</script>
 
 <style lang="scss" scoped>
 .h-main-header {
@@ -40,12 +36,9 @@ import { FolderOpened, View as Show, Delete } from "@element-plus/icons-vue";
   text-align: center;
   border-radius: $base-border-radius;
 
-  .el-icon {
-    cursor: pointer;
-    margin: 0 10px;
-  }
   .iconfont {
     margin: 0 8px;
+    font-size: 14px;
     cursor: pointer;
   }
 

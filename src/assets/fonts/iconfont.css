@@ -1,9 +1,9 @@
 @font-face {
   font-family: "iconfont"; /* Project id 3383636 */
-  src: url('iconfont.woff2?t=1655456565211') format('woff2'),
-       url('iconfont.woff?t=1655456565211') format('woff'),
-       url('iconfont.ttf?t=1655456565211') format('truetype'),
-       url('iconfont.svg?t=1655456565211#iconfont') format('svg');
+  src: url('iconfont.woff2?t=1655783300071') format('woff2'),
+       url('iconfont.woff?t=1655783300071') format('woff'),
+       url('iconfont.ttf?t=1655783300071') format('truetype'),
+       url('iconfont.svg?t=1655783300071#iconfont') format('svg');
 }
 
 .iconfont {
@@ -12,6 +12,46 @@
   font-style: normal;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-h-shanchu:before {
+  content: "\e74b";
+}
+
+.icon-h-xitongpeizhi:before {
+  content: "\e626";
+}
+
+.icon-h-quanping:before {
+  content: "\e627";
+}
+
+.icon-h-jichupeizhi:before {
+  content: "\e62b";
+}
+
+.icon-h-moban:before {
+  content: "\e623";
+}
+
+.icon-h-yulan:before {
+  content: "\e668";
+}
+
+.icon-h-kucunliang:before {
+  content: "\e647";
+}
+
+.icon-h-jiegou:before {
+  content: "\e755";
+}
+
+.icon-h-fuzhi:before {
+  content: "\e656";
+}
+
+.icon-h-yidong_huaban:before {
+  content: "\e622";
 }
 
 .icon-h-huadonganniux:before {

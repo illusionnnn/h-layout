@@ -3,14 +3,14 @@
  * @Author: Hedgehog96
  * @Date: 2022-05-07 16:34:02
  * @LastEditors: Hedgehog96
- * @LastEditTime: 2022-06-16 17:14:30
+ * @LastEditTime: 2022-06-21 14:40:13
 -->
 <template>
   <div class="h-base-header">
     <div class="h-base-header-title">h-layout</div>
     <div class="h-base-header-btns">
       <el-button size="small" @click="handleFullScreen"
-        ><el-icon><full-screen /></el-icon>全屏</el-button
+        ><i class="iconfont icon-h-quanping"></i>全屏</el-button
       >
       <el-button size="small" type="primary"
         ><i class="iconfont icon-h-baocun"></i>保存</el-button
@@ -21,7 +21,6 @@
 
 <script setup lang="ts">
 import { ElMessage } from "element-plus";
-import { FullScreen } from "@element-plus/icons-vue";
 
 interface FullScreenHTMLElement extends HTMLElement {
   mozRequestFullScreen?: () => void;

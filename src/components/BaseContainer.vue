@@ -3,7 +3,7 @@
  * @Author: Hedgehog96
  * @Date: 2022-05-15 17:42:07
  * @LastEditors: Hedgehog96
- * @LastEditTime: 2022-06-09 15:58:36
+ * @LastEditTime: 2022-06-21 14:34:12
 -->
 <template>
   <div
@@ -13,11 +13,12 @@
     <slot></slot>
 
     <div v-show="activated" class="container-action">
-      <el-icon><delete /></el-icon>
+      <i class="iconfont icon-h-fuzhi" title="复制"></i>
+      <i class="iconfont icon-h-shanchu" title="删除"></i>
     </div>
 
     <div v-show="activated" class="container-drag-handler">
-      <el-icon><position /></el-icon>
+      <i class="iconfont icon-h-yidong_huaban"></i>
       <span class="container-title">容器</span>
     </div>
   </div>
@@ -25,7 +26,6 @@
 
 <script setup lang="ts">
 import { defineProps } from "vue";
-import { Position, Delete } from "@element-plus/icons-vue";
 
 defineProps({
   activated: {
@@ -48,18 +48,25 @@ defineProps({
     height: 16px;
     display: flex;
     color: #fff;
+    opacity: 0.6;
     background-color: $base-color;
     z-index: 99;
+    &:hover {
+      opacity: 1;
+    }
 
     i {
+      margin: 0 2px;
       cursor: pointer;
     }
   }
 
   .container-drag-handler {
     position: absolute;
-    top: -2px;
+    top: -1px;
     left: -2px;
+    padding-top: 2px;
+    padding-left: 2px;
     height: 16px;
     display: flex;
     color: #fff;
@@ -71,8 +78,11 @@ defineProps({
       opacity: 1;
     }
 
+    .iconfont {
+      font-size: 14px;
+    }
     .container-title {
-      margin-left: 6px;
+      margin: 0 4px;
       font-size: 12px;
     }
   }

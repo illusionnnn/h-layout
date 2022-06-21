@@ -3,7 +3,7 @@
  * @Author: Hedgehog96
  * @Date: 2022-05-09 14:22:35
  * @LastEditors: Hedgehog96
- * @LastEditTime: 2022-06-16 17:18:54
+ * @LastEditTime: 2022-06-21 18:22:29
 -->
 <template>
   <div class="h-aside">
@@ -13,7 +13,7 @@
         :class="currentCompsTabClass"
         @click="handleTabClick('c')"
       >
-        <el-icon :color="currentCompsTabColor"><doc /></el-icon>
+        <i class="iconfont icon-h-jichupeizhi"></i>
         <span>组件配置</span>
       </div>
       <div
@@ -21,7 +21,7 @@
         :class="currentSettingTabClass"
         @click="handleTabClick('l')"
       >
-        <el-icon :color="currentSettingTabColor"><files /></el-icon>
+        <i class="iconfont icon-h-xitongpeizhi"></i>
         <span>页面配置</span>
       </div>
     </div>
@@ -35,14 +35,11 @@
 
 <script setup lang="ts">
 import { reactive, computed, shallowRef } from "vue";
-import { Document as doc, Files } from "@element-plus/icons-vue";
 import HComponentConfig from "./HComponentConfig.vue";
 import HLayoutConfig from "./HLayoutConfig.vue";
 
 const ACTIVATING_CLASS = "activating";
 const NOTACTIVE_CLASS = "";
-const ACTIVATING_COLOR = "#409eff";
-const NOTACTIVE_COLOR = "#000";
 const C = "c";
 const L = "l";
 
@@ -54,15 +51,9 @@ const state = reactive({
 const currentCompsTabClass = computed(() => {
   return state.currentTabName === C ? ACTIVATING_CLASS : NOTACTIVE_CLASS;
 });
-const currentCompsTabColor = computed(() => {
-  return state.currentTabName === C ? ACTIVATING_COLOR : NOTACTIVE_COLOR;
-});
 
 const currentSettingTabClass = computed(() => {
   return state.currentTabName === L ? ACTIVATING_CLASS : NOTACTIVE_CLASS;
-});
-const currentSettingTabColor = computed(() => {
-  return state.currentTabName === L ? ACTIVATING_COLOR : NOTACTIVE_COLOR;
 });
 
 const handleTabClick = (tabName: string) => {

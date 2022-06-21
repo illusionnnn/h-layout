@@ -3,7 +3,7 @@
  * @Author: Hedgehog96
  * @Date: 2022-05-25 15:37:32
  * @LastEditors: Hedgehog96
- * @LastEditTime: 2022-06-15 18:05:55
+ * @LastEditTime: 2022-06-21 14:35:18
 -->
 <template>
   <div
@@ -14,13 +14,16 @@
     <slot></slot>
 
     <div v-show="activated" class="component-action">
-      <el-icon @click="() => showMessageBox(messageBoxParams)"
-        ><delete
-      /></el-icon>
+      <i class="iconfont icon-h-fuzhi" title="复制"></i>
+      <i
+        class="iconfont icon-h-shanchu"
+        title="删除"
+        @click="() => showMessageBox(messageBoxParams)"
+      ></i>
     </div>
 
     <div v-show="activated" class="component-drag-handler">
-      <el-icon><position /></el-icon>
+      <i class="iconfont icon-h-yidong_huaban"></i>
       <span class="component-title">{{ title }}</span>
     </div>
   </div>
@@ -28,7 +31,6 @@
 
 <script setup lang="ts">
 import { defineProps } from "vue";
-import { Position, Delete } from "@element-plus/icons-vue";
 
 import { showMessageBox, showMessageBoxInterface } from "../utils/Message";
 
@@ -76,18 +78,25 @@ const messageBoxParams: showMessageBoxInterface = {
     height: 16px;
     display: flex;
     color: #fff;
+    opacity: 0.6;
     background-color: $base-color;
     z-index: 99;
+    &:hover {
+      opacity: 1;
+    }
 
     i {
+      margin: 0 2px;
       cursor: pointer;
     }
   }
 
   .component-drag-handler {
     position: absolute;
-    top: -2px;
+    top: -1px;
     left: -2px;
+    padding-top: 2px;
+    padding-left: 2px;
     height: 16px;
     display: flex;
     color: #fff;
@@ -99,8 +108,11 @@ const messageBoxParams: showMessageBoxInterface = {
       opacity: 1;
     }
 
+    .iconfont {
+      font-size: 14px;
+    }
     .component-title {
-      margin-left: 6px;
+      margin-left: 4px;
       font-size: 12px;
     }
   }
