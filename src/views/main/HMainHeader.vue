@@ -3,7 +3,7 @@
  * @Author: Hedgehog96
  * @Date: 2022-05-17 10:46:19
  * @LastEditors: Hedgehog96
- * @LastEditTime: 2022-06-21 18:25:00
+ * @LastEditTime: 2022-06-22 14:47:45
 -->
 <template>
   <div class="h-main-header">
@@ -44,9 +44,8 @@
 
   .h-main-header-btns {
     margin-left: 20px;
-    .el-icon {
-      margin-left: auto;
-      margin-right: 4px;
+    .iconfont {
+      margin: 0 4px;
     }
   }
 }

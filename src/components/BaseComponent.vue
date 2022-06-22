@@ -3,7 +3,7 @@
  * @Author: Hedgehog96
  * @Date: 2022-05-25 15:37:32
  * @LastEditors: Hedgehog96
- * @LastEditTime: 2022-06-21 14:35:18
+ * @LastEditTime: 2022-06-22 17:31:07
 -->
 <template>
   <div
@@ -14,11 +14,15 @@
     <slot></slot>
 
     <div v-show="activated" class="component-action">
-      <i class="iconfont icon-h-fuzhi" title="复制"></i>
+      <i
+        class="iconfont icon-h-fuzhi"
+        title="复制"
+        @click.stop="handleCopy"
+      ></i>
       <i
         class="iconfont icon-h-shanchu"
         title="删除"
-        @click="() => showMessageBox(messageBoxParams)"
+        @click.stop="handleDelete"
       ></i>
     </div>
 
@@ -30,33 +34,36 @@
 </template>
 
 <script setup lang="ts">
-import { defineProps } from "vue";
+import { defineProps, inject } from "vue";
 
-import { showMessageBox, showMessageBoxInterface } from "../utils/Message";
-
-defineProps({
+const $_PROPS = defineProps({
   name: {
     type: String,
-    default: () => "",
+    default: "",
   },
   title: {
     type: String,
-    default: () => "",
+    default: "",
   },
   activated: {
     type: Boolean,
-    default: () => false,
+    default: false,
+  },
+  elem: {
+    type: Object,
+    default: () => {
+      return;
+    },
   },
 });
 
-const messageBoxParams: showMessageBoxInterface = {
-  title: "删除组件",
-  content: "是否确定删除该组件",
-  type: "warning",
-  confirmButtonText: "确认",
-  cancelButtonText: "取消",
-  confirmMessageType: "warning",
-  confirmMessageText: "删除中",
+const EVENT_BUS: any = inject("eventBus");
+
+const handleCopy = () => {
+  EVENT_BUS.emit("copy", $_PROPS.elem);
+};
+const handleDelete = () => {
+  EVENT_BUS.emit("delete", $_PROPS.elem.id);
 };
 </script>
 

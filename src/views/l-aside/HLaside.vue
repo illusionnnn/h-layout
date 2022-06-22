@@ -3,7 +3,7 @@
  * @Author: Hedgehog96
  * @Date: 2022-05-09 14:22:35
  * @LastEditors: Hedgehog96
- * @LastEditTime: 2022-06-21 18:21:29
+ * @LastEditTime: 2022-06-22 14:47:00
 -->
 <template>
   <div class="h-aside-l">
@@ -21,7 +21,7 @@
         :class="currentSettingTabClass"
         @click="handleTabClick('s')"
       >
-        <i class="iconfont icon-h-moban"></i>
+        <i class="iconfont icon-h-mobanguanli"></i>
         <span>模板</span>
       </div>
     </div>

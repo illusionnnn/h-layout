@@ -3,13 +3,14 @@
  * @Author: Hedgehog96
  * @Date: 2022-05-24 14:43:03
  * @LastEditors: Hedgehog96
- * @LastEditTime: 2022-06-08 18:11:26
+ * @LastEditTime: 2022-06-22 15:30:10
  */
 import { Component } from "vue";
 
 // 拖曳组件实例
 export interface ComponentConfig {
   id: number;
+  uniqueKey: string;
   title: string;
   name: string;
   showTitle: boolean;

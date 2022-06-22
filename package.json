@@ -13,6 +13,7 @@
   "dependencies": {
     "element-plus": "^2.1.11",
     "lodash-es": "^4.17.21",
+    "pinia": "^2.0.14",
     "vue": "^3.2.25",
     "vuedraggable": "^4.1.0"
   },

@@ -3,7 +3,7 @@
  * @Author: Hedgehog96
  * @Date: 2022-05-09 17:30:41
  * @LastEditors: Hedgehog96
- * @LastEditTime: 2022-06-20 18:09:09
+ * @LastEditTime: 2022-06-22 15:31:17
  */
 import { ElButton, ElInput, ElSwitch, ElRate } from "element-plus";
 import BaseContainer from "@/components/BaseContainer.vue";
@@ -16,6 +16,7 @@ export default [
     components: [
       {
         id: 1,
+        uniqueKey: "Container1",
         title: "布局",
         name: "Container",
         icon: "icon-h-shangebuju",
@@ -34,6 +35,7 @@ export default [
     components: [
       {
         id: 2,
+        uniqueKey: "Input2",
         title: "单行输入",
         name: "Input",
         icon: "icon-h-input",
@@ -44,6 +46,7 @@ export default [
       },
       {
         id: 3,
+        uniqueKey: "Input3",
         title: "多行输入",
         name: "Input",
         icon: "icon-h-textarea",
@@ -54,6 +57,7 @@ export default [
       },
       {
         id: 4,
+        uniqueKey: "Button4",
         title: "按钮",
         name: "Button",
         icon: "icon-h-anniu",
@@ -64,6 +68,7 @@ export default [
       },
       {
         id: 5,
+        uniqueKey: "Switch5",
         title: "开关",
         name: "Switch",
         icon: "icon-h-huadonganniux",
@@ -74,6 +79,7 @@ export default [
       },
       {
         id: 6,
+        uniqueKey: "Rate6",
         title: "评分",
         name: "Rate",
         icon: "icon-h-pingfen1",

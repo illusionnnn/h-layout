@@ -3,7 +3,7 @@
  * @Author: Hedgehog96
  * @Date: 2022-05-09 15:33:03
  * @LastEditors: Hedgehog96
- * @LastEditTime: 2022-06-20 16:08:12
+ * @LastEditTime: 2022-06-22 16:17:28
 -->
 <template>
   <div class="h-components">
@@ -42,17 +42,21 @@
 <script setup lang="ts">
 import draggable from "vuedraggable";
 import { cloneDeep, random } from "lodash-es";
+import { useIdStore } from "@/store/id";
 import componentsConfig from "@/config/components";
 import { ComponentConfig } from "@/config/interfaces";
 
-let $_ID_GLOBAL = 7;
+const idStore = useIdStore();
 
 const handleCloneComponentsConfig = (d: ComponentConfig) => {
-  return cloneDeep({
+  const _ = cloneDeep({
     ...d,
-    id: $_ID_GLOBAL++,
+    id: idStore.id,
     uniqueKey: d.name + random(1, 999),
   });
+  idStore.increment();
+
+  return _;
 };
 </script>
 
