@@ -3,7 +3,7 @@
  * @Author: Hedgehog96
  * @Date: 2022-05-07 16:34:02
  * @LastEditors: Hedgehog96
- * @LastEditTime: 2022-06-30 14:31:34
+ * @LastEditTime: 2022-06-30 16:31:52
 -->
 <template>
     <div class="h-base-header">
@@ -20,6 +20,7 @@
             <el-button
                 size="small"
                 type="primary"
+                @click="handleSave"
             >
                 <i class="iconfont icon-h-baocun" />保存
             </el-button>
@@ -29,6 +30,7 @@
 
 <script setup lang="ts">
 import { ElMessage } from "element-plus";
+import { useComponentsStore } from "@/store/components";
 
 interface FullScreenHTMLElement extends HTMLElement {
   mozRequestFullScreen?: () => void;
@@ -53,6 +55,9 @@ const handleFullScreen = () => {
         });
     }
 };
+
+const componentsStore = useComponentsStore();
+const handleSave = () => componentsStore.save()
 </script>
 
 <style lang="scss" scoped>

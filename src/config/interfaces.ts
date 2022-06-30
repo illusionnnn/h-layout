@@ -3,7 +3,7 @@
  * @Author: Hedgehog96
  * @Date: 2022-05-24 14:43:03
  * @LastEditors: Hedgehog96
- * @LastEditTime: 2022-06-30 15:56:58
+ * @LastEditTime: 2022-06-30 16:37:01
  */
 import { Component } from "vue";
 
@@ -19,6 +19,12 @@ export interface ComponentConfig {
     attrs: object;
     evt: object;
     children?: ComponentConfig[];
+}
+
+export interface ComponentsStore {
+    snapshotIdx: number,
+    snapshotcomponents: ComponentConfig[]
+    components: ComponentConfig[]
 }
 
 type $_MESSAGE_TYPE = "success" | "info" | "warning" | "error";
