@@ -6,20 +6,20 @@
  * @LastEditTime: 2022-06-09 15:19:48
 -->
 <template>
-  <base-layout>
-    <template #header>
-      <base-header></base-header>
-    </template>
-    <template #lAside>
-      <base-laside></base-laside>
-    </template>
-    <template #main>
-      <base-main></base-main>
-    </template>
-    <template #rAside>
-      <base-raside></base-raside>
-    </template>
-  </base-layout>
+    <base-layout>
+        <template #header>
+            <base-header />
+        </template>
+        <template #lAside>
+            <base-laside />
+        </template>
+        <template #main>
+            <base-main />
+        </template>
+        <template #rAside>
+            <base-raside />
+        </template>
+    </base-layout>
 </template>
 
 <script setup lang="ts">

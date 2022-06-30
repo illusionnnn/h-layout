@@ -6,7 +6,7 @@
  * @LastEditTime: 2022-06-09 15:18:49
 -->
 <template>
-  <h-raside></h-raside>
+    <h-raside />
 </template>
 
 <script setup lang="ts">

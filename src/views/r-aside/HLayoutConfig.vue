@@ -6,7 +6,7 @@
  * @LastEditTime: 2022-05-11 14:10:02
 -->
 <template>
-  <div class="h-layout-config"></div>
+    <div class="h-layout-config" />
 </template>
 
 <script setup lang="ts"></script>

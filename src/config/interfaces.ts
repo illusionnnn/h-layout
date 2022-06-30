@@ -3,31 +3,32 @@
  * @Author: Hedgehog96
  * @Date: 2022-05-24 14:43:03
  * @LastEditors: Hedgehog96
- * @LastEditTime: 2022-06-22 15:30:10
+ * @LastEditTime: 2022-06-30 15:56:58
  */
 import { Component } from "vue";
 
 // 拖曳组件实例
 export interface ComponentConfig {
-  id: number;
-  uniqueKey: string;
-  title: string;
-  name: string;
-  showTitle: boolean;
-  component: Component;
-  attrs: object;
-  evt: object;
-  children?: ComponentConfig[];
+    id: number;
+    pid: number;
+    uniqueKey: string;
+    title: string;
+    name: string;
+    showTitle: boolean;
+    component: Component;
+    attrs: object;
+    evt: object;
+    children?: ComponentConfig[];
 }
 
 type $_MESSAGE_TYPE = "success" | "info" | "warning" | "error";
 // 消息提示框
 export interface MessageBox {
-  title: string;
-  content?: string;
-  type: $_MESSAGE_TYPE;
-  confirmButtonText: string;
-  cancelButtonText: string;
-  confirmMessageType: $_MESSAGE_TYPE;
-  confirmMessageText: string;
+    title: string;
+    content?: string;
+    type: $_MESSAGE_TYPE;
+    confirmButtonText: string;
+    cancelButtonText: string;
+    confirmMessageType: $_MESSAGE_TYPE;
+    confirmMessageText: string;
 }

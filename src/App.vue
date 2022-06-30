@@ -10,7 +10,7 @@ import HLayout from "./layouts/HLayout.vue";
 </script>
 
 <template>
-  <h-layout></h-layout>
+    <h-layout />
 </template>
 
 <style>

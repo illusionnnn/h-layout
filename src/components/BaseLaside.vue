@@ -6,7 +6,7 @@
  * @LastEditTime: 2022-06-09 15:18:59
 -->
 <template>
-  <h-laside></h-laside>
+    <h-laside />
 </template>
 
 <script setup lang="ts">

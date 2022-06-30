@@ -10,29 +10,29 @@ import { MessageBox } from "../config/interfaces";
 
 // 消息提示框
 const showMessageBox = (params: MessageBox) => {
-  const {
-    title,
-    type,
-    confirmButtonText,
-    cancelButtonText,
-    confirmMessageType,
-    confirmMessageText,
-  } = params;
+    const {
+        title,
+        type,
+        confirmButtonText,
+        cancelButtonText,
+        confirmMessageType,
+        confirmMessageText,
+    } = params;
 
-  ElMessageBox.confirm(params.content ? params.content : "", title, {
-    confirmButtonText,
-    cancelButtonText,
-    type,
-  })
-    .then(() => {
-      ElMessage({
-        type: confirmMessageType,
-        message: confirmMessageText,
-      });
+    ElMessageBox.confirm(params.content ? params.content : "", title, {
+        confirmButtonText,
+        cancelButtonText,
+        type,
     })
-    .catch(() => {
-      console.log("删除组件");
-    });
+        .then(() => {
+            ElMessage({
+                type: confirmMessageType,
+                message: confirmMessageText,
+            });
+        })
+        .catch(() => {
+            console.log("删除组件");
+        });
 };
 
 export type showMessageBoxInterface = MessageBox;

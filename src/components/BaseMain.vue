@@ -3,13 +3,13 @@
  * @Author: Hedgehog96
  * @Date: 2022-05-07 16:43:27
  * @LastEditors: Hedgehog96
- * @LastEditTime: 2022-06-09 15:19:18
+ * @LastEditTime: 2022-06-30 14:31:47
 -->
 <template>
-  <div class="h-base-main">
-    <h-main-header></h-main-header>
-    <h-main></h-main>
-  </div>
+    <div class="h-base-main">
+        <h-main-header />
+        <h-main />
+    </div>
 </template>
 
 <script setup lang="ts">
@@ -19,6 +19,6 @@ import HMainHeader from "@/views/main/HMainHeader.vue";
 
 <style scoped>
 .h-base-main {
-  height: 100%;
+    height: 100%;
 }
 </style>
