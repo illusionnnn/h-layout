@@ -3,7 +3,7 @@
  * @Author: Hedgehog96
  * @Date: 2022-05-24 14:43:03
  * @LastEditors: Hedgehog96
- * @LastEditTime: 2022-06-30 16:37:01
+ * @LastEditTime: 2022-07-03 17:34:04
  */
 import { Component } from "vue";
 
@@ -23,7 +23,7 @@ export interface ComponentConfig {
 
 export interface ComponentsStore {
     snapshotIdx: number,
-    snapshotcomponents: ComponentConfig[]
+    snapshotcomponents: ComponentConfig[][]
     components: ComponentConfig[]
 }
 

@@ -3,7 +3,7 @@
  * @Author: Hedgehog96
  * @Date: 2022-05-09 17:24:21
  * @LastEditors: Hedgehog96
- * @LastEditTime: 2022-06-30 15:25:13
+ * @LastEditTime: 2022-07-03 20:49:07
 -->
 <template>
     <div class="h-main">
@@ -20,7 +20,7 @@ import { ref, inject } from "vue";
 import { useComponentsStore } from "@/store/components";
 
 const componentsStore = useComponentsStore();
-const components = ref(componentsStore.components)
+let components = ref(componentsStore.components)
 
 const EVENT_BUS: any = inject("eventBus");
 EVENT_BUS.on("changeComponentId", (id: number) => {

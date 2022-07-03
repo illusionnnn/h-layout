@@ -3,17 +3,21 @@
  * @Author: Hedgehog96
  * @Date: 2022-05-17 10:46:19
  * @LastEditors: Hedgehog96
- * @LastEditTime: 2022-06-30 14:36:23
+ * @LastEditTime: 2022-07-03 17:51:48
 -->
 <template>
     <div class="h-main-header">
         <i
             class="iconfont icon-h-undo"
-            title="撤回"
+            :class="[componentsStore.snapshotIdx >= 0 && 'can-undo']"
+            title="撤销"
+            @click="componentsStore.undo()"
         />
         <i
             class="iconfont icon-h-redo"
+            :class="[componentsStore.snapshotIdx < componentsStore.snapshotcomponents.length - 1 && 'can-redo']"
             title="恢复"
+            @click="componentsStore.redo()"
         />
         <div class="h-main-header-btns">
             <el-button size="small">
@@ -32,6 +36,12 @@
     </div>
 </template>
 
+<script setup lang="ts">
+import { useComponentsStore } from '@/store/components'
+
+const componentsStore = useComponentsStore()
+</script>
+
 <style lang="scss" scoped>
 .h-main-header {
     width: 100%;
@@ -48,6 +58,15 @@
     .iconfont {
         margin: 0 8px;
         font-size: 14px;
+        cursor: pointer;
+    }
+
+    .icon-h-undo,
+    .icon-h-redo {
+        cursor: not-allowed;
+    }
+    .can-undo,
+    .can-redo {
         cursor: pointer;
     }
 

@@ -3,7 +3,7 @@
  * @Author: Hedgehog96
  * @Date: 2022-05-20 16:47:09
  * @LastEditors: Hedgehog96
- * @LastEditTime: 2022-06-30 16:01:51
+ * @LastEditTime: 2022-07-03 21:08:10
 -->
 <template>
     <draggable
@@ -12,14 +12,15 @@
         handle=".component-drag-handler"
         :animation="200"
         :group="{ name: 'componentItem' }"
-        :list="$_props.components"
+        :list="$_components"
+        @add.stop="handleAddComponent"
     >
         <template #item="{ element }">
             <template v-if="element.name === 'Container' || element.name === 'Card'">
                 <div
                     class="h-main-layout-item"
                     @click.stop="(e) => handleClickComponent(e, element)"
-                    @add="(e: any) => handleAddComponent(e, element)"
+                    @add.stop="(e: any) => handleAddComponent(e, element)"
                 >
                     <component
                         :is="element.component"
@@ -60,7 +61,7 @@
 </template>
 
 <script setup lang="ts">
-import { defineProps, inject, nextTick } from "vue";
+import { defineProps, inject, nextTick, ref, watch } from "vue";
 import Draggable from "vuedraggable";
 import { useComponentsStore } from "@/store/components";
 import BaseComponent from "./BaseComponent.vue";
@@ -83,20 +84,32 @@ const $_props = defineProps({
 
 const EVENT_BUS: any = inject("eventBus");
 const componentsStore = useComponentsStore();
+let $_components = ref($_props.components);
+
+watch(
+    () => componentsStore.components,
+    (newVal: ComponentConfig[]) => {
+        $_components.value = newVal
+    },
+    { deep: true }
+)
 
 const handleClickComponent = (evt: Event, c: ComponentConfig) => {
     EVENT_BUS.emit("changeComponentId", c.id);
     EVENT_BUS.emit("clickComponent", c);
 };
-const handleAddComponent = (evt: Event, c: ComponentConfig) => {
+
+const handleAddComponent = (evt: Event, c: ComponentConfig | undefined) => {
     nextTick(() => {
-        c.children?.forEach((cc: ComponentConfig) => {
+        componentsStore.recordSnapshot()
+        
+        c && c.children?.forEach((cc: ComponentConfig) => {
             cc.pid = c.id
         })
     })
 }
 
-const handleDelete = (id: number) => {
+const handleDeleteComponent = (id: number) => {
     let idx = -1;
 
     componentsStore.components.forEach((_c: ComponentConfig, _idx: number) => {
@@ -119,7 +132,7 @@ const handleDelete = (id: number) => {
         EVENT_BUS.emit("clickComponent", {});
     }
 };
-EVENT_BUS.on("delete", handleDelete);
+EVENT_BUS.on("delete", handleDeleteComponent);
 </script>
 
 <style lang="scss" scoped>
