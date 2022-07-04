@@ -1,9 +1,9 @@
 <!--
- * @Description: 
+ * @Description: 拖曳主区域组件
  * @Author: Hedgehog96
  * @Date: 2022-05-20 16:47:09
  * @LastEditors: Hedgehog96
- * @LastEditTime: 2022-07-04 11:40:40
+ * @LastEditTime: 2022-07-04 17:09:58
 -->
 <template>
     <draggable
@@ -12,8 +12,9 @@
         handle=".component-drag-handler"
         :animation="200"
         :group="{ name: 'componentItem' }"
-        :list="$_props.components"
+        :list="props.components"
         @add.stop="handleAddComponent"
+        @end.stop="handleMoveComponent"
     >
         <template #item="{ element }">
             <template v-if="element.name === 'Container' || element.name === 'Card'">
@@ -38,6 +39,7 @@
                 <div
                     class="h-main-layout-item"
                     @click.stop="(e) => handleClickComponent(e, element)"
+                    @add.stop="(e: any) => handleAddComponent(e, element)"
                 >
                     <base-component
                         :name="element.name"
@@ -67,7 +69,7 @@ import { useComponentsStore } from "@/store/components";
 import BaseComponent from "./BaseComponent.vue";
 import { ComponentConfig } from "@/config/interfaces";
 
-const $_props = defineProps({
+const props = defineProps({
     componentId: {
         type: Number,
         default: () => -1,
@@ -98,6 +100,14 @@ const handleAddComponent = (evt: Event, c: ComponentConfig | undefined) => {
             cc.pid = c.id
         })
     })
+}
+
+const handleMoveComponent = () => {
+    nextTick(() => {
+        componentsStore.recordSnapshot()
+    })
+    
+    return true
 }
 
 const handleDeleteComponent = (id: number) => {

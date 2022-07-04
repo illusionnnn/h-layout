@@ -3,7 +3,7 @@
  * @Author: Hedgehog96
  * @Date: 2022-05-24 14:43:03
  * @LastEditors: Hedgehog96
- * @LastEditTime: 2022-07-03 17:34:04
+ * @LastEditTime: 2022-07-04 16:20:20
  */
 import { Component } from "vue";
 
@@ -27,14 +27,14 @@ export interface ComponentsStore {
     components: ComponentConfig[]
 }
 
-type $_MESSAGE_TYPE = "success" | "info" | "warning" | "error";
+type MESSAGE_TYPE = "success" | "info" | "warning" | "error";
 // 消息提示框
 export interface MessageBox {
     title: string;
     content?: string;
-    type: $_MESSAGE_TYPE;
+    type: MESSAGE_TYPE;
     confirmButtonText: string;
     cancelButtonText: string;
-    confirmMessageType: $_MESSAGE_TYPE;
+    confirmMessageType: MESSAGE_TYPE;
     confirmMessageText: string;
 }

@@ -3,7 +3,7 @@
  * @Author: Hedgehog96
  * @Date: 2022-05-25 15:37:32
  * @LastEditors: Hedgehog96
- * @LastEditTime: 2022-06-30 16:01:06
+ * @LastEditTime: 2022-07-04 16:20:04
 -->
 <template>
     <div
@@ -48,7 +48,7 @@ import { useIdStore } from "@/store/id";
 import { useComponentsStore } from "@/store/components";
 import { ComponentConfig } from "@/config/interfaces";
 
-const $_props = defineProps({
+const props = defineProps({
     name: {
         type: String,
         default: "",
@@ -74,7 +74,7 @@ const componentsStore = useComponentsStore();
 const EVENT_BUS: any = inject("eventBus");
 
 const handleCopy = () => {
-    const c = cloneDeep(($_props.elem as ComponentConfig));
+    const c = cloneDeep((props.elem as ComponentConfig));
     c.id = idStore.id;
     c.uniqueKey = c.name + random(1, 999);
     
@@ -91,7 +91,7 @@ const handleCopy = () => {
 };
 
 const handleDelete = () => {
-    EVENT_BUS.emit("delete", $_props.elem.id);
+    EVENT_BUS.emit("delete", props.elem.id);
 };
 </script>
 
