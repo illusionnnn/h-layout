@@ -3,7 +3,7 @@
  * @Author: Hedgehog96
  * @Date: 2022-05-20 16:47:09
  * @LastEditors: Hedgehog96
- * @LastEditTime: 2022-07-03 21:08:10
+ * @LastEditTime: 2022-07-04 11:40:40
 -->
 <template>
     <draggable
@@ -12,7 +12,7 @@
         handle=".component-drag-handler"
         :animation="200"
         :group="{ name: 'componentItem' }"
-        :list="$_components"
+        :list="$_props.components"
         @add.stop="handleAddComponent"
     >
         <template #item="{ element }">
@@ -61,7 +61,7 @@
 </template>
 
 <script setup lang="ts">
-import { defineProps, inject, nextTick, ref, watch } from "vue";
+import { defineProps, inject, nextTick } from "vue";
 import Draggable from "vuedraggable";
 import { useComponentsStore } from "@/store/components";
 import BaseComponent from "./BaseComponent.vue";
@@ -84,15 +84,6 @@ const $_props = defineProps({
 
 const EVENT_BUS: any = inject("eventBus");
 const componentsStore = useComponentsStore();
-let $_components = ref($_props.components);
-
-watch(
-    () => componentsStore.components,
-    (newVal: ComponentConfig[]) => {
-        $_components.value = newVal
-    },
-    { deep: true }
-)
 
 const handleClickComponent = (evt: Event, c: ComponentConfig) => {
     EVENT_BUS.emit("changeComponentId", c.id);

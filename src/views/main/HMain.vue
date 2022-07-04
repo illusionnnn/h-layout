@@ -3,7 +3,7 @@
  * @Author: Hedgehog96
  * @Date: 2022-05-09 17:24:21
  * @LastEditors: Hedgehog96
- * @LastEditTime: 2022-07-03 20:49:07
+ * @LastEditTime: 2022-07-04 11:40:42
 -->
 <template>
     <div class="h-main">
@@ -16,11 +16,19 @@
 </template>
 
 <script setup lang="ts">
-import { ref, inject } from "vue";
+import { ref, inject, watch } from "vue";
 import { useComponentsStore } from "@/store/components";
+import { ComponentConfig } from "@/config/interfaces";
 
 const componentsStore = useComponentsStore();
-let components = ref(componentsStore.components)
+const components = ref(componentsStore.components)
+watch(
+    () => componentsStore.components,
+    (newVal: ComponentConfig[]) => {
+        components.value = newVal
+    },
+    { deep: true }
+)
 
 const EVENT_BUS: any = inject("eventBus");
 EVENT_BUS.on("changeComponentId", (id: number) => {
