@@ -3,7 +3,7 @@
  * @Author: Hedgehog96
  * @Date: 2022-05-15 17:42:07
  * @LastEditors: Hedgehog96
- * @LastEditTime: 2022-06-30 16:02:29
+ * @LastEditTime: 2022-07-04 17:36:18
 -->
 <template>
     <div
@@ -23,6 +23,7 @@
             <i
                 class="iconfont icon-h-shanchu"
                 title="删除"
+                @click.stop="handleDelete"
             />
         </div>
 
@@ -37,14 +38,25 @@
 </template>
 
 <script setup lang="ts">
-import { defineProps } from "vue";
+import { defineProps, inject } from "vue";
 
-defineProps({
+const props = defineProps({
     activated: {
         type: Boolean,
         default: () => false,
     },
+    elem: {
+        type: Object,
+        default: () => {
+            return;
+        },
+    },
 });
+
+const EVENT_BUS: any = inject("eventBus");
+const handleDelete = () => {
+    EVENT_BUS.emit("delete", props.elem.id);
+};
 </script>
 
 <style lang="scss" scoped>

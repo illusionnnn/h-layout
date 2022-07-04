@@ -3,7 +3,7 @@
  * @Author: Hedgehog96
  * @Date: 2022-06-30 14:58:31
  * @LastEditors: Hedgehog96
- * @LastEditTime: 2022-07-04 17:08:15
+ * @LastEditTime: 2022-07-04 18:21:12
  */
 import { defineStore } from "pinia";
 import { cloneDeep } from 'lodash-es';
@@ -28,11 +28,9 @@ export const useComponentsStore = defineStore("components", {
         },
 
         undo() {
-            console.log(1)
             if (this.snapshotIdx >= 0) {
                 this.snapshotIdx --
                 const _ = cloneDeep(this.snapshotcomponents[this.snapshotIdx])
-                console.log(_)
                 this.setComponents(Array.isArray(_) ? _ : [])
             }
         },
@@ -45,7 +43,6 @@ export const useComponentsStore = defineStore("components", {
         },
 
         recordSnapshot() {
-            console.log(1)
             const _ = cloneDeep(this.components)
             this.snapshotIdx ++
             this.snapshotcomponents[this.snapshotIdx] = _

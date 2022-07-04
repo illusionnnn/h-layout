@@ -3,7 +3,7 @@
  * @Author: Hedgehog96
  * @Date: 2022-05-20 16:47:09
  * @LastEditors: Hedgehog96
- * @LastEditTime: 2022-07-04 17:09:58
+ * @LastEditTime: 2022-07-04 18:21:19
 -->
 <template>
     <draggable
@@ -21,12 +21,12 @@
                 <div
                     class="h-main-layout-item"
                     @click.stop="(e) => handleClickComponent(e, element)"
-                    @add.stop="(e: any) => handleAddComponent(e, element)"
                 >
                     <component
                         :is="element.component"
                         v-bind="element.attrs"
                         :activated="element.id === componentId"
+                        :elem="element"
                     >
                         <h-draggable
                             :component-id="componentId"
@@ -39,7 +39,6 @@
                 <div
                     class="h-main-layout-item"
                     @click.stop="(e) => handleClickComponent(e, element)"
-                    @add.stop="(e: any) => handleAddComponent(e, element)"
                 >
                     <base-component
                         :name="element.name"
@@ -103,15 +102,14 @@ const handleAddComponent = (evt: Event, c: ComponentConfig | undefined) => {
 }
 
 const handleMoveComponent = () => {
-    nextTick(() => {
-        componentsStore.recordSnapshot()
-    })
+    componentsStore.recordSnapshot()
     
     return true
 }
 
 const handleDeleteComponent = (id: number) => {
     let idx = -1;
+    componentsStore.recordSnapshot()
 
     componentsStore.components.forEach((_c: ComponentConfig, _idx: number) => {
         if (_c.id === id) {
