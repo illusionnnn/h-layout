@@ -3,7 +3,7 @@
  * @Author: Hedgehog96
  * @Date: 2022-05-09 17:24:21
  * @LastEditors: Hedgehog96
- * @LastEditTime: 2022-07-04 11:40:42
+ * @LastEditTime: 2022-07-05 10:35:18
 -->
 <template>
     <div class="h-main">
@@ -22,6 +22,9 @@ import { ComponentConfig } from "@/config/interfaces";
 
 const componentsStore = useComponentsStore();
 const components = ref(componentsStore.components)
+const EVENT_BUS: any = inject("eventBus");
+const currentComponentId = ref(-1);
+
 watch(
     () => componentsStore.components,
     (newVal: ComponentConfig[]) => {
@@ -30,15 +33,39 @@ watch(
     { deep: true }
 )
 
-const EVENT_BUS: any = inject("eventBus");
-EVENT_BUS.on("changeComponentId", (id: number) => {
-    currentComponentId.value = id;
-});
-
-const currentComponentId = ref(-1);
 const handleChangeComponetId = (id: number) => {
     currentComponentId.value = id;
 };
+
+const handleDeleteComponent = (id: number) => {
+    let idx = -1;
+    componentsStore.recordSnapshot()
+
+    componentsStore.components.forEach((_c: ComponentConfig, _idx: number) => {
+        if (_c.id === id) {
+            idx = _idx;
+            return;
+        }
+    });
+    componentsStore.components.splice(idx, 1);
+
+    if (componentsStore.components.length) {
+        EVENT_BUS.emit(
+            "changeComponentId",
+            (componentsStore.components[idx - 1] as ComponentConfig).id
+        );
+        EVENT_BUS.emit("clickComponent", componentsStore.components[idx - 1]);
+    } else {
+        // when only one is deleted
+        EVENT_BUS.emit("changeComponentId", -1);
+        EVENT_BUS.emit("clickComponent", {});
+    }
+};
+
+EVENT_BUS.on("changeComponentId", (id: number) => {
+    currentComponentId.value = id;
+});
+EVENT_BUS.on("delete", handleDeleteComponent);
 </script>
 
 <style lang="scss" scoped>

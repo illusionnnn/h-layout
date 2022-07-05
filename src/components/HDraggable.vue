@@ -3,7 +3,7 @@
  * @Author: Hedgehog96
  * @Date: 2022-05-20 16:47:09
  * @LastEditors: Hedgehog96
- * @LastEditTime: 2022-07-04 18:21:19
+ * @LastEditTime: 2022-07-05 10:33:36
 -->
 <template>
     <draggable
@@ -106,32 +106,6 @@ const handleMoveComponent = () => {
     
     return true
 }
-
-const handleDeleteComponent = (id: number) => {
-    let idx = -1;
-    componentsStore.recordSnapshot()
-
-    componentsStore.components.forEach((_c: ComponentConfig, _idx: number) => {
-        if (_c.id === id) {
-            idx = _idx;
-            return;
-        }
-    });
-    componentsStore.components.splice(idx, 1);
-
-    if (componentsStore.components.length) {
-        EVENT_BUS.emit(
-            "changeComponentId",
-            (componentsStore.components[idx - 1] as ComponentConfig).id
-        );
-        EVENT_BUS.emit("clickComponent", componentsStore.components[idx - 1]);
-    } else {
-        // when only one is deleted
-        EVENT_BUS.emit("changeComponentId", -1);
-        EVENT_BUS.emit("clickComponent", {});
-    }
-};
-EVENT_BUS.on("delete", handleDeleteComponent);
 </script>
 
 <style lang="scss" scoped>
