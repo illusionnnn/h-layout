@@ -3,7 +3,7 @@
  * @Author: Hedgehog96
  * @Date: 2022-05-09 17:30:41
  * @LastEditors: Hedgehog96
- * @LastEditTime: 2022-06-30 15:56:43
+ * @LastEditTime: 2022-07-06 16:37:36
  */
 import { ElButton, ElInput, ElSwitch, ElRate } from "element-plus";
 import BaseContainer from "@/components/BaseContainer.vue";
@@ -43,7 +43,7 @@ export default [
                 icon: "icon-h-input",
                 showTitle: false,
                 component: ElInput,
-                attrs: { name: "input", label: "input" },
+                props: { disabled: false, readonly: false, maxlength: 10 },
                 evt: {},
             },
             {
@@ -55,7 +55,7 @@ export default [
                 icon: "icon-h-textarea",
                 showTitle: false,
                 component: ElInput,
-                attrs: { name: "textarea", label: "textarea" },
+                props: { name: "textarea", label: "textarea" },
                 evt: {},
             },
             {
@@ -67,7 +67,7 @@ export default [
                 icon: "icon-h-anniu",
                 showTitle: true,
                 component: ElButton,
-                attrs: { name: "button", label: "button" },
+                props: { name: "button", label: "button" },
                 evt: {},
             },
             {
@@ -79,7 +79,7 @@ export default [
                 icon: "icon-h-huadonganniux",
                 showTitle: false,
                 component: ElSwitch,
-                attrs: { name: "switch", label: "switch" },
+                props: { name: "switch", label: "switch" },
                 evt: {},
             },
             {
@@ -91,7 +91,7 @@ export default [
                 icon: "icon-h-pingfen1",
                 showTitle: false,
                 component: ElRate,
-                attrs: { name: "rate", label: "rate" },
+                props: { name: "rate", label: "rate" },
                 evt: {},
             },
         ],

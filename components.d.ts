@@ -25,6 +25,7 @@ declare module '@vue/runtime-core' {
     HDialog: typeof import('./src/components/HDialog.vue')['default']
     HDraggable: typeof import('./src/components/HDraggable.vue')['default']
     HMessage: typeof import('./src/components/HMessage.vue')['default']
+    InputWidget: typeof import('./src/components/container-widget/InputWidget.vue')['default']
   }
 }
 

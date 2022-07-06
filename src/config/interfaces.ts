@@ -3,7 +3,7 @@
  * @Author: Hedgehog96
  * @Date: 2022-05-24 14:43:03
  * @LastEditors: Hedgehog96
- * @LastEditTime: 2022-07-04 16:20:20
+ * @LastEditTime: 2022-07-06 11:14:08
  */
 import { Component } from "vue";
 
@@ -16,7 +16,7 @@ export interface ComponentConfig {
     name: string;
     showTitle: boolean;
     component: Component;
-    attrs: object;
+    props: object;
     evt: object;
     children?: ComponentConfig[];
 }

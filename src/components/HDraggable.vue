@@ -3,7 +3,7 @@
  * @Author: Hedgehog96
  * @Date: 2022-05-20 16:47:09
  * @LastEditors: Hedgehog96
- * @LastEditTime: 2022-07-05 10:33:36
+ * @LastEditTime: 2022-07-06 16:33:32
 -->
 <template>
     <draggable
@@ -24,7 +24,6 @@
                 >
                     <component
                         :is="element.component"
-                        v-bind="element.attrs"
                         :activated="element.id === componentId"
                         :elem="element"
                     >
@@ -46,14 +45,14 @@
                         :activated="element.id === componentId"
                         :elem="element"
                     >
-                        <component
+                        <input-widget :options="element.props" />
+                        <!-- <component
                             :is="element.component"
-                            v-bind="element.attrs"
                         >
                             {{
                                 element.title
                             }}
-                        </component>
+                        </component> -->
                     </base-component>
                 </div>
             </template>
@@ -64,14 +63,16 @@
 <script setup lang="ts">
 import { defineProps, inject, nextTick } from "vue";
 import Draggable from "vuedraggable";
-import { useComponentsStore } from "@/store/components";
 import BaseComponent from "./BaseComponent.vue";
+import InputWidget from "./container-widget/InputWidget.vue";
+
+import { useComponentsStore } from "@/store/components";
 import { ComponentConfig } from "@/config/interfaces";
 
 const props = defineProps({
     componentId: {
         type: Number,
-        default: () => -1,
+        default: -1,
     },
     components: {
         type: Array,

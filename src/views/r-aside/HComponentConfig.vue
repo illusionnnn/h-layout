@@ -1,9 +1,9 @@
 <!--
- * @Description: 
+ * @Description: 组件配置组件
  * @Author: Hedgehog96
  * @Date: 2022-05-11 14:08:14
  * @LastEditors: Hedgehog96
- * @LastEditTime: 2022-06-22 17:51:07
+ * @LastEditTime: 2022-07-06 11:14:18
 -->
 <template>
     <div
@@ -15,15 +15,30 @@
                 title="常用属性"
                 name="common"
             >
-                <div class="h-component-config-item">
+                <div
+                    v-if="state.currentElem.uniqueKey"
+                    class="h-component-config-item"
+                >
                     <span class="h-component-config-item-title">唯一名称</span><el-input
                         v-model="state.currentElem.uniqueKey"
                         size="small"
                     />
                 </div>
-                <div class="h-component-config-item">
+                <div
+                    v-if="state.currentElem.name"
+                    class="h-component-config-item"
+                >
                     <span class="h-component-config-item-title">标签</span><el-input
                         v-model="state.currentElem.name"
+                        size="small"
+                    />
+                </div>
+                <div
+                    v-if="state.currentElem.props.modelValue"
+                    class="h-component-config-item"
+                >
+                    <span class="h-component-config-item-title">值</span><el-input
+                        v-model="state.currentElem.props.modelValue"
                         size="small"
                     />
                 </div>
@@ -48,11 +63,10 @@ defineProps({
     },
 });
 
-const state: any = reactive({
+const state: { currentElem: any, activeNames: string } = reactive({
     currentElem: {},
     activeNames: "common",
 });
-toRefs(state);
 
 const EVENT_BUS: any = inject("eventBus");
 EVENT_BUS.on("clickComponent", (elem: ComponentConfig) => {
