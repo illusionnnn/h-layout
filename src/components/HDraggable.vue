@@ -3,7 +3,7 @@
  * @Author: Hedgehog96
  * @Date: 2022-05-20 16:47:09
  * @LastEditors: Hedgehog96
- * @LastEditTime: 2022-07-06 16:33:32
+ * @LastEditTime: 2022-07-07 15:56:43
 -->
 <template>
     <draggable
@@ -64,7 +64,7 @@
 import { defineProps, inject, nextTick } from "vue";
 import Draggable from "vuedraggable";
 import BaseComponent from "./BaseComponent.vue";
-import InputWidget from "./container-widget/InputWidget.vue";
+import InputWidget from "./field-widget/InputWidget.vue";
 
 import { useComponentsStore } from "@/store/components";
 import { ComponentConfig } from "@/config/interfaces";

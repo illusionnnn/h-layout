@@ -3,7 +3,7 @@
  * @Author: Hedgehog96
  * @Date: 2022-05-09 17:30:41
  * @LastEditors: Hedgehog96
- * @LastEditTime: 2022-07-06 16:37:36
+ * @LastEditTime: 2022-07-07 16:30:41
  */
 import { ElButton, ElInput, ElSwitch, ElRate } from "element-plus";
 import BaseContainer from "@/components/BaseContainer.vue";
@@ -43,7 +43,9 @@ export default [
                 icon: "icon-h-input",
                 showTitle: false,
                 component: ElInput,
-                props: { disabled: false, readonly: false, maxlength: 10 },
+                props: {
+                    clearable: true
+                },
                 evt: {},
             },
             {

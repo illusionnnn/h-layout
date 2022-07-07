@@ -3,7 +3,7 @@
  * @Author: Hedgehog96
  * @Date: 2022-05-11 14:08:14
  * @LastEditors: Hedgehog96
- * @LastEditTime: 2022-07-06 11:14:18
+ * @LastEditTime: 2022-07-07 17:38:46
 -->
 <template>
     <div
@@ -12,33 +12,24 @@
     >
         <el-collapse v-model="state.activeNames">
             <el-collapse-item
-                title="常用属性"
+                title="常见属性"
                 name="common"
             >
-                <div
-                    v-if="state.currentElem.uniqueKey"
-                    class="h-component-config-item"
-                >
+                <div class="h-component-config-item">
                     <span class="h-component-config-item-title">唯一名称</span><el-input
                         v-model="state.currentElem.uniqueKey"
                         size="small"
                     />
                 </div>
-                <div
-                    v-if="state.currentElem.name"
-                    class="h-component-config-item"
-                >
+                <div class="h-component-config-item">
                     <span class="h-component-config-item-title">标签</span><el-input
                         v-model="state.currentElem.name"
                         size="small"
                     />
                 </div>
-                <div
-                    v-if="state.currentElem.props.modelValue"
-                    class="h-component-config-item"
-                >
-                    <span class="h-component-config-item-title">值</span><el-input
-                        v-model="state.currentElem.props.modelValue"
+                <div class="h-component-config-item">
+                    <span class="h-component-config-item-title">占位内容</span><el-input
+                        v-model="state.currentElem.props.placeholder"
                         size="small"
                     />
                 </div>
@@ -48,7 +39,7 @@
 </template>
 
 <script setup lang="ts">
-import { defineProps, inject, reactive, toRefs } from "vue";
+import { defineProps, inject, reactive } from "vue";
 import { ElInput } from "element-plus";
 import { ComponentConfig } from "@/config/interfaces";
 
@@ -103,6 +94,7 @@ EVENT_BUS.on("clickComponent", (elem: ComponentConfig) => {
         padding: 0 8px;
 
         .h-component-config-item-title {
+            width: 80px;
             font-size: 12px;
         }
 
