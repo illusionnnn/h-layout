@@ -3,7 +3,7 @@
  * @Author: Hedgehog96
  * @Date: 2022-05-05 21:19:48
  * @LastEditors: Hedgehog96
- * @LastEditTime: 2022-07-06 14:08:48
+ * @LastEditTime: 2022-07-15 17:47:22
  */
 import { createApp } from "vue";
 import { createPinia } from "pinia";
@@ -22,3 +22,5 @@ H_APP.use(PINIA);
 H_APP.provide("eventBus", EVENT_BUS);
 H_APP.component("HDraggable", HDraggable);
 H_APP.mount("#app");
+
+(window as any).vm = H_APP;

@@ -3,7 +3,7 @@
  * @Author: Hedgehog96
  * @Date: 2022-05-09 15:33:03
  * @LastEditors: Hedgehog96
- * @LastEditTime: 2022-07-03 17:55:01
+ * @LastEditTime: 2022-07-14 16:18:27
 -->
 <template>
     <div class="h-components">
@@ -54,7 +54,7 @@ const handleCloneComponentsConfig = (d: ComponentConfig) => {
     const _ = cloneDeep({
         ...d,
         id: idStore.id,
-        uniqueKey: d.name + random(1, 999),
+        uniqueKey: d.label + random(1, 999),
     });
     idStore.increment();
 

@@ -3,7 +3,7 @@
  * @Author: Hedgehog96
  * @Date: 2022-05-24 14:43:03
  * @LastEditors: Hedgehog96
- * @LastEditTime: 2022-07-07 16:28:37
+ * @LastEditTime: 2022-07-14 16:17:29
  */
 import { Component } from "vue";
 
@@ -13,7 +13,7 @@ export interface ComponentConfig {
     pid: number;
     uniqueKey: string;
     title: string;
-    name: string;
+    label: string;
     showTitle: boolean;
     component: Component;
     props: object;

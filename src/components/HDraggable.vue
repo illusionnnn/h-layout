@@ -3,7 +3,7 @@
  * @Author: Hedgehog96
  * @Date: 2022-05-20 16:47:09
  * @LastEditors: Hedgehog96
- * @LastEditTime: 2022-07-07 15:56:43
+ * @LastEditTime: 2022-07-14 16:43:05
 -->
 <template>
     <draggable
@@ -17,7 +17,7 @@
         @end.stop="handleMoveComponent"
     >
         <template #item="{ element }">
-            <template v-if="element.name === 'Container' || element.name === 'Card'">
+            <template v-if="element.label === 'Container' || element.label === 'Card'">
                 <div
                     class="h-main-layout-item"
                     @click.stop="(e) => handleClickComponent(e, element)"
@@ -40,7 +40,7 @@
                     @click.stop="(e) => handleClickComponent(e, element)"
                 >
                     <base-component
-                        :name="element.name"
+                        :label="element.label"
                         :title="element.title"
                         :activated="element.id === componentId"
                         :elem="element"
@@ -64,7 +64,7 @@
 import { defineProps, inject, nextTick } from "vue";
 import Draggable from "vuedraggable";
 import BaseComponent from "./BaseComponent.vue";
-import InputWidget from "./field-widget/InputWidget.vue";
+import InputWidget from "./form-widget/InputWidget.vue";
 
 import { useComponentsStore } from "@/store/components";
 import { ComponentConfig } from "@/config/interfaces";

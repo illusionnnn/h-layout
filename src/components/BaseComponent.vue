@@ -3,7 +3,7 @@
  * @Author: Hedgehog96
  * @Date: 2022-05-25 15:37:32
  * @LastEditors: Hedgehog96
- * @LastEditTime: 2022-07-04 16:20:04
+ * @LastEditTime: 2022-07-14 16:21:57
 -->
 <template>
     <div
@@ -11,7 +11,7 @@
         :class="activated ? 'activated' : 'unactivated'"
     >
         <div class="component-name">
-            {{ name }}
+            {{ label }}
         </div>
         <slot />
 
@@ -49,7 +49,7 @@ import { useComponentsStore } from "@/store/components";
 import { ComponentConfig } from "@/config/interfaces";
 
 const props = defineProps({
-    name: {
+    label: {
         type: String,
         default: "",
     },
@@ -76,7 +76,7 @@ const EVENT_BUS: any = inject("eventBus");
 const handleCopy = () => {
     const c = cloneDeep((props.elem as ComponentConfig));
     c.id = idStore.id;
-    c.uniqueKey = c.name + random(1, 999);
+    c.uniqueKey = c.label + random(1, 999);
     
     if (c.pid !== -1) {
         componentsStore.components.forEach((_c: ComponentConfig) => {
