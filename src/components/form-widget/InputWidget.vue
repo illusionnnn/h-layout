@@ -3,7 +3,7 @@
  * @Author: Hedgehog96
  * @Date: 2022-07-06 11:46:39
  * @LastEditors: Hedgehog96
- * @LastEditTime: 2022-07-07 16:29:57
+ * @LastEditTime: 2022-07-21 18:27:02
 -->
 <template>
     <el-input
@@ -23,23 +23,19 @@
 </template>
 
 <script setup lang="ts">
-import { defineProps, ref, computed } from 'vue'
-import { ElInput, InputProps } from "element-plus";
-
-interface $_InputProps extends InputProps {
-    readonly minlength: number;
-    readonly maxlength: number;
-}
+import { defineProps, ref, computed } from "vue";
+import { ElInput } from "element-plus";
+import { InputProps } from "@/config/interfaces";
 
 const props = defineProps<{
-    options: $_InputProps
+    options: InputProps
 }>()
 
 const inputValue = ref(null)
 const inputType = computed(() => {
-    if (props.options.type === 'number') {
+    if (props.options.type === "number") {
         // chrome 浏览器兼容性问题
-        return 'text'
+        return "text"
     }
     return props.options.type
 })

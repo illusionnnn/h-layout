@@ -3,10 +3,10 @@
  * @Author: Hedgehog96
  * @Date: 2022-06-30 14:58:31
  * @LastEditors: Hedgehog96
- * @LastEditTime: 2022-07-04 18:21:12
+ * @LastEditTime: 2022-07-21 18:27:43
  */
 import { defineStore } from "pinia";
-import { cloneDeep } from 'lodash-es';
+import { cloneDeep } from "lodash-es";
 import { ComponentConfig, ComponentsStore } from "@/config/interfaces";
 
 export const useComponentsStore = defineStore("components", {
@@ -55,7 +55,7 @@ export const useComponentsStore = defineStore("components", {
 
         save() {
             window.localStorage.setItem(
-                'h-layout',
+                "h-layout",
                 JSON.stringify(this.components)
             )
         }

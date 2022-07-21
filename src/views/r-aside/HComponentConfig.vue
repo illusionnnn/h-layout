@@ -3,7 +3,7 @@
  * @Author: Hedgehog96
  * @Date: 2022-05-11 14:08:14
  * @LastEditors: Hedgehog96
- * @LastEditTime: 2022-07-15 18:06:34
+ * @LastEditTime: 2022-07-21 18:24:41
 -->
 <template>
     <div
@@ -12,7 +12,6 @@
     >
         <el-form
             size="small"
-            label-position="left"
             label-width="120px"
             class="h-component-config-form"
             @submit.prevent
@@ -22,31 +21,15 @@
                     title="常见属性"
                     name="common"
                 >
-                    <template v-for="(editorName, propName) in COMMON_PROPERTIES">
+                    <template
+                        v-for="(editorName, propName) in COMMON_PROPERTIES"
+                        :key="propName"
+                    >
                         <component
                             :is="getPropEditor(propName, editorName)"
-                            v-if="hasPropEditor(propName, editorName)"
-                            :key="propName"
+                            v-if="hasPropEditor(editorName)"
                         />
                     </template>
-                    <!-- <div class="h-component-config-item">
-                        <span class="h-component-config-item-title">唯一名称</span><el-input
-                            v-model="state.currentElem.uniqueKey"
-                            size="small"
-                        />
-                    </div>
-                    <div class="h-component-config-item">
-                        <span class="h-component-config-item-title">标签</span><el-input
-                            v-model="state.currentElem.label"
-                            size="small"
-                        />
-                    </div>
-                    <div class="h-component-config-item">
-                        <span class="h-component-config-item-title">占位内容</span><el-input
-                            v-model="state.currentElem.props.placeholder"
-                            size="small"
-                        />
-                    </div> -->
                 </el-collapse-item>
             </el-collapse>
         </el-form>
@@ -54,29 +37,43 @@
 </template>
 
 <script setup lang="ts">
-import { inject, reactive } from "vue";
+import { inject, reactive, defineAsyncComponent } from "vue";
 import { ElForm } from "element-plus";
-import widgetProperties from '@/config/propertyRegister';
 import { ComponentConfig } from "@/config/interfaces";
+import widgetProperties from "@/config/propertyRegister";
+import PropertyEditor from "./PropertyEditor/index";
 
-const { COMMON_PROPERTIES } = widgetProperties
-const EVENT_BUS: any = inject("eventBus");
+const { COMMON_PROPERTIES } = widgetProperties;
 
 const state: { currentElem: any, activeNames: string } = reactive({
     currentElem: {},
     activeNames: "common",
 });
 
+const EVENT_BUS: any = inject("eventBus");
 EVENT_BUS.on("clickComponent", (elem: ComponentConfig) => {
     state.currentElem = elem;
 });
 
 const getPropEditor = (propName: string, editorName: string) => {
-    // TODO
+    if (propName === "uniqueKey") {
+        return PropertyEditor.UniqueKeyEditor;
+    }
+
+    if (state.currentElem.component.props[propName]) {
+        const path = `./PropertyEditor/${editorName}.vue`;
+        const components = import.meta.glob("./PropertyEditor/*.vue");
+        return defineAsyncComponent(components[path]);
+    }
+    else {
+        return null;
+    }
 };
-const hasPropEditor = (propName: string, editorName: string) => {
-    // TODO
-    return false;
+const hasPropEditor = (editorName: string) => {
+    if (!editorName) {
+        return false;
+    }
+    return true;
 };
 </script>
 
@@ -100,23 +97,6 @@ const hasPropEditor = (propName: string, editorName: string) => {
     :deep(.el-collapse-item__header) {
         padding-left: 8px;
         font-size: 16px;
-    }
-
-    .h-component-config-item {
-        // display: flex;
-        // align-items: center;
-        margin-bottom: 10px;
-        padding: 0 8px;
-
-        .h-component-config-item-title {
-            // width: 80px;
-            font-size: 12px;
-        }
-
-        .el-input {
-            // flex: 1;
-            // padding-left: 8px;
-        }
     }
 }
 </style>

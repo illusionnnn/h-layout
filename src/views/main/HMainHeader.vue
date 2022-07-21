@@ -3,7 +3,7 @@
  * @Author: Hedgehog96
  * @Date: 2022-05-17 10:46:19
  * @LastEditors: Hedgehog96
- * @LastEditTime: 2022-07-03 17:51:48
+ * @LastEditTime: 2022-07-21 18:28:16
 -->
 <template>
     <div class="h-main-header">
@@ -37,9 +37,9 @@
 </template>
 
 <script setup lang="ts">
-import { useComponentsStore } from '@/store/components'
+import { useComponentsStore } from '@/store/components';
 
-const componentsStore = useComponentsStore()
+const componentsStore = useComponentsStore();
 </script>
 
 <style lang="scss" scoped>
