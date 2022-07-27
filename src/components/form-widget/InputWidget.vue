@@ -3,7 +3,7 @@
  * @Author: Hedgehog96
  * @Date: 2022-07-06 11:46:39
  * @LastEditors: Hedgehog96
- * @LastEditTime: 2022-07-27 17:48:59
+ * @LastEditTime: 2022-07-28 00:58:12
 -->
 <template>
     <el-input
@@ -32,7 +32,6 @@ const props = defineProps({
     }
 });
 
-console.log(props.elem);
 const inputValue = ref(null);
 const inputType = computed(() => {
     if (props.elem.type === "number") {

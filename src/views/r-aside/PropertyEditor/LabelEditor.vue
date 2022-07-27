@@ -4,17 +4,22 @@
  * @Author: Hedgehog96
  * @Date: 2022-07-21 16:51:59
  * @LastEditors: Hedgehog96
- * @LastEditTime: 2022-07-27 17:16:06
+ * @LastEditTime: 2022-07-28 01:02:14
 -->
 <template>
-    <el-form-item
-        class="h-editor"
-    >
-        <span class="h-editor-title">标签</span>
-        <el-input
-            v-model="props.elem.label"
-            type="text"
-        />
+    <el-form-item class="h-editor">
+        <span
+            class="h-editor-title"
+            title="标签"
+        >标签</span>
+        <div
+            class="h-editor-container"
+        >
+            <el-input
+                v-model="props.elem.label"
+                type="text"
+            />
+        </div>
     </el-form-item>
 </template>
 
@@ -29,23 +34,3 @@ const props = defineProps({
     },
 });
 </script>
-
-<style lang="scss" scoped>
-.h-editor {
-    margin-bottom: 16px;
-    padding: 0 8px;
-
-    :deep(.el-form-item__content) {
-        margin-left: 0 !important;
-    }
-
-    .h-editor-title {
-        width: 20%;
-        font-size: 12px;
-    }
-    :deep(.el-input) {
-        margin-left: 15%;
-        width: 65%;
-    }
-}
-</style>

@@ -1,0 +1,21 @@
+.h-editor {
+    margin-bottom: 16px;
+    padding: 0 8px;
+}
+
+:deep(.el-form-item__content) {
+    margin-left: 0 !important;
+}
+
+.h-editor-title {
+    width: 20%;
+    font-size: 12px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.h-editor-container {
+    margin-left: 15%;
+    width: 65%;
+}

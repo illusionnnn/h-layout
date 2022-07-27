@@ -3,7 +3,7 @@
  * @Author: Hedgehog96
  * @Date: 2022-05-05 21:19:48
  * @LastEditors: Hedgehog96
- * @LastEditTime: 2022-07-15 17:47:22
+ * @LastEditTime: 2022-07-28 00:56:24
  */
 import { createApp } from "vue";
 import { createPinia } from "pinia";
@@ -11,6 +11,7 @@ import App from "./App.vue";
 import HDraggable from "./components/HDraggable.vue";
 import EventBus from "./utils/eventBus";
 import "./styles/normalize.css";
+import "./styles/editor.css";
 import "./assets/fonts/iconfont.css";
 import "element-plus/dist/index.css";
 
@@ -22,5 +23,3 @@ H_APP.use(PINIA);
 H_APP.provide("eventBus", EVENT_BUS);
 H_APP.component("HDraggable", HDraggable);
 H_APP.mount("#app");
-
-(window as any).vm = H_APP;
