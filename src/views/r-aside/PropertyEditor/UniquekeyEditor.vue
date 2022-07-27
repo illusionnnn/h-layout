@@ -3,35 +3,29 @@
  * @Author: Hedgehog96
  * @Date: 2022-07-14 17:27:15
  * @LastEditors: Hedgehog96
- * @LastEditTime: 2022-07-21 18:25:31
+ * @LastEditTime: 2022-07-27 17:16:14
 -->
 <template>
     <el-form-item
-        prop="uniqueKey"
-        :rules="state.uniqueKeyRule"
         class="h-editor"
     >
         <span class="h-editor-title">唯一标识</span>
         <el-input
-            v-model="state.$_uniqueKey"
+            v-model="props.elem.uniqueKey"
             type="text"
         />
     </el-form-item>
 </template>
 
 <script setup lang="ts">
-import { reactive, defineProps } from "vue";
+import { defineProps } from "vue";
 import { ElFormItem, ElInput } from "element-plus";
 
 const props = defineProps({
-    uniqueKey: {
-        type: String,
-        default: ""
+    elem: {
+        type: Object,
+        default: () => Object
     }
-});
-const state = reactive({
-    $_uniqueKey: props.uniqueKey,
-    uniqueKeyRule: [{ required: true, message: "唯一标识不能为空" }],
 });
 </script>
 

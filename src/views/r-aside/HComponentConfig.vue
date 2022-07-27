@@ -3,7 +3,7 @@
  * @Author: Hedgehog96
  * @Date: 2022-05-11 14:08:14
  * @LastEditors: Hedgehog96
- * @LastEditTime: 2022-07-21 18:24:41
+ * @LastEditTime: 2022-07-27 16:20:15
 -->
 <template>
     <div
@@ -12,7 +12,6 @@
     >
         <el-form
             size="small"
-            label-width="120px"
             class="h-component-config-form"
             @submit.prevent
         >
@@ -28,6 +27,7 @@
                         <component
                             :is="getPropEditor(propName, editorName)"
                             v-if="hasPropEditor(editorName)"
+                            :elem="state.currentElem"
                         />
                     </template>
                 </el-collapse-item>

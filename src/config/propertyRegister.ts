@@ -3,7 +3,7 @@
  * @Author: Hedgehog96
  * @Date: 2022-07-14 15:19:28
  * @LastEditors: Hedgehog96
- * @LastEditTime: 2022-07-21 18:25:17
+ * @LastEditTime: 2022-07-27 17:22:38
  */
 import { Component } from "vue";
 
@@ -20,7 +20,7 @@ const COMMON_PROPERTIES = {
     // "endPlaceholder"    :            "endPlaceholder-editor",
     // "columnWidth"       :            "columnWidth-editor",
     // "autoFullWidth"     :            "autoFullWidth-editor",
-    // "size"              :            "size-editor",
+    "size"              :            "SizeEditor",
     // "showStops"         :            "showStops-editor",
     // "displayStyle"      :            "displayStyle-editor",
     // "buttonStyle"       :            "buttonStyle-editor",

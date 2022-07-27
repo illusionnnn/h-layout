@@ -1,35 +1,32 @@
+<!-- eslint-disable vue/no-mutating-props -->
 <!--
  * @Description: 
  * @Author: Hedgehog96
  * @Date: 2022-07-21 16:51:59
  * @LastEditors: Hedgehog96
- * @LastEditTime: 2022-07-21 18:25:45
+ * @LastEditTime: 2022-07-27 17:16:06
 -->
 <template>
     <el-form-item
-        prop="uniqueKey"
         class="h-editor"
     >
         <span class="h-editor-title">标签</span>
         <el-input
-            v-model="state.$_label"
+            v-model="props.elem.label"
             type="text"
         />
     </el-form-item>
 </template>
 
 <script setup lang="ts">
-import { reactive, defineProps }  from "vue";
+import { defineProps }  from "vue";
 import { ElFormItem, ElInput } from "element-plus";
 
 const props = defineProps({
-    label: {
-        type: String,
-        default: ""
-    }
-});
-const state = reactive({
-    $_label: props.label,
+    elem: {
+        type: Object,
+        default: () => Object
+    },
 });
 </script>
 

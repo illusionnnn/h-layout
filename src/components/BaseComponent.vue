@@ -3,7 +3,7 @@
  * @Author: Hedgehog96
  * @Date: 2022-05-25 15:37:32
  * @LastEditors: Hedgehog96
- * @LastEditTime: 2022-07-27 14:39:47
+ * @LastEditTime: 2022-07-27 15:08:14
 -->
 <template>
     <div
@@ -11,7 +11,7 @@
         :class="activated ? 'activated' : 'unactivated'"
     >
         <div class="component-name">
-            {{ label }}
+            {{ props.elem.label }}
         </div>
         <slot />
 
@@ -36,7 +36,7 @@
             class="component-drag-handler"
         >
             <i class="iconfont icon-h-yidong_huaban" />
-            <span class="component-title">{{ title }}</span>
+            <span class="component-title">{{ props.elem.title }}</span>
         </div>
     </div>
 </template>
@@ -49,23 +49,13 @@ import { useComponentsStore } from "@/store/components";
 import { ComponentConfig } from "@/config/interfaces";
 
 const props = defineProps({
-    label: {
-        type: String,
-        default: "",
-    },
-    title: {
-        type: String,
-        default: "",
-    },
     activated: {
         type: Boolean,
         default: false,
     },
     elem: {
         type: Object,
-        default: () => {
-            return;
-        },
+        default: () => Object,
     },
 });
 

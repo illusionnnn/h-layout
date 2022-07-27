@@ -3,7 +3,7 @@
  * @Author: Hedgehog96
  * @Date: 2022-05-20 16:47:09
  * @LastEditors: Hedgehog96
- * @LastEditTime: 2022-07-14 16:43:05
+ * @LastEditTime: 2022-07-27 17:27:00
 -->
 <template>
     <draggable
@@ -40,19 +40,10 @@
                     @click.stop="(e) => handleClickComponent(e, element)"
                 >
                     <base-component
-                        :label="element.label"
-                        :title="element.title"
                         :activated="element.id === componentId"
                         :elem="element"
                     >
-                        <input-widget :options="element.props" />
-                        <!-- <component
-                            :is="element.component"
-                        >
-                            {{
-                                element.title
-                            }}
-                        </component> -->
+                        <input-widget :elem="element" />
                     </base-component>
                 </div>
             </template>

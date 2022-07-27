@@ -3,7 +3,7 @@
  * @Author: Hedgehog96
  * @Date: 2022-05-09 14:52:14
  * @LastEditors: Hedgehog96
- * @LastEditTime: 2022-07-27 14:43:27
+ * @LastEditTime: 2022-07-27 16:21:56
  */
 // .eslintrc.js
 module.exports = {
@@ -30,7 +30,8 @@ module.exports = {
     ],
     rules: {
         indent: ["error", 4],
+        "semi": ["error", "always"],
         "vue/html-indent": ["error", 4],
-        "semi": ["error", "always"]
+        "vue/no-mutating-props": [0]
     },
 };
