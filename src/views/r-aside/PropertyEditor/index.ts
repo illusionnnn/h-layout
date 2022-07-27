@@ -11,4 +11,4 @@ import LabelEditor from "./LabelEditor.vue";
 export default {
     "UniqueKeyEditor" :UniqueKeyEditor,
     "LabelEditor": LabelEditor
-}
+};

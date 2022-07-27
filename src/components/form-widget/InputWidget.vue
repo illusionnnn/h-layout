@@ -3,7 +3,7 @@
  * @Author: Hedgehog96
  * @Date: 2022-07-06 11:46:39
  * @LastEditors: Hedgehog96
- * @LastEditTime: 2022-07-21 18:27:02
+ * @LastEditTime: 2022-07-27 14:40:05
 -->
 <template>
     <el-input
@@ -29,14 +29,14 @@ import { InputProps } from "@/config/interfaces";
 
 const props = defineProps<{
     options: InputProps
-}>()
+}>();
 
-const inputValue = ref(null)
+const inputValue = ref(null);
 const inputType = computed(() => {
     if (props.options.type === "number") {
         // chrome 浏览器兼容性问题
-        return "text"
+        return "text";
     }
-    return props.options.type
-})
+    return props.options.type;
+});
 </script>

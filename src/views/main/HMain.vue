@@ -21,17 +21,17 @@ import { useComponentsStore } from "@/store/components";
 import { ComponentConfig } from "@/config/interfaces";
 
 const componentsStore = useComponentsStore();
-const components = ref(componentsStore.components)
+const components = ref(componentsStore.components);
 const EVENT_BUS: any = inject("eventBus");
 const currentComponentId = ref(-1);
 
 watch(
     () => componentsStore.components,
     (newVal: ComponentConfig[]) => {
-        components.value = newVal
+        components.value = newVal;
     },
     { deep: true }
-)
+);
 
 const handleChangeComponetId = (id: number) => {
     currentComponentId.value = id;
@@ -39,7 +39,7 @@ const handleChangeComponetId = (id: number) => {
 
 const handleDeleteComponent = (id: number) => {
     let idx = -1;
-    componentsStore.recordSnapshot()
+    componentsStore.recordSnapshot();
 
     componentsStore.components.forEach((_c: ComponentConfig, _idx: number) => {
         if (_c.id === id) {

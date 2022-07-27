@@ -3,7 +3,7 @@
  * @Author: Hedgehog96
  * @Date: 2022-05-09 14:52:14
  * @LastEditors: Hedgehog96
- * @LastEditTime: 2022-06-30 14:18:46
+ * @LastEditTime: 2022-07-27 14:43:27
  */
 // .eslintrc.js
 module.exports = {
@@ -31,5 +31,6 @@ module.exports = {
     rules: {
         indent: ["error", 4],
         "vue/html-indent": ["error", 4],
+        "semi": ["error", "always"]
     },
 };

@@ -15,7 +15,7 @@ export const useComponentsStore = defineStore("components", {
             snapshotIdx: -1,
             snapshotcomponents: [],
             components: []
-        }
+        };
     },
 
     actions: {
@@ -24,32 +24,32 @@ export const useComponentsStore = defineStore("components", {
         },
 
         setComponents(cs: ComponentConfig[]) {
-            this.components = cs
+            this.components = cs;
         },
 
         undo() {
             if (this.snapshotIdx >= 0) {
-                this.snapshotIdx --
-                const _ = cloneDeep(this.snapshotcomponents[this.snapshotIdx])
-                this.setComponents(Array.isArray(_) ? _ : [])
+                this.snapshotIdx --;
+                const _ = cloneDeep(this.snapshotcomponents[this.snapshotIdx]);
+                this.setComponents(Array.isArray(_) ? _ : []);
             }
         },
 
         redo() {
             if (this.snapshotIdx < this.snapshotcomponents.length - 1) {
-                this.snapshotIdx ++
-                this.setComponents(cloneDeep(this.snapshotcomponents[this.snapshotIdx]))
+                this.snapshotIdx ++;
+                this.setComponents(cloneDeep(this.snapshotcomponents[this.snapshotIdx]));
             }
         },
 
         recordSnapshot() {
-            const _ = cloneDeep(this.components)
-            this.snapshotIdx ++
-            this.snapshotcomponents[this.snapshotIdx] = _
+            const _ = cloneDeep(this.components);
+            this.snapshotIdx ++;
+            this.snapshotcomponents[this.snapshotIdx] = _;
 
             // 在 undo 过程中，添加新的快照时，要将它后面的快照清理掉
             if (this.snapshotIdx < this.snapshotcomponents.length - 1) {
-                this.snapshotcomponents = this.snapshotcomponents.slice(0, this.snapshotIdx + 1)
+                this.snapshotcomponents = this.snapshotcomponents.slice(0, this.snapshotIdx + 1);
             }
         },
 
@@ -57,7 +57,7 @@ export const useComponentsStore = defineStore("components", {
             window.localStorage.setItem(
                 "h-layout",
                 JSON.stringify(this.components)
-            )
+            );
         }
     },
 });

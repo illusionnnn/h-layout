@@ -94,19 +94,19 @@ const handleClickComponent = (evt: Event, c: ComponentConfig) => {
 
 const handleAddComponent = (evt: Event, c: ComponentConfig | undefined) => {
     nextTick(() => {
-        componentsStore.recordSnapshot()
+        componentsStore.recordSnapshot();
         
         c && c.children?.forEach((cc: ComponentConfig) => {
-            cc.pid = c.id
-        })
-    })
-}
+            cc.pid = c.id;
+        });
+    });
+};
 
 const handleMoveComponent = () => {
-    componentsStore.recordSnapshot()
+    componentsStore.recordSnapshot();
     
-    return true
-}
+    return true;
+};
 </script>
 
 <style lang="scss" scoped>

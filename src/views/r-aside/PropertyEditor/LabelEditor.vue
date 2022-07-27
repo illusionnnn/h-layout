@@ -27,10 +27,10 @@ const props = defineProps({
         type: String,
         default: ""
     }
-})
+});
 const state = reactive({
     $_label: props.label,
-})
+});
 </script>
 
 <style lang="scss" scoped>

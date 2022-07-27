@@ -57,7 +57,7 @@ const handleFullScreen = () => {
 };
 
 const componentsStore = useComponentsStore();
-const handleSave = () => componentsStore.save()
+const handleSave = () => componentsStore.save();
 </script>
 
 <style lang="scss" scoped>

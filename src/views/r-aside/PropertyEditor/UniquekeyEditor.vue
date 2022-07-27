@@ -28,11 +28,11 @@ const props = defineProps({
         type: String,
         default: ""
     }
-})
+});
 const state = reactive({
     $_uniqueKey: props.uniqueKey,
     uniqueKeyRule: [{ required: true, message: "唯一标识不能为空" }],
-})
+});
 </script>
 
 <style lang="scss" scoped>

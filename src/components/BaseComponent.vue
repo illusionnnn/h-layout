@@ -3,7 +3,7 @@
  * @Author: Hedgehog96
  * @Date: 2022-05-25 15:37:32
  * @LastEditors: Hedgehog96
- * @LastEditTime: 2022-07-14 16:21:57
+ * @LastEditTime: 2022-07-27 14:39:47
 -->
 <template>
     <div
@@ -81,11 +81,11 @@ const handleCopy = () => {
     if (c.pid !== -1) {
         componentsStore.components.forEach((_c: ComponentConfig) => {
             if (_c.id === c.pid) {
-                _c.children?.push(c)
+                _c.children?.push(c);
             }
-        })
+        });
     } else {
-        componentsStore.add(c)
+        componentsStore.add(c);
     }
     idStore.increment();
 };
@@ -143,13 +143,13 @@ const handleDelete = () => {
             opacity: 1;
         }
 
-      .iconfont {
-          font-size: 14px;
-      }
-      .component-title {
-          margin-left: 4px;
-          font-size: 12px;
-      }
+        .iconfont {
+            font-size: 14px;
+        }
+        .component-title {
+            margin-left: 4px;
+            font-size: 12px;
+        }
     }
 
     &.activated {

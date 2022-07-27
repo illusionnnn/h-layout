@@ -59,7 +59,7 @@ const COMMON_PROPERTIES = {
     // "fileTypes"         :            "fileTypes-editor",
     // "contentHeight"     :            "contentHeight-editor",
     // "customClass"       :            "customClass-editor",
-}
+};
 
 /**
  * 判断属性是否已注册
@@ -78,4 +78,4 @@ export function registerCPEditor(app: any, propName: string, editorComponent: Co
 
 export default {
     COMMON_PROPERTIES
-}
+};
