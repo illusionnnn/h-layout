@@ -3,7 +3,7 @@
  * @Author: Hedgehog96
  * @Date: 2022-07-14 15:19:28
  * @LastEditors: Hedgehog96
- * @LastEditTime: 2022-07-27 17:22:38
+ * @LastEditTime: 2022-07-28 17:40:41
  */
 import { Component } from "vue";
 
@@ -13,9 +13,9 @@ const COMMON_PROPERTIES = {
     "uniqueKey"         :            "UniquekeyEditor",
     "label"             :            "LabelEditor",
     // "labelAlign"        :            "labelAlign-editor",
-    // "type"              :            "type-editor",
-    // "defaultValue"      :            "defaultValue-editor",
-    // "placeholder"       :            "placeholder-editor",
+    "type"              :            "TypeEditor",
+    // "defaultValue"      :            "DefaultValueEditor",
+    "placeholder"       :            "PlaceholderEditor",
     // "startPlaceholder"  :            "startPlaceholder-editor",
     // "endPlaceholder"    :            "endPlaceholder-editor",
     // "columnWidth"       :            "columnWidth-editor",
@@ -32,10 +32,10 @@ const COMMON_PROPERTIES = {
     // "requiredHint"      :            "requiredHint-editor",
     // "validation"        :            "validation-editor",
     // "validationHint"    :            "validationHint-editor",
-    // "readonly"          :            "readonly-editor",
-    // "disabled"          :            "disabled-editor",
+    "readonly"          :            "ReadonlyEditor",
+    "disabled"          :            "DisabledEditor",
     // "hidden"            :            "hidden-editor",
-    // "clearable"         :            "clearable-editor",
+    "clearable"         :            "ClearableEditor",
     // "editable"          :            "editable-editor",
     // "showPassword"      :            "showPassword-editor",
     // "textContent"       :            "textContent-editor",

@@ -3,7 +3,7 @@
  * @Author: Hedgehog96
  * @Date: 2022-05-11 14:08:14
  * @LastEditors: Hedgehog96
- * @LastEditTime: 2022-07-27 16:20:15
+ * @LastEditTime: 2022-07-28 15:46:23
 -->
 <template>
     <div
@@ -42,6 +42,7 @@ import { ElForm } from "element-plus";
 import { ComponentConfig } from "@/config/interfaces";
 import widgetProperties from "@/config/propertyRegister";
 import PropertyEditor from "./PropertyEditor/index";
+import { pa } from "element-plus/lib/locale";
 
 const { COMMON_PROPERTIES } = widgetProperties;
 
