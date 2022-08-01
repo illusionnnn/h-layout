@@ -3,7 +3,7 @@
  * @Author: Hedgehog96
  * @Date: 2022-05-09 17:30:41
  * @LastEditors: Hedgehog96
- * @LastEditTime: 2022-07-28 17:39:57
+ * @LastEditTime: 2022-08-01 17:53:05
  */
 import { ElButton, ElInput, ElSwitch, ElRate } from "element-plus";
 import BaseContainer from "@/components/BaseContainer.vue";
@@ -50,7 +50,11 @@ export default [
                     readonly: false,
                     clearable: false,
                     placeholder: '',
-                    type: 'text'
+                    type: 'text',
+                    minLength: 0,
+                    maxLength: 1,
+                    prefixIcon: '',
+                    suffixIcon: ''
                 },
             },
             {

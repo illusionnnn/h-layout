@@ -3,7 +3,7 @@
  * @Author: Hedgehog96
  * @Date: 2022-05-11 14:08:14
  * @LastEditors: Hedgehog96
- * @LastEditTime: 2022-07-28 15:46:23
+ * @LastEditTime: 2022-08-01 15:33:58
 -->
 <template>
     <div
@@ -15,13 +15,31 @@
             class="h-component-config-form"
             @submit.prevent
         >
-            <el-collapse v-model="state.activeNames">
+            <el-collapse
+                v-model="state.activeNames"
+                accordion
+            >
                 <el-collapse-item
                     title="常见属性"
                     name="common"
                 >
                     <template
                         v-for="(editorName, propName) in COMMON_PROPERTIES"
+                        :key="propName"
+                    >
+                        <component
+                            :is="getPropEditor(propName, editorName)"
+                            v-if="hasPropEditor(editorName)"
+                            :elem="state.currentElem"
+                        />
+                    </template>
+                </el-collapse-item>
+                <el-collapse-item
+                    title="高级属性"
+                    name="advanced"
+                >
+                    <template
+                        v-for="(editorName, propName) in ADVANCED_PROPERTIES"
                         :key="propName"
                     >
                         <component
@@ -42,9 +60,8 @@ import { ElForm } from "element-plus";
 import { ComponentConfig } from "@/config/interfaces";
 import widgetProperties from "@/config/propertyRegister";
 import PropertyEditor from "./PropertyEditor/index";
-import { pa } from "element-plus/lib/locale";
 
-const { COMMON_PROPERTIES } = widgetProperties;
+const { COMMON_PROPERTIES, ADVANCED_PROPERTIES } = widgetProperties;
 
 const state: { currentElem: any, activeNames: string } = reactive({
     currentElem: {},
@@ -65,6 +82,12 @@ const getPropEditor = (propName: string, editorName: string) => {
         const path = `./PropertyEditor/${editorName}.vue`;
         const components = import.meta.glob("./PropertyEditor/*.vue");
         return defineAsyncComponent(components[path]);
+    }
+    else if (propName === "minLength") {
+        return PropertyEditor.MinLengthEditor;
+    }
+    else if (propName === "maxLength") {
+        return PropertyEditor.MaxLengthEditor;
     }
     else {
         return null;

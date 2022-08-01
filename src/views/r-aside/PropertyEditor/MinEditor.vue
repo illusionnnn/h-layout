@@ -1,0 +1,45 @@
+<!--
+ * @Description: 
+ * @Author: Hedgehog96
+ * @Date: 2022-08-01 11:03:55
+ * @LastEditors: Hedgehog96
+ * @LastEditTime: 2022-08-01 11:12:07
+-->
+<template>
+    <el-form-item class="h-editor">
+        <span
+            class="h-editor-title"
+            title="最小值"
+        >最小值</span>
+        <div
+            class="h-editor-container"
+        >
+            <el-input v-model="minValue" />
+        </div>
+    </el-form-item>
+</template>
+
+<script setup lang="ts">
+import { defineProps, computed } from 'vue';
+import { ElFormItem, ElInput } from "element-plus";
+
+const props = defineProps({
+    elem: {
+        type: Object,
+        default: () => Object
+    },
+});
+
+const minValue = computed(({
+    get() {
+        return props.elem.props.min;
+    },
+    set(newVal) {
+        if ((newVal === undefined) || (newVal === null) || isNaN(newVal)) {
+            props.elem.props.min = null;
+        } else {
+            props.elem.props.min = Number.parseInt(newVal);
+        }
+    }
+}));
+</script>

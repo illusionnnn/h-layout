@@ -3,7 +3,7 @@
  * @Author: Hedgehog96
  * @Date: 2022-07-21 11:44:24
  * @LastEditors: Hedgehog96
- * @LastEditTime: 2022-07-28 15:39:54
+ * @LastEditTime: 2022-08-01 17:52:16
  */
 import UniqueKeyEditor from "./UniquekeyEditor.vue";
 import LabelEditor from "./LabelEditor.vue";
@@ -11,6 +11,11 @@ import DefaultValueEditor from "./DefaultValueEditor.vue";
 import SizeEditor from "./SizeEditor.vue";
 import DisabledEditoer from './DisabledEditor.vue';
 import ReadonlyEditor from "./ReadonlyEditor.vue";
+import MinLengthEditor from "./MinLengthEditor.vue";
+import MaxLengthEditor from "./MaxLengthEditor.vue";
+import ShowWordLimitEditor from "./ShowWordLimitEditor.vue";
+import PrefixIconEditor from "./PrefixIconEditor.vue";
+import SuffixIconEditor from "./SuffixIconEditor.vue";
 
 export default {
     "UniqueKeyEditor" :UniqueKeyEditor,
@@ -18,5 +23,10 @@ export default {
     "DefaultValueEditor": DefaultValueEditor,
     "SizeEditor": SizeEditor,
     "DisabledEditoer": DisabledEditoer,
-    "ReadonlyEditor": ReadonlyEditor
+    "ReadonlyEditor": ReadonlyEditor,
+    "MinLengthEditor": MinLengthEditor,
+    "MaxLengthEditor": MaxLengthEditor,
+    "ShowWordLimitEditor": ShowWordLimitEditor,
+    "PrefixIconEditor": PrefixIconEditor,
+    "SuffixIconEditor": SuffixIconEditor
 };

@@ -3,7 +3,7 @@
  * @Author: Hedgehog96
  * @Date: 2022-07-14 15:19:28
  * @LastEditors: Hedgehog96
- * @LastEditTime: 2022-07-28 17:40:41
+ * @LastEditTime: 2022-08-01 17:54:41
  */
 import { Component } from "vue";
 
@@ -61,6 +61,41 @@ const COMMON_PROPERTIES = {
     // "customClass"       :            "customClass-editor",
 };
 
+const ADVANCED_PROPERTIES = {
+    // 'min'               :            'MinEditor',
+    // 'max'               :            'max-editor',
+    // 'precision'         :            'precision-editor',
+    // 'step'              :            'step-editor',
+    // 'controlsPosition'  :            'controlsPosition-editor',
+    'minLength'         :            'MinLengthEditor',
+    'maxLength'         :            'MaxLengthEditor',
+    'showWordLimit'     :            'ShowWordLimitEditor',
+    'prefixIcon'        :            'PrefixIconEditor',
+    'suffixIcon'        :            'SuffixIconEditor',
+    // 'switchWidth'       :            'switchWidth-editor',
+    // 'activeText'        :            'activeText-editor',
+    // 'inactiveText'      :            'inactiveText-editor',
+    // 'activeColor'       :            'activeColor-editor',
+    // 'inactiveColor'     :            'inactiveColor-editor',
+    // 'lowThreshold'      :            'lowThreshold-editor',
+    // 'highThreshold'     :            'highThreshold-editor',
+    // 'allowHalf'         :            'allowHalf-editor',
+    // 'showText'          :            'showText-editor',
+    // 'showScore'         :            'showScore-editor',
+    // 'range'             :            'range-editor',
+    // 'vertical'          :            'vertical-editor',
+    // 'plain'             :            'plain-editor',
+    // 'round'             :            'round-editor',
+    // 'circle'            :            'circle-editor',
+    // 'icon'              :            'icon-editor',
+    // 'labelIconClass'    :            'labelIconClass-editor',
+    // 'labelIconPosition' :            'labelIconPosition-editor',
+    // 'labelTooltip'      :            'labelTooltip-editor',
+    // 'appendButton'      :            'appendButton-editor',
+    // 'appendButtonDisabled':          'appendButtonDisabled-editor',
+    // 'buttonIcon'        :            'buttonIcon-editor',
+};
+
 /**
  * 判断属性是否已注册
  * @param uniquePropName 属性名称（保证名称唯一，不跟其他组件属性冲突）
@@ -77,5 +112,6 @@ export function registerCPEditor(app: any, propName: string, editorComponent: Co
 }
 
 export default {
-    COMMON_PROPERTIES
+    COMMON_PROPERTIES,
+    ADVANCED_PROPERTIES
 };

@@ -29,6 +29,8 @@ declare module '@vue/runtime-core' {
     HDialog: typeof import('./src/components/HDialog.vue')['default']
     HDraggable: typeof import('./src/components/HDraggable.vue')['default']
     HMessage: typeof import('./src/components/HMessage.vue')['default']
+    IconDialog: typeof import('./src/components/IconDialog.vue')['default']
+    IconsDialog: typeof import('./src/components/IconsDialog.vue')['default']
     InputWidget: typeof import('./src/components/form-widget/InputWidget.vue')['default']
     UnikeyEditor: typeof import('./src/components/form-widget/field-widget/UnikeyEditor.vue')['default']
     UniquekeyEditor: typeof import('./src/components/form-widget/field-widget/UniquekeyEditor.vue')['default']

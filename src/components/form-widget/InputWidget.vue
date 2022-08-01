@@ -3,7 +3,7 @@
  * @Author: Hedgehog96
  * @Date: 2022-07-06 11:46:39
  * @LastEditors: Hedgehog96
- * @LastEditTime: 2022-07-28 17:40:02
+ * @LastEditTime: 2022-08-01 17:52:41
 -->
 <template>
     <el-input
@@ -14,6 +14,11 @@
         :readonly="props.elem.props.readonly"
         :placeholder="props.elem.props.placeholder"
         :clearable="props.elem.props.clearable"
+        :minlength="props.elem.props.minLength"
+        :maxlength="props.elem.props.maxLength"
+        :show-word-limit="props.elem.props.showWordLimit"
+        :prefix-icon="props.elem.props.prefixIcon"
+        :suffix-icon="props.elem.props.suffixIcon"
     />
 </template>
 
