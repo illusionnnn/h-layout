@@ -3,7 +3,7 @@
  * @Author: Hedgehog96
  * @Date: 2022-07-21 11:44:24
  * @LastEditors: Hedgehog96
- * @LastEditTime: 2022-08-01 17:52:16
+ * @LastEditTime: 2022-08-03 16:46:23
  */
 import UniqueKeyEditor from "./UniquekeyEditor.vue";
 import LabelEditor from "./LabelEditor.vue";
@@ -16,6 +16,10 @@ import MaxLengthEditor from "./MaxLengthEditor.vue";
 import ShowWordLimitEditor from "./ShowWordLimitEditor.vue";
 import PrefixIconEditor from "./PrefixIconEditor.vue";
 import SuffixIconEditor from "./SuffixIconEditor.vue";
+import AppendButtonEditor from "./AppendButtonEditor.vue";
+import AppendEditor from "./AppendEditor.vue";
+import PrependButtonEditor from "./PrependButtonEditor.vue";
+import PrependEditor from "./PrependEditor.vue";
 
 export default {
     "UniqueKeyEditor" :UniqueKeyEditor,
@@ -28,5 +32,9 @@ export default {
     "MaxLengthEditor": MaxLengthEditor,
     "ShowWordLimitEditor": ShowWordLimitEditor,
     "PrefixIconEditor": PrefixIconEditor,
-    "SuffixIconEditor": SuffixIconEditor
+    "SuffixIconEditor": SuffixIconEditor,
+    "PrependButtonEditor": PrependButtonEditor,
+    "PrependEditor": PrependEditor,
+    "AppendButtonEditor": AppendButtonEditor,
+    "AppendEditor": AppendEditor,
 };

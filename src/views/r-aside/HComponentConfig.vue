@@ -3,7 +3,7 @@
  * @Author: Hedgehog96
  * @Date: 2022-05-11 14:08:14
  * @LastEditors: Hedgehog96
- * @LastEditTime: 2022-08-01 15:33:58
+ * @LastEditTime: 2022-08-03 16:46:42
 -->
 <template>
     <div
@@ -88,6 +88,18 @@ const getPropEditor = (propName: string, editorName: string) => {
     }
     else if (propName === "maxLength") {
         return PropertyEditor.MaxLengthEditor;
+    }
+    else if (propName === "prependButton") {
+        return PropertyEditor.PrependButtonEditor;
+    }
+    else if (propName === "prepend") {
+        return PropertyEditor.PrependEditor;
+    }
+    else if (propName === "appendButton") {
+        return PropertyEditor.AppendButtonEditor;
+    }
+    else if (propName === "append") {
+        return PropertyEditor.AppendEditor;
     }
     else {
         return null;

@@ -3,7 +3,7 @@
  * @Author: Hedgehog96
  * @Date: 2022-07-14 15:19:28
  * @LastEditors: Hedgehog96
- * @LastEditTime: 2022-08-01 17:54:41
+ * @LastEditTime: 2022-08-03 16:41:53
  */
 import { Component } from "vue";
 
@@ -91,8 +91,10 @@ const ADVANCED_PROPERTIES = {
     // 'labelIconClass'    :            'labelIconClass-editor',
     // 'labelIconPosition' :            'labelIconPosition-editor',
     // 'labelTooltip'      :            'labelTooltip-editor',
-    // 'appendButton'      :            'appendButton-editor',
-    // 'appendButtonDisabled':          'appendButtonDisabled-editor',
+    'appendButton'      :            'AppendButtonEditor',
+    'append'            :            'AppendEditor',
+    'prependButton'     :            'PrependButtonEditor',
+    'prepend'           :            'PrependEdtior',
     // 'buttonIcon'        :            'buttonIcon-editor',
 };
 
