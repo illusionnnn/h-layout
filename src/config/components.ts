@@ -3,7 +3,7 @@
  * @Author: Hedgehog96
  * @Date: 2022-05-09 17:30:41
  * @LastEditors: Hedgehog96
- * @LastEditTime: 2022-08-03 16:46:57
+ * @LastEditTime: 2022-08-04 16:10:15
  */
 import { ElButton, ElInput, ElSwitch, ElRate } from "element-plus";
 import BaseContainer from "@/components/BaseContainer.vue";
@@ -60,6 +60,9 @@ export default [
                     appendButton: false,
                     append: '',
                 },
+                event: {
+                    onFocus: ''
+                }
             },
             {
                 id: 3,

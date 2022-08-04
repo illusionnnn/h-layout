@@ -3,7 +3,7 @@
  * @Author: Hedgehog96
  * @Date: 2022-07-14 15:19:28
  * @LastEditors: Hedgehog96
- * @LastEditTime: 2022-08-03 16:41:53
+ * @LastEditTime: 2022-08-04 14:48:26
  */
 import { Component } from "vue";
 
@@ -98,6 +98,19 @@ const ADVANCED_PROPERTIES = {
     // 'buttonIcon'        :            'buttonIcon-editor',
 };
 
+const EVENT_PROPERTIES = {
+    // 'onClick'           :            'onClick-editor',
+    // 'onInput'           :            'onInput-editor',
+    // 'onChange'          :            'onChange-editor',
+    'onFocus'           :            'OnFocusEditor',
+    // 'onBlur'            :            'onBlur-editor',
+    // 'onRemoteQuery'     :            'onRemoteQuery-editor',
+    // 'onBeforeUpload'    :            'onBeforeUpload-editor',
+    // 'onUploadSuccess'   :            'onUploadSuccess-editor',
+    // 'onUploadError'     :            'onUploadError-editor',
+    // 'onFileRemove'      :            'onFileRemove-editor',
+};
+
 /**
  * 判断属性是否已注册
  * @param uniquePropName 属性名称（保证名称唯一，不跟其他组件属性冲突）
@@ -115,5 +128,6 @@ export function registerCPEditor(app: any, propName: string, editorComponent: Co
 
 export default {
     COMMON_PROPERTIES,
-    ADVANCED_PROPERTIES
+    ADVANCED_PROPERTIES,
+    EVENT_PROPERTIES
 };

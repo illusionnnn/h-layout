@@ -3,7 +3,7 @@
  * @Author: Hedgehog96
  * @Date: 2022-05-11 14:08:14
  * @LastEditors: Hedgehog96
- * @LastEditTime: 2022-08-03 16:46:42
+ * @LastEditTime: 2022-08-04 15:55:04
 -->
 <template>
     <div
@@ -49,6 +49,21 @@
                         />
                     </template>
                 </el-collapse-item>
+                <el-collapse-item
+                    title="事件属性"
+                    name="event"
+                >
+                    <template
+                        v-for="(editorName, propName) in EVENT_PROPERTIES"
+                        :key="propName"
+                    >
+                        <component
+                            :is="getPropEditor(propName, editorName)"
+                            v-if="hasPropEditor(editorName)"
+                            :elem="state.currentElem"
+                        />
+                    </template>
+                </el-collapse-item>
             </el-collapse>
         </el-form>
     </div>
@@ -61,7 +76,7 @@ import { ComponentConfig } from "@/config/interfaces";
 import widgetProperties from "@/config/propertyRegister";
 import PropertyEditor from "./PropertyEditor/index";
 
-const { COMMON_PROPERTIES, ADVANCED_PROPERTIES } = widgetProperties;
+const { COMMON_PROPERTIES, ADVANCED_PROPERTIES, EVENT_PROPERTIES } = widgetProperties;
 
 const state: { currentElem: any, activeNames: string } = reactive({
     currentElem: {},
@@ -101,6 +116,10 @@ const getPropEditor = (propName: string, editorName: string) => {
     else if (propName === "append") {
         return PropertyEditor.AppendEditor;
     }
+
+    else if (propName === "onFocus") {
+        return PropertyEditor.OnFocusEditor;
+    }
     else {
         return null;
     }
@@ -114,25 +133,25 @@ const hasPropEditor = (editorName: string) => {
 </script>
 
 <style lang="scss" scoped>
-.h-component-config {
-    height: 100%;
-    overflow-y: auto;
+    .h-component-config {
+        height: 100%;
+        overflow-y: auto;
 
-    :deep(.el-collapse) {
-        border-top: none;
-    }
-    :deep(.el-collapse-item) {
-        & > div {
-            border-top: 1px solid #fff !important;
+        :deep(.el-collapse) {
+            border-top: none;
         }
+        :deep(.el-collapse-item) {
+            & > div {
+                border-top: 1px solid #fff !important;
+            }
 
-        .el-collapse-item__content {
-            padding-bottom: 0;
+            .el-collapse-item__content {
+                padding-bottom: 0;
+            }
+        }
+        :deep(.el-collapse-item__header) {
+            padding-left: 8px;
+            font-size: 16px;
         }
     }
-    :deep(.el-collapse-item__header) {
-        padding-left: 8px;
-        font-size: 16px;
-    }
-}
 </style>
