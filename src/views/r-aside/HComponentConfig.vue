@@ -3,7 +3,7 @@
  * @Author: Hedgehog96
  * @Date: 2022-05-11 14:08:14
  * @LastEditors: Hedgehog96
- * @LastEditTime: 2022-08-04 15:55:04
+ * @LastEditTime: 2022-08-06 15:58:47
 -->
 <template>
     <div
@@ -17,7 +17,6 @@
         >
             <el-collapse
                 v-model="state.activeNames"
-                accordion
             >
                 <el-collapse-item
                     title="常见属性"
