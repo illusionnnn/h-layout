@@ -3,10 +3,11 @@
  * @Author: Hedgehog96
  * @Date: 2022-05-05 21:19:48
  * @LastEditors: Hedgehog96
- * @LastEditTime: 2022-08-01 17:22:39
+ * @LastEditTime: 2022-08-08 15:05:37
  */
 import { createApp } from "vue";
 import { createPinia } from "pinia";
+import { ElMessage } from 'element-plus';
 import * as ElementPlusIconsVue from '@element-plus/icons-vue';
 import App from "./App.vue";
 import HDraggable from "./components/HDraggable.vue";
@@ -24,6 +25,7 @@ for (const [key, component] of Object.entries(ElementPlusIconsVue)) {
     H_APP.component(key, component);
 }
 
+H_APP.config.globalProperties.$message = ElMessage;
 H_APP.use(PINIA);
 H_APP.provide("eventBus", EVENT_BUS);
 H_APP.component("HDraggable", HDraggable);

@@ -3,7 +3,7 @@
  * @Author: Hedgehog96
  * @Date: 2022-08-04 14:31:25
  * @LastEditors: Hedgehog96
- * @LastEditTime: 2022-08-08 00:28:19
+ * @LastEditTime: 2022-08-08 16:40:37
 -->
 <template>
     <div class="code-container">
@@ -33,6 +33,7 @@ ace.config.set('basePath', 'https://ks3-cn-beijing.ksyun.com/vform2021/ace-mini'
 
 const codeEditorRef = ref('');
 const getEditorAnnotations = ref();
+const setEditorValue = ref();
 
 onMounted(() => {
     const aceEditor = ace.edit(codeEditorRef.value, {
@@ -61,10 +62,15 @@ onMounted(() => {
     getEditorAnnotations.value = () => {
         return aceEditor.getSession().getAnnotations();
     };
+
+    setEditorValue.value = (newValue: string) => {
+        aceEditor.getSession().setValue(newValue);
+    };
 });
 
 defineExpose({
-    getEditorAnnotations
+    getEditorAnnotations,
+    setEditorValue
 });
 </script>
 

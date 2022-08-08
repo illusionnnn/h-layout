@@ -3,7 +3,7 @@
  * @Author: Hedgehog96
  * @Date: 2022-05-24 14:43:03
  * @LastEditors: Hedgehog96
- * @LastEditTime: 2022-07-21 16:25:08
+ * @LastEditTime: 2022-08-08 15:06:04
  */
 import { Component } from "vue";
 import { InputProps as $_InputProps } from "element-plus";
@@ -31,16 +31,4 @@ export interface ComponentsStore {
 export interface InputProps extends $_InputProps {
     readonly minlength: number;
     readonly maxlength: number;
-}
-
-type MESSAGE_TYPE = "success" | "info" | "warning" | "error";
-// 消息提示框
-export interface MessageBox {
-    title: string;
-    content?: string;
-    type: MESSAGE_TYPE;
-    confirmButtonText: string;
-    cancelButtonText: string;
-    confirmMessageType: MESSAGE_TYPE;
-    confirmMessageText: string;
 }

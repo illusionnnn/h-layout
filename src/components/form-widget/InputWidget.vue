@@ -3,7 +3,7 @@
  * @Author: Hedgehog96
  * @Date: 2022-07-06 11:46:39
  * @LastEditors: Hedgehog96
- * @LastEditTime: 2022-08-03 16:43:58
+ * @LastEditTime: 2022-08-08 16:23:27
 -->
 <template>
     <el-input
@@ -19,6 +19,7 @@
         :show-word-limit="props.elem.props.showWordLimit"
         :prefix-icon="props.elem.props.prefixIcon"
         :suffix-icon="props.elem.props.suffixIcon"
+        @focus="handleFocusEvent"
     >
         <template
             v-if="props.elem.props.prependButton"
@@ -54,4 +55,9 @@ const inputType = computed(() => {
     }
     return props.elem.props.type;
 });
+
+const handleFocusEvent = (event: Event) => {
+    const fn = new Function('event', props.elem.event.onFocus);
+    fn(event);
+};
 </script>
