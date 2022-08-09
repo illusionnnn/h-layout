@@ -1,16 +1,16 @@
 <!--
  * @Description: 
  * @Author: Hedgehog96
- * @Date: 2022-08-04 14:23:57
+ * @Date: 2022-08-09 11:48:32
  * @LastEditors: Hedgehog96
- * @LastEditTime: 2022-08-08 15:52:26
+ * @LastEditTime: 2022-08-09 16:10:07
 -->
 <template>
     <el-form-item class="h-editor">
         <span
             class="h-editor-title"
-            title="onFocus"
-        >onFocus</span>
+            title="onInput"
+        >onInput</span>
         <div class="h-editor-container">
             <el-button
                 type="primary"
@@ -29,7 +29,7 @@ import { ElFormItem, ElButton } from "element-plus";
 const emits = defineEmits(['show']);
 
 const handleShowEditor = () => {
-    emits('show');
+    emits('show', 'onInput');
 };
 </script>
 

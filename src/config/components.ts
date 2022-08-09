@@ -3,7 +3,7 @@
  * @Author: Hedgehog96
  * @Date: 2022-05-09 17:30:41
  * @LastEditors: Hedgehog96
- * @LastEditTime: 2022-08-04 16:10:15
+ * @LastEditTime: 2022-08-09 16:13:27
  */
 import { ElButton, ElInput, ElSwitch, ElRate } from "element-plus";
 import BaseContainer from "@/components/BaseContainer.vue";
@@ -61,7 +61,8 @@ export default [
                     append: '',
                 },
                 event: {
-                    onFocus: ''
+                    onFocus: '',
+                    onInput: ''
                 }
             },
             {

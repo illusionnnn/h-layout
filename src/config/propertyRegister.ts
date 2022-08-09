@@ -3,7 +3,7 @@
  * @Author: Hedgehog96
  * @Date: 2022-07-14 15:19:28
  * @LastEditors: Hedgehog96
- * @LastEditTime: 2022-08-04 14:48:26
+ * @LastEditTime: 2022-08-09 16:42:01
  */
 import { Component } from "vue";
 
@@ -100,10 +100,10 @@ const ADVANCED_PROPERTIES = {
 
 const EVENT_PROPERTIES = {
     // 'onClick'           :            'onClick-editor',
-    // 'onInput'           :            'onInput-editor',
-    // 'onChange'          :            'onChange-editor',
+    'onInput'           :            'OnInputEditor',
+    'onChange'          :            'OnChangeEditor',
     'onFocus'           :            'OnFocusEditor',
-    // 'onBlur'            :            'onBlur-editor',
+    'onBlur'            :            'OnBlurEditor',
     // 'onRemoteQuery'     :            'onRemoteQuery-editor',
     // 'onBeforeUpload'    :            'onBeforeUpload-editor',
     // 'onUploadSuccess'   :            'onUploadSuccess-editor',

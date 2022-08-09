@@ -3,7 +3,7 @@
  * @Author: Hedgehog96
  * @Date: 2022-07-21 11:44:24
  * @LastEditors: Hedgehog96
- * @LastEditTime: 2022-08-04 14:50:25
+ * @LastEditTime: 2022-08-09 11:45:46
  */
 import UniqueKeyEditor from "./UniquekeyEditor.vue";
 import LabelEditor from "./LabelEditor.vue";
@@ -21,8 +21,6 @@ import AppendEditor from "./AppendEditor.vue";
 import PrependButtonEditor from "./PrependButtonEditor.vue";
 import PrependEditor from "./PrependEditor.vue";
 
-import OnFocusEditor from "./OnFocusEditor.vue";
-
 export default {
     "UniqueKeyEditor" :UniqueKeyEditor,
     "LabelEditor": LabelEditor,
@@ -39,6 +37,4 @@ export default {
     "PrependEditor": PrependEditor,
     "AppendButtonEditor": AppendButtonEditor,
     "AppendEditor": AppendEditor,
-
-    "OnFocusEditor": OnFocusEditor,
 };

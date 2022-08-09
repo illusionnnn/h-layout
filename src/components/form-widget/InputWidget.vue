@@ -3,7 +3,7 @@
  * @Author: Hedgehog96
  * @Date: 2022-07-06 11:46:39
  * @LastEditors: Hedgehog96
- * @LastEditTime: 2022-08-08 16:23:27
+ * @LastEditTime: 2022-08-09 16:44:50
 -->
 <template>
     <el-input
@@ -20,6 +20,9 @@
         :prefix-icon="props.elem.props.prefixIcon"
         :suffix-icon="props.elem.props.suffixIcon"
         @focus="handleFocusEvent"
+        @input="handleInputEvent"
+        @blur="handleBlurEvent"
+        @change="handleChangeEvent"
     >
         <template
             v-if="props.elem.props.prependButton"
@@ -59,5 +62,17 @@ const inputType = computed(() => {
 const handleFocusEvent = (event: Event) => {
     const fn = new Function('event', props.elem.event.onFocus);
     fn(event);
+};
+const handleInputEvent = (value: string) => {
+    const fn = new Function('value', props.elem.event.onInput);
+    fn(value);
+};
+const handleBlurEvent = (event: Event) => {
+    const fn = new Function('event', props.elem.event.onBlur);
+    fn(event);
+};
+const handleChangeEvent =  (value: string) => {
+    const fn = new Function('value', props.elem.event.onChange);
+    fn(value);
 };
 </script>

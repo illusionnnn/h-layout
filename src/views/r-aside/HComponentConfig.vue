@@ -3,7 +3,7 @@
  * @Author: Hedgehog96
  * @Date: 2022-05-11 14:08:14
  * @LastEditors: Hedgehog96
- * @LastEditTime: 2022-08-08 16:43:52
+ * @LastEditTime: 2022-08-09 16:46:08
 -->
 <template>
     <div
@@ -74,7 +74,7 @@
             :before-close="handleClose"
         >
             <el-alert
-                :title="state.currentElem.uniqueKey + '.onFocus (event) {'"
+                :title="state.currentElem.uniqueKey + `.${state.currentEventName} (${eventsParamMap[state.currentEventName]}) {`"
                 type="info"
                 :closable="false"
             />
@@ -116,6 +116,7 @@ import CodeEditor from "@/components/CodeEditor.vue";
 import { ComponentConfig } from "@/config/interfaces";
 import widgetProperties from "@/config/propertyRegister";
 import PropertyEditor from "./PropertyEditor/index";
+import EventEditor from "./EventEditor/index";
 
 const { COMMON_PROPERTIES, ADVANCED_PROPERTIES, EVENT_PROPERTIES } = widgetProperties;
 const EVENT_BUS: any = inject("eventBus");
@@ -123,14 +124,21 @@ EVENT_BUS.on("clickComponent", (elem: ComponentConfig) => {
     state.currentElem = elem;
 });
 
-const state: { currentElem: any, activeNames: string, code: string; showEditor: boolean } = reactive({
-    currentElem: {},
+const state: { currentElem: any, activeNames: string, code: string; currentEventName: string; showEditor: boolean } = reactive({
     activeNames: "common",
     code: '',
-    showEditor: false
+    currentEventName: '',
+    showEditor: false,
+    currentElem: {},
 });
 const codeEditorRef = ref('');
 const instance = getCurrentInstance();
+const eventsParamMap = {
+    onFocus: 'event',
+    onInput: 'value',
+    onBlur: 'event',
+    onChange: 'value',
+};
 
 const getPropEditor = (propName: string, editorName: string) => {
     if (propName === "uniqueKey") {
@@ -162,7 +170,16 @@ const getPropEditor = (propName: string, editorName: string) => {
     }
 
     else if (propName === "onFocus") {
-        return PropertyEditor.OnFocusEditor;
+        return EventEditor.OnFocusEditor;
+    }
+    else if (propName === "onInput") {
+        return EventEditor.OnInputEditor;
+    }
+    else if (propName === "onBlur") {
+        return EventEditor.OnBlurEditor;
+    }
+    else if (propName === "onChange") {
+        return EventEditor.OnChangeEditor;
     }
     else {
         return null;
@@ -174,12 +191,13 @@ const hasPropEditor = (editorName: string) => {
     }
     return true;
 };
-const handleShowEditor = () => {
-    state.code = state.currentElem.event.onFocus;
+const handleShowEditor = (eventName: string) => {
+    state.code = state.currentElem.event[eventName];
+    state.currentEventName = eventName;
     state.showEditor = !state.showEditor;
 
     // XXX: 切换组件后， ace 不更新问题
-    codeEditorRef.value && (codeEditorRef.value as any).setEditorValue(state.currentElem.event.onFocus);
+    codeEditorRef.value && (codeEditorRef.value as any).setEditorValue(state.currentElem.event[state.currentEventName]);
 };
 const handleClose = () => {
     state.showEditor = false;
@@ -203,7 +221,7 @@ const handleSaveEvent = () => {
         }
     }
 
-    state.currentElem.event.onFocus = state.code;
+    state.currentElem.event[state.currentEventName] = state.code;
     state.showEditor = false;
 };
 </script>
