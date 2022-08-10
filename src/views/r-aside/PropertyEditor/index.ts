@@ -3,12 +3,13 @@
  * @Author: Hedgehog96
  * @Date: 2022-07-21 11:44:24
  * @LastEditors: Hedgehog96
- * @LastEditTime: 2022-08-09 11:45:46
+ * @LastEditTime: 2022-08-10 16:11:49
  */
 import UniqueKeyEditor from "./UniquekeyEditor.vue";
 import LabelEditor from "./LabelEditor.vue";
 import DefaultValueEditor from "./DefaultValueEditor.vue";
 import SizeEditor from "./SizeEditor.vue";
+import RowsEditor from "./RowsEditor.vue";
 import DisabledEditoer from './DisabledEditor.vue';
 import ReadonlyEditor from "./ReadonlyEditor.vue";
 import MinLengthEditor from "./MinLengthEditor.vue";
@@ -26,6 +27,7 @@ export default {
     "LabelEditor": LabelEditor,
     "DefaultValueEditor": DefaultValueEditor,
     "SizeEditor": SizeEditor,
+    "RowsEditor": RowsEditor,
     "DisabledEditoer": DisabledEditoer,
     "ReadonlyEditor": ReadonlyEditor,
     "MinLengthEditor": MinLengthEditor,

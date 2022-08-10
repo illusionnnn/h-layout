@@ -3,7 +3,7 @@
  * @Author: Hedgehog96
  * @Date: 2022-05-09 17:30:41
  * @LastEditors: Hedgehog96
- * @LastEditTime: 2022-08-10 11:22:08
+ * @LastEditTime: 2022-08-10 15:26:33
  */
 import { ElButton, ElInput, ElSwitch, ElRate } from "element-plus";
 import BaseContainer from "@/components/BaseContainer.vue";
@@ -23,8 +23,8 @@ export default [
                 icon: "icon-h-shangebuju",
                 showTitle: false,
                 component: BaseContainer,
-                attrs: {},
-                evt: {},
+                props: {},
+                event: {},
                 children: [],
             },
         ],
@@ -53,6 +53,7 @@ export default [
                     type: 'text',
                     minLength: 0,
                     maxLength: 1,
+                    showWordLimit: false,
                     prefixIcon: '',
                     suffixIcon: '',
                     prependButton: false,
@@ -76,8 +77,24 @@ export default [
                 icon: "icon-h-textarea",
                 showTitle: false,
                 component: ElInput,
-                props: { name: "textarea", label: "textarea" },
-                evt: {},
+                props: {
+                    defaultValue: '22',
+                    disabled: false,
+                    readonly: false,
+                    placeholder: '',
+                    type: 'textarea',
+                    minLength: 0,
+                    maxLength: 1,
+                    showWordLimit: false,
+                    rows: 2,
+                    autosize: false
+                },
+                event: {
+                    onFocus: '',
+                    onInput: '',
+                    onBlur: '',
+                    onChange: ''
+                }
             },
             {
                 id: 4,
@@ -89,7 +106,7 @@ export default [
                 showTitle: true,
                 component: ElButton,
                 props: { name: "button", label: "button" },
-                evt: {},
+                event: {},
             },
             {
                 id: 5,
@@ -101,7 +118,7 @@ export default [
                 showTitle: false,
                 component: ElSwitch,
                 props: { name: "switch", label: "switch" },
-                evt: {},
+                event: {},
             },
             {
                 id: 6,
@@ -113,7 +130,7 @@ export default [
                 showTitle: false,
                 component: ElRate,
                 props: { name: "rate", label: "rate" },
-                evt: {},
+                event: {},
             },
         ],
     },

@@ -3,13 +3,14 @@
  * @Author: Hedgehog96
  * @Date: 2022-07-06 11:46:39
  * @LastEditors: Hedgehog96
- * @LastEditTime: 2022-08-09 16:44:50
+ * @LastEditTime: 2022-08-10 16:10:29
 -->
 <template>
     <el-input
         v-model="inputValue"
         :type="inputType"
         :size="props.elem.props.size"
+        :rows="props.elem.props.type === 'textarea' ? props.elem.props.rows : null"
         :disabled="props.elem.props.disabled"
         :readonly="props.elem.props.readonly"
         :placeholder="props.elem.props.placeholder"

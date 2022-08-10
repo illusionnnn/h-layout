@@ -3,7 +3,7 @@
  * @Author: Hedgehog96
  * @Date: 2022-05-11 14:08:14
  * @LastEditors: Hedgehog96
- * @LastEditTime: 2022-08-09 16:46:08
+ * @LastEditTime: 2022-08-10 16:38:04
 -->
 <template>
     <div
@@ -28,7 +28,7 @@
                     >
                         <component
                             :is="getPropEditor(propName, editorName)"
-                            v-if="hasPropEditor(editorName)"
+                            v-if="hasPropEditor(propName)"
                             :elem="state.currentElem"
                         />
                     </template>
@@ -43,7 +43,7 @@
                     >
                         <component
                             :is="getPropEditor(propName, editorName)"
-                            v-if="hasPropEditor(editorName)"
+                            v-if="hasPropEditor(propName)"
                             :elem="state.currentElem"
                         />
                     </template>
@@ -58,7 +58,7 @@
                     >
                         <component
                             :is="getPropEditor(propName, editorName)"
-                            v-if="hasPropEditor(editorName)"
+                            v-if="hasPropEditor(propName)"
                             :elem="state.currentElem"
                             :show-editor="state.showEditor"
                             @show="handleShowEditor"
@@ -114,6 +114,7 @@ import { inject, reactive, ref, defineAsyncComponent, getCurrentInstance } from 
 import { ElForm, ElButton, ElDialog, ElAlert } from "element-plus";
 import CodeEditor from "@/components/CodeEditor.vue";
 import { ComponentConfig } from "@/config/interfaces";
+import componentsConfig from "@/config/components";
 import widgetProperties from "@/config/propertyRegister";
 import PropertyEditor from "./PropertyEditor/index";
 import EventEditor from "./EventEditor/index";
@@ -168,6 +169,9 @@ const getPropEditor = (propName: string, editorName: string) => {
     else if (propName === "append") {
         return PropertyEditor.AppendEditor;
     }
+    else if (propName === "rows") {
+        return PropertyEditor.RowsEditor;
+    }
 
     else if (propName === "onFocus") {
         return EventEditor.OnFocusEditor;
@@ -185,11 +189,38 @@ const getPropEditor = (propName: string, editorName: string) => {
         return null;
     }
 };
-const hasPropEditor = (editorName: string) => {
-    if (!editorName) {
+const hasPropEditor = (propName: string) => {
+    if (propName === 'uniqueKey' || propName === 'label') {
+        return true;
+    }
+    
+    let showFlag = true;
+    let c: ComponentConfig;
+    const _componentsConfig = [];
+    _componentsConfig.push(...componentsConfig[0].components);
+    _componentsConfig.push(...componentsConfig[1].components);
+    _componentsConfig.map((_c: ComponentConfig) => {
+        if(_c.title === state.currentElem.title) {
+            c = _c;
+            return;
+        }
+    });
+
+    if (propName.startsWith('on')) {
+        if (c.event[propName] === undefined) {
+            showFlag = false;
+        }
+    } else {
+        if (c.props[propName] === undefined) {
+            showFlag = false;
+        }
+    }
+
+    // XXX: 文本域不显示类型
+    if (propName === 'type' && state.currentElem.title === '多行输入') {
         return false;
     }
-    return true;
+    return showFlag;
 };
 const handleShowEditor = (eventName: string) => {
     state.code = state.currentElem.event[eventName];

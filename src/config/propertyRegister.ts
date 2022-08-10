@@ -3,7 +3,7 @@
  * @Author: Hedgehog96
  * @Date: 2022-07-14 15:19:28
  * @LastEditors: Hedgehog96
- * @LastEditTime: 2022-08-09 16:42:01
+ * @LastEditTime: 2022-08-10 16:07:16
  */
 import { Component } from "vue";
 
@@ -27,7 +27,7 @@ const COMMON_PROPERTIES = {
     // "border"            :            "border-editor",
     // "labelWidth"        :            "labelWidth-editor",
     // "labelHidden"       :            "labelHidden-editor",
-    // "rows"              :            "rows-editor",
+    "rows"              :            "RowsEditor",
     // "required"          :            "required-editor",
     // "requiredHint"      :            "requiredHint-editor",
     // "validation"        :            "validation-editor",

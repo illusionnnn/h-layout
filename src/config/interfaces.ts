@@ -3,7 +3,7 @@
  * @Author: Hedgehog96
  * @Date: 2022-05-24 14:43:03
  * @LastEditors: Hedgehog96
- * @LastEditTime: 2022-08-08 15:06:04
+ * @LastEditTime: 2022-08-10 11:52:15
  */
 import { Component } from "vue";
 import { InputProps as $_InputProps } from "element-plus";
@@ -15,10 +15,11 @@ export interface ComponentConfig {
     uniqueKey: string;
     title: string;
     label: string;
+    icon: string;
     showTitle: boolean;
     component: Component;
     props: object;
-    evt: object;
+    event: object;
     children?: ComponentConfig[];
 }
 
