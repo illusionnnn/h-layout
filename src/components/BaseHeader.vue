@@ -3,12 +3,16 @@
  * @Author: Hedgehog96
  * @Date: 2022-05-07 16:34:02
  * @LastEditors: Hedgehog96
- * @LastEditTime: 2022-06-30 16:31:52
+ * @LastEditTime: 2022-08-10 18:33:12
 -->
 <template>
     <div class="h-base-header">
-        <div class="h-base-header-title">
-            h-layout
+        <div class="h-base-header-area">
+            <img
+                src="../assets/imgs/logo.png"
+                alt="logo"
+            >
+            <span class="h-base-header-title">h-layout</span>
         </div>
         <div class="h-base-header-btns">
             <el-button
@@ -69,9 +73,18 @@ const handleSave = () => componentsStore.save();
     background-color: $base-bg-color;
     border-bottom: 1.5px solid #e8e8e8;
 
+    .h-base-header-area {
+        display: flex;
+        align-items: center;
+
+        img {
+            margin-right: 6px;
+            height: 40px;
+        }
+    }
+
     .h-base-header-title {
-        font-size: 20px;
-        color: #6b6b6b;
+        font-size: 18px;
     }
 
     .h-base-header-btns {

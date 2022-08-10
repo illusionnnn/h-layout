@@ -3,7 +3,7 @@
  * @Author: Hedgehog96
  * @Date: 2022-05-09 15:33:03
  * @LastEditors: Hedgehog96
- * @LastEditTime: 2022-07-14 16:18:27
+ * @LastEditTime: 2022-08-10 18:31:16
 -->
 <template>
     <div class="h-components">
@@ -64,12 +64,13 @@ const handleCloneComponentsConfig = (d: ComponentConfig) => {
 
 <style lang="scss" scoped>
 .h-components {
-    padding: 0 10px;
+    padding: 10px;
     .h-components-area {
         margin-bottom: 10px;
 
         .h-components-area-title {
             margin-bottom: 10px;
+            color: #303133;
         }
     }
 
