@@ -35,6 +35,7 @@ declare module '@vue/runtime-core' {
     IconDialog: typeof import('./src/components/IconDialog.vue')['default']
     IconsDialog: typeof import('./src/components/IconsDialog.vue')['default']
     InputWidget: typeof import('./src/components/form-widget/InputWidget.vue')['default']
+    StructureTree: typeof import('./src/components/StructureTree.vue')['default']
     UnikeyEditor: typeof import('./src/components/form-widget/field-widget/UnikeyEditor.vue')['default']
     UniquekeyEditor: typeof import('./src/components/form-widget/field-widget/UniquekeyEditor.vue')['default']
   }

@@ -3,7 +3,7 @@
  * @Author: Hedgehog96
  * @Date: 2022-05-11 14:08:14
  * @LastEditors: Hedgehog96
- * @LastEditTime: 2022-08-10 16:38:04
+ * @LastEditTime: 2022-08-11 11:29:09
 -->
 <template>
     <div
@@ -71,6 +71,8 @@
         <el-dialog
             v-model="state.showEditor"
             title="事件处理"
+            :close-on-click-modal="false"
+            :close-on-press-escape="false"
             :before-close="handleClose"
         >
             <el-alert
@@ -125,13 +127,17 @@ EVENT_BUS.on("clickComponent", (elem: ComponentConfig) => {
     state.currentElem = elem;
 });
 
-const state: { currentElem: any, activeNames: string, code: string; currentEventName: string; showEditor: boolean } = reactive({
-    activeNames: "common",
-    code: '',
-    currentEventName: '',
-    showEditor: false,
-    currentElem: {},
-});
+const state: {
+    currentElem: any, activeNames: string,
+    code: string, currentEventName: string,
+    showEditor: boolean
+    } = reactive({
+        activeNames: "common",
+        code: '',
+        currentEventName: '',
+        showEditor: false,
+        currentElem: {},
+    });
 const codeEditorRef = ref('');
 const instance = getCurrentInstance();
 const eventsParamMap = {

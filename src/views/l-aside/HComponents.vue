@@ -3,7 +3,7 @@
  * @Author: Hedgehog96
  * @Date: 2022-05-09 15:33:03
  * @LastEditors: Hedgehog96
- * @LastEditTime: 2022-08-10 18:31:16
+ * @LastEditTime: 2022-08-11 16:26:23
 -->
 <template>
     <div class="h-components">
@@ -79,7 +79,7 @@ const handleCloneComponentsConfig = (d: ComponentConfig) => {
         flex-wrap: wrap;
 
         .h-components-drag-area-item {
-            margin: 5px;
+            margin: 10px;
             margin-left: 0;
             cursor: move;
 

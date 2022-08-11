@@ -3,7 +3,7 @@
  * @Author: Hedgehog96
  * @Date: 2022-05-17 10:46:19
  * @LastEditors: Hedgehog96
- * @LastEditTime: 2022-07-21 18:28:16
+ * @LastEditTime: 2022-08-11 17:37:21
 -->
 <template>
     <div class="h-main-header">
@@ -20,7 +20,10 @@
             @click="componentsStore.redo()"
         />
         <div class="h-main-header-btns">
-            <el-button size="small">
+            <el-button
+                size="small"
+                @click="handleTree(true)"
+            >
                 <i class="iconfont icon-h-jiegou" />结构
             </el-button>
             <el-button size="small">
@@ -34,12 +37,32 @@
             </el-button>
         </div>
     </div>
+
+    <structure-tree
+        :open="opTree"
+        :node-key="currentNodeKey"
+        @close="handleTree(false)"
+    />
 </template>
 
 <script setup lang="ts">
+import { ref, inject } from 'vue';
+import StructureTree from '@/components/StructureTree.vue';
 import { useComponentsStore } from '@/store/components';
+import { ComponentConfig } from '@/config/interfaces';
 
 const componentsStore = useComponentsStore();
+
+const opTree = ref(false);
+const handleTree = (op: boolean) => {
+    opTree.value = op;
+};
+
+const currentNodeKey = ref('');
+const EVENT_BUS: any = inject("eventBus");
+EVENT_BUS.on("clickComponent", (elem: ComponentConfig) => {
+    currentNodeKey.value = elem.uniqueKey;
+});
 </script>
 
 <style lang="scss" scoped>
