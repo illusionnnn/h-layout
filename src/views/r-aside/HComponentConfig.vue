@@ -3,7 +3,7 @@
  * @Author: Hedgehog96
  * @Date: 2022-05-11 14:08:14
  * @LastEditors: Hedgehog96
- * @LastEditTime: 2022-08-11 11:29:09
+ * @LastEditTime: 2022-08-12 11:24:29
 -->
 <template>
     <div
@@ -201,7 +201,7 @@ const hasPropEditor = (propName: string) => {
     }
     
     let showFlag = true;
-    let c: ComponentConfig;
+    let c: any = {};
     const _componentsConfig = [];
     _componentsConfig.push(...componentsConfig[0].components);
     _componentsConfig.push(...componentsConfig[1].components);
