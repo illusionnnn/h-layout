@@ -3,7 +3,7 @@
  * @Author: Hedgehog96
  * @Date: 2022-05-05 21:19:48
  * @LastEditors: Hedgehog96
- * @LastEditTime: 2022-08-08 15:05:37
+ * @LastEditTime: 2022-08-12 15:06:26
  */
 import { createApp } from "vue";
 import { createPinia } from "pinia";
@@ -11,7 +11,7 @@ import { ElMessage } from 'element-plus';
 import * as ElementPlusIconsVue from '@element-plus/icons-vue';
 import App from "./App.vue";
 import HDraggable from "./components/HDraggable.vue";
-import EventBus from "./utils/eventBus";
+import EventBus from "./utils/EventBus";
 import "./styles/normalize.css";
 import "./styles/editor.css";
 import "./assets/fonts/iconfont.css";
