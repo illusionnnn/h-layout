@@ -3,7 +3,7 @@
  * @Author: Hedgehog96
  * @Date: 2022-05-09 17:24:21
  * @LastEditors: Hedgehog96
- * @LastEditTime: 2022-07-05 10:35:18
+ * @LastEditTime: 2022-08-16 11:33:35
 -->
 <template>
     <div class="h-main">
@@ -12,6 +12,12 @@
             :components="components"
             @change-component-id="handleChangeComponetId"
         />
+        <div
+            v-if="!components.length"
+            class="h-main-tip"
+        >
+            请从左侧列表中选择一个组件, 然后用鼠标拖动组件放置于此处
+        </div>
     </div>
 </template>
 
@@ -70,10 +76,18 @@ EVENT_BUS.on("delete", handleDeleteComponent);
 
 <style lang="scss" scoped>
 .h-main {
+    position: relative;
     padding: 20px;
     height: calc(100% - 90px);
     background-color: $base-bg-color;
     border-radius: $base-border-radius;
+
+    .h-main-tip {
+        position: absolute;
+        top: 48%;
+        left: 32%;
+        color: #ccc;
+    }
 
     .h-main-layout {
         height: 100%;

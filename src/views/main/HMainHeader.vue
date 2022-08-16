@@ -3,7 +3,7 @@
  * @Author: Hedgehog96
  * @Date: 2022-05-17 10:46:19
  * @LastEditors: Hedgehog96
- * @LastEditTime: 2022-08-11 17:37:21
+ * @LastEditTime: 2022-08-16 14:54:56
 -->
 <template>
     <div class="h-main-header">
@@ -32,6 +32,7 @@
             <el-button
                 size="small"
                 type="danger"
+                @click="handleCleanAll()"
             >
                 <i class="iconfont icon-h-shanchu" />清空
             </el-button>
@@ -56,6 +57,9 @@ const componentsStore = useComponentsStore();
 const opTree = ref(false);
 const handleTree = (op: boolean) => {
     opTree.value = op;
+};
+const handleCleanAll = () => {
+    componentsStore.clear();
 };
 
 const currentNodeKey = ref('');
@@ -90,6 +94,7 @@ EVENT_BUS.on("clickComponent", (elem: ComponentConfig) => {
     }
     .can-undo,
     .can-redo {
+        color: #409eff;
         cursor: pointer;
     }
 

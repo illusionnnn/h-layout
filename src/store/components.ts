@@ -3,7 +3,7 @@
  * @Author: Hedgehog96
  * @Date: 2022-06-30 14:58:31
  * @LastEditors: Hedgehog96
- * @LastEditTime: 2022-07-21 18:27:43
+ * @LastEditTime: 2022-08-16 14:59:47
  */
 import { defineStore } from "pinia";
 import { cloneDeep } from "lodash-es";
@@ -19,26 +19,38 @@ export const useComponentsStore = defineStore("components", {
     },
 
     actions: {
+        $_setComponents(cs: ComponentConfig[]) {
+            this.components = cs;
+        },
+
         add(c: ComponentConfig) {
             this.components.push(c);
         },
 
-        setComponents(cs: ComponentConfig[]) {
-            this.components = cs;
+        clear() {
+            this.$_setComponents([]);
+            this.recordSnapshot();
+        },
+
+        save() {
+            window.localStorage.setItem(
+                "h-layout",
+                JSON.stringify(this.components)
+            );
         },
 
         undo() {
             if (this.snapshotIdx >= 0) {
                 this.snapshotIdx --;
                 const _ = cloneDeep(this.snapshotcomponents[this.snapshotIdx]);
-                this.setComponents(Array.isArray(_) ? _ : []);
+                this.$_setComponents(Array.isArray(_) ? _ : []);
             }
         },
 
         redo() {
             if (this.snapshotIdx < this.snapshotcomponents.length - 1) {
                 this.snapshotIdx ++;
-                this.setComponents(cloneDeep(this.snapshotcomponents[this.snapshotIdx]));
+                this.$_setComponents(cloneDeep(this.snapshotcomponents[this.snapshotIdx]));
             }
         },
 
@@ -52,12 +64,5 @@ export const useComponentsStore = defineStore("components", {
                 this.snapshotcomponents = this.snapshotcomponents.slice(0, this.snapshotIdx + 1);
             }
         },
-
-        save() {
-            window.localStorage.setItem(
-                "h-layout",
-                JSON.stringify(this.components)
-            );
-        }
     },
 });
