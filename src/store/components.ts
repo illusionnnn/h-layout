@@ -3,18 +3,30 @@
  * @Author: Hedgehog96
  * @Date: 2022-06-30 14:58:31
  * @LastEditors: Hedgehog96
- * @LastEditTime: 2022-08-16 14:59:47
+ * @LastEditTime: 2022-08-16 16:11:58
  */
 import { defineStore } from "pinia";
 import { cloneDeep } from "lodash-es";
+import { ElMessage } from 'element-plus';
 import { ComponentConfig, ComponentsStore } from "@/config/interfaces";
+
+const $_reloadState = (state: string) => {
+    switch (state) {
+    case 's':
+        return window.localStorage.getItem('h-layout-s') !== null ?  JSON.parse(window.localStorage.getItem('h-layout-s') as string) : -1;
+    case 'sc':
+        return window.localStorage.getItem('h-layout-sc') !== null ?  JSON.parse(window.localStorage.getItem('h-layout-sc') as string) : [];
+    case 'c':
+        return window.localStorage.getItem('h-layout-c') !== null ?  JSON.parse(window.localStorage.getItem('h-layout-c') as string) : [];
+    }
+};
 
 export const useComponentsStore = defineStore("components", {
     state: (): ComponentsStore => {
         return {
-            snapshotIdx: -1,
-            snapshotcomponents: [],
-            components: []
+            snapshotIdx: $_reloadState('s'),
+            snapshotcomponents: $_reloadState('sc'),
+            components: $_reloadState('c')
         };
     },
 
@@ -33,10 +45,25 @@ export const useComponentsStore = defineStore("components", {
         },
 
         save() {
-            window.localStorage.setItem(
-                "h-layout",
-                JSON.stringify(this.components)
-            );
+            try {
+                window.localStorage.setItem(
+                    "h-layout-s",
+                    JSON.stringify(this.snapshotIdx)
+                );
+                window.localStorage.setItem(
+                    "h-layout-sc",
+                    JSON.stringify(this.snapshotcomponents)
+                );
+                window.localStorage.setItem(
+                    "h-layout-c",
+                    JSON.stringify(this.components)
+                );
+                ElMessage.success('保存成功');
+            }
+            catch {
+                ElMessage.error('保存失败');
+            }
+            
         },
 
         undo() {
