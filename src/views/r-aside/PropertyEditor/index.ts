@@ -3,7 +3,7 @@
  * @Author: Hedgehog96
  * @Date: 2022-07-21 11:44:24
  * @LastEditors: Hedgehog96
- * @LastEditTime: 2022-08-10 16:11:49
+ * @LastEditTime: 2022-08-17 15:34:39
  */
 import UniqueKeyEditor from "./UniquekeyEditor.vue";
 import LabelEditor from "./LabelEditor.vue";
@@ -22,6 +22,15 @@ import AppendEditor from "./AppendEditor.vue";
 import PrependButtonEditor from "./PrependButtonEditor.vue";
 import PrependEditor from "./PrependEditor.vue";
 
+import ButtonTypeEditor from "./FieldButton/TypeEditor.vue";
+import ButtonPlainEditor from "./FieldButton/PlainEditor.vue";
+import ButtonTextEditor from "./FieldButton/TextEditor.vue";
+import ButtonBgEditor from "./FieldButton/BgEditor.vue";
+import ButtonLinkEditor from "./FieldButton/LinkEditor.vue";
+import ButtonRoundEditor from "./FieldButton/RoundEditor.vue";
+import ButtonCircleEditor from "./FieldButton/CircleEditor.vue";
+import ButtonIconEditor from "./FieldButton/IconEditor.vue";
+
 export default {
     "UniqueKeyEditor" :UniqueKeyEditor,
     "LabelEditor": LabelEditor,
@@ -39,4 +48,13 @@ export default {
     "PrependEditor": PrependEditor,
     "AppendButtonEditor": AppendButtonEditor,
     "AppendEditor": AppendEditor,
+
+    "ButtonTypeEditor": ButtonTypeEditor,
+    "ButtonPlainEditor": ButtonPlainEditor,
+    "ButtonTextEditor": ButtonTextEditor,
+    "ButtonBgEditor": ButtonBgEditor,
+    "ButtonLinkEditor": ButtonLinkEditor,
+    "ButtonRoundEditor": ButtonRoundEditor,
+    "ButtonCircleEditor": ButtonCircleEditor,
+    "ButtonIconEditor": ButtonIconEditor
 };

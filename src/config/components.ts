@@ -3,7 +3,7 @@
  * @Author: Hedgehog96
  * @Date: 2022-05-09 17:30:41
  * @LastEditors: Hedgehog96
- * @LastEditTime: 2022-08-10 15:26:33
+ * @LastEditTime: 2022-08-17 15:37:37
  */
 import { ElButton, ElInput, ElSwitch, ElRate } from "element-plus";
 import BaseContainer from "@/components/BaseContainer.vue";
@@ -105,8 +105,23 @@ export default [
                 icon: "icon-h-anniu",
                 showTitle: true,
                 component: ElButton,
-                props: { name: "button", label: "button" },
-                event: {},
+                props: {
+                    size: "default",
+                    type: 'default',
+                    label: 'button',
+                    plain: false,
+                    text: false,
+                    bg: false,
+                    link: false,
+                    round: false,
+                    circle: false,
+                    disabled: false,
+                    buttonIcon: '',
+                    
+                },
+                event: {
+                    onClick: ''
+                },
             },
             {
                 id: 5,

@@ -3,7 +3,7 @@
  * @Author: Hedgehog96
  * @Date: 2022-07-14 15:19:28
  * @LastEditors: Hedgehog96
- * @LastEditTime: 2022-08-10 16:07:16
+ * @LastEditTime: 2022-08-17 15:33:01
  */
 import { Component } from "vue";
 
@@ -84,9 +84,12 @@ const ADVANCED_PROPERTIES = {
     // 'showScore'         :            'showScore-editor',
     // 'range'             :            'range-editor',
     // 'vertical'          :            'vertical-editor',
-    // 'plain'             :            'plain-editor',
-    // 'round'             :            'round-editor',
-    // 'circle'            :            'circle-editor',
+    'plain'             :            'PlainEditor',
+    'text'              :            'TextEditor',
+    'bg'                :            'BgEditor',
+    'link'              :            'LinkEditor',
+    'round'             :            'RoundEditor',
+    'circle'            :            'CircleEditor',
     // 'icon'              :            'icon-editor',
     // 'labelIconClass'    :            'labelIconClass-editor',
     // 'labelIconPosition' :            'labelIconPosition-editor',
@@ -95,11 +98,11 @@ const ADVANCED_PROPERTIES = {
     'append'            :            'AppendEditor',
     'prependButton'     :            'PrependButtonEditor',
     'prepend'           :            'PrependEdtior',
-    // 'buttonIcon'        :            'buttonIcon-editor',
+    'buttonIcon'        :            'IconEditor',
 };
 
 const EVENT_PROPERTIES = {
-    // 'onClick'           :            'onClick-editor',
+    'onClick'           :            'OnClickEditor',
     'onInput'           :            'OnInputEditor',
     'onChange'          :            'OnChangeEditor',
     'onFocus'           :            'OnFocusEditor',

@@ -3,7 +3,7 @@
  * @Author: Hedgehog96
  * @Date: 2022-05-20 16:47:09
  * @LastEditors: Hedgehog96
- * @LastEditTime: 2022-07-27 17:27:00
+ * @LastEditTime: 2022-08-17 11:47:18
 -->
 <template>
     <draggable
@@ -43,7 +43,14 @@
                         :activated="element.id === componentId"
                         :elem="element"
                     >
-                        <input-widget :elem="element" />
+                        <input-widget
+                            v-if="element.label === 'Input'"
+                            :elem="element"
+                        />
+                        <button-widget
+                            v-else-if="element.label === 'Button'"
+                            :elem="element"
+                        />
                     </base-component>
                 </div>
             </template>
@@ -56,6 +63,7 @@ import { defineProps, inject, nextTick } from "vue";
 import Draggable from "vuedraggable";
 import BaseComponent from "./BaseComponent.vue";
 import InputWidget from "./form-widget/InputWidget.vue";
+import ButtonWidget from "./form-widget/ButtonWidget.vue";
 
 import { useComponentsStore } from "@/store/components";
 import { ComponentConfig } from "@/config/interfaces";

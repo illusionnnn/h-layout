@@ -3,7 +3,7 @@
  * @Author: Hedgehog96
  * @Date: 2022-05-11 14:08:14
  * @LastEditors: Hedgehog96
- * @LastEditTime: 2022-08-12 11:24:29
+ * @LastEditTime: 2022-08-17 15:40:22
 -->
 <template>
     <div
@@ -145,11 +145,39 @@ const eventsParamMap = {
     onInput: 'value',
     onBlur: 'event',
     onChange: 'value',
+    onClick: '',
 };
 
 const getPropEditor = (propName: string, editorName: string) => {
     if (propName === "uniqueKey") {
         return PropertyEditor.UniqueKeyEditor;
+    }
+
+    if (state.currentElem.label === 'Button') {
+        if (propName === 'type') {
+            return PropertyEditor.ButtonTypeEditor;
+        }
+        else if (propName === 'plain') {
+            return PropertyEditor.ButtonPlainEditor;
+        }
+        else if (propName === 'text') {
+            return PropertyEditor.ButtonTextEditor;
+        }
+        else if (propName === 'bg') {
+            return PropertyEditor.ButtonBgEditor;
+        }
+        else if (propName === 'link') {
+            return PropertyEditor.ButtonLinkEditor;
+        }
+        else if (propName === 'round') {
+            return PropertyEditor.ButtonRoundEditor;
+        }
+        else if (propName === 'circle') {
+            return PropertyEditor.ButtonCircleEditor;
+        }
+        else if (propName === 'buttonIcon') {
+            return PropertyEditor.ButtonIconEditor;
+        }
     }
 
     if (state.currentElem.component.props[propName]) {
@@ -190,6 +218,9 @@ const getPropEditor = (propName: string, editorName: string) => {
     }
     else if (propName === "onChange") {
         return EventEditor.OnChangeEditor;
+    }
+    else if (propName === "onClick") {
+        return EventEditor.OnClickEditor;
     }
     else {
         return null;
