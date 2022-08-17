@@ -3,7 +3,7 @@
  * @Author: Hedgehog96
  * @Date: 2022-05-07 16:34:02
  * @LastEditors: Hedgehog96
- * @LastEditTime: 2022-08-10 18:33:12
+ * @LastEditTime: 2022-08-17 10:44:51
 -->
 <template>
     <div class="h-base-header">
@@ -28,12 +28,19 @@
             >
                 <i class="iconfont icon-h-baocun" />保存
             </el-button>
+            <el-button
+                size="small"
+                type="danger"
+                @click="handleCleanCache()"
+            >
+                <i class="iconfont icon-h-shanchu" />清除
+            </el-button>
         </div>
     </div>
 </template>
 
 <script setup lang="ts">
-import { ElMessage } from "element-plus";
+import { getCurrentInstance } from 'vue';
 import { useComponentsStore } from "@/store/components";
 
 interface FullScreenHTMLElement extends HTMLElement {
@@ -41,6 +48,7 @@ interface FullScreenHTMLElement extends HTMLElement {
   msRequestFullscreen?: () => void;
   webkitRequestFullscreen?: () => void;
 }
+const instance = getCurrentInstance();
 
 const handleFullScreen = () => {
     const elem = document.querySelector("html") as FullScreenHTMLElement;
@@ -53,15 +61,16 @@ const handleFullScreen = () => {
     } else if (elem.webkitRequestFullscreen) {
         elem.webkitRequestFullscreen();
     } else {
-        ElMessage({
-            message: "使用该功能请配合最新版chrome浏览器食用",
-            type: "warning",
-        });
+        instance?.appContext.config.globalProperties.$message.warning('使用该功能请配合最新版chrome浏览器食用');
     }
 };
 
 const componentsStore = useComponentsStore();
 const handleSave = () => componentsStore.save();
+const handleCleanCache = () => {
+    window.localStorage.clear();
+    instance?.appContext.config.globalProperties.$message.success('缓存已清除');
+};
 </script>
 
 <style lang="scss" scoped>
