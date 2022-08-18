@@ -3,7 +3,7 @@
  * @Author: Hedgehog96
  * @Date: 2022-05-20 16:47:09
  * @LastEditors: Hedgehog96
- * @LastEditTime: 2022-08-17 11:47:18
+ * @LastEditTime: 2022-08-18 10:37:26
 -->
 <template>
     <draggable
@@ -51,6 +51,10 @@
                             v-else-if="element.label === 'Button'"
                             :elem="element"
                         />
+                        <switch-widget
+                            v-else-if="element.label === 'Switch'"
+                            :elem="element"
+                        />
                     </base-component>
                 </div>
             </template>
@@ -64,6 +68,7 @@ import Draggable from "vuedraggable";
 import BaseComponent from "./BaseComponent.vue";
 import InputWidget from "./form-widget/InputWidget.vue";
 import ButtonWidget from "./form-widget/ButtonWidget.vue";
+import SwitchWidget from "./form-widget/SwitchWidget.vue";
 
 import { useComponentsStore } from "@/store/components";
 import { ComponentConfig } from "@/config/interfaces";

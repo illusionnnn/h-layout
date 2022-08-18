@@ -3,7 +3,7 @@
  * @Author: Hedgehog96
  * @Date: 2022-05-09 17:30:41
  * @LastEditors: Hedgehog96
- * @LastEditTime: 2022-08-17 15:37:37
+ * @LastEditTime: 2022-08-18 14:54:57
  */
 import { ElButton, ElInput, ElSwitch, ElRate } from "element-plus";
 import BaseContainer from "@/components/BaseContainer.vue";
@@ -132,8 +132,19 @@ export default [
                 icon: "icon-h-huadonganniux",
                 showTitle: false,
                 component: ElSwitch,
-                props: { name: "switch", label: "switch" },
-                event: {},
+                props: {
+                    disabled: false,
+                    size: 'default',
+                    inlinePrompt: false,
+                    width: 50,
+                    activeIcon: '',
+                    inActiveIcon: '',
+                    activeText: '',
+                    inActiveText: '',
+                },
+                event: {
+                    onChange: ''
+                },
             },
             {
                 id: 6,

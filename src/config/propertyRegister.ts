@@ -3,7 +3,7 @@
  * @Author: Hedgehog96
  * @Date: 2022-07-14 15:19:28
  * @LastEditors: Hedgehog96
- * @LastEditTime: 2022-08-17 15:33:01
+ * @LastEditTime: 2022-08-18 14:54:46
  */
 import { Component } from "vue";
 
@@ -36,6 +36,7 @@ const COMMON_PROPERTIES = {
     "disabled"          :            "DisabledEditor",
     // "hidden"            :            "hidden-editor",
     "clearable"         :            "ClearableEditor",
+    "inlinePrompt"      :            "InlinePromptEditor"
     // "editable"          :            "editable-editor",
     // "showPassword"      :            "showPassword-editor",
     // "textContent"       :            "textContent-editor",
@@ -67,14 +68,17 @@ const ADVANCED_PROPERTIES = {
     // 'precision'         :            'precision-editor',
     // 'step'              :            'step-editor',
     // 'controlsPosition'  :            'controlsPosition-editor',
+    "width"             :            'WidthEditor',
     'minLength'         :            'MinLengthEditor',
     'maxLength'         :            'MaxLengthEditor',
     'showWordLimit'     :            'ShowWordLimitEditor',
     'prefixIcon'        :            'PrefixIconEditor',
     'suffixIcon'        :            'SuffixIconEditor',
+    'activeIcon'        :            'ActiveIcon',
+    'inActiveIcon'      :            'InActiveIconEditor',
     // 'switchWidth'       :            'switchWidth-editor',
-    // 'activeText'        :            'activeText-editor',
-    // 'inactiveText'      :            'inactiveText-editor',
+    'activeText'        :            'ActiveTextEditor',
+    'inActiveText'      :            'InActiveTextEditor',
     // 'activeColor'       :            'activeColor-editor',
     // 'inactiveColor'     :            'inactiveColor-editor',
     // 'lowThreshold'      :            'lowThreshold-editor',

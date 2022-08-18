@@ -26,6 +26,7 @@ declare module '@vue/runtime-core' {
     IconsDialog: typeof import('./src/components/IconsDialog.vue')['default']
     InputWidget: typeof import('./src/components/form-widget/InputWidget.vue')['default']
     StructureTree: typeof import('./src/components/StructureTree.vue')['default']
+    SwitchWidget: typeof import('./src/components/form-widget/SwitchWidget.vue')['default']
   }
 }
 

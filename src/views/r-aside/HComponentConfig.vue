@@ -3,7 +3,7 @@
  * @Author: Hedgehog96
  * @Date: 2022-05-11 14:08:14
  * @LastEditors: Hedgehog96
- * @LastEditTime: 2022-08-17 15:40:22
+ * @LastEditTime: 2022-08-18 14:57:13
 -->
 <template>
     <div
@@ -177,6 +177,27 @@ const getPropEditor = (propName: string, editorName: string) => {
         }
         else if (propName === 'buttonIcon') {
             return PropertyEditor.ButtonIconEditor;
+        }
+    }
+
+    if (state.currentElem.label === 'Switch') {
+        if (propName === 'inlinePrompt') {
+            return PropertyEditor.SwicthInlinePromptEditor;
+        }
+        else if (propName === 'width') {
+            return PropertyEditor.SwitchWidthEditor;
+        }
+        else if (propName === 'activeIcon') {
+            return PropertyEditor.SwitchActiveIconEditor;
+        }
+        else if (propName === 'inActiveIcon') {
+            return PropertyEditor.SwitchInActiveIconEditor;
+        }
+        else if (propName === 'activeText') {
+            return PropertyEditor.SwitchActiveTextEditor;
+        }
+        else if (propName === 'inActiveText') {
+            return PropertyEditor.SwitchInActiveTextEditor;
         }
     }
 

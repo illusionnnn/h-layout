@@ -3,7 +3,7 @@
  * @Author: Hedgehog96
  * @Date: 2022-07-21 11:44:24
  * @LastEditors: Hedgehog96
- * @LastEditTime: 2022-08-17 15:34:39
+ * @LastEditTime: 2022-08-18 14:56:55
  */
 import UniqueKeyEditor from "./UniquekeyEditor.vue";
 import LabelEditor from "./LabelEditor.vue";
@@ -31,6 +31,13 @@ import ButtonRoundEditor from "./FieldButton/RoundEditor.vue";
 import ButtonCircleEditor from "./FieldButton/CircleEditor.vue";
 import ButtonIconEditor from "./FieldButton/IconEditor.vue";
 
+import SwicthInlinePromptEditor from "./FieldSwitch/InlinePromptEditor.vue";
+import SwitchWidthEditor from './FieldSwitch/WidthEditor.vue';
+import SwitchActiveIconEditor from "./FieldSwitch/ActiveIconEditor.vue";
+import SwitchInActiveIconEditor from "./FieldSwitch/InActiveIconEditor.vue";
+import SwitchActiveTextEditor from "./FieldSwitch/ActiveTextEditor.vue";
+import SwitchInActiveTextEditor from "./FieldSwitch/InActiveTextEditor.vue";
+
 export default {
     "UniqueKeyEditor" :UniqueKeyEditor,
     "LabelEditor": LabelEditor,
@@ -56,5 +63,12 @@ export default {
     "ButtonLinkEditor": ButtonLinkEditor,
     "ButtonRoundEditor": ButtonRoundEditor,
     "ButtonCircleEditor": ButtonCircleEditor,
-    "ButtonIconEditor": ButtonIconEditor
+    "ButtonIconEditor": ButtonIconEditor,
+
+    "SwicthInlinePromptEditor": SwicthInlinePromptEditor,
+    "SwitchWidthEditor": SwitchWidthEditor,
+    "SwitchActiveIconEditor": SwitchActiveIconEditor,
+    "SwitchInActiveIconEditor": SwitchInActiveIconEditor,
+    "SwitchActiveTextEditor": SwitchActiveTextEditor,
+    "SwitchInActiveTextEditor": SwitchInActiveTextEditor
 };
