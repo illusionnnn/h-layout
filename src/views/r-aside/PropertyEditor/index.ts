@@ -3,7 +3,7 @@
  * @Author: Hedgehog96
  * @Date: 2022-07-21 11:44:24
  * @LastEditors: Hedgehog96
- * @LastEditTime: 2022-08-18 14:56:55
+ * @LastEditTime: 2022-08-19 15:28:45
  */
 import UniqueKeyEditor from "./UniquekeyEditor.vue";
 import LabelEditor from "./LabelEditor.vue";
@@ -21,6 +21,7 @@ import AppendButtonEditor from "./AppendButtonEditor.vue";
 import AppendEditor from "./AppendEditor.vue";
 import PrependButtonEditor from "./PrependButtonEditor.vue";
 import PrependEditor from "./PrependEditor.vue";
+import MaxEditor from "./MaxEditor.vue";
 
 import ButtonTypeEditor from "./FieldButton/TypeEditor.vue";
 import ButtonPlainEditor from "./FieldButton/PlainEditor.vue";
@@ -37,6 +38,14 @@ import SwitchActiveIconEditor from "./FieldSwitch/ActiveIconEditor.vue";
 import SwitchInActiveIconEditor from "./FieldSwitch/InActiveIconEditor.vue";
 import SwitchActiveTextEditor from "./FieldSwitch/ActiveTextEditor.vue";
 import SwitchInActiveTextEditor from "./FieldSwitch/InActiveTextEditor.vue";
+
+import RateAllowHalfEditor from "./FieldRate/AllowHalfEditor.vue";
+import RateLowThresholdEditor from "./FieldRate/LowThresholdEditor.vue";
+import RateHighThresholdEditor from "./FieldRate/HighThresholdEditor.vue";
+import RateShowTextEditor from "./FieldRate/ShowTextEditor.vue";
+import RateShowScoreEditor from "./FieldRate/ShowScoreEditor.vue";
+import RateVoidIconEditor from "./FieldRate/VoidIconEditor.vue";
+import RateDisabledVoidIconEditor from "./FieldRate/DisabledVoidIconEditor.vue";
 
 export default {
     "UniqueKeyEditor" :UniqueKeyEditor,
@@ -55,6 +64,7 @@ export default {
     "PrependEditor": PrependEditor,
     "AppendButtonEditor": AppendButtonEditor,
     "AppendEditor": AppendEditor,
+    "MaxEditor": MaxEditor,
 
     "ButtonTypeEditor": ButtonTypeEditor,
     "ButtonPlainEditor": ButtonPlainEditor,
@@ -70,5 +80,13 @@ export default {
     "SwitchActiveIconEditor": SwitchActiveIconEditor,
     "SwitchInActiveIconEditor": SwitchInActiveIconEditor,
     "SwitchActiveTextEditor": SwitchActiveTextEditor,
-    "SwitchInActiveTextEditor": SwitchInActiveTextEditor
+    "SwitchInActiveTextEditor": SwitchInActiveTextEditor,
+
+    "RateAllowHalfEditor": RateAllowHalfEditor,
+    "RateLowThresholdEditor": RateLowThresholdEditor,
+    "RateHighThresholdEditor": RateHighThresholdEditor,
+    "RateShowTextEditor": RateShowTextEditor,
+    "RateShowScoreEditor": RateShowScoreEditor,
+    "RateVoidIconEditor": RateVoidIconEditor,
+    "RateDisabledVoidIconEditor": RateDisabledVoidIconEditor
 };

@@ -1,22 +1,23 @@
 <!--
  * @Description: 
  * @Author: Hedgehog96
- * @Date: 2022-08-01 11:11:30
+ * @Date: 2022-08-18 16:16:55
  * @LastEditors: Hedgehog96
- * @LastEditTime: 2022-08-19 15:39:53
+ * @LastEditTime: 2022-08-19 15:45:41
 -->
 <template>
     <el-form-item class="h-editor">
         <span
             class="h-editor-title"
-            title="最小长度"
-        >最小长度</span>
+            title="最大值"
+        >最大值</span>
         <div
             class="h-editor-container"
         >
             <el-input-number
-                v-model="minLength"
-                :min="0"
+                v-model="maxValue"
+                :max="props.elem.props.$_max ? props.elem.props.$_max : Infinity"
+                :min="1"
             />
         </div>
     </el-form-item>
@@ -33,15 +34,15 @@ const props = defineProps({
     },
 });
 
-const minLength = computed(({
+const maxValue = computed(({
     get() {
-        return props.elem.props.minLength;
+        return props.elem.props.max;
     },
     set(newVal) {
-        if (!newVal || isNaN(newVal)) {
-            props.elem.props.minLength = null;
+        if ((newVal === undefined) || (newVal === null) || isNaN(newVal)) {
+            props.elem.props.max = null;
         } else {
-            props.elem.props.minLength = Number.parseInt(newVal);
+            props.elem.props.max = Number.parseInt(newVal);
         }
     }
 }));

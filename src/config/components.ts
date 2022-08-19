@@ -3,7 +3,7 @@
  * @Author: Hedgehog96
  * @Date: 2022-05-09 17:30:41
  * @LastEditors: Hedgehog96
- * @LastEditTime: 2022-08-18 14:54:57
+ * @LastEditTime: 2022-08-19 15:44:34
  */
 import { ElButton, ElInput, ElSwitch, ElRate } from "element-plus";
 import BaseContainer from "@/components/BaseContainer.vue";
@@ -155,8 +155,22 @@ export default [
                 icon: "icon-h-pingfen1",
                 showTitle: false,
                 component: ElRate,
-                props: { name: "rate", label: "rate" },
-                event: {},
+                props: {
+                    max: 5,
+                    $_max: 10,
+                    size: 'default',
+                    disabled: false,
+                    allowHalf: false,
+                    lowThreshold: 2,
+                    highThreshold: 4,
+                    showText: false,
+                    showScore: false,
+                    voidIcon: 'Star',
+                    disabledVoidIcon: 'StarFilled'
+                },
+                event: {
+                    onChange: ''
+                },
             },
         ],
     },

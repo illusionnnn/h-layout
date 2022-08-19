@@ -3,7 +3,7 @@
  * @Author: Hedgehog96
  * @Date: 2022-08-01 11:11:30
  * @LastEditors: Hedgehog96
- * @LastEditTime: 2022-08-01 11:34:55
+ * @LastEditTime: 2022-08-19 15:45:32
 -->
 <template>
     <el-form-item class="h-editor">
@@ -14,9 +14,8 @@
         <div
             class="h-editor-container"
         >
-            <el-input
+            <el-input-number
                 v-model="maxLength"
-                type="number"
                 :min="1"
             />
         </div>
@@ -25,7 +24,7 @@
 
 <script setup lang="ts">
 import { defineProps, computed } from 'vue';
-import { ElFormItem, ElInput } from "element-plus";
+import { ElFormItem, ElInputNumber } from "element-plus";
 
 const props = defineProps({
     elem: {

@@ -1,9 +1,9 @@
 <!--
- * @Description: 
+ * @Description: 开关
  * @Author: Hedgehog96
  * @Date: 2022-08-18 10:25:43
  * @LastEditors: Hedgehog96
- * @LastEditTime: 2022-08-18 15:00:35
+ * @LastEditTime: 2022-08-18 16:12:04
 -->
 <template>
     <el-switch

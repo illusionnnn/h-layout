@@ -3,7 +3,7 @@
  * @Author: Hedgehog96
  * @Date: 2022-05-20 16:47:09
  * @LastEditors: Hedgehog96
- * @LastEditTime: 2022-08-18 10:37:26
+ * @LastEditTime: 2022-08-18 16:13:51
 -->
 <template>
     <draggable
@@ -55,6 +55,10 @@
                             v-else-if="element.label === 'Switch'"
                             :elem="element"
                         />
+                        <rate-widget
+                            v-else-if="element.label === 'Rate'"
+                            :elem="element"
+                        />
                     </base-component>
                 </div>
             </template>
@@ -69,6 +73,7 @@ import BaseComponent from "./BaseComponent.vue";
 import InputWidget from "./form-widget/InputWidget.vue";
 import ButtonWidget from "./form-widget/ButtonWidget.vue";
 import SwitchWidget from "./form-widget/SwitchWidget.vue";
+import RateWidget from "./form-widget/RateWidget.vue";
 
 import { useComponentsStore } from "@/store/components";
 import { ComponentConfig } from "@/config/interfaces";

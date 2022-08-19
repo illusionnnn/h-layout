@@ -3,7 +3,7 @@
  * @Author: Hedgehog96
  * @Date: 2022-07-14 15:19:28
  * @LastEditors: Hedgehog96
- * @LastEditTime: 2022-08-18 14:54:46
+ * @LastEditTime: 2022-08-19 15:27:24
  */
 import { Component } from "vue";
 
@@ -64,7 +64,7 @@ const COMMON_PROPERTIES = {
 
 const ADVANCED_PROPERTIES = {
     // 'min'               :            'MinEditor',
-    // 'max'               :            'max-editor',
+    'max'               :            'MaxEditor',
     // 'precision'         :            'precision-editor',
     // 'step'              :            'step-editor',
     // 'controlsPosition'  :            'controlsPosition-editor',
@@ -81,11 +81,13 @@ const ADVANCED_PROPERTIES = {
     'inActiveText'      :            'InActiveTextEditor',
     // 'activeColor'       :            'activeColor-editor',
     // 'inactiveColor'     :            'inactiveColor-editor',
-    // 'lowThreshold'      :            'lowThreshold-editor',
-    // 'highThreshold'     :            'highThreshold-editor',
-    // 'allowHalf'         :            'allowHalf-editor',
-    // 'showText'          :            'showText-editor',
-    // 'showScore'         :            'showScore-editor',
+    'lowThreshold'      :            'LowThresholdEditor',
+    'highThreshold'     :            'HighThresholdEditor',
+    'allowHalf'         :            'AllowHalfEditor',
+    'showText'          :            'ShowTextEditor',
+    'showScore'         :            'ShowScoreEditor',
+    'voidIcon'          :            'VoidIconEditor',
+    'disabledVoidIcon'  :            'DisabledVoidIconEditor',
     // 'range'             :            'range-editor',
     // 'vertical'          :            'vertical-editor',
     'plain'             :            'PlainEditor',

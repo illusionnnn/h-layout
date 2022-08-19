@@ -1,22 +1,22 @@
 <!--
  * @Description: 
  * @Author: Hedgehog96
- * @Date: 2022-08-01 11:11:30
+ * @Date: 2022-08-18 16:41:37
  * @LastEditors: Hedgehog96
- * @LastEditTime: 2022-08-19 15:39:53
+ * @LastEditTime: 2022-08-19 15:40:23
 -->
 <template>
     <el-form-item class="h-editor">
         <span
             class="h-editor-title"
-            title="最小长度"
-        >最小长度</span>
+            title="低分界限值"
+        >低分界限值</span>
         <div
             class="h-editor-container"
         >
             <el-input-number
-                v-model="minLength"
-                :min="0"
+                v-model="lowThreshold"
+                :min="1"
             />
         </div>
     </el-form-item>
@@ -33,15 +33,15 @@ const props = defineProps({
     },
 });
 
-const minLength = computed(({
+const lowThreshold = computed(({
     get() {
-        return props.elem.props.minLength;
+        return props.elem.props.lowThreshold;
     },
     set(newVal) {
         if (!newVal || isNaN(newVal)) {
-            props.elem.props.minLength = null;
+            props.elem.props.lowThreshold = 2;
         } else {
-            props.elem.props.minLength = Number.parseInt(newVal);
+            props.elem.props.lowThreshold = Number.parseInt(newVal);
         }
     }
 }));

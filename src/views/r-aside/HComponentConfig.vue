@@ -3,7 +3,7 @@
  * @Author: Hedgehog96
  * @Date: 2022-05-11 14:08:14
  * @LastEditors: Hedgehog96
- * @LastEditTime: 2022-08-18 14:57:13
+ * @LastEditTime: 2022-08-19 15:29:02
 -->
 <template>
     <div
@@ -201,10 +201,37 @@ const getPropEditor = (propName: string, editorName: string) => {
         }
     }
 
+    if (state.currentElem.label === 'Rate') {
+        if (propName === 'allowHalf') {
+            return PropertyEditor.RateAllowHalfEditor;
+        }
+        else if (propName === 'lowThreshold') {
+            return PropertyEditor.RateLowThresholdEditor;
+        }
+        else if (propName === 'highThreshold') {
+            return PropertyEditor.RateHighThresholdEditor;
+        }
+        else if (propName === 'showText') {
+            return PropertyEditor.RateShowTextEditor;
+        }
+        else if (propName === 'showScore') {
+            return PropertyEditor.RateShowScoreEditor;
+        }
+        else if (propName === 'voidIcon') {
+            return PropertyEditor.RateVoidIconEditor;
+        }
+        else if (propName === 'disabledVoidIcon') {
+            return PropertyEditor.RateDisabledVoidIconEditor;
+        }
+    }
+
     if (state.currentElem.component.props[propName]) {
         const path = `./PropertyEditor/${editorName}.vue`;
         const components = import.meta.glob("./PropertyEditor/*.vue");
         return defineAsyncComponent(components[path]);
+    }
+    else if (propName === "max") {
+        return PropertyEditor.MaxEditor;
     }
     else if (propName === "minLength") {
         return PropertyEditor.MinLengthEditor;
