@@ -3,7 +3,7 @@
  * @Author: Hedgehog96
  * @Date: 2022-05-09 15:33:03
  * @LastEditors: Hedgehog96
- * @LastEditTime: 2022-08-11 16:26:23
+ * @LastEditTime: 2022-08-21 16:59:29
 -->
 <template>
     <div class="h-components">
@@ -29,7 +29,7 @@
                             :key="element.id"
                             :data-id="element.name"
                             class="h-components-drag-area-item"
-                            type="warning"
+                            effect="plain"
                         >
                             <i :class="['iconfont', element.icon]" />
                             {{ element.title }}

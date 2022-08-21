@@ -3,7 +3,7 @@
  * @Author: Hedgehog96
  * @Date: 2022-05-07 16:34:02
  * @LastEditors: Hedgehog96
- * @LastEditTime: 2022-08-17 10:44:51
+ * @LastEditTime: 2022-08-21 17:14:48
 -->
 <template>
     <div class="h-base-header">
@@ -15,6 +15,13 @@
             <span class="h-base-header-title">h-layout</span>
         </div>
         <div class="h-base-header-btns">
+            <a
+                title="Github"
+                href="https://github.com/Hedgehog96/h-layout"
+                target="_blank"
+            >
+                <i class="iconfont icon-h-github" />Github
+            </a>
             <el-button
                 size="small"
                 @click="handleFullScreen"
@@ -99,13 +106,25 @@ const handleCleanCache = () => {
     .h-base-header-btns {
         margin-left: auto;
         display: flex;
+        align-items: center;
 
         .el-icon,
         .iconfont {
-        margin-right: 4px;
+            margin-right: 4px;
         }
         .iconfont {
-        font-size: 12px;
+            font-size: 12px;
+        }
+
+        a {
+            margin-right: 10px;
+            color: #409eff;
+            text-decoration: none;
+            font-size: 14px;
+            
+            .iconfont {
+                font-size: 16px;
+            }
         }
     }
 }
