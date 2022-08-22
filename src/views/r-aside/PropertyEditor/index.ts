@@ -3,7 +3,7 @@
  * @Author: Hedgehog96
  * @Date: 2022-07-21 11:44:24
  * @LastEditors: Hedgehog96
- * @LastEditTime: 2022-08-19 15:28:45
+ * @LastEditTime: 2022-08-22 11:34:09
  */
 import UniqueKeyEditor from "./UniquekeyEditor.vue";
 import LabelEditor from "./LabelEditor.vue";
@@ -22,6 +22,7 @@ import AppendEditor from "./AppendEditor.vue";
 import PrependButtonEditor from "./PrependButtonEditor.vue";
 import PrependEditor from "./PrependEditor.vue";
 import MaxEditor from "./MaxEditor.vue";
+import HiddenEditor from "./HiddenEditor.vue";
 
 import ButtonTypeEditor from "./FieldButton/TypeEditor.vue";
 import ButtonPlainEditor from "./FieldButton/PlainEditor.vue";
@@ -47,6 +48,8 @@ import RateShowScoreEditor from "./FieldRate/ShowScoreEditor.vue";
 import RateVoidIconEditor from "./FieldRate/VoidIconEditor.vue";
 import RateDisabledVoidIconEditor from "./FieldRate/DisabledVoidIconEditor.vue";
 
+import TextContentEditor from "./FieldText/TextContentEditor.vue";
+
 export default {
     "UniqueKeyEditor" :UniqueKeyEditor,
     "LabelEditor": LabelEditor,
@@ -65,6 +68,7 @@ export default {
     "AppendButtonEditor": AppendButtonEditor,
     "AppendEditor": AppendEditor,
     "MaxEditor": MaxEditor,
+    "HiddenEditor": HiddenEditor,
 
     "ButtonTypeEditor": ButtonTypeEditor,
     "ButtonPlainEditor": ButtonPlainEditor,
@@ -88,5 +92,7 @@ export default {
     "RateShowTextEditor": RateShowTextEditor,
     "RateShowScoreEditor": RateShowScoreEditor,
     "RateVoidIconEditor": RateVoidIconEditor,
-    "RateDisabledVoidIconEditor": RateDisabledVoidIconEditor
+    "RateDisabledVoidIconEditor": RateDisabledVoidIconEditor,
+
+    "TextContentEditor": TextContentEditor
 };

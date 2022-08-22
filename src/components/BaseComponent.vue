@@ -3,14 +3,17 @@
  * @Author: Hedgehog96
  * @Date: 2022-05-25 15:37:32
  * @LastEditors: Hedgehog96
- * @LastEditTime: 2022-07-27 15:08:14
+ * @LastEditTime: 2022-08-22 11:42:46
 -->
 <template>
     <div
         class="h-base-component"
         :class="activated ? 'activated' : 'unactivated'"
     >
-        <div class="component-name">
+        <div
+            v-show="!props.elem.props.hidden"
+            class="component-name"
+        >
             {{ props.elem.label }}
         </div>
         <slot />

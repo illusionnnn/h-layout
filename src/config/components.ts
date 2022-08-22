@@ -3,7 +3,7 @@
  * @Author: Hedgehog96
  * @Date: 2022-05-09 17:30:41
  * @LastEditors: Hedgehog96
- * @LastEditTime: 2022-08-19 15:44:34
+ * @LastEditTime: 2022-08-22 11:35:35
  */
 import { ElButton, ElInput, ElSwitch, ElRate } from "element-plus";
 import BaseContainer from "@/components/BaseContainer.vue";
@@ -60,6 +60,7 @@ export default [
                     prepend: '',
                     appendButton: false,
                     append: '',
+                    hidden: false,
                 },
                 event: {
                     onFocus: '',
@@ -87,7 +88,8 @@ export default [
                     maxLength: 1,
                     showWordLimit: false,
                     rows: 2,
-                    autosize: false
+                    autosize: false,
+                    hidden: false,
                 },
                 event: {
                     onFocus: '',
@@ -117,7 +119,7 @@ export default [
                     circle: false,
                     disabled: false,
                     buttonIcon: '',
-                    
+                    hidden: false,
                 },
                 event: {
                     onClick: ''
@@ -141,6 +143,7 @@ export default [
                     inActiveIcon: '',
                     activeText: '',
                     inActiveText: '',
+                    hidden: false,
                 },
                 event: {
                     onChange: ''
@@ -166,11 +169,27 @@ export default [
                     showText: false,
                     showScore: false,
                     voidIcon: 'Star',
-                    disabledVoidIcon: 'StarFilled'
+                    disabledVoidIcon: 'StarFilled',
+                    hidden: false,
                 },
                 event: {
                     onChange: ''
                 },
+            },
+            {
+                id: 7,
+                pid: -1,
+                uniqueKey: "Text7",
+                title: "静态文本",
+                label: "Text",
+                icon: "icon-h-wenzi",
+                showTitle: false,
+                component: ElRate,
+                props: {
+                    textContent: '文本',
+                    hidden: false,
+                },
+                event: {},
             },
         ],
     },

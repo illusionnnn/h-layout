@@ -3,7 +3,7 @@
  * @Author: Hedgehog96
  * @Date: 2022-05-20 16:47:09
  * @LastEditors: Hedgehog96
- * @LastEditTime: 2022-08-18 16:13:51
+ * @LastEditTime: 2022-08-22 10:54:39
 -->
 <template>
     <draggable
@@ -59,6 +59,10 @@
                             v-else-if="element.label === 'Rate'"
                             :elem="element"
                         />
+                        <text-widget
+                            v-else-if="element.label === 'Text'"
+                            :elem="element"
+                        />
                     </base-component>
                 </div>
             </template>
@@ -70,10 +74,7 @@
 import { defineProps, inject, nextTick } from "vue";
 import Draggable from "vuedraggable";
 import BaseComponent from "./BaseComponent.vue";
-import InputWidget from "./form-widget/InputWidget.vue";
-import ButtonWidget from "./form-widget/ButtonWidget.vue";
-import SwitchWidget from "./form-widget/SwitchWidget.vue";
-import RateWidget from "./form-widget/RateWidget.vue";
+import _ from "./form-widget";
 
 import { useComponentsStore } from "@/store/components";
 import { ComponentConfig } from "@/config/interfaces";

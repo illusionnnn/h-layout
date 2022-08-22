@@ -28,6 +28,7 @@ declare module '@vue/runtime-core' {
     RateWidget: typeof import('./src/components/form-widget/RateWidget.vue')['default']
     StructureTree: typeof import('./src/components/StructureTree.vue')['default']
     SwitchWidget: typeof import('./src/components/form-widget/SwitchWidget.vue')['default']
+    TextWidget: typeof import('./src/components/form-widget/TextWidget.vue')['default']
   }
 }
 

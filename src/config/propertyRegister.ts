@@ -3,7 +3,7 @@
  * @Author: Hedgehog96
  * @Date: 2022-07-14 15:19:28
  * @LastEditors: Hedgehog96
- * @LastEditTime: 2022-08-19 15:27:24
+ * @LastEditTime: 2022-08-22 11:34:48
  */
 import { Component } from "vue";
 
@@ -34,12 +34,12 @@ const COMMON_PROPERTIES = {
     // "validationHint"    :            "validationHint-editor",
     "readonly"          :            "ReadonlyEditor",
     "disabled"          :            "DisabledEditor",
-    // "hidden"            :            "hidden-editor",
+    "hidden"            :            "HiddenEditor",
     "clearable"         :            "ClearableEditor",
-    "inlinePrompt"      :            "InlinePromptEditor"
+    "inlinePrompt"      :            "InlinePromptEditor",
     // "editable"          :            "editable-editor",
     // "showPassword"      :            "showPassword-editor",
-    // "textContent"       :            "textContent-editor",
+    "textContent"       :            "TextContentEditor",
     // "htmlContent"       :            "htmlContent-editor",
     // "format"            :            "format-editor",
     // "valueFormat"       :            "valueFormat-editor",
