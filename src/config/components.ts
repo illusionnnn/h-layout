@@ -3,9 +3,9 @@
  * @Author: Hedgehog96
  * @Date: 2022-05-09 17:30:41
  * @LastEditors: Hedgehog96
- * @LastEditTime: 2022-08-22 11:35:35
+ * @LastEditTime: 2022-08-23 16:44:39
  */
-import { ElButton, ElInput, ElSwitch, ElRate } from "element-plus";
+import { ElButton, ElInput, ElSwitch, ElRate, ElRadio } from "element-plus";
 import BaseContainer from "@/components/BaseContainer.vue";
 
 export default [
@@ -190,6 +190,30 @@ export default [
                     hidden: false,
                 },
                 event: {},
+            },
+            {
+                id: 8,
+                pid: -1,
+                uniqueKey: "Radio8",
+                title: "单选框",
+                label: "Radio",
+                icon: "icon-h-radio",
+                showTitle: false,
+                component: ElRadio,
+                props: {
+                    size: 'default',
+                    disabled: false,
+                    border: false,
+                    buttonStyle: false,
+                    hidden: false,
+                    optionItems: [
+                        { text: 'radio1', label: 'radio1' },
+                        { text: 'radio2', label: 'radio2' },
+                    ]
+                },
+                event: {
+                    onChange: ''
+                },
             },
         ],
     },

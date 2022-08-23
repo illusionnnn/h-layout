@@ -3,7 +3,7 @@
  * @Author: Hedgehog96
  * @Date: 2022-05-11 14:08:14
  * @LastEditors: Hedgehog96
- * @LastEditTime: 2022-08-22 11:36:07
+ * @LastEditTime: 2022-08-23 15:58:40
 -->
 <template>
     <div
@@ -231,6 +231,15 @@ const getPropEditor = (propName: string, editorName: string) => {
         }
     }
 
+    if (state.currentElem.label === 'Radio') {
+        if (propName === 'buttonStyle') {
+            return PropertyEditor.RadioButtonStyleEditor;
+        }
+        else if (propName === 'border') {
+            return PropertyEditor.RadioBorderEditor;
+        }
+    }
+
     if (state.currentElem.component.props[propName]) {
         const path = `./PropertyEditor/${editorName}.vue`;
         const components = import.meta.glob("./PropertyEditor/*.vue");
@@ -262,6 +271,9 @@ const getPropEditor = (propName: string, editorName: string) => {
     }
     else if (propName === "hidden") {
         return PropertyEditor.HiddenEditor;
+    }
+    else if (propName === "optionItems") {
+        return PropertyEditor.OptionItemsEditor;
     }
 
     else if (propName === "onFocus") {

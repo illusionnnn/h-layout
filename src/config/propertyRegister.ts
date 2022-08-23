@@ -3,7 +3,7 @@
  * @Author: Hedgehog96
  * @Date: 2022-07-14 15:19:28
  * @LastEditors: Hedgehog96
- * @LastEditTime: 2022-08-22 11:34:48
+ * @LastEditTime: 2022-08-22 16:04:22
  */
 import { Component } from "vue";
 
@@ -23,8 +23,8 @@ const COMMON_PROPERTIES = {
     "size"              :            "SizeEditor",
     // "showStops"         :            "showStops-editor",
     // "displayStyle"      :            "displayStyle-editor",
-    // "buttonStyle"       :            "buttonStyle-editor",
-    // "border"            :            "border-editor",
+    "buttonStyle"       :            "ButtonStyleEditor",
+    "border"            :            "BorderEditor",
     // "labelWidth"        :            "labelWidth-editor",
     // "labelHidden"       :            "labelHidden-editor",
     "rows"              :            "RowsEditor",
@@ -50,7 +50,7 @@ const COMMON_PROPERTIES = {
     // "multiple"          :            "multiple-editor",
     // "multipleLimit"     :            "multipleLimit-editor",
     // "contentPosition"   :            "contentPosition-editor",
-    // "optionItems"       :            "optionItems-editor",
+    "optionItems"       :            "OptionItemsEditor",
     // "uploadURL"         :            "uploadURL-editor",
     // "uploadTip"         :            "uploadTip-editor",
     // "withCredentials"   :            "withCredentials-editor",

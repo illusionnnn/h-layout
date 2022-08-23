@@ -3,7 +3,7 @@
  * @Author: Hedgehog96
  * @Date: 2022-05-20 16:47:09
  * @LastEditors: Hedgehog96
- * @LastEditTime: 2022-08-22 10:54:39
+ * @LastEditTime: 2022-08-22 14:57:55
 -->
 <template>
     <draggable
@@ -61,6 +61,10 @@
                         />
                         <text-widget
                             v-else-if="element.label === 'Text'"
+                            :elem="element"
+                        />
+                        <radio-widget
+                            v-else-if="element.label === 'Radio'"
                             :elem="element"
                         />
                     </base-component>

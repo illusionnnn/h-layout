@@ -3,7 +3,7 @@
  * @Author: Hedgehog96
  * @Date: 2022-07-21 11:44:24
  * @LastEditors: Hedgehog96
- * @LastEditTime: 2022-08-22 11:34:09
+ * @LastEditTime: 2022-08-23 15:58:24
  */
 import UniqueKeyEditor from "./UniquekeyEditor.vue";
 import LabelEditor from "./LabelEditor.vue";
@@ -23,6 +23,7 @@ import PrependButtonEditor from "./PrependButtonEditor.vue";
 import PrependEditor from "./PrependEditor.vue";
 import MaxEditor from "./MaxEditor.vue";
 import HiddenEditor from "./HiddenEditor.vue";
+import OptionItemsEditor from "./OptionItemsEditor.vue";
 
 import ButtonTypeEditor from "./FieldButton/TypeEditor.vue";
 import ButtonPlainEditor from "./FieldButton/PlainEditor.vue";
@@ -50,6 +51,9 @@ import RateDisabledVoidIconEditor from "./FieldRate/DisabledVoidIconEditor.vue";
 
 import TextContentEditor from "./FieldText/TextContentEditor.vue";
 
+import RadioButtonStyleEditor from "./FieldRadio/ButtonStyleEditor.vue";
+import RadioBorderEditor from "./FieldRadio/BorderEditor.vue";
+
 export default {
     "UniqueKeyEditor" :UniqueKeyEditor,
     "LabelEditor": LabelEditor,
@@ -69,6 +73,7 @@ export default {
     "AppendEditor": AppendEditor,
     "MaxEditor": MaxEditor,
     "HiddenEditor": HiddenEditor,
+    "OptionItemsEditor": OptionItemsEditor,
 
     "ButtonTypeEditor": ButtonTypeEditor,
     "ButtonPlainEditor": ButtonPlainEditor,
@@ -94,5 +99,8 @@ export default {
     "RateVoidIconEditor": RateVoidIconEditor,
     "RateDisabledVoidIconEditor": RateDisabledVoidIconEditor,
 
-    "TextContentEditor": TextContentEditor
+    "TextContentEditor": TextContentEditor,
+
+    "RadioButtonStyleEditor": RadioButtonStyleEditor,
+    "RadioBorderEditor": RadioBorderEditor
 };

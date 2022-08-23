@@ -3,7 +3,7 @@
  * @Author: Hedgehog96
  * @Date: 2022-05-17 10:46:19
  * @LastEditors: Hedgehog96
- * @LastEditTime: 2022-08-16 14:54:56
+ * @LastEditTime: 2022-08-23 15:15:24
 -->
 <template>
     <div class="h-main-header">
@@ -59,6 +59,7 @@ const handleTree = (op: boolean) => {
     opTree.value = op;
 };
 const handleCleanAll = () => {
+    if (!componentsStore.components.length) return;
     componentsStore.clear();
 };
 
