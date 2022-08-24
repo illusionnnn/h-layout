@@ -3,7 +3,7 @@
  * @Author: Hedgehog96
  * @Date: 2022-08-22 16:04:45
  * @LastEditors: Hedgehog96
- * @LastEditTime: 2022-08-23 17:02:05
+ * @LastEditTime: 2022-08-24 17:20:18
 -->
 <template>
     <el-form-item class="h-editor">
@@ -20,7 +20,6 @@
                 v-model="item.label"
                 style="width: 45%; margin-right: 10px;"
                 title="值"
-                @input="debounce(handleChangeLabel, 300)"
             />
             <el-input
                 v-model="item.text"
@@ -48,7 +47,11 @@
 import { defineProps, getCurrentInstance } from 'vue';
 import { Delete } from '@element-plus/icons-vue';
 import { ElFormItem, ElInput, ElButton, ElDivider } from "element-plus";
-import { debounce } from 'lodash-es';
+
+interface Item {
+    text: string | number;
+    label: string | number;
+}
 
 const props = defineProps({
     elem: {
@@ -58,21 +61,43 @@ const props = defineProps({
 });
 
 const instance = getCurrentInstance();
-const handleDelete = (item: { text: string; label: string }) => {
+const handleDelete = (item: Item) => {
     if (props.elem.props.optionItems.length === 1) {
         instance?.appContext.config.globalProperties.$message.warning('不能删除全部选项');
     } else {
-        const _ = props.elem.props.optionItems.filter((_item: { text: string; label: string }) => _item.label !== item.label);
+        const _ = props.elem.props.optionItems.filter((_item: Item) => _item.label !== item.label);
         props.elem.props.optionItems = _;
     }
 };
+
 const handleAdd = () => {
     props.elem.props.optionItems.push(
         { text: `radio${+new Date()}`, label: `radio${+new Date()}` }
     );
 };
-const handleChangeLabel = (value: string) => {
-    console.log(value);
+const handleChangeLabel = (value: string | number, item: Item) => {
+    const _ = props.elem.props.optionItems.filter((_item: Item) => _item.text !== item.text);
+    const __ = props.elem.props.optionItems.filter((_item: Item) => _item.text === item.text)[0];
+    _.forEach((_item: Item) => {
+        if (_item.label === value) {
+            instance?.appContext.config.globalProperties.$message.error('输入值已存在');
+            return;
+        } else {
+            __.label = value;
+        }
+    });
+};
+const handleChangeText = (value: string | number, item: Item) => {
+    const _ = props.elem.props.optionItems.filter((_item: Item) => _item.label !== item.label);
+    const __ = props.elem.props.optionItems.filter((_item: Item) => _item.label === item.label)[0];
+    _.forEach((_item: Item) => {
+        if (_item.text === value) {
+            instance?.appContext.config.globalProperties.$message.error('输入文本已存在');
+            return;
+        } else {
+            __.text = value;
+        }
+    });
 };
 </script>
 
