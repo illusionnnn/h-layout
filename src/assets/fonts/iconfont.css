@@ -1,9 +1,9 @@
 @font-face {
   font-family: "iconfont"; /* Project id 3383636 */
-  src: url('iconfont.woff2?t=1661149832466') format('woff2'),
-       url('iconfont.woff?t=1661149832466') format('woff'),
-       url('iconfont.ttf?t=1661149832466') format('truetype'),
-       url('iconfont.svg?t=1661149832466#iconfont') format('svg');
+  src: url('iconfont.woff2?t=1661411720767') format('woff2'),
+       url('iconfont.woff?t=1661411720767') format('woff'),
+       url('iconfont.ttf?t=1661411720767') format('truetype'),
+       url('iconfont.svg?t=1661411720767#iconfont') format('svg');
 }
 
 .iconfont {
@@ -14,8 +14,12 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
-.icon-h-checkbox:before {
-  content: "\e623";
+.icon-h-hr:before {
+  content: "\e60a";
+}
+
+.icon-h-checkbox-checked:before {
+  content: "\e646";
 }
 
 .icon-h-radio:before {

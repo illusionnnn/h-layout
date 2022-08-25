@@ -12,6 +12,7 @@ declare module '@vue/runtime-core' {
     BaseMain: typeof import('./src/components/BaseMain.vue')['default']
     BaseRaside: typeof import('./src/components/BaseRaside.vue')['default']
     ButtonWidget: typeof import('./src/components/form-widget/ButtonWidget.vue')['default']
+    CheckboxWidget: typeof import('./src/components/form-widget/CheckboxWidget.vue')['default']
     CodeEditor: typeof import('./src/components/CodeEditor.vue')['default']
     ElAside: typeof import('element-plus/es')['ElAside']
     ElButton: typeof import('element-plus/es')['ElButton']

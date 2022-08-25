@@ -3,9 +3,9 @@
  * @Author: Hedgehog96
  * @Date: 2022-05-09 17:30:41
  * @LastEditors: Hedgehog96
- * @LastEditTime: 2022-08-23 16:44:39
+ * @LastEditTime: 2022-08-25 15:20:48
  */
-import { ElButton, ElInput, ElSwitch, ElRate, ElRadio } from "element-plus";
+import { ElButton, ElInput, ElSwitch, ElRate, ElRadio, ElCheckbox } from "element-plus";
 import BaseContainer from "@/components/BaseContainer.vue";
 
 export default [
@@ -209,6 +209,31 @@ export default [
                     optionItems: [
                         { text: 'radio1', label: 'radio1' },
                         { text: 'radio2', label: 'radio2' },
+                    ]
+                },
+                event: {
+                    onChange: ''
+                },
+            },
+            {
+                id: 9,
+                pid: -1,
+                uniqueKey: "Checkbox9",
+                title: "多选框",
+                label: "Checkbox",
+                icon: "icon-h-checkbox-checked",
+                showTitle: false,
+                component: ElCheckbox,
+                props: {
+                    size: 'default',
+                    disabled: false,
+                    border: false,
+                    buttonStyle: false,
+                    hidden: false,
+                    max: 10,
+                    optionItems: [
+                        { text: 'checkbox1', label: 'checkbox1' },
+                        { text: 'checkbox2', label: 'checkbox2' },
                     ]
                 },
                 event: {

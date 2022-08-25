@@ -3,7 +3,7 @@
  * @Author: Hedgehog96
  * @Date: 2022-05-11 14:08:14
  * @LastEditors: Hedgehog96
- * @LastEditTime: 2022-08-23 15:58:40
+ * @LastEditTime: 2022-08-25 15:20:44
 -->
 <template>
     <div
@@ -231,7 +231,7 @@ const getPropEditor = (propName: string, editorName: string) => {
         }
     }
 
-    if (state.currentElem.label === 'Radio') {
+    if (state.currentElem.label === 'Radio' || state.currentElem.label === 'Checkbox') {
         if (propName === 'buttonStyle') {
             return PropertyEditor.RadioButtonStyleEditor;
         }

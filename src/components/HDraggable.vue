@@ -3,7 +3,7 @@
  * @Author: Hedgehog96
  * @Date: 2022-05-20 16:47:09
  * @LastEditors: Hedgehog96
- * @LastEditTime: 2022-08-22 14:57:55
+ * @LastEditTime: 2022-08-25 15:06:00
 -->
 <template>
     <draggable
@@ -67,6 +67,10 @@
                             v-else-if="element.label === 'Radio'"
                             :elem="element"
                         />
+                        <checkbox-widget
+                            v-else-if="element.label === 'Checkbox'"
+                            :elem="element"
+                        />
                     </base-component>
                 </div>
             </template>
@@ -82,6 +86,7 @@ import _ from "./form-widget";
 
 import { useComponentsStore } from "@/store/components";
 import { ComponentConfig } from "@/config/interfaces";
+import CheckboxWidget from "./form-widget/CheckboxWidget.vue";
 
 const props = defineProps({
     componentId: {
