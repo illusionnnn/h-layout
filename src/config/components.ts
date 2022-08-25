@@ -3,9 +3,9 @@
  * @Author: Hedgehog96
  * @Date: 2022-05-09 17:30:41
  * @LastEditors: Hedgehog96
- * @LastEditTime: 2022-08-25 15:20:48
+ * @LastEditTime: 2022-08-25 22:02:24
  */
-import { ElButton, ElInput, ElSwitch, ElRate, ElRadio, ElCheckbox } from "element-plus";
+import { ElButton, ElInput, ElSwitch, ElRate, ElRadio, ElCheckbox, ElDivider } from "element-plus";
 import BaseContainer from "@/components/BaseContainer.vue";
 
 export default [
@@ -239,6 +239,24 @@ export default [
                 event: {
                     onChange: ''
                 },
+            },
+            {
+                id: 10,
+                pid: -1,
+                uniqueKey: "Divider10",
+                title: "分割线",
+                label: "Divider",
+                icon: "icon-h-hr",
+                showTitle: false,
+                component: ElDivider,
+                props: {
+                    showText: false,
+                    textContent: 'divider',
+                    contentPosition: 'center',
+                    borderStyle: 'solid',
+                    hidden: false,
+                },
+                event: {},
             },
         ],
     },

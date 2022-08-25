@@ -3,7 +3,7 @@
  * @Author: Hedgehog96
  * @Date: 2022-05-11 14:08:14
  * @LastEditors: Hedgehog96
- * @LastEditTime: 2022-08-25 15:20:44
+ * @LastEditTime: 2022-08-25 22:03:08
 -->
 <template>
     <div
@@ -211,9 +211,6 @@ const getPropEditor = (propName: string, editorName: string) => {
         else if (propName === 'highThreshold') {
             return PropertyEditor.RateHighThresholdEditor;
         }
-        else if (propName === 'showText') {
-            return PropertyEditor.RateShowTextEditor;
-        }
         else if (propName === 'showScore') {
             return PropertyEditor.RateShowScoreEditor;
         }
@@ -225,10 +222,11 @@ const getPropEditor = (propName: string, editorName: string) => {
         }
     }
 
-    if (state.currentElem.label === 'Text') {
-        if (propName === 'textContent') {
-            return PropertyEditor.TextContentEditor;
-        }
+    if (propName === 'textContent') {
+        return PropertyEditor.TextContentEditor;
+    }
+    else if (propName === 'showText') {
+        return PropertyEditor.ShowTextEditor;
     }
 
     if (state.currentElem.label === 'Radio' || state.currentElem.label === 'Checkbox') {
@@ -239,6 +237,16 @@ const getPropEditor = (propName: string, editorName: string) => {
             return PropertyEditor.RadioBorderEditor;
         }
     }
+
+    if (state.currentElem.label === 'Divider') {
+        if (propName === 'contentPosition') {
+            return PropertyEditor.DividerContentPositionEditor;
+        }
+        else if (propName === 'borderStyle') {
+            return PropertyEditor.DividerBorderStyleEditor;
+        }
+    }
+    
 
     if (state.currentElem.component.props[propName]) {
         const path = `./PropertyEditor/${editorName}.vue`;

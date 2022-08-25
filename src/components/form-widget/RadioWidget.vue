@@ -1,9 +1,9 @@
 <!--
- * @Description: 
+ * @Description: 单选框
  * @Author: Hedgehog96
  * @Date: 2022-08-22 14:31:48
  * @LastEditors: Hedgehog96
- * @LastEditTime: 2022-08-23 16:29:40
+ * @LastEditTime: 2022-08-25 21:35:52
 -->
 <template>
     <el-radio-group

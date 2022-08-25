@@ -3,7 +3,7 @@
  * @Author: Hedgehog96
  * @Date: 2022-07-14 15:19:28
  * @LastEditors: Hedgehog96
- * @LastEditTime: 2022-08-22 16:04:22
+ * @LastEditTime: 2022-08-25 21:59:44
  */
 import { Component } from "vue";
 
@@ -49,7 +49,8 @@ const COMMON_PROPERTIES = {
     // "automaticDropdown" :            "automaticDropdown-editor",
     // "multiple"          :            "multiple-editor",
     // "multipleLimit"     :            "multipleLimit-editor",
-    // "contentPosition"   :            "contentPosition-editor",
+    "contentPosition"   :            "ContentPositionEditor",
+    "borderStyle"       :            "BorderStyleEditor",
     "optionItems"       :            "OptionItemsEditor",
     // "uploadURL"         :            "uploadURL-editor",
     // "uploadTip"         :            "uploadTip-editor",

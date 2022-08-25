@@ -3,7 +3,7 @@
  * @Author: Hedgehog96
  * @Date: 2022-05-20 16:47:09
  * @LastEditors: Hedgehog96
- * @LastEditTime: 2022-08-25 15:06:00
+ * @LastEditTime: 2022-08-25 21:40:16
 -->
 <template>
     <draggable
@@ -71,6 +71,10 @@
                             v-else-if="element.label === 'Checkbox'"
                             :elem="element"
                         />
+                        <divider-widget
+                            v-else-if="element.label === 'Divider'"
+                            :elem="element"
+                        />
                     </base-component>
                 </div>
             </template>
@@ -87,6 +91,7 @@ import _ from "./form-widget";
 import { useComponentsStore } from "@/store/components";
 import { ComponentConfig } from "@/config/interfaces";
 import CheckboxWidget from "./form-widget/CheckboxWidget.vue";
+import DividerWidget from "./form-widget/DividerWidget.vue";
 
 const props = defineProps({
     componentId: {

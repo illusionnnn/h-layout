@@ -3,7 +3,7 @@
  * @Author: Hedgehog96
  * @Date: 2022-07-21 11:44:24
  * @LastEditors: Hedgehog96
- * @LastEditTime: 2022-08-23 15:58:24
+ * @LastEditTime: 2022-08-25 22:01:30
  */
 import UniqueKeyEditor from "./UniquekeyEditor.vue";
 import LabelEditor from "./LabelEditor.vue";
@@ -44,7 +44,7 @@ import SwitchInActiveTextEditor from "./FieldSwitch/InActiveTextEditor.vue";
 import RateAllowHalfEditor from "./FieldRate/AllowHalfEditor.vue";
 import RateLowThresholdEditor from "./FieldRate/LowThresholdEditor.vue";
 import RateHighThresholdEditor from "./FieldRate/HighThresholdEditor.vue";
-import RateShowTextEditor from "./FieldRate/ShowTextEditor.vue";
+import ShowTextEditor from "./FieldRate/ShowTextEditor.vue";
 import RateShowScoreEditor from "./FieldRate/ShowScoreEditor.vue";
 import RateVoidIconEditor from "./FieldRate/VoidIconEditor.vue";
 import RateDisabledVoidIconEditor from "./FieldRate/DisabledVoidIconEditor.vue";
@@ -53,6 +53,9 @@ import TextContentEditor from "./FieldText/TextContentEditor.vue";
 
 import RadioButtonStyleEditor from "./FieldRadio/ButtonStyleEditor.vue";
 import RadioBorderEditor from "./FieldRadio/BorderEditor.vue";
+
+import DividerContentPositionEditor from "./FieldDivider/ContentPositionEditor.vue";
+import DividerBorderStyleEditor from "./FieldDivider/BorderStyleEditor.vue";
 
 export default {
     "UniqueKeyEditor" :UniqueKeyEditor,
@@ -94,7 +97,7 @@ export default {
     "RateAllowHalfEditor": RateAllowHalfEditor,
     "RateLowThresholdEditor": RateLowThresholdEditor,
     "RateHighThresholdEditor": RateHighThresholdEditor,
-    "RateShowTextEditor": RateShowTextEditor,
+    "ShowTextEditor": ShowTextEditor,
     "RateShowScoreEditor": RateShowScoreEditor,
     "RateVoidIconEditor": RateVoidIconEditor,
     "RateDisabledVoidIconEditor": RateDisabledVoidIconEditor,
@@ -102,5 +105,8 @@ export default {
     "TextContentEditor": TextContentEditor,
 
     "RadioButtonStyleEditor": RadioButtonStyleEditor,
-    "RadioBorderEditor": RadioBorderEditor
+    "RadioBorderEditor": RadioBorderEditor,
+
+    "DividerContentPositionEditor": DividerContentPositionEditor,
+    "DividerBorderStyleEditor": DividerBorderStyleEditor
 };

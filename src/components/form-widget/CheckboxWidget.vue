@@ -1,9 +1,9 @@
 <!--
- * @Description: 
+ * @Description: 多选框
  * @Author: Hedgehog96
  * @Date: 2022-08-25 14:59:12
  * @LastEditors: Hedgehog96
- * @LastEditTime: 2022-08-25 15:20:51
+ * @LastEditTime: 2022-08-25 21:35:35
 -->
 <template>
     <el-checkbox-group
