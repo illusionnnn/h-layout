@@ -3,7 +3,7 @@
  * @Author: Hedgehog96
  * @Date: 2022-05-17 10:46:19
  * @LastEditors: Hedgehog96
- * @LastEditTime: 2022-08-23 15:15:24
+ * @LastEditTime: 2022-08-27 18:18:35
 -->
 <template>
     <div class="h-main-header">
@@ -26,8 +26,13 @@
             >
                 <i class="iconfont icon-h-jiegou" />结构
             </el-button>
-            <el-button size="small">
-                <i class="iconfont icon-h-yulan" />预览
+            <el-button
+                size="small"
+                @click="isPreview = true"
+            >
+                <i
+                    class="iconfont icon-h-yulan"
+                />预览
             </el-button>
             <el-button
                 size="small"
@@ -44,23 +49,32 @@
         :node-key="currentNodeKey"
         @close="handleTree(false)"
     />
+    <preview-dialog
+        :visible="isPreview"
+        @close="handleClosePreiview"
+    />
 </template>
 
 <script setup lang="ts">
 import { ref, inject } from 'vue';
 import StructureTree from '@/components/StructureTree.vue';
+import PreviewDialog from '@/components/PreviewDialog.vue';
 import { useComponentsStore } from '@/store/components';
 import { ComponentConfig } from '@/config/interfaces';
 
 const componentsStore = useComponentsStore();
 
 const opTree = ref(false);
+const isPreview = ref(false);
 const handleTree = (op: boolean) => {
     opTree.value = op;
 };
 const handleCleanAll = () => {
     if (!componentsStore.components.length) return;
     componentsStore.clear();
+};
+const handleClosePreiview = () => {
+    isPreview.value = false;
 };
 
 const currentNodeKey = ref('');
