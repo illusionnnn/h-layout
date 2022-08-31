@@ -3,7 +3,7 @@
  * @Author: Hedgehog96
  * @Date: 2022-05-17 10:46:19
  * @LastEditors: Hedgehog96
- * @LastEditTime: 2022-08-27 18:18:35
+ * @LastEditTime: 2022-08-31 17:42:10
 -->
 <template>
     <div class="h-main-header">
@@ -11,13 +11,13 @@
             class="iconfont icon-h-undo"
             :class="[componentsStore.snapshotIdx >= 0 && 'can-undo']"
             title="撤销"
-            @click="componentsStore.undo()"
+            @click="handleUndo()"
         />
         <i
             class="iconfont icon-h-redo"
             :class="[componentsStore.snapshotIdx < componentsStore.snapshotcomponents.length - 1 && 'can-redo']"
             title="恢复"
-            @click="componentsStore.redo()"
+            @click="handleRedo()"
         />
         <div class="h-main-header-btns">
             <el-button
@@ -82,6 +82,24 @@ const EVENT_BUS: any = inject("eventBus");
 EVENT_BUS.on("clickComponent", (elem: ComponentConfig) => {
     currentNodeKey.value = elem.uniqueKey;
 });
+const handleUndo = () => {
+    componentsStore.undo();
+    const c = componentsStore.components.slice(-1);
+    if (c.length) {
+        EVENT_BUS.emit("changeComponentId", c[0].id);
+        EVENT_BUS.emit("clickComponent", c[0]);
+    } else {
+        EVENT_BUS.emit("changeComponentId", -1);
+        EVENT_BUS.emit("clickComponent", {});
+    }
+};
+const handleRedo = () => {
+    if (!componentsStore.snapshotcomponents.length) return; 
+    componentsStore.redo();
+    const c = componentsStore.components.slice(-1)[0];
+    EVENT_BUS.emit("changeComponentId", c.id);
+    EVENT_BUS.emit("clickComponent", c);
+};
 </script>
 
 <style lang="scss" scoped>
