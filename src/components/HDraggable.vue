@@ -3,7 +3,7 @@
  * @Author: Hedgehog96
  * @Date: 2022-05-20 16:47:09
  * @LastEditors: Hedgehog96
- * @LastEditTime: 2022-08-25 21:40:16
+ * @LastEditTime: 2022-08-27 18:47:44
 -->
 <template>
     <draggable
@@ -90,8 +90,6 @@ import _ from "./form-widget";
 
 import { useComponentsStore } from "@/store/components";
 import { ComponentConfig } from "@/config/interfaces";
-import CheckboxWidget from "./form-widget/CheckboxWidget.vue";
-import DividerWidget from "./form-widget/DividerWidget.vue";
 
 const props = defineProps({
     componentId: {
