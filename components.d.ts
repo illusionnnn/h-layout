@@ -27,7 +27,6 @@ declare module '@vue/runtime-core' {
     HDraggable: typeof import('./src/components/HDraggable.vue')['default']
     IconsDialog: typeof import('./src/components/IconsDialog.vue')['default']
     InputWidget: typeof import('./src/components/form-widget/InputWidget.vue')['default']
-    PreviewComponents: typeof import('./src/components/PreviewComponents.vue')['default']
     PreviewDialog: typeof import('./src/components/PreviewDialog.vue')['default']
     RadioWidget: typeof import('./src/components/form-widget/RadioWidget.vue')['default']
     RateWidget: typeof import('./src/components/form-widget/RateWidget.vue')['default']

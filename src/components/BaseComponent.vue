@@ -3,7 +3,7 @@
  * @Author: Hedgehog96
  * @Date: 2022-05-25 15:37:32
  * @LastEditors: Hedgehog96
- * @LastEditTime: 2022-08-22 11:42:46
+ * @LastEditTime: 2022-08-31 17:11:36
 -->
 <template>
     <div
@@ -79,6 +79,7 @@ const handleCopy = () => {
         });
     } else {
         componentsStore.add(c);
+        componentsStore.recordSnapshot();
     }
     idStore.increment();
 };
