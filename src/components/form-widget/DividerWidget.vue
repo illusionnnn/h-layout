@@ -3,7 +3,7 @@
  * @Author: Hedgehog96
  * @Date: 2022-08-25 21:37:32
  * @LastEditors: Hedgehog96
- * @LastEditTime: 2022-08-25 22:03:57
+ * @LastEditTime: 2022-09-01 17:58:39
 -->
 <template>
     <template v-if="props.elem.props.showText">
@@ -30,3 +30,9 @@ const props = defineProps({
     }
 });
 </script>
+
+<style lang="scss" scoped>
+    .el-divider {
+        margin: 0;
+    }
+</style>
