@@ -3,7 +3,7 @@
  * @Author: Hedgehog96
  * @Date: 2022-05-11 14:08:14
  * @LastEditors: Hedgehog96
- * @LastEditTime: 2022-08-25 22:03:08
+ * @LastEditTime: 2022-09-01 15:40:35
 -->
 <template>
     <div
@@ -34,6 +34,7 @@
                     </template>
                 </el-collapse-item>
                 <el-collapse-item
+                    v-show="state.showAdvanced"
                     title="高级属性"
                     name="advanced"
                 >
@@ -49,6 +50,7 @@
                     </template>
                 </el-collapse-item>
                 <el-collapse-item
+                    v-show="state.showEvent"
                     title="事件属性"
                     name="event"
                 >
@@ -114,6 +116,7 @@
 <script setup lang="ts">
 import { inject, reactive, ref, defineAsyncComponent, getCurrentInstance } from "vue";
 import { ElForm, ElButton, ElDialog, ElAlert } from "element-plus";
+import { intersection } from "lodash-es";
 import CodeEditor from "@/components/CodeEditor.vue";
 import { ComponentConfig } from "@/config/interfaces";
 import componentsConfig from "@/config/components";
@@ -122,21 +125,23 @@ import PropertyEditor from "./PropertyEditor/index";
 import EventEditor from "./EventEditor/index";
 
 const { COMMON_PROPERTIES, ADVANCED_PROPERTIES, EVENT_PROPERTIES } = widgetProperties;
-const EVENT_BUS: any = inject("eventBus");
-EVENT_BUS.on("clickComponent", (elem: ComponentConfig) => {
-    state.currentElem = elem;
-});
 
 const state: {
-    currentElem: any, activeNames: string,
-    code: string, currentEventName: string,
-    showEditor: boolean
+    code: string,
+    activeNames: string,
+    currentEventName: string,
+    currentElem: any,
+    showEditor: boolean,
+    showAdvanced: boolean,
+    showEvent: boolean,
     } = reactive({
-        activeNames: "common",
         code: '',
+        activeNames: "common",
         currentEventName: '',
-        showEditor: false,
         currentElem: {},
+        showEditor: false,
+        showAdvanced: false,
+        showEvent: false
     });
 const codeEditorRef = ref('');
 const instance = getCurrentInstance();
@@ -147,6 +152,27 @@ const eventsParamMap = {
     onChange: 'value',
     onClick: '',
 };
+
+const EVENT_BUS: any = inject("eventBus");
+const ADVANCED_KEYS = Object.keys(ADVANCED_PROPERTIES);
+const EVENT_KEYS = Object.keys(EVENT_PROPERTIES);
+EVENT_BUS.on("clickComponent", (elem: ComponentConfig) => {
+    state.currentElem = elem;
+    const propKeys = Object.keys(elem.props);
+    const eventKeys = Object.keys(elem.event);
+
+    if (intersection(ADVANCED_KEYS, propKeys).length) {
+        state.showAdvanced = true;
+    } else {
+        state.showAdvanced = false;
+    }
+
+    if (intersection(EVENT_KEYS, eventKeys).length) {
+        state.showEvent = true;
+    } else {
+        state.showEvent = false;
+    }
+});
 
 const getPropEditor = (propName: string, editorName: string) => {
     if (propName === "uniqueKey") {
