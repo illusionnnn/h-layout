@@ -3,7 +3,7 @@
  * @Author: Hedgehog96
  * @Date: 2022-05-09 14:22:35
  * @LastEditors: Hedgehog96
- * @LastEditTime: 2022-06-30 14:40:00
+ * @LastEditTime: 2022-09-02 15:58:58
 -->
 <template>
     <div class="h-aside">
@@ -27,7 +27,10 @@
         </div>
         <div class="h-aside-container">
             <keep-alive>
-                <component :is="state.currentComponent" />
+                <component
+                    :is="state.currentComponent"
+                    @tab-click="handleTabClick"
+                />
             </keep-alive>
         </div>
     </div>

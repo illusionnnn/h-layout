@@ -3,7 +3,7 @@
  * @Author: Hedgehog96
  * @Date: 2022-05-11 14:08:14
  * @LastEditors: Hedgehog96
- * @LastEditTime: 2022-09-01 15:40:35
+ * @LastEditTime: 2022-09-02 16:07:30
 -->
 <template>
     <div
@@ -114,8 +114,8 @@
 </template>
 
 <script setup lang="ts">
-import { inject, reactive, ref, defineAsyncComponent, getCurrentInstance } from "vue";
-import { ElForm, ElButton, ElDialog, ElAlert } from "element-plus";
+import { inject, defineEmits, reactive, ref, defineAsyncComponent, getCurrentInstance } from "vue";
+import { ElForm, ElButton, ElDialog, ElAlert, ElCollapse, ElCollapseItem } from "element-plus";
 import { intersection } from "lodash-es";
 import CodeEditor from "@/components/CodeEditor.vue";
 import { ComponentConfig } from "@/config/interfaces";
@@ -153,10 +153,13 @@ const eventsParamMap = {
     onClick: '',
 };
 
+const emits = defineEmits(['tabClick']);
 const EVENT_BUS: any = inject("eventBus");
 const ADVANCED_KEYS = Object.keys(ADVANCED_PROPERTIES);
 const EVENT_KEYS = Object.keys(EVENT_PROPERTIES);
 EVENT_BUS.on("clickComponent", (elem: ComponentConfig) => {
+    emits('tabClick', 'c');
+
     state.currentElem = elem;
     const propKeys = Object.keys(elem.props);
     const eventKeys = Object.keys(elem.event);
