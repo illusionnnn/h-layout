@@ -3,7 +3,7 @@
  * @Author: Hedgehog96
  * @Date: 2022-05-09 17:24:21
  * @LastEditors: Hedgehog96
- * @LastEditTime: 2022-08-16 11:33:35
+ * @LastEditTime: 2022-09-06 17:37:58
 -->
 <template>
     <div class="h-main">
@@ -35,6 +35,30 @@ watch(
     () => componentsStore.components,
     (newVal: ComponentConfig[]) => {
         components.value = newVal;
+
+        const layoutProperty = Object.keys(componentsStore.layout);
+        layoutProperty.forEach((k: string) => {
+            components.value.forEach((c: ComponentConfig) => {
+                if (!(c.props as object)[`$_isComponentSet${k}`]) {
+                    const v = Object.freeze(componentsStore.layout[k]);
+                    (c.props as object)[k] = v;
+                }
+            });
+        });
+    },
+    { deep: true }
+);
+watch(
+    () => componentsStore.layout,
+    (newVal: object) => {
+        const keys = Object.keys(newVal);
+        components.value.forEach((c: ComponentConfig) => {
+            keys.forEach((k: string) => {
+                if ((k in (c.props as object)) && !(c.props as object)[`$_isComponentSet${k}`]) {
+                    (c.props as object)[k] = newVal[k];
+                }
+            });
+        });
     },
     { deep: true }
 );

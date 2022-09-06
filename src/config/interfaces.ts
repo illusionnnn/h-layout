@@ -3,7 +3,7 @@
  * @Author: Hedgehog96
  * @Date: 2022-05-24 14:43:03
  * @LastEditors: Hedgehog96
- * @LastEditTime: 2022-08-10 11:52:15
+ * @LastEditTime: 2022-09-05 17:19:36
  */
 import { Component } from "vue";
 import { InputProps as $_InputProps } from "element-plus";
@@ -24,9 +24,10 @@ export interface ComponentConfig {
 }
 
 export interface ComponentsStore {
-    snapshotIdx: number,
-    snapshotcomponents: ComponentConfig[][]
-    components: ComponentConfig[]
+    snapshotIdx: number;
+    snapshotcomponents: ComponentConfig[][];
+    components: ComponentConfig[];
+    layout: object;
 }
 
 export interface InputProps extends $_InputProps {

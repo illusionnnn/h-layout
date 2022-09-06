@@ -3,7 +3,7 @@
  * @Author: Hedgehog96
  * @Date: 2022-05-11 14:09:42
  * @LastEditors: Hedgehog96
- * @LastEditTime: 2022-09-02 15:52:45
+ * @LastEditTime: 2022-09-05 17:31:16
 -->
 <template>
     <div class="h-layout-config">
@@ -19,7 +19,10 @@
                     title="基础属性"
                     name="base"
                 >
-                    <HiddenEditor :elem="state.layout" />
+                    <HiddenEditor
+                        :is-layout-hidden="true"
+                        :elem="state.layout"
+                    />
                 </el-collapse-item>
             </el-collapse>
         </el-form>
@@ -34,9 +37,7 @@ import HiddenEditor from "./PropertyEditor/HiddenEditor.vue";
 const state = reactive({
     activeNames: 'base',
     layout: {
-        props: {
-            hidden: false
-        }
+        hidden: false
     }
 });
 </script>

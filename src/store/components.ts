@@ -3,7 +3,7 @@
  * @Author: Hedgehog96
  * @Date: 2022-06-30 14:58:31
  * @LastEditors: Hedgehog96
- * @LastEditTime: 2022-08-16 16:11:58
+ * @LastEditTime: 2022-09-05 17:35:06
  */
 import { defineStore } from "pinia";
 import { cloneDeep } from "lodash-es";
@@ -26,7 +26,10 @@ export const useComponentsStore = defineStore("components", {
         return {
             snapshotIdx: $_reloadState('s'),
             snapshotcomponents: $_reloadState('sc'),
-            components: $_reloadState('c')
+            components: $_reloadState('c'),
+            layout: {
+                hidden: false
+            },
         };
     },
 
@@ -79,6 +82,10 @@ export const useComponentsStore = defineStore("components", {
                 this.snapshotIdx ++;
                 this.$_setComponents(cloneDeep(this.snapshotcomponents[this.snapshotIdx]));
             }
+        },
+
+        setLayoutProperty(key: string, value: boolean) {
+            this.layout[key] = value;
         },
 
         recordSnapshot() {
