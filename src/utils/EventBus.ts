@@ -3,10 +3,10 @@
  * @Author: Hedgehog96
  * @Date: 2022-06-15 18:04:53
  * @LastEditors: Hedgehog96
- * @LastEditTime: 2022-07-04 18:15:01
+ * @LastEditTime: 2022-09-07 11:09:24
  */
 export default class EventBus {
-    events: any;
+    events: object;
 
     constructor() {
         this.events = {};

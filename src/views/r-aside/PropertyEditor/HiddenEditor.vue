@@ -3,7 +3,7 @@
  * @Author: Hedgehog96
  * @Date: 2022-08-22 11:28:51
  * @LastEditors: Hedgehog96
- * @LastEditTime: 2022-09-06 17:35:00
+ * @LastEditTime: 2022-09-07 10:41:04
 -->
 <template>
     <el-form-item class="h-editor">
@@ -48,7 +48,6 @@ const props = defineProps({
 
 const componentStpre = useComponentsStore();
 const handleChange = (value: number | string | boolean) => {
-    console.log(value);
     props.elem.props.hidden = Boolean(value);
     props.elem.props['$_isComponentSethidden'] = true;
 };
