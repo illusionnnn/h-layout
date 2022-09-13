@@ -3,7 +3,7 @@
  * @Author: Hedgehog96
  * @Date: 2022-05-17 10:46:19
  * @LastEditors: Hedgehog96
- * @LastEditTime: 2022-08-31 17:42:10
+ * @LastEditTime: 2022-09-13 16:44:43
 -->
 <template>
     <div class="h-main-header">
@@ -60,9 +60,11 @@ import { ref, inject } from 'vue';
 import StructureTree from '@/components/StructureTree.vue';
 import PreviewDialog from '@/components/PreviewDialog.vue';
 import { useComponentsStore } from '@/store/components';
+import { useFieldsConfigStore } from "@/store/fieldsConfig";
 import { ComponentConfig } from '@/config/interfaces';
 
 const componentsStore = useComponentsStore();
+const fieldsConfigStore = useFieldsConfigStore();
 
 const opTree = ref(false);
 const isPreview = ref(false);
@@ -72,6 +74,7 @@ const handleTree = (op: boolean) => {
 const handleCleanAll = () => {
     if (!componentsStore.components.length) return;
     componentsStore.clear();
+    fieldsConfigStore.changeTabName('l');
 };
 const handleClosePreiview = () => {
     isPreview.value = false;

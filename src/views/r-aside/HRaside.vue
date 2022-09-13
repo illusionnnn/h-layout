@@ -3,7 +3,7 @@
  * @Author: Hedgehog96
  * @Date: 2022-05-09 14:22:35
  * @LastEditors: Hedgehog96
- * @LastEditTime: 2022-09-02 15:58:58
+ * @LastEditTime: 2022-09-13 16:42:45
 -->
 <template>
     <div class="h-aside">
@@ -37,33 +37,37 @@
 </template>
 
 <script setup lang="ts">
-import { reactive, computed, shallowRef } from "vue";
+import { reactive, computed, shallowRef, watch } from "vue";
+import { useFieldsConfigStore } from "@/store/fieldsConfig";
 import HComponentConfig from "./HComponentConfig.vue";
 import HLayoutConfig from "./HLayoutConfig.vue";
 
 const ACTIVATING_CLASS = "activating";
 const NOTACTIVE_CLASS = "";
-const C = "c";
-const L = "l";
+type C = 'c'
+type L = 'l'
 
+const fieldsConfigStore = useFieldsConfigStore();
 const state = reactive({
-    currentTabName: C,
     currentComponent: shallowRef(HComponentConfig),
 });
 
 const currentCompsTabClass = computed(() => {
-    return state.currentTabName === C ? ACTIVATING_CLASS : NOTACTIVE_CLASS;
+    return fieldsConfigStore.tabName === 'c' ? ACTIVATING_CLASS : NOTACTIVE_CLASS;
 });
 
 const currentSettingTabClass = computed(() => {
-    return state.currentTabName === L ? ACTIVATING_CLASS : NOTACTIVE_CLASS;
+    return fieldsConfigStore.tabName === 'l' ? ACTIVATING_CLASS : NOTACTIVE_CLASS;
 });
 
-const handleTabClick = (tabName: string) => {
-    state.currentTabName = tabName;
-    const currentComponent = tabName === C ? HComponentConfig : HLayoutConfig;
-    state.currentComponent = currentComponent;
+const handleTabClick = (name: C | L) => {
+    fieldsConfigStore.changeTabName(name);
 };
+
+watch(() => fieldsConfigStore.tabName, (newVal: any) => {
+    const currentComponent = newVal === 'c' ? HComponentConfig : HLayoutConfig;
+    state.currentComponent = currentComponent;
+});
 </script>
 
 <style lang="scss" scoped>
