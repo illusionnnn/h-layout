@@ -27,6 +27,7 @@ declare module '@vue/runtime-core' {
     ElMain: typeof import('element-plus/es')['ElMain']
     ElOption: typeof import('element-plus/es')['ElOption']
     ElTag: typeof import('element-plus/es')['ElTag']
+    ElTootip: typeof import('element-plus/es')['ElTootip']
     HDraggable: typeof import('./src/components/HDraggable.vue')['default']
     IconsDialog: typeof import('./src/components/IconsDialog.vue')['default']
     InputWidget: typeof import('./src/components/form-widget/InputWidget.vue')['default']

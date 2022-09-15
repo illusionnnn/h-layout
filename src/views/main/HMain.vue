@@ -3,7 +3,7 @@
  * @Author: Hedgehog96
  * @Date: 2022-05-09 17:24:21
  * @LastEditors: Hedgehog96
- * @LastEditTime: 2022-09-15 14:26:26
+ * @LastEditTime: 2022-09-15 14:56:19
 -->
 <template>
     <div class="h-main">
@@ -108,8 +108,9 @@ EVENT_BUS.on("delete", handleDeleteComponent);
 
     .h-main-tip {
         position: absolute;
-        top: 48%;
-        left: 32%;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
         color: #ccc;
     }
 

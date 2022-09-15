@@ -3,7 +3,7 @@
  * @Author: Hedgehog96
  * @Date: 2022-05-09 14:22:35
  * @LastEditors: Hedgehog96
- * @LastEditTime: 2022-06-22 14:47:00
+ * @LastEditTime: 2022-09-15 15:41:47
 -->
 <template>
     <div class="h-aside-l">
@@ -63,30 +63,36 @@ const handleTabClick = (tabName: string) => {
 
 <style lang="scss" scoped>
 .h-aside-l {
-  .h-aside-tabs {
-      display: flex;
-      justify-content: center;
-
-      .h-aside-tab {
-        flex: 1;
-        margin: 10px 16px;
+    height: 100%;
+    
+    .h-aside-tabs {
         display: flex;
-        align-items: center;
         justify-content: center;
-        cursor: pointer;
 
-        &.activating {
-          color: $base-color;
-        }
+        .h-aside-tab {
+            flex: 1;
+            margin: 10px 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
 
-        i {
-          margin-right: 4px;
-        }
+            &.activating {
+            color: $base-color;
+            }
 
-        span {
-          font-size: 14px;
+            i {
+            margin-right: 4px;
+            }
+
+            span {
+            font-size: 14px;
+            }
         }
-      }
-  }
+    }
+
+    .h-aside-container {
+        height: calc(100% - 50px);
+    }
 }
 </style>

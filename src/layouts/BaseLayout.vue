@@ -3,7 +3,7 @@
  * @Author: Hedgehog96
  * @Date: 2022-05-07 15:11:38
  * @LastEditors: Hedgehog96
- * @LastEditTime: 2022-08-07 22:14:12
+ * @LastEditTime: 2022-09-15 15:38:55
 -->
 <template>
     <div class="h-base-layout">
@@ -59,6 +59,7 @@
 }
 
 .h-base-layout-l-aside {
+    height: calc(100vh - 60px);
     border-top-right-radius: $base-border-radius;
     border-bottom-right-radius: $base-border-radius;
     background-color: $base-bg-color;
