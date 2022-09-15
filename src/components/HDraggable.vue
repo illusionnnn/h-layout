@@ -3,7 +3,7 @@
  * @Author: Hedgehog96
  * @Date: 2022-05-20 16:47:09
  * @LastEditors: Hedgehog96
- * @LastEditTime: 2022-08-27 18:47:44
+ * @LastEditTime: 2022-09-15 14:26:04
 -->
 <template>
     <draggable
@@ -139,7 +139,6 @@ const handleMoveComponent = () => {
 }
 
 .h-main-layout-item {
-    margin-bottom: 10px;
     padding: 5px;
 
     .h-main-layout-item-inner {

@@ -3,7 +3,7 @@
  * @Author: Hedgehog96
  * @Date: 2022-05-09 17:24:21
  * @LastEditors: Hedgehog96
- * @LastEditTime: 2022-09-06 17:37:58
+ * @LastEditTime: 2022-09-15 14:26:26
 -->
 <template>
     <div class="h-main">
@@ -119,7 +119,6 @@ EVENT_BUS.on("delete", handleDeleteComponent);
     }
 
     .h-main-layout-item {
-        margin-bottom: 10px;
         padding: 5px;
     }
 }
