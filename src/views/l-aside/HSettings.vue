@@ -3,7 +3,7 @@
  * @Author: Hedgehog96
  * @Date: 2022-05-09 15:38:49
  * @LastEditors: Hedgehog96
- * @LastEditTime: 2022-09-15 16:32:04
+ * @LastEditTime: 2022-09-16 17:20:16
 -->
 <template>
     <div class="h-settings">
@@ -24,7 +24,7 @@
                         <template #content>
                             <img
                                 :src="template.img"
-                                style="width: 50vw;"
+                                style="width: 40vw;"
                             >
                         </template>
                         <img
@@ -38,8 +38,9 @@
                             text
                             size="small"
                             style="margin-left: auto;"
+                            @click="handleLoadTemplate"
                         >
-                            {{ loadText }}
+                            {{ $_loadText }}
                         </el-button>
                     </div>
                 </el-card>
@@ -50,12 +51,25 @@
 
 <script setup lang="ts">
 import { ElRow, ElCol, ElCard, ElTooltip, ElButton } from "element-plus";
+import questionnaireTemplate from "./templates/questionnaireTemplate";
 import questionnaireImg from "@/assets/imgs/questionnaire.jpg";
+import { useIdStore } from "@/store/id";
+import { useComponentsStore } from "@/store/components";
+import { ComponentConfig } from "@/config/interfaces";
 
-const loadText = "加载该模板";
+const $_loadText = "加载该模板";
 const templates = [
-    { id: 0, text: "1. 调查问卷模板", img: questionnaireImg },
+    { id: 0, text: "1. 调查问卷模板", img: questionnaireImg,  },
 ];
+
+const idStore = useIdStore();
+const componentsStore = useComponentsStore();
+const handleLoadTemplate = () => {
+    questionnaireTemplate.forEach((c: (id: number) => ComponentConfig) => {
+        componentsStore.add(c(idStore.id));
+        idStore.increment();
+    });
+};
 </script>
 
 <style lang="scss" scoped>

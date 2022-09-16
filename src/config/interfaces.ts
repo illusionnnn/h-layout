@@ -3,7 +3,7 @@
  * @Author: Hedgehog96
  * @Date: 2022-05-24 14:43:03
  * @LastEditors: Hedgehog96
- * @LastEditTime: 2022-09-05 17:19:36
+ * @LastEditTime: 2022-09-16 17:23:30
  */
 import { Component } from "vue";
 import { InputProps as $_InputProps } from "element-plus";
@@ -33,4 +33,9 @@ export interface ComponentsStore {
 export interface InputProps extends $_InputProps {
     readonly minlength: number;
     readonly maxlength: number;
+}
+
+export interface textContentElemProps {
+    textContent: string;
+    hidden: boolean;
 }
