@@ -3,7 +3,7 @@
  * @Author: Hedgehog96
  * @Date: 2022-09-13 16:18:40
  * @LastEditors: Hedgehog96
- * @LastEditTime: 2022-09-13 16:25:55
+ * @LastEditTime: 2022-09-17 21:51:22
  */
 import { defineStore } from "pinia";
 
@@ -13,7 +13,7 @@ type $_L = "l";
 export const useFieldsConfigStore = defineStore("fieldsConfig", {
     state: () => {
         return {
-            tabName: "c"
+            tabName: "l"
         };
     },
 

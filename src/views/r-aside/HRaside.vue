@@ -3,7 +3,7 @@
  * @Author: Hedgehog96
  * @Date: 2022-05-09 14:22:35
  * @LastEditors: Hedgehog96
- * @LastEditTime: 2022-09-13 16:42:45
+ * @LastEditTime: 2022-09-17 21:52:47
 -->
 <template>
     <div class="h-aside">
@@ -49,7 +49,7 @@ type L = 'l'
 
 const fieldsConfigStore = useFieldsConfigStore();
 const state = reactive({
-    currentComponent: shallowRef(HComponentConfig),
+    currentComponent: shallowRef(fieldsConfigStore.tabName === 'c' ? HComponentConfig : HLayoutConfig),
 });
 
 const currentCompsTabClass = computed(() => {
