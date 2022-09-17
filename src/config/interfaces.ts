@@ -3,10 +3,10 @@
  * @Author: Hedgehog96
  * @Date: 2022-05-24 14:43:03
  * @LastEditors: Hedgehog96
- * @LastEditTime: 2022-09-16 17:23:30
+ * @LastEditTime: 2022-09-17 17:32:31
  */
 import { Component } from "vue";
-import { InputProps as $_InputProps } from "element-plus";
+import { InputProps as $_InputProps, RadioProps, CheckboxProps } from "element-plus";
 
 // 拖曳组件实例
 export interface ComponentConfig {
@@ -35,7 +35,30 @@ export interface InputProps extends $_InputProps {
     readonly maxlength: number;
 }
 
-export interface textContentElemProps {
+export interface TextContentElemProps {
     textContent: string;
     hidden: boolean;
+}
+
+interface OptionItem {
+    text: string;
+    label: string;
+}
+export interface RadioElemProps extends RadioProps {
+    size: 'default' | 'small' | 'large';
+    disabled: boolean;
+    border: boolean;
+    buttonStyle: boolean;
+    hidden: boolean;
+    optionItems: OptionItem[]
+}
+
+export interface CheckboxElemProps extends CheckboxProps {
+    max: number;
+    size: 'default' | 'small' | 'large';
+    disabled: boolean;
+    border: boolean;
+    buttonStyle: boolean;
+    hidden: boolean;
+    optionItems: OptionItem[];
 }

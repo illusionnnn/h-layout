@@ -3,7 +3,7 @@
  * @Author: Hedgehog96
  * @Date: 2022-05-09 15:38:49
  * @LastEditors: Hedgehog96
- * @LastEditTime: 2022-09-16 17:20:16
+ * @LastEditTime: 2022-09-17 21:16:50
 -->
 <template>
     <div class="h-settings">
@@ -38,7 +38,7 @@
                             text
                             size="small"
                             style="margin-left: auto;"
-                            @click="handleLoadTemplate"
+                            @click="handleConfirmLoadTemplate"
                         >
                             {{ $_loadText }}
                         </el-button>
@@ -50,7 +50,7 @@
 </template>
 
 <script setup lang="ts">
-import { ElRow, ElCol, ElCard, ElTooltip, ElButton } from "element-plus";
+import { ElRow, ElCol, ElCard, ElTooltip, ElButton, ElMessageBox } from "element-plus";
 import questionnaireTemplate from "./templates/questionnaireTemplate";
 import questionnaireImg from "@/assets/imgs/questionnaire.jpg";
 import { useIdStore } from "@/store/id";
@@ -64,11 +64,28 @@ const templates = [
 
 const idStore = useIdStore();
 const componentsStore = useComponentsStore();
-const handleLoadTemplate = () => {
-    questionnaireTemplate.forEach((c: (id: number) => ComponentConfig) => {
-        componentsStore.add(c(idStore.id));
-        idStore.increment();
-    });
+const handleConfirmLoadTemplate = () => {
+    ElMessageBox.confirm(
+        "加载模板会覆盖当前已有组件（可使用撤销功能恢复",
+        "友情提示",
+        {
+            confirmButtonText: '确定',
+            cancelButtonText: '取消',
+            type: 'info',
+        }
+    )
+        .then(() => {
+            componentsStore.clear();
+            
+            questionnaireTemplate.forEach((c: (id: number) => ComponentConfig) => {
+                componentsStore.add(c(idStore.id));
+                idStore.increment();
+            });
+            componentsStore.recordSnapshot();
+        })
+        .catch(() => {
+        // notodo
+        });
 };
 </script>
 
