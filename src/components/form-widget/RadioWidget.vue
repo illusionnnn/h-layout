@@ -3,7 +3,7 @@
  * @Author: Hedgehog96
  * @Date: 2022-08-22 14:31:48
  * @LastEditors: Hedgehog96
- * @LastEditTime: 2022-08-25 21:35:52
+ * @LastEditTime: 2022-09-18 12:43:30
 -->
 <template>
     <el-radio-group
@@ -36,8 +36,8 @@
 </template>
 
 <script setup lang="ts">
-import { defineProps, ref, watch } from 'vue';
-import { ElRadioGroup, ElRadio, ElRadioButton } from 'element-plus';
+import { defineProps, ref, watch } from "vue";
+import { ElRadioGroup, ElRadio, ElRadioButton } from "element-plus";
 
 const props = defineProps({
     elem: {
@@ -47,12 +47,15 @@ const props = defineProps({
 });
 
 let radioValue = ref('radio1');
-watch(() => props.elem.props.optionItems, (newVal) => {
-    radioValue.value = newVal[0].label;
-});
+watch(
+    () => props.elem.props.optionItems, (newVal) => {
+        radioValue.value = newVal[0].label;
+    },
+    { deep: true }
+);
 
 const handleChangeEvent = (value: number | string | boolean) => {
-    const fn = new Function('value', props.elem.event.onChange);
+    const fn = new Function("value", props.elem.event.onChange);
     fn(value);
 };
 </script>

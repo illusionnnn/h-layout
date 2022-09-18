@@ -3,7 +3,7 @@
  * @Author: Hedgehog96
  * @Date: 2022-05-20 16:47:09
  * @LastEditors: Hedgehog96
- * @LastEditTime: 2022-09-15 14:26:04
+ * @LastEditTime: 2022-09-18 12:00:53
 -->
 <template>
     <draggable
@@ -89,6 +89,7 @@ import BaseComponent from "./BaseComponent.vue";
 import _ from "./form-widget";
 
 import { useComponentsStore } from "@/store/components";
+import { useFieldsConfigStore } from "@/store/fieldsConfig";
 import { ComponentConfig } from "@/config/interfaces";
 
 const props = defineProps({
@@ -108,10 +109,12 @@ const props = defineProps({
 
 const EVENT_BUS: any = inject("eventBus");
 const componentsStore = useComponentsStore();
+const fieldsConfigStore = useFieldsConfigStore();
 
 const handleClickComponent = (evt: Event, c: ComponentConfig) => {
     EVENT_BUS.emit("changeComponentId", c.id);
     EVENT_BUS.emit("clickComponent", c);
+    fieldsConfigStore.changeTabName('c');
 };
 
 const handleAddComponent = (evt: Event, c: ComponentConfig | undefined) => {

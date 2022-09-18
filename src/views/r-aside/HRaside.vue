@@ -3,7 +3,7 @@
  * @Author: Hedgehog96
  * @Date: 2022-05-09 14:22:35
  * @LastEditors: Hedgehog96
- * @LastEditTime: 2022-09-17 21:52:47
+ * @LastEditTime: 2022-09-18 12:31:08
 -->
 <template>
     <div class="h-aside">
@@ -26,48 +26,42 @@
             </div>
         </div>
         <div class="h-aside-container">
-            <keep-alive>
-                <component
-                    :is="state.currentComponent"
-                    @tab-click="handleTabClick"
-                />
-            </keep-alive>
+            <h-layout-config
+                v-show="fieldsConfigStore.tabName === 'l'"
+                @tab-click="handleTabClick"
+            />
+            <h-component-config
+                v-show="fieldsConfigStore.tabName === 'c'"
+                @tab-click="handleTabClick"
+            />
         </div>
     </div>
 </template>
 
 <script setup lang="ts">
-import { reactive, computed, shallowRef, watch } from "vue";
+import { computed } from "vue";
 import { useFieldsConfigStore } from "@/store/fieldsConfig";
 import HComponentConfig from "./HComponentConfig.vue";
 import HLayoutConfig from "./HLayoutConfig.vue";
 
 const ACTIVATING_CLASS = "activating";
 const NOTACTIVE_CLASS = "";
-type C = 'c'
-type L = 'l'
+type C = "c"
+type L = "l"
 
 const fieldsConfigStore = useFieldsConfigStore();
-const state = reactive({
-    currentComponent: shallowRef(fieldsConfigStore.tabName === 'c' ? HComponentConfig : HLayoutConfig),
-});
 
 const currentCompsTabClass = computed(() => {
-    return fieldsConfigStore.tabName === 'c' ? ACTIVATING_CLASS : NOTACTIVE_CLASS;
+    return fieldsConfigStore.tabName === "c" ? ACTIVATING_CLASS : NOTACTIVE_CLASS;
 });
 
 const currentSettingTabClass = computed(() => {
-    return fieldsConfigStore.tabName === 'l' ? ACTIVATING_CLASS : NOTACTIVE_CLASS;
+    return fieldsConfigStore.tabName === "l" ? ACTIVATING_CLASS : NOTACTIVE_CLASS;
 });
 
 const handleTabClick = (name: C | L) => {
     fieldsConfigStore.changeTabName(name);
 };
-
-watch(() => fieldsConfigStore.tabName, (newVal: any) => {
-    const currentComponent = newVal === 'c' ? HComponentConfig : HLayoutConfig;
-    state.currentComponent = currentComponent;
-});
 </script>
 
 <style lang="scss" scoped>

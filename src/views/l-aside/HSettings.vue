@@ -3,7 +3,7 @@
  * @Author: Hedgehog96
  * @Date: 2022-05-09 15:38:49
  * @LastEditors: Hedgehog96
- * @LastEditTime: 2022-09-17 21:16:50
+ * @LastEditTime: 2022-09-18 13:57:20
 -->
 <template>
     <div class="h-settings">
@@ -75,7 +75,7 @@ const handleConfirmLoadTemplate = () => {
         }
     )
         .then(() => {
-            componentsStore.clear();
+            componentsStore.$_setComponents([]);
             
             questionnaireTemplate.forEach((c: (id: number) => ComponentConfig) => {
                 componentsStore.add(c(idStore.id));

@@ -3,7 +3,7 @@
  * @Author: Hedgehog96
  * @Date: 2022-05-09 17:30:41
  * @LastEditors: Hedgehog96
- * @LastEditTime: 2022-08-25 22:02:24
+ * @LastEditTime: 2022-09-18 09:55:54
  */
 import { ElButton, ElInput, ElSwitch, ElRate, ElRadio, ElCheckbox, ElDivider } from "element-plus";
 import BaseContainer from "@/components/BaseContainer.vue";
@@ -44,29 +44,29 @@ export default [
                 showTitle: false,
                 component: ElInput,
                 props: {
-                    defaultValue: '22',
-                    size: 'default',
+                    defaultValue: "22",
+                    size: "default",
                     disabled: false,
                     readonly: false,
                     clearable: false,
-                    placeholder: '',
-                    type: 'text',
+                    placeholder: "",
+                    type: "text",
                     minLength: 0,
                     maxLength: 1,
                     showWordLimit: false,
-                    prefixIcon: '',
-                    suffixIcon: '',
+                    prefixIcon: "",
+                    suffixIcon: "",
                     prependButton: false,
-                    prepend: '',
+                    prepend: "",
                     appendButton: false,
-                    append: '',
+                    append: "",
                     hidden: false,
                 },
                 event: {
-                    onFocus: '',
-                    onInput: '',
-                    onBlur: '',
-                    onChange: ''
+                    onFocus: "",
+                    onInput: "",
+                    onBlur: "",
+                    onChange: ""
                 }
             },
             {
@@ -79,11 +79,11 @@ export default [
                 showTitle: false,
                 component: ElInput,
                 props: {
-                    defaultValue: '22',
+                    defaultValue: "22",
                     disabled: false,
                     readonly: false,
-                    placeholder: '',
-                    type: 'textarea',
+                    placeholder: "",
+                    type: "textarea",
                     minLength: 0,
                     maxLength: 1,
                     showWordLimit: false,
@@ -92,10 +92,10 @@ export default [
                     hidden: false,
                 },
                 event: {
-                    onFocus: '',
-                    onInput: '',
-                    onBlur: '',
-                    onChange: ''
+                    onFocus: "",
+                    onInput: "",
+                    onBlur: "",
+                    onChange: ""
                 }
             },
             {
@@ -109,8 +109,8 @@ export default [
                 component: ElButton,
                 props: {
                     size: "default",
-                    type: 'default',
-                    label: 'button',
+                    type: "default",
+                    label: "button",
                     plain: false,
                     text: false,
                     bg: false,
@@ -118,11 +118,11 @@ export default [
                     round: false,
                     circle: false,
                     disabled: false,
-                    buttonIcon: '',
+                    buttonIcon: "",
                     hidden: false,
                 },
                 event: {
-                    onClick: ''
+                    onClick: ""
                 },
             },
             {
@@ -136,17 +136,17 @@ export default [
                 component: ElSwitch,
                 props: {
                     disabled: false,
-                    size: 'default',
+                    size: "default",
                     inlinePrompt: false,
                     width: 50,
-                    activeIcon: '',
-                    inActiveIcon: '',
-                    activeText: '',
-                    inActiveText: '',
+                    activeIcon: "",
+                    inActiveIcon: "",
+                    activeText: "",
+                    inActiveText: "",
                     hidden: false,
                 },
                 event: {
-                    onChange: ''
+                    onChange: ""
                 },
             },
             {
@@ -161,19 +161,19 @@ export default [
                 props: {
                     max: 5,
                     $_max: 10,
-                    size: 'default',
+                    size: "default",
                     disabled: false,
                     allowHalf: false,
                     lowThreshold: 2,
                     highThreshold: 4,
                     showText: false,
                     showScore: false,
-                    voidIcon: 'Star',
-                    disabledVoidIcon: 'StarFilled',
+                    voidIcon: "Star",
+                    disabledVoidIcon: "StarFilled",
                     hidden: false,
                 },
                 event: {
-                    onChange: ''
+                    onChange: ""
                 },
             },
             {
@@ -186,7 +186,7 @@ export default [
                 showTitle: false,
                 component: ElRate,
                 props: {
-                    textContent: '文本',
+                    textContent: "文本",
                     hidden: false,
                 },
                 event: {},
@@ -201,18 +201,18 @@ export default [
                 showTitle: false,
                 component: ElRadio,
                 props: {
-                    size: 'default',
+                    size: "default",
                     disabled: false,
                     border: false,
                     buttonStyle: false,
                     hidden: false,
                     optionItems: [
-                        { text: 'radio1', label: 'radio1' },
-                        { text: 'radio2', label: 'radio2' },
+                        { text: "radio1", label: "radio1" },
+                        { text: "radio2", label: "radio2" },
                     ]
                 },
                 event: {
-                    onChange: ''
+                    onChange: ""
                 },
             },
             {
@@ -225,19 +225,19 @@ export default [
                 showTitle: false,
                 component: ElCheckbox,
                 props: {
-                    size: 'default',
+                    size: "default",
                     disabled: false,
                     border: false,
                     buttonStyle: false,
                     hidden: false,
                     max: 10,
                     optionItems: [
-                        { text: 'checkbox1', label: 'checkbox1' },
-                        { text: 'checkbox2', label: 'checkbox2' },
+                        { text: "checkbox1", label: "checkbox1" },
+                        { text: "checkbox2", label: "checkbox2" },
                     ]
                 },
                 event: {
-                    onChange: ''
+                    onChange: ""
                 },
             },
             {
@@ -251,9 +251,9 @@ export default [
                 component: ElDivider,
                 props: {
                     showText: false,
-                    textContent: 'divider',
-                    contentPosition: 'center',
-                    borderStyle: 'solid',
+                    textContent: "divider",
+                    contentPosition: "center",
+                    borderStyle: "solid",
                     hidden: false,
                 },
                 event: {},
