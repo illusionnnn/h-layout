@@ -3,7 +3,7 @@
  * @Author: Hedgehog96
  * @Date: 2022-05-09 15:33:03
  * @LastEditors: Hedgehog96
- * @LastEditTime: 2022-08-21 16:59:29
+ * @LastEditTime: 2022-09-23 16:41:48
 -->
 <template>
     <div class="h-components">
@@ -16,7 +16,12 @@
                 {{ config.title }}
             </div>
             <div class="h-components-area-container">
+                <span
+                    v-if="!config.components.length"
+                    class="h-components-area-tip"
+                >暂无组件</span>
                 <draggable
+                    v-else
                     class="h-components-drag-area"
                     item-key="id"
                     :list="config.components"
@@ -71,6 +76,11 @@ const handleCloneComponentsConfig = (d: ComponentConfig) => {
         .h-components-area-title {
             margin-bottom: 10px;
             color: #303133;
+        }
+
+        .h-components-area-tip {
+            font-size: 12px;
+            color: #ccc;
         }
     }
 

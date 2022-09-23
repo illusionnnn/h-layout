@@ -3,10 +3,10 @@
  * @Author: Hedgehog96
  * @Date: 2022-05-09 17:30:41
  * @LastEditors: Hedgehog96
- * @LastEditTime: 2022-09-18 09:55:54
+ * @LastEditTime: 2022-09-23 16:38:36
  */
 import { ElButton, ElInput, ElSwitch, ElRate, ElRadio, ElCheckbox, ElDivider } from "element-plus";
-import BaseContainer from "@/components/BaseContainer.vue";
+// import BaseContainer from "@/components/BaseContainer.vue";
 
 export default [
     {
@@ -14,19 +14,19 @@ export default [
         title: "容器",
         name: "Wrapper",
         components: [
-            {
-                id: 1,
-                pid: -1,
-                uniqueKey: "Container1",
-                title: "布局",
-                label: "Container",
-                icon: "icon-h-shangebuju",
-                showTitle: false,
-                component: BaseContainer,
-                props: {},
-                event: {},
-                children: [],
-            },
+            // {
+            //     id: 1,
+            //     pid: -1,
+            //     uniqueKey: "Container1",
+            //     title: "布局",
+            //     label: "Container",
+            //     icon: "icon-h-shangebuju",
+            //     showTitle: false,
+            //     component: BaseContainer,
+            //     props: {},
+            //     event: {},
+            //     children: [],
+            // },
         ],
     },
     {
