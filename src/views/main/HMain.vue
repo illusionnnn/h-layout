@@ -3,7 +3,7 @@
  * @Author: Hedgehog96
  * @Date: 2022-05-09 17:24:21
  * @LastEditors: Hedgehog96
- * @LastEditTime: 2022-09-15 14:56:19
+ * @LastEditTime: 2022-10-17 17:07:41
 -->
 <template>
     <div class="h-main">
@@ -23,11 +23,12 @@
 
 <script setup lang="ts">
 import { ref, inject, watch } from "vue";
+import { storeToRefs } from "pinia";
 import { useComponentsStore } from "@/store/components";
 import { ComponentConfig } from "@/config/interfaces";
 
 const componentsStore = useComponentsStore();
-const components = ref(componentsStore.components);
+const { components } = storeToRefs(componentsStore);
 const EVENT_BUS: any = inject("eventBus");
 const currentComponentId = ref(-1);
 
