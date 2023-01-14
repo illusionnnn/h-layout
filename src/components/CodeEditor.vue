@@ -1,9 +1,9 @@
 <!--
- * @Description: 
+ * @Description: 编辑器组件
  * @Author: Hedgehog96
  * @Date: 2022-08-04 14:31:25
  * @LastEditors: Hedgehog96
- * @LastEditTime: 2022-08-08 16:40:37
+ * @LastEditTime: 2023-01-14 22:41:52
 -->
 <template>
     <div class="code-container">
@@ -15,25 +15,25 @@
 </template>
 
 <script setup lang="ts">
-import  { defineProps, defineEmits, defineExpose, ref, onMounted } from 'vue';
-import ace from 'ace-builds';
-import 'ace-builds/src-min-noconflict/theme-monokai';
-import 'ace-builds/src-min-noconflict/mode-javascript';
-import 'ace-builds/src-min-noconflict/ext-language_tools';
+import  { defineExpose, ref, onMounted } from 'vue'
+import ace from 'ace-builds'
+import 'ace-builds/src-min-noconflict/theme-monokai'
+import 'ace-builds/src-min-noconflict/mode-javascript'
+import 'ace-builds/src-min-noconflict/ext-language_tools'
 
 const props = defineProps({
     modelValue: {
         type: String,
         default: ''
-    },
-});
-const emits = defineEmits(['update']);
+    }
+})
+const emits = defineEmits(['update'])
 
-ace.config.set('basePath', 'https://ks3-cn-beijing.ksyun.com/vform2021/ace-mini');
+ace.config.set('basePath', 'https://ks3-cn-beijing.ksyun.com/vform2021/ace-mini')
 
-const codeEditorRef = ref('');
-const getEditorAnnotations = ref();
-const setEditorValue = ref();
+const codeEditorRef = ref('')
+const getEditorAnnotations = ref()
+const setEditorValue = ref()
 
 onMounted(() => {
     const aceEditor = ace.edit(codeEditorRef.value, {
@@ -45,33 +45,33 @@ onMounted(() => {
         tabSize: 4, // 制表符设置为2个空格大小
         highlightActiveLine: true,
         value: props.modelValue
-    });
+    })
 
     aceEditor.setOptions({
         enableBasicAutocompletion: true,
         enableSnippets: true,  // 设置代码片段提示
-        enableLiveAutocompletion: true,  // 设置自动提示
-    });
+        enableLiveAutocompletion: true  // 设置自动提示
+    })
 
-    aceEditor.getSession().setUseWorker(false);
+    aceEditor.getSession().setUseWorker(false)
 
     aceEditor.getSession().on('change', () => {
-        emits('update', aceEditor.getValue());
-    });
+        emits('update', aceEditor.getValue())
+    })
 
     getEditorAnnotations.value = () => {
-        return aceEditor.getSession().getAnnotations();
-    };
+        return aceEditor.getSession().getAnnotations()
+    }
 
     setEditorValue.value = (newValue: string) => {
-        aceEditor.getSession().setValue(newValue);
-    };
-});
+        aceEditor.getSession().setValue(newValue)
+    }
+})
 
 defineExpose({
     getEditorAnnotations,
     setEditorValue
-});
+})
 </script>
 
 <style lang="scss" scoped>

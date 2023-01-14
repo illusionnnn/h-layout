@@ -1,9 +1,9 @@
 <!--
- * @Description: 左侧可拖动组件区域
+ * @Description: 左侧可拖动组件
  * @Author: Hedgehog96
  * @Date: 2022-05-09 15:33:03
  * @LastEditors: Hedgehog96
- * @LastEditTime: 2022-09-23 16:41:48
+ * @LastEditTime: 2023-01-14 21:45:36
 -->
 <template>
     <div class="h-components">
@@ -47,29 +47,30 @@
 </template>
 
 <script setup lang="ts">
-import draggable from "vuedraggable";
-import { cloneDeep, random } from "lodash-es";
-import { useIdStore } from "@/store/id";
-import componentsConfig from "@/config/components";
-import { ComponentConfig } from "@/config/interfaces";
+import draggable from 'vuedraggable'
+import { cloneDeep, random } from 'lodash-es'
+import { useIdStore } from '@/store/id'
+import componentsConfig from '@/config/components'
+import { ComponentConfig } from '@/config/interfaces'
 
-const idStore = useIdStore();
+const idStore = useIdStore()
 
 const handleCloneComponentsConfig = (d: ComponentConfig) => {
     const _ = cloneDeep({
         ...d,
         id: idStore.id,
-        uniqueKey: d.label + random(1, 999),
-    });
-    idStore.increment();
+        uniqueKey: d.label + random(1, 999)
+    })
+    idStore.increment()
 
-    return _;
-};
+    return _
+}
 </script>
 
 <style lang="scss" scoped>
 .h-components {
     padding: 10px;
+
     .h-components-area {
         margin-bottom: 10px;
 

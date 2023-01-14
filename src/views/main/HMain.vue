@@ -3,7 +3,7 @@
  * @Author: Hedgehog96
  * @Date: 2022-05-09 17:24:21
  * @LastEditors: Hedgehog96
- * @LastEditTime: 2022-10-17 17:07:41
+ * @LastEditTime: 2023-01-14 20:42:49
 -->
 <template>
     <div class="h-main">
@@ -22,81 +22,81 @@
 </template>
 
 <script setup lang="ts">
-import { ref, inject, watch } from "vue";
-import { storeToRefs } from "pinia";
-import { useComponentsStore } from "@/store/components";
-import { ComponentConfig } from "@/config/interfaces";
+import { ref, inject, watch } from 'vue'
+import { storeToRefs } from 'pinia'
+import { useComponentsStore } from '@/store/components'
+import { ComponentConfig } from '@/config/interfaces'
 
-const componentsStore = useComponentsStore();
-const { components } = storeToRefs(componentsStore);
-const EVENT_BUS: any = inject("eventBus");
-const currentComponentId = ref(-1);
+const componentsStore = useComponentsStore()
+const { components } = storeToRefs(componentsStore)
+const EVENT_BUS: any = inject('eventBus')
+const currentComponentId = ref(-1)
 
 watch(
     () => componentsStore.components,
     (newVal: ComponentConfig[]) => {
-        components.value = newVal;
+        components.value = newVal
 
-        const layoutProperty = Object.keys(componentsStore.layout);
+        const layoutProperty = Object.keys(componentsStore.layout)
         layoutProperty.forEach((k: string) => {
             components.value.forEach((c: ComponentConfig) => {
                 if (!(c.props as object)[`$_isComponentSet${k}`]) {
                     const v = Object.freeze(componentsStore.layout[k]);
-                    (c.props as object)[k] = v;
+                    (c.props as object)[k] = v
                 }
-            });
-        });
+            })
+        })
     },
     { deep: true }
-);
+)
 watch(
     () => componentsStore.layout,
     (newVal: object) => {
-        const keys = Object.keys(newVal);
+        const keys = Object.keys(newVal)
         components.value.forEach((c: ComponentConfig) => {
             keys.forEach((k: string) => {
                 if ((k in (c.props as object)) && !(c.props as object)[`$_isComponentSet${k}`]) {
-                    (c.props as object)[k] = newVal[k];
+                    (c.props as object)[k] = newVal[k]
                 }
-            });
-        });
+            })
+        })
     },
     { deep: true }
-);
+)
 
 const handleChangeComponetId = (id: number) => {
-    currentComponentId.value = id;
-};
+    currentComponentId.value = id
+}
 
 const handleDeleteComponent = (id: number) => {
-    let idx = -1;
-    componentsStore.recordSnapshot();
+    let idx = -1
+    componentsStore.recordSnapshot()
 
     componentsStore.components.forEach((_c: ComponentConfig, _idx: number) => {
         if (_c.id === id) {
-            idx = _idx;
-            return;
+            idx = _idx
+            return
         }
-    });
-    componentsStore.components.splice(idx, 1);
+    })
+    componentsStore.components.splice(idx, 1)
 
     if (componentsStore.components.length) {
         EVENT_BUS.emit(
-            "changeComponentId",
+            'changeComponentId',
             (componentsStore.components[idx - 1] as ComponentConfig).id
-        );
-        EVENT_BUS.emit("clickComponent", componentsStore.components[idx - 1]);
+        )
+        EVENT_BUS.emit('clickComponent', componentsStore.components[idx - 1])
     } else {
         // when only one is deleted
-        EVENT_BUS.emit("changeComponentId", -1);
-        EVENT_BUS.emit("clickComponent", {});
+        EVENT_BUS.emit('changeComponentId', -1)
+        EVENT_BUS.emit('clickComponent', {})
     }
-};
+}
 
-EVENT_BUS.on("changeComponentId", (id: number) => {
-    currentComponentId.value = id;
-});
-EVENT_BUS.on("delete", handleDeleteComponent);
+EVENT_BUS.on('changeComponentId', (id: number) => {
+    currentComponentId.value = id
+})
+EVENT_BUS.on('delete', handleDeleteComponent)
 </script>
 
 <style lang="scss" scoped>

@@ -5,41 +5,41 @@
  * @LastEditors: Hedgehog96
  * @LastEditTime: 2022-09-18 09:43:30
  */
-import { Component } from "vue";
+import { Component } from 'vue'
 
 // 格式说明：属性名称对应属性编辑器的组件名称
 const COMMON_PROPERTIES = {
-    //字段
-    "uniqueKey"         :            "UniquekeyEditor",
-    "label"             :            "LabelEditor",
+    // 字段
+    'uniqueKey'         :            'UniquekeyEditor',
+    'label'             :            'LabelEditor',
     // "labelAlign"        :            "labelAlign-editor",
-    "type"              :            "TypeEditor",
+    'type'              :            'TypeEditor',
     // "defaultValue"      :            "DefaultValueEditor",
-    "placeholder"       :            "PlaceholderEditor",
+    'placeholder'       :            'PlaceholderEditor',
     // "startPlaceholder"  :            "startPlaceholder-editor",
     // "endPlaceholder"    :            "endPlaceholder-editor",
     // "columnWidth"       :            "columnWidth-editor",
     // "autoFullWidth"     :            "autoFullWidth-editor",
-    "size"              :            "SizeEditor",
+    'size'              :            'SizeEditor',
     // "showStops"         :            "showStops-editor",
     // "displayStyle"      :            "displayStyle-editor",
-    "buttonStyle"       :            "ButtonStyleEditor",
-    "border"            :            "BorderEditor",
+    'buttonStyle'       :            'ButtonStyleEditor',
+    'border'            :            'BorderEditor',
     // "labelWidth"        :            "labelWidth-editor",
     // "labelHidden"       :            "labelHidden-editor",
-    "rows"              :            "RowsEditor",
+    'rows'              :            'RowsEditor',
     // "required"          :            "required-editor",
     // "requiredHint"      :            "requiredHint-editor",
     // "validation"        :            "validation-editor",
     // "validationHint"    :            "validationHint-editor",
-    "readonly"          :            "ReadonlyEditor",
-    "disabled"          :            "DisabledEditor",
-    "hidden"            :            "HiddenEditor",
-    "clearable"         :            "ClearableEditor",
-    "inlinePrompt"      :            "InlinePromptEditor",
+    'readonly'          :            'ReadonlyEditor',
+    'disabled'          :            'DisabledEditor',
+    'hidden'            :            'HiddenEditor',
+    'clearable'         :            'ClearableEditor',
+    'inlinePrompt'      :            'InlinePromptEditor',
     // "editable"          :            "editable-editor",
     // "showPassword"      :            "showPassword-editor",
-    "textContent"       :            "TextContentEditor",
+    'textContent'       :            'TextContentEditor',
     // "htmlContent"       :            "htmlContent-editor",
     // "format"            :            "format-editor",
     // "valueFormat"       :            "valueFormat-editor",
@@ -49,9 +49,9 @@ const COMMON_PROPERTIES = {
     // "automaticDropdown" :            "automaticDropdown-editor",
     // "multiple"          :            "multiple-editor",
     // "multipleLimit"     :            "multipleLimit-editor",
-    "contentPosition"   :            "ContentPositionEditor",
-    "borderStyle"       :            "BorderStyleEditor",
-    "optionItems"       :            "OptionItemsEditor",
+    'contentPosition'   :            'ContentPositionEditor',
+    'borderStyle'       :            'BorderStyleEditor',
+    'optionItems'       :            'OptionItemsEditor'
     // "uploadURL"         :            "uploadURL-editor",
     // "uploadTip"         :            "uploadTip-editor",
     // "withCredentials"   :            "withCredentials-editor",
@@ -61,83 +61,83 @@ const COMMON_PROPERTIES = {
     // "fileTypes"         :            "fileTypes-editor",
     // "contentHeight"     :            "contentHeight-editor",
     // "customClass"       :            "customClass-editor",
-};
+}
 
 const ADVANCED_PROPERTIES = {
     // "min"               :            "MinEditor",
-    "max"               :            "MaxEditor",
+    'max'               :            'MaxEditor',
     // "precision"         :            "precision-editor",
     // "step"              :            "step-editor",
     // "controlsPosition"  :            "controlsPosition-editor",
-    "width"             :            "WidthEditor",
-    "minLength"         :            "MinLengthEditor",
-    "maxLength"         :            "MaxLengthEditor",
-    "showWordLimit"     :            "ShowWordLimitEditor",
-    "prefixIcon"        :            "PrefixIconEditor",
-    "suffixIcon"        :            "SuffixIconEditor",
-    "activeIcon"        :            "ActiveIcon",
-    "inActiveIcon"      :            "InActiveIconEditor",
+    'width'             :            'WidthEditor',
+    'minLength'         :            'MinLengthEditor',
+    'maxLength'         :            'MaxLengthEditor',
+    'showWordLimit'     :            'ShowWordLimitEditor',
+    'prefixIcon'        :            'PrefixIconEditor',
+    'suffixIcon'        :            'SuffixIconEditor',
+    'activeIcon'        :            'ActiveIcon',
+    'inActiveIcon'      :            'InActiveIconEditor',
     // "switchWidth"       :            "switchWidth-editor",
-    "activeText"        :            "ActiveTextEditor",
-    "inActiveText"      :            "InActiveTextEditor",
+    'activeText'        :            'ActiveTextEditor',
+    'inActiveText'      :            'InActiveTextEditor',
     // "activeColor"       :            "activeColor-editor",
     // "inactiveColor"     :            "inactiveColor-editor",
-    "lowThreshold"      :            "LowThresholdEditor",
-    "highThreshold"     :            "HighThresholdEditor",
-    "allowHalf"         :            "AllowHalfEditor",
-    "showText"          :            "ShowTextEditor",
-    "showScore"         :            "ShowScoreEditor",
-    "voidIcon"          :            "VoidIconEditor",
-    "disabledVoidIcon"  :            "DisabledVoidIconEditor",
+    'lowThreshold'      :            'LowThresholdEditor',
+    'highThreshold'     :            'HighThresholdEditor',
+    'allowHalf'         :            'AllowHalfEditor',
+    'showText'          :            'ShowTextEditor',
+    'showScore'         :            'ShowScoreEditor',
+    'voidIcon'          :            'VoidIconEditor',
+    'disabledVoidIcon'  :            'DisabledVoidIconEditor',
     // "range"             :            "range-editor",
     // "vertical"          :            "vertical-editor",
-    "plain"             :            "PlainEditor",
-    "text"              :            "TextEditor",
-    "bg"                :            "BgEditor",
-    "link"              :            "LinkEditor",
-    "round"             :            "RoundEditor",
-    "circle"            :            "CircleEditor",
+    'plain'             :            'PlainEditor',
+    'text'              :            'TextEditor',
+    'bg'                :            'BgEditor',
+    'link'              :            'LinkEditor',
+    'round'             :            'RoundEditor',
+    'circle'            :            'CircleEditor',
     // "icon"              :            "icon-editor",
     // "labelIconClass"    :            "labelIconClass-editor",
     // "labelIconPosition" :            "labelIconPosition-editor",
     // "labelTooltip"      :            "labelTooltip-editor",
-    "appendButton"      :            "AppendButtonEditor",
-    "append"            :            "AppendEditor",
-    "prependButton"     :            "PrependButtonEditor",
-    "prepend"           :            "PrependEdtior",
-    "buttonIcon"        :            "IconEditor",
-};
+    'appendButton'      :            'AppendButtonEditor',
+    'append'            :            'AppendEditor',
+    'prependButton'     :            'PrependButtonEditor',
+    'prepend'           :            'PrependEdtior',
+    'buttonIcon'        :            'IconEditor'
+}
 
 const EVENT_PROPERTIES = {
-    "onClick"           :            "OnClickEditor",
-    "onInput"           :            "OnInputEditor",
-    "onChange"          :            "OnChangeEditor",
-    "onFocus"           :            "OnFocusEditor",
-    "onBlur"            :            "OnBlurEditor",
+    'onClick'           :            'OnClickEditor',
+    'onInput'           :            'OnInputEditor',
+    'onChange'          :            'OnChangeEditor',
+    'onFocus'           :            'OnFocusEditor',
+    'onBlur'            :            'OnBlurEditor'
     // "onRemoteQuery"     :            "onRemoteQuery-editor",
     // "onBeforeUpload"    :            "onBeforeUpload-editor",
     // "onUploadSuccess"   :            "onUploadSuccess-editor",
     // "onUploadError"     :            "onUploadError-editor",
     // "onFileRemove"      :            "onFileRemove-editor",
-};
+}
 
 /**
  * 判断属性是否已注册
  * @param uniquePropName 属性名称（保证名称唯一，不跟其他组件属性冲突）
  */
 export function propertyRegistered(uniquePropName: string) {
-    return !!COMMON_PROPERTIES[uniquePropName];
+    return !!COMMON_PROPERTIES[uniquePropName]
 }
 
 /**
  * 注册组件常见属性编辑器
  */
 export function registerCPEditor(app: any, propName: string, editorComponent: Component) {
-    app.component(propName, editorComponent);
+    app.component(propName, editorComponent)
 }
 
 export default {
     COMMON_PROPERTIES,
     ADVANCED_PROPERTIES,
     EVENT_PROPERTIES
-};
+}

@@ -1,9 +1,9 @@
 <!--
- * @Description: 
+ * @Description: 右侧配置区域组件
  * @Author: Hedgehog96
  * @Date: 2022-05-09 15:38:49
  * @LastEditors: Hedgehog96
- * @LastEditTime: 2022-09-18 13:57:20
+ * @LastEditTime: 2023-01-14 21:45:52
 -->
 <template>
     <div class="h-settings">
@@ -50,43 +50,43 @@
 </template>
 
 <script setup lang="ts">
-import { ElRow, ElCol, ElCard, ElTooltip, ElButton, ElMessageBox } from "element-plus";
-import questionnaireTemplate from "./templates/questionnaireTemplate";
-import questionnaireImg from "@/assets/imgs/questionnaire.jpg";
-import { useIdStore } from "@/store/id";
-import { useComponentsStore } from "@/store/components";
-import { ComponentConfig } from "@/config/interfaces";
+import { ElRow, ElCol, ElCard, ElTooltip, ElButton, ElMessageBox } from 'element-plus'
+import questionnaireTemplate from './templates/questionnaireTemplate'
+import questionnaireImg from '@/assets/imgs/questionnaire.jpg'
+import { useIdStore } from '@/store/id'
+import { useComponentsStore } from '@/store/components'
+import { ComponentConfig } from '@/config/interfaces'
 
-const $_loadText = "加载该模板";
+const $_loadText = '加载该模板'
 const templates = [
-    { id: 0, text: "1. 调查问卷模板", img: questionnaireImg,  },
-];
+    { id: 0, text: '1. 调查问卷模板', img: questionnaireImg  }
+]
 
-const idStore = useIdStore();
-const componentsStore = useComponentsStore();
+const idStore = useIdStore()
+const componentsStore = useComponentsStore()
 const handleConfirmLoadTemplate = () => {
     ElMessageBox.confirm(
-        "加载模板会覆盖当前已有组件（可使用撤销功能恢复",
-        "友情提示",
+        '加载模板会覆盖当前已有组件（可使用撤销功能恢复',
+        '友情提示',
         {
             confirmButtonText: '确定',
             cancelButtonText: '取消',
-            type: 'info',
+            type: 'info'
         }
     )
         .then(() => {
-            componentsStore.$_setComponents([]);
+            componentsStore.$_setComponents([])
             
             questionnaireTemplate.forEach((c: (id: number) => ComponentConfig) => {
-                componentsStore.add(c(idStore.id));
-                idStore.increment();
-            });
-            componentsStore.recordSnapshot();
+                componentsStore.add(c(idStore.id))
+                idStore.increment()
+            })
+            componentsStore.recordSnapshot()
         })
         .catch(() => {
         // notodo
-        });
-};
+        })
+}
 </script>
 
 <style lang="scss" scoped>
@@ -94,7 +94,7 @@ const handleConfirmLoadTemplate = () => {
         padding: 5px;
         height: 100%;
         overflow-y: auto;
-        
+
         .template-image {
             width: 100%;
             display: block;

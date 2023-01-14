@@ -5,16 +5,16 @@
  * @LastEditors: Hedgehog96
  * @LastEditTime: 2022-06-30 16:27:00
  */
-import { defineStore } from "pinia";
+import { defineStore } from 'pinia'
 
-export const useIdStore = defineStore("id", {
+export const useIdStore = defineStore('id', {
     state: (): { id: number } => {
-        return { id: 7 };
+        return { id: 7 }
     },
 
     actions: {
         increment() {
-            this.id++;
-        },
-    },
-});
+            this.id++
+        }
+    }
+})

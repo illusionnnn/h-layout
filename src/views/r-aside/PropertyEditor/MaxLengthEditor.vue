@@ -1,9 +1,9 @@
 <!--
- * @Description: 
+ * @Description: 最大长度组件
  * @Author: Hedgehog96
  * @Date: 2022-08-01 11:11:30
  * @LastEditors: Hedgehog96
- * @LastEditTime: 2022-08-19 15:45:32
+ * @LastEditTime: 2023-01-14 22:37:28
 -->
 <template>
     <el-form-item class="h-editor">
@@ -23,26 +23,26 @@
 </template>
 
 <script setup lang="ts">
-import { defineProps, computed } from 'vue';
-import { ElFormItem, ElInputNumber } from "element-plus";
+import { computed } from 'vue'
+import { ElFormItem, ElInputNumber } from 'element-plus'
 
 const props = defineProps({
     elem: {
         type: Object,
         default: () => Object
-    },
-});
+    }
+})
 
 const maxLength = computed(({
     get() {
-        return props.elem.props.maxLength;
+        return props.elem.props.maxLength
     },
     set(newVal) {
         if (!newVal || isNaN(newVal)) {
-            props.elem.props.maxLength = null;
+            props.elem.props.maxLength = null
         } else {
-            props.elem.props.maxLength = Number.parseInt(newVal);
+            props.elem.props.maxLength = Number.parseInt(newVal)
         }
     }
-}));
+}))
 </script>

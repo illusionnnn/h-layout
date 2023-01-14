@@ -1,9 +1,9 @@
 <!--
- * @Description: 容器组件
+ * @Description: 容器组件组件
  * @Author: Hedgehog96
  * @Date: 2022-05-15 17:42:07
  * @LastEditors: Hedgehog96
- * @LastEditTime: 2022-07-04 17:36:18
+ * @LastEditTime: 2023-01-14 22:41:44
 -->
 <template>
     <div
@@ -38,25 +38,25 @@
 </template>
 
 <script setup lang="ts">
-import { defineProps, inject } from "vue";
+import { inject } from 'vue'
 
 const props = defineProps({
     activated: {
         type: Boolean,
-        default: () => false,
+        default: () => false
     },
     elem: {
         type: Object,
         default: () => {
-            return;
-        },
-    },
-});
+            return
+        }
+    }
+})
 
-const EVENT_BUS: any = inject("eventBus");
+const EVENT_BUS: any = inject('eventBus')
 const handleDelete = () => {
-    EVENT_BUS.emit("delete", props.elem.id);
-};
+    EVENT_BUS.emit('delete', props.elem.id)
+}
 </script>
 
 <style lang="scss" scoped>
@@ -72,9 +72,10 @@ const handleDelete = () => {
         height: 16px;
         display: flex;
         color: #fff;
-        opacity: 0.6;
+        opacity: .6;
         background-color: $base-color;
         z-index: 99;
+
         &:hover {
             opacity: 1;
         }
@@ -94,10 +95,11 @@ const handleDelete = () => {
         height: 16px;
         display: flex;
         color: #fff;
-        opacity: 0.6;
+        opacity: .6;
         background-color: $base-color;
         z-index: 9;
         cursor: move;
+
         &:hover {
             opacity: 1;
         }
@@ -105,6 +107,7 @@ const handleDelete = () => {
         .iconfont {
             font-size: 14px;
         }
+
         .container-title {
             margin: 0 4px;
             font-size: 12px;

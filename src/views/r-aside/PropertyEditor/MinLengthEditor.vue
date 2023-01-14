@@ -1,9 +1,9 @@
 <!--
- * @Description: 
+ * @Description: 最小长度组件
  * @Author: Hedgehog96
  * @Date: 2022-08-01 11:11:30
  * @LastEditors: Hedgehog96
- * @LastEditTime: 2022-08-19 15:39:53
+ * @LastEditTime: 2023-01-14 22:37:41
 -->
 <template>
     <el-form-item class="h-editor">
@@ -23,26 +23,26 @@
 </template>
 
 <script setup lang="ts">
-import { defineProps, computed } from 'vue';
-import { ElFormItem, ElInputNumber } from "element-plus";
+import { computed } from 'vue'
+import { ElFormItem, ElInputNumber } from 'element-plus'
 
 const props = defineProps({
     elem: {
         type: Object,
         default: () => Object
-    },
-});
+    }
+})
 
 const minLength = computed(({
     get() {
-        return props.elem.props.minLength;
+        return props.elem.props.minLength
     },
     set(newVal) {
         if (!newVal || isNaN(newVal)) {
-            props.elem.props.minLength = null;
+            props.elem.props.minLength = null
         } else {
-            props.elem.props.minLength = Number.parseInt(newVal);
+            props.elem.props.minLength = Number.parseInt(newVal)
         }
     }
-}));
+}))
 </script>

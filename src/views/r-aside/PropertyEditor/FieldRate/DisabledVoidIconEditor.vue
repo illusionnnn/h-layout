@@ -1,9 +1,9 @@
 <!--
- * @Description: 
+ * @Description: 禁用状态的未选择的Icon组件
  * @Author: Hedgehog96
  * @Date: 2022-08-19 15:27:34
  * @LastEditors: Hedgehog96
- * @LastEditTime: 2022-08-19 15:30:19
+ * @LastEditTime: 2023-01-14 22:32:14
 -->
 <template>
     <el-form-item class="h-editor">
@@ -31,32 +31,32 @@
 </template>
 
 <script setup lang="ts">
-import { defineProps, reactive } from 'vue';
-import { ElFormItem, ElInput } from "element-plus";
-import IconsDialog from '@/components/IconsDialog.vue';
+import { reactive } from 'vue'
+import { ElFormItem, ElInput } from 'element-plus'
+import IconsDialog from '@/components/IconsDialog.vue'
 
 const props = defineProps({
     elem: {
         type: Object,
         default: () => Object
-    },
-});
+    }
+})
 
 const state = reactive({
     iconName: props.elem.props.disabledVoidIcon,
-    visible: false,
-});
+    visible: false
+})
 
 const handleShowIcons = () => {
-    state.visible = !state.visible;
-};
+    state.visible = !state.visible
+}
 
 const handleChangeIcon = (iconName: string) => {
-    state.iconName = iconName;
-    props.elem.props.disabledVoidIcon = iconName;
-};
+    state.iconName = iconName
+    props.elem.props.disabledVoidIcon = iconName
+}
 
 const handleClose = () => {
-    state.visible = false;
-};
+    state.visible = false
+}
 </script>

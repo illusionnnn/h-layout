@@ -1,9 +1,9 @@
 <!--
- * @Description: 
+ * @Description: 右侧区域
  * @Author: Hedgehog96
  * @Date: 2022-05-09 14:22:35
  * @LastEditors: Hedgehog96
- * @LastEditTime: 2022-09-18 12:31:08
+ * @LastEditTime: 2023-01-14 22:41:08
 -->
 <template>
     <div class="h-aside">
@@ -39,34 +39,35 @@
 </template>
 
 <script setup lang="ts">
-import { computed } from "vue";
-import { useFieldsConfigStore } from "@/store/fieldsConfig";
-import HComponentConfig from "./HComponentConfig.vue";
-import HLayoutConfig from "./HLayoutConfig.vue";
+import { computed } from 'vue'
+import { useFieldsConfigStore } from '@/store/fieldsConfig'
+import HComponentConfig from './HComponentConfig.vue'
+import HLayoutConfig from './HLayoutConfig.vue'
 
-const ACTIVATING_CLASS = "activating";
-const NOTACTIVE_CLASS = "";
-type C = "c"
-type L = "l"
+const ACTIVATING_CLASS = 'activating'
+const NOTACTIVE_CLASS = ''
+type C = 'c'
+type L = 'l'
 
-const fieldsConfigStore = useFieldsConfigStore();
+const fieldsConfigStore = useFieldsConfigStore()
 
 const currentCompsTabClass = computed(() => {
-    return fieldsConfigStore.tabName === "c" ? ACTIVATING_CLASS : NOTACTIVE_CLASS;
-});
+    return fieldsConfigStore.tabName === 'c' ? ACTIVATING_CLASS : NOTACTIVE_CLASS
+})
 
 const currentSettingTabClass = computed(() => {
-    return fieldsConfigStore.tabName === "l" ? ACTIVATING_CLASS : NOTACTIVE_CLASS;
-});
+    return fieldsConfigStore.tabName === 'l' ? ACTIVATING_CLASS : NOTACTIVE_CLASS
+})
 
 const handleTabClick = (name: C | L) => {
-    fieldsConfigStore.changeTabName(name);
-};
+    fieldsConfigStore.changeTabName(name)
+}
 </script>
 
 <style lang="scss" scoped>
 .h-aside {
     height: 100%;
+
     .h-aside-tabs {
         display: flex;
         justify-content: center;

@@ -5,8 +5,8 @@
  * @LastEditors: Hedgehog96
  * @LastEditTime: 2022-09-17 17:32:31
  */
-import { Component } from "vue";
-import { InputProps as $_InputProps, RadioProps, CheckboxProps } from "element-plus";
+import { Component } from 'vue'
+import { InputProps as $_InputProps, RadioProps, CheckboxProps } from 'element-plus'
 
 // 拖曳组件实例
 export interface ComponentConfig {

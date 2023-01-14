@@ -1,9 +1,9 @@
 <!--
- * @Description: 应用头部组件
+ * @Description: 应用头部组件组件
  * @Author: Hedgehog96
  * @Date: 2022-05-07 16:34:02
  * @LastEditors: Hedgehog96
- * @LastEditTime: 2022-08-21 17:14:48
+ * @LastEditTime: 2023-01-14 21:43:10
 -->
 <template>
     <div class="h-base-header">
@@ -47,37 +47,37 @@
 </template>
 
 <script setup lang="ts">
-import { getCurrentInstance } from 'vue';
-import { useComponentsStore } from "@/store/components";
+import { getCurrentInstance } from 'vue'
+import { useComponentsStore } from '@/store/components'
 
 interface FullScreenHTMLElement extends HTMLElement {
   mozRequestFullScreen?: () => void;
   msRequestFullscreen?: () => void;
   webkitRequestFullscreen?: () => void;
 }
-const instance = getCurrentInstance();
+const instance = getCurrentInstance()
 
 const handleFullScreen = () => {
-    const elem = document.querySelector("html") as FullScreenHTMLElement;
+    const elem = document.querySelector('html') as FullScreenHTMLElement
     if (elem.requestFullscreen) {
-        elem.requestFullscreen();
+        elem.requestFullscreen()
     } else if (elem.mozRequestFullScreen) {
-        elem.mozRequestFullScreen();
+        elem.mozRequestFullScreen()
     } else if (elem.msRequestFullscreen) {
-        elem.msRequestFullscreen();
+        elem.msRequestFullscreen()
     } else if (elem.webkitRequestFullscreen) {
-        elem.webkitRequestFullscreen();
+        elem.webkitRequestFullscreen()
     } else {
-        instance?.appContext.config.globalProperties.$message.warning('使用该功能请配合最新版chrome浏览器食用');
+        instance?.appContext.config.globalProperties.$message.warning('使用该功能请配合最新版chrome浏览器食用')
     }
-};
+}
 
-const componentsStore = useComponentsStore();
-const handleSave = () => componentsStore.save();
+const componentsStore = useComponentsStore()
+const handleSave = () => componentsStore.save()
 const handleCleanCache = () => {
-    window.localStorage.clear();
-    instance?.appContext.config.globalProperties.$message.success('缓存已清除');
-};
+    window.localStorage.clear()
+    instance?.appContext.config.globalProperties.$message.success('缓存已清除')
+}
 </script>
 
 <style lang="scss" scoped>
@@ -112,6 +112,7 @@ const handleCleanCache = () => {
         .iconfont {
             margin-right: 4px;
         }
+
         .iconfont {
             font-size: 12px;
         }
@@ -121,7 +122,7 @@ const handleCleanCache = () => {
             color: #409eff;
             text-decoration: none;
             font-size: 14px;
-            
+
             .iconfont {
                 font-size: 16px;
             }

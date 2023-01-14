@@ -1,9 +1,9 @@
 <!--
- * @Description: 
+ * @Description: focus事件编辑按钮
  * @Author: Hedgehog96
  * @Date: 2022-08-04 14:23:57
  * @LastEditors: Hedgehog96
- * @LastEditTime: 2022-08-09 11:32:16
+ * @LastEditTime: 2023-01-14 22:21:00
 -->
 <template>
     <el-form-item class="h-editor">
@@ -23,18 +23,18 @@
 </template>
 
 <script setup lang="ts">
-import { defineEmits } from "vue";
-import { ElFormItem, ElButton } from "element-plus";
+import { defineEmits } from 'vue'
+import { ElFormItem, ElButton } from 'element-plus'
 
-const emits = defineEmits(['show']);
+const emits = defineEmits(['show'])
 
 const handleShowEditor = () => {
-    emits('show', 'onFocus');
-};
+    emits('show', 'onFocus')
+}
 </script>
 
 <style lang="scss" scoped>
-    .el-button--small{
+    .el-button--small {
         width: 100%;
     }
 </style>

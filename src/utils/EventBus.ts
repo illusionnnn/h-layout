@@ -6,22 +6,22 @@
  * @LastEditTime: 2022-09-07 11:09:24
  */
 export default class EventBus {
-    events: object;
+    events: object
 
     constructor() {
-        this.events = {};
+        this.events = {}
     }
 
     on(evtName: string, fn: any) {
-        this.events[evtName] = this.events[evtName] || [];
-        this.events[evtName].push(fn);
+        this.events[evtName] = this.events[evtName] || []
+        this.events[evtName].push(fn)
     }
 
     emit(evtName: string, d: any) {
         if (this.events[evtName]) {
             this.events[evtName].forEach(function (fn: any) {
-                fn(d);
-            });
+                fn(d)
+            })
         }
     }
 
@@ -29,8 +29,8 @@ export default class EventBus {
         if (this.events[evtName]) {
             for (let i = 0; i < this.events[evtName].length; i++) {
                 if (this.events[evtName][i] === fn) {
-                    this.events[evtName].splice(i, 1);
-                    break;
+                    this.events[evtName].splice(i, 1)
+                    break
                 }
             }
         }

@@ -1,9 +1,9 @@
 <!--
- * @Description: 开关
+ * @Description: 开关组件
  * @Author: Hedgehog96
  * @Date: 2022-08-18 10:25:43
  * @LastEditors: Hedgehog96
- * @LastEditTime: 2022-08-18 16:12:04
+ * @LastEditTime: 2023-01-14 22:42:31
 -->
 <template>
     <el-switch
@@ -21,19 +21,19 @@
 </template>
 
 <script setup lang="ts">
-import { defineProps, ref } from "vue";
-import { ElSwitch } from "element-plus";
+import { ref } from 'vue'
+import { ElSwitch } from 'element-plus'
 
 const props = defineProps({
     elem: {
         type: Object,
         default: () => Object
     }
-});
+})
 
-const swicthValue = ref(false);
+const swicthValue = ref(false)
 const handleChangeEvent =  (value: string | number | boolean) => {
-    const fn = new Function('value', props.elem.event.onChange);
-    fn(value);
-};
+    const fn = new Function('value', props.elem.event.onChange)
+    fn(value)
+}
 </script>

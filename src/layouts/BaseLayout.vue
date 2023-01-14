@@ -3,7 +3,7 @@
  * @Author: Hedgehog96
  * @Date: 2022-05-07 15:11:38
  * @LastEditors: Hedgehog96
- * @LastEditTime: 2022-09-15 15:38:55
+ * @LastEditTime: 2023-01-14 21:44:39
 -->
 <template>
     <div class="h-base-layout">
@@ -38,6 +38,7 @@
 .h-base-layout-wrapper {
     min-height: 100vh;
 }
+
 .h-base-layout-header {
     position: fixed;
     width: 100%;

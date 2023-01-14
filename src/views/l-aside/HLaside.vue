@@ -1,9 +1,9 @@
 <!--
- * @Description: 
+ * @Description: 左侧组件选择组件
  * @Author: Hedgehog96
  * @Date: 2022-05-09 14:22:35
  * @LastEditors: Hedgehog96
- * @LastEditTime: 2022-09-15 15:41:47
+ * @LastEditTime: 2023-01-14 21:45:29
 -->
 <template>
     <div class="h-aside-l">
@@ -32,39 +32,39 @@
 </template>
 
 <script setup lang="ts">
-import { reactive, computed, shallowRef } from "vue";
-import HComponents from "./HComponents.vue";
-import HSettings from "./HSettings.vue";
+import { reactive, computed, shallowRef } from 'vue'
+import HComponents from './HComponents.vue'
+import HSettings from './HSettings.vue'
 
-const ACTIVATING_CLASS = "activating";
-const NOTACTIVE_CLASS = "";
-const C = "c";
-const S = "s";
+const ACTIVATING_CLASS = 'activating'
+const NOTACTIVE_CLASS = ''
+const C = 'c'
+const S = 's'
 
 const state = reactive({
     currentTabName: C,
-    currentComponent: shallowRef(HComponents),
-});
+    currentComponent: shallowRef(HComponents)
+})
 
 const currentCompsTabClass = computed(() => {
-    return state.currentTabName === C ? ACTIVATING_CLASS : NOTACTIVE_CLASS;
-});
+    return state.currentTabName === C ? ACTIVATING_CLASS : NOTACTIVE_CLASS
+})
 
 const currentSettingTabClass = computed(() => {
-    return state.currentTabName === S ? ACTIVATING_CLASS : NOTACTIVE_CLASS;
-});
+    return state.currentTabName === S ? ACTIVATING_CLASS : NOTACTIVE_CLASS
+})
 
 const handleTabClick = (tabName: string) => {
-    state.currentTabName = tabName;
-    const currentComponent = tabName === C ? HComponents : HSettings;
-    state.currentComponent = currentComponent;
-};
+    state.currentTabName = tabName
+    const currentComponent = tabName === C ? HComponents : HSettings
+    state.currentComponent = currentComponent
+}
 </script>
 
 <style lang="scss" scoped>
 .h-aside-l {
     height: 100%;
-    
+
     .h-aside-tabs {
         display: flex;
         justify-content: center;
@@ -78,15 +78,15 @@ const handleTabClick = (tabName: string) => {
             cursor: pointer;
 
             &.activating {
-            color: $base-color;
+                color: $base-color;
             }
 
             i {
-            margin-right: 4px;
+                margin-right: 4px;
             }
 
             span {
-            font-size: 14px;
+                font-size: 14px;
             }
         }
     }

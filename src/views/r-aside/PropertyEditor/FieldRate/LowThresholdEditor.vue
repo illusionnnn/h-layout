@@ -1,9 +1,9 @@
 <!--
- * @Description: 
+ * @Description: 低分界限值组件
  * @Author: Hedgehog96
  * @Date: 2022-08-18 16:41:37
  * @LastEditors: Hedgehog96
- * @LastEditTime: 2022-08-19 15:40:23
+ * @LastEditTime: 2023-01-14 22:32:42
 -->
 <template>
     <el-form-item class="h-editor">
@@ -23,26 +23,26 @@
 </template>
 
 <script setup lang="ts">
-import { defineProps, computed } from 'vue';
-import { ElFormItem, ElInputNumber } from "element-plus";
+import { computed } from 'vue'
+import { ElFormItem, ElInputNumber } from 'element-plus'
 
 const props = defineProps({
     elem: {
         type: Object,
         default: () => Object
-    },
-});
+    }
+})
 
 const lowThreshold = computed(({
     get() {
-        return props.elem.props.lowThreshold;
+        return props.elem.props.lowThreshold
     },
     set(newVal) {
         if (!newVal || isNaN(newVal)) {
-            props.elem.props.lowThreshold = 2;
+            props.elem.props.lowThreshold = 2
         } else {
-            props.elem.props.lowThreshold = Number.parseInt(newVal);
+            props.elem.props.lowThreshold = Number.parseInt(newVal)
         }
     }
-}));
+}))
 </script>

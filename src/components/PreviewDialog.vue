@@ -1,9 +1,9 @@
 <!--
- * @Description: 
+ * @Description: 预览组件
  * @Author: Hedgehog96
  * @Date: 2022-08-27 17:59:59
  * @LastEditors: Hedgehog96
- * @LastEditTime: 2022-08-28 16:47:53
+ * @LastEditTime: 2023-01-14 22:42:05
 -->
 <template>
     <div
@@ -68,12 +68,11 @@
 </template>
 
 <script setup lang="ts">
-import { defineProps, defineEmits, reactive, watch } from 'vue';
-import { ElDialog } from 'element-plus';
-import BaseComponent from "./BaseComponent.vue";
-import _ from "./form-widget";
+import { reactive, watch } from 'vue'
+import { ElDialog } from 'element-plus'
+import BaseComponent from './BaseComponent.vue'
 
-import { useComponentsStore } from "@/store/components";
+import { useComponentsStore } from '@/store/components'
 
 const props = defineProps({
     visible: {
@@ -81,24 +80,24 @@ const props = defineProps({
         default: false,
         required: true
     }
-});
-const emits = defineEmits(['close']);
+})
+const emits = defineEmits(['close'])
 const state = reactive({
     visible: false,
     reload: 0,
     components: []
-});
-const componentsStore = useComponentsStore();
+})
+const componentsStore = useComponentsStore()
 
-watch(() => props.visible, (val) => {
-    state.reload++;
-    state.visible = val;
-});
+watch(() => props.visible, val => {
+    state.reload++
+    state.visible = val
+})
 
 const handleClose = () => {
-    state.visible = false;
-    emits('close');
-};
+    state.visible = false
+    emits('close')
+}
 </script>
 
 <style lang="scss" scoped>

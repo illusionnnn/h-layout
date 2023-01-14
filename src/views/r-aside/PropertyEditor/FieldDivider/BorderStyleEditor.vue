@@ -1,9 +1,9 @@
 <!--
- * @Description: 
+ * @Description: 分隔符样式组件
  * @Author: Hedgehog96
  * @Date: 2022-08-25 22:00:04
  * @LastEditors: Hedgehog96
- * @LastEditTime: 2022-08-25 22:02:43
+ * @LastEditTime: 2023-01-14 22:31:56
 -->
 <template>
     <el-form-item class="h-editor">
@@ -25,19 +25,18 @@
 </template>
 
 <script setup lang="ts">
-import { defineProps }  from "vue";
-import { ElFormItem, ElSelect } from "element-plus";
+import { ElFormItem, ElSelect } from 'element-plus'
 
 const props = defineProps({
     elem: {
         type: Object,
         default: () => Object
     }
-});
+})
 const widgetBorderStyle = [
     { label: 'solid', value: 'solid' },
     { label: 'dashed', value: 'dashed' },
     { label: 'dotted', value: 'dotted' },
-    { label: 'double', value: 'double' },
-];
+    { label: 'double', value: 'double' }
+]
 </script>

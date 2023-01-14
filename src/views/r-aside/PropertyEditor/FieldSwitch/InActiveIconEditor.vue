@@ -1,9 +1,9 @@
 <!--
- * @Description: 
+ * @Description: 关闭时Icon组件
  * @Author: Hedgehog96
  * @Date: 2022-08-18 11:35:40
  * @LastEditors: Hedgehog96
- * @LastEditTime: 2022-08-18 14:49:30
+ * @LastEditTime: 2023-01-14 22:35:33
 -->
 <template>
     <el-form-item class="h-editor">
@@ -31,32 +31,32 @@
 </template>
 
 <script setup lang="ts">
-import { defineProps, reactive } from 'vue';
-import { ElFormItem, ElInput } from "element-plus";
-import IconsDialog from '@/components/IconsDialog.vue';
+import { reactive } from 'vue'
+import { ElFormItem, ElInput } from 'element-plus'
+import IconsDialog from '@/components/IconsDialog.vue'
 
 const props = defineProps({
     elem: {
         type: Object,
         default: () => Object
-    },
-});
+    }
+})
 
 const state = reactive({
     iconName: props.elem.props.inActiveIcon,
-    visible: false,
-});
+    visible: false
+})
 
 const handleShowIcons = () => {
-    state.visible = !state.visible;
-};
+    state.visible = !state.visible
+}
 
 const handleChangeIcon = (iconName: string) => {
-    state.iconName = iconName;
-    props.elem.props.inActiveIcon = iconName;
-};
+    state.iconName = iconName
+    props.elem.props.inActiveIcon = iconName
+}
 
 const handleClose = () => {
-    state.visible = false;
-};
+    state.visible = false
+}
 </script>

@@ -1,9 +1,9 @@
 <!--
- * @Description: 单选框
+ * @Description: 单选框组件
  * @Author: Hedgehog96
  * @Date: 2022-08-22 14:31:48
  * @LastEditors: Hedgehog96
- * @LastEditTime: 2022-09-18 12:43:30
+ * @LastEditTime: 2023-01-14 22:42:24
 -->
 <template>
     <el-radio-group
@@ -36,26 +36,26 @@
 </template>
 
 <script setup lang="ts">
-import { defineProps, ref, watch } from "vue";
-import { ElRadioGroup, ElRadio, ElRadioButton } from "element-plus";
+import { ref, watch } from 'vue'
+import { ElRadioGroup, ElRadio, ElRadioButton } from 'element-plus'
 
 const props = defineProps({
     elem: {
         type: Object,
         default: () => Object
     }
-});
+})
 
-let radioValue = ref('radio1');
+let radioValue = ref('radio1')
 watch(
-    () => props.elem.props.optionItems, (newVal) => {
-        radioValue.value = newVal[0].label;
+    () => props.elem.props.optionItems, newVal => {
+        radioValue.value = newVal[0].label
     },
     { deep: true }
-);
+)
 
 const handleChangeEvent = (value: number | string | boolean) => {
-    const fn = new Function("value", props.elem.event.onChange);
-    fn(value);
-};
+    const fn = new Function('value', props.elem.event.onChange)
+    fn(value)
+}
 </script>

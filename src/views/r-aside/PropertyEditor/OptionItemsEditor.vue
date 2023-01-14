@@ -1,9 +1,9 @@
 <!--
- * @Description: 
+ * @Description: 选项设置组件
  * @Author: Hedgehog96
  * @Date: 2022-08-22 16:04:45
  * @LastEditors: Hedgehog96
- * @LastEditTime: 2022-08-24 17:20:18
+ * @LastEditTime: 2023-01-14 22:37:53
 -->
 <template>
     <el-form-item class="h-editor">
@@ -14,7 +14,7 @@
             v-for="(item, idx) in props.elem.props.optionItems"
             :key="idx"
             class="option-items-wrapper"
-            style="margin-bottom: 4px"
+            style="margin-bottom: 4px;"
         >
             <el-input
                 v-model="item.label"
@@ -23,7 +23,7 @@
             />
             <el-input
                 v-model="item.text"
-                style="width: 45%; margin-right: 10px"
+                style="width: 45%; margin-right: 10px;"
                 title="文本"
             />
             <el-button
@@ -44,9 +44,9 @@
 </template>
 
 <script setup lang="ts">
-import { defineProps, getCurrentInstance } from 'vue';
-import { Delete } from '@element-plus/icons-vue';
-import { ElFormItem, ElInput, ElButton, ElDivider } from "element-plus";
+import { getCurrentInstance } from 'vue'
+import { Delete } from '@element-plus/icons-vue'
+import { ElFormItem, ElInput, ElButton, ElDivider } from 'element-plus'
 
 interface Item {
     text: string | number;
@@ -57,53 +57,53 @@ const props = defineProps({
     elem: {
         type: Object,
         default: () => Object
-    },
-});
+    }
+})
 
-const instance = getCurrentInstance();
+const instance = getCurrentInstance()
 const handleDelete = (item: Item) => {
     if (props.elem.props.optionItems.length === 1) {
-        instance?.appContext.config.globalProperties.$message.warning('不能删除全部选项');
+        instance?.appContext.config.globalProperties.$message.warning('不能删除全部选项')
     } else {
-        const _ = props.elem.props.optionItems.filter((_item: Item) => _item.label !== item.label);
-        props.elem.props.optionItems = _;
+        const _ = props.elem.props.optionItems.filter((_item: Item) => _item.label !== item.label)
+        props.elem.props.optionItems = _
     }
-};
+}
 
 const handleAdd = () => {
     props.elem.props.optionItems.push(
         { text: `radio${+new Date()}`, label: `radio${+new Date()}` }
-    );
-};
-const handleChangeLabel = (value: string | number, item: Item) => {
-    const _ = props.elem.props.optionItems.filter((_item: Item) => _item.text !== item.text);
-    const __ = props.elem.props.optionItems.filter((_item: Item) => _item.text === item.text)[0];
-    _.forEach((_item: Item) => {
-        if (_item.label === value) {
-            instance?.appContext.config.globalProperties.$message.error('输入值已存在');
-            return;
-        } else {
-            __.label = value;
-        }
-    });
-};
-const handleChangeText = (value: string | number, item: Item) => {
-    const _ = props.elem.props.optionItems.filter((_item: Item) => _item.label !== item.label);
-    const __ = props.elem.props.optionItems.filter((_item: Item) => _item.label === item.label)[0];
-    _.forEach((_item: Item) => {
-        if (_item.text === value) {
-            instance?.appContext.config.globalProperties.$message.error('输入文本已存在');
-            return;
-        } else {
-            __.text = value;
-        }
-    });
-};
+    )
+}
+// const handleChangeLabel = (value: string | number, item: Item) => {
+//     const _ = props.elem.props.optionItems.filter((_item: Item) => _item.text !== item.text)
+//     const __ = props.elem.props.optionItems.filter((_item: Item) => _item.text === item.text)[0]
+//     _.forEach((_item: Item) => {
+//         if (_item.label === value) {
+//             instance?.appContext.config.globalProperties.$message.error('输入值已存在')
+//             return
+//         } else {
+//             __.label = value
+//         }
+//     })
+// }
+// const handleChangeText = (value: string | number, item: Item) => {
+//     const _ = props.elem.props.optionItems.filter((_item: Item) => _item.label !== item.label)
+//     const __ = props.elem.props.optionItems.filter((_item: Item) => _item.label === item.label)[0]
+//     _.forEach((_item: Item) => {
+//         if (_item.text === value) {
+//             instance?.appContext.config.globalProperties.$message.error('输入文本已存在')
+//             return
+//         } else {
+//             __.text = value
+//         }
+//     })
+// }
 </script>
 
 <style scoped>
 .option-items-wrapper {
-  margin-bottom: 4px;
-  display: flex;
+    margin-bottom: 4px;
+    display: flex;
 }
 </style>

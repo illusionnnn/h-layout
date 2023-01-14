@@ -1,9 +1,9 @@
 <!--
- * @Description: 应用主内容组件
+ * @Description: 应用主内容组件组件
  * @Author: Hedgehog96
  * @Date: 2022-05-07 16:43:27
  * @LastEditors: Hedgehog96
- * @LastEditTime: 2022-06-30 14:31:47
+ * @LastEditTime: 2023-01-14 21:43:15
 -->
 <template>
     <div class="h-base-main">
@@ -13,8 +13,8 @@
 </template>
 
 <script setup lang="ts">
-import HMain from "@/views/main/HMain.vue";
-import HMainHeader from "@/views/main/HMainHeader.vue";
+import HMain from '@/views/main/HMain.vue'
+import HMainHeader from '@/views/main/HMainHeader.vue'
 </script>
 
 <style scoped>

@@ -1,9 +1,9 @@
 <!--
- * @Description: 
+ * @Description: 自定义分隔线内容位置组件
  * @Author: Hedgehog96
  * @Date: 2022-08-25 21:44:49
  * @LastEditors: Hedgehog96
- * @LastEditTime: 2022-08-25 21:47:01
+ * @LastEditTime: 2023-01-14 22:31:54
 -->
 <template>
     <el-form-item class="h-editor">
@@ -25,18 +25,17 @@
 </template>
 
 <script setup lang="ts">
-import { defineProps }  from "vue";
-import { ElFormItem, ElSelect } from "element-plus";
+import { ElFormItem, ElSelect } from 'element-plus'
 
 const props = defineProps({
     elem: {
         type: Object,
         default: () => Object
     }
-});
+})
 const widgetContentPosition = [
     { label: 'center', value: 'center' },
     { label: 'left', value: 'left' },
-    { label: 'right', value: 'right' },
-];
+    { label: 'right', value: 'right' }
+]
 </script>

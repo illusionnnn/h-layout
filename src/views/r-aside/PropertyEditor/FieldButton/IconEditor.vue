@@ -1,9 +1,9 @@
 <!--
- * @Description: 
+ * @Description: 按钮Icon组件
  * @Author: Hedgehog96
  * @Date: 2022-08-17 15:32:04
  * @LastEditors: Hedgehog96
- * @LastEditTime: 2022-08-17 15:33:56
+ * @LastEditTime: 2023-01-14 22:45:06
 -->
 <template>
     <el-form-item class="h-editor">
@@ -31,32 +31,32 @@
 </template>
 
 <script setup lang="ts">
-import { defineProps, reactive } from 'vue';
-import { ElFormItem, ElInput } from "element-plus";
-import IconsDialog from '@/components/IconsDialog.vue';
+import { reactive } from 'vue'
+import { ElFormItem, ElInput } from 'element-plus'
+import IconsDialog from '@/components/IconsDialog.vue'
 
 const props = defineProps({
     elem: {
         type: Object,
         default: () => Object
-    },
-});
+    }
+})
 
 const state = reactive({
     iconName: props.elem.props.buttonIcon,
-    visible: false,
-});
+    visible: false
+})
 
 const handleShowIcons = () => {
-    state.visible = !state.visible;
-};
+    state.visible = !state.visible
+}
 
 const handleChangeIcon = (iconName: string) => {
-    state.iconName = iconName;
-    props.elem.props.buttonIcon = iconName;
-};
+    state.iconName = iconName
+    props.elem.props.buttonIcon = iconName
+}
 
 const handleClose = () => {
-    state.visible = false;
-};
+    state.visible = false
+}
 </script>

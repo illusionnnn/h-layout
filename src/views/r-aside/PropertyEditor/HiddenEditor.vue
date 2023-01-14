@@ -1,9 +1,9 @@
 <!--
- * @Description: 
+ * @Description: 隐藏字段标签组件
  * @Author: Hedgehog96
  * @Date: 2022-08-22 11:28:51
  * @LastEditors: Hedgehog96
- * @LastEditTime: 2022-09-07 10:41:04
+ * @LastEditTime: 2023-01-14 22:44:55
 -->
 <template>
     <el-form-item class="h-editor">
@@ -31,9 +31,8 @@
 </template>
 
 <script setup lang="ts">
-import { defineProps } from 'vue';
-import { ElFormItem, ElSwitch } from "element-plus";
-import { useComponentsStore } from '@/store/components';
+import { ElFormItem, ElSwitch } from 'element-plus'
+import { useComponentsStore } from '@/store/components'
 
 const props = defineProps({
     isLayoutHidden: {
@@ -43,20 +42,20 @@ const props = defineProps({
     elem: {
         type: Object,
         default: () => Object
-    },
-});
+    }
+})
 
-const componentStpre = useComponentsStore();
+const componentStpre = useComponentsStore()
 const handleChange = (value: number | string | boolean) => {
-    props.elem.props.hidden = Boolean(value);
-    props.elem.props['$_isComponentSethidden'] = true;
-};
+    props.elem.props.hidden = Boolean(value)
+    props.elem.props['$_isComponentSethidden'] = true
+}
 const handleLayoutHiddenChange = (value: number | string | boolean) => {
     if (props.isLayoutHidden !== undefined) {
-        props.elem.hidden = Boolean(value);
-        componentStpre.setLayoutProperty('hidden', Boolean(value));
+        props.elem.hidden = Boolean(value)
+        componentStpre.setLayoutProperty('hidden', Boolean(value))
     } else {
-        props.elem.props.hidden = Boolean(value);
+        props.elem.props.hidden = Boolean(value)
     }
-};
+}
 </script>

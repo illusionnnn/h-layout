@@ -1,6 +1,6 @@
 # h-layout
 
-实验性可拖曳布局（非摸鱼工具
+可拖曳布局玩具
 
 ### 技术栈
 Vue3 + Vite2 + TypeScript + Element-Plus

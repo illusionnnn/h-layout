@@ -1,16 +1,16 @@
 <!--
- * @Description: 
+ * @Description: 应用组件
  * @Author: Hedgehog96
  * @Date: 2022-05-05 21:19:48
  * @LastEditors: Hedgehog96
- * @LastEditTime: 2022-09-16 15:36:17
+ * @LastEditTime: 2023-01-14 22:41:19
 -->
 <template>
     <h-layout />
 </template>
 
 <script setup lang="ts">
-import HLayout from "./layouts/HLayout.vue";
+import HLayout from './layouts/HLayout.vue'
 </script>
 
 <style>
@@ -24,7 +24,7 @@ import HLayout from "./layouts/HLayout.vue";
 }
 
 ::-webkit-scrollbar-track {
-    background: rgba(0, 0, 0, 0.1);
+    background: rgba(0, 0, 0, .1);
     border-radius: 0;
 }
 
@@ -37,7 +37,7 @@ import HLayout from "./layouts/HLayout.vue";
 ::-webkit-scrollbar-thumb {
     cursor: pointer;
     border-radius: 5px;
-    background: rgba(0, 0, 0, 0.15);
-    transition: color 0.2s ease;
+    background: rgba(0, 0, 0, .15);
+    transition: color .2s ease;
 }
 </style>

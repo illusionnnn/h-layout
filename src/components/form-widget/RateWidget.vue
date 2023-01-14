@@ -1,9 +1,9 @@
 <!--
- * @Description: 评分
+ * @Description: 评分组件
  * @Author: Hedgehog96
  * @Date: 2022-08-18 16:11:42
  * @LastEditors: Hedgehog96
- * @LastEditTime: 2022-08-19 15:34:47
+ * @LastEditTime: 2023-01-14 22:42:28
 -->
 <template>
     <el-rate
@@ -22,19 +22,19 @@
 </template>
 
 <script setup lang="ts">
-import { defineProps, ref } from 'vue';
-import { ElRate } from 'element-plus';
+import { ref } from 'vue'
+import { ElRate } from 'element-plus'
 
 const props = defineProps({
     elem: {
         type: Object,
         default: () => Object
     }
-});
+})
 
-const rateValue = ref(0);
+const rateValue = ref(0)
 const handleChangeEvent = (value: number) => {
-    const fn = new Function('value', props.elem.event.onChange);
-    fn(value);
-};
+    const fn = new Function('value', props.elem.event.onChange)
+    fn(value)
+}
 </script>

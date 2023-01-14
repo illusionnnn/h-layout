@@ -3,7 +3,7 @@
  * @Author: Hedgehog96
  * @Date: 2022-05-11 14:08:14
  * @LastEditors: Hedgehog96
- * @LastEditTime: 2022-09-07 11:17:59
+ * @LastEditTime: 2023-01-14 22:40:37
 -->
 <template>
     <div
@@ -114,17 +114,17 @@
 </template>
 
 <script setup lang="ts">
-import { inject, defineEmits, reactive, ref, defineAsyncComponent, getCurrentInstance } from "vue";
-import { ElForm, ElButton, ElDialog, ElAlert, ElCollapse, ElCollapseItem } from "element-plus";
-import { intersection } from "lodash-es";
-import CodeEditor from "@/components/CodeEditor.vue";
-import { ComponentConfig } from "@/config/interfaces";
-import componentsConfig from "@/config/components";
-import widgetProperties from "@/config/propertyRegister";
-import PropertyEditor from "./PropertyEditor/index";
-import EventEditor from "./EventEditor/index";
+import { inject, reactive, ref, defineAsyncComponent, getCurrentInstance } from 'vue'
+import { ElForm, ElButton, ElDialog, ElAlert, ElCollapse, ElCollapseItem } from 'element-plus'
+import { intersection } from 'lodash-es'
+import CodeEditor from '@/components/CodeEditor.vue'
+import { ComponentConfig } from '@/config/interfaces'
+import componentsConfig from '@/config/components'
+import widgetProperties from '@/config/propertyRegister'
+import PropertyEditor from './PropertyEditor/index'
+import EventEditor from './EventEditor/index'
 
-const { COMMON_PROPERTIES, ADVANCED_PROPERTIES, EVENT_PROPERTIES } = widgetProperties;
+const { COMMON_PROPERTIES, ADVANCED_PROPERTIES, EVENT_PROPERTIES } = widgetProperties
 
 const state: {
     code: string,
@@ -136,268 +136,268 @@ const state: {
     showEvent: boolean,
     } = reactive({
         code: '',
-        activeNames: "common",
+        activeNames: 'common',
         currentEventName: '',
         currentElem: {},
         showEditor: false,
         showAdvanced: false,
         showEvent: false
-    });
-const codeEditorRef = ref('');
-const instance = getCurrentInstance();
+    })
+const codeEditorRef = ref('')
+const instance = getCurrentInstance()
 const eventsParamMap = {
     onFocus: 'event',
     onInput: 'value',
     onBlur: 'event',
     onChange: 'value',
-    onClick: '',
-};
+    onClick: ''
+}
 
-const emits = defineEmits(['tabClick']);
-const EVENT_BUS: any = inject("eventBus");
-const ADVANCED_KEYS = Object.keys(ADVANCED_PROPERTIES);
-const EVENT_KEYS = Object.keys(EVENT_PROPERTIES);
-EVENT_BUS.on("clickComponent", (elem: ComponentConfig) => {
-    emits('tabClick', 'c');
+const emits = defineEmits(['tabClick'])
+const EVENT_BUS: any = inject('eventBus')
+const ADVANCED_KEYS = Object.keys(ADVANCED_PROPERTIES)
+const EVENT_KEYS = Object.keys(EVENT_PROPERTIES)
+EVENT_BUS.on('clickComponent', (elem: ComponentConfig) => {
+    emits('tabClick', 'c')
 
-    state.currentElem = elem;
-    const propKeys = Object.keys(elem.props);
-    const eventKeys = Object.keys(elem.event);
+    state.currentElem = elem
+    const propKeys = Object.keys(elem.props)
+    const eventKeys = Object.keys(elem.event)
 
     if (intersection(ADVANCED_KEYS, propKeys).length) {
-        state.showAdvanced = true;
+        state.showAdvanced = true
     } else {
-        state.showAdvanced = false;
+        state.showAdvanced = false
     }
 
     if (intersection(EVENT_KEYS, eventKeys).length) {
-        state.showEvent = true;
+        state.showEvent = true
     } else {
-        state.showEvent = false;
+        state.showEvent = false
     }
-});
+})
 
 const getPropEditor = (propName: string, editorName: string) => {
-    if (propName === "uniqueKey") {
-        return PropertyEditor.UniqueKeyEditor;
+    if (propName === 'uniqueKey') {
+        return PropertyEditor.UniqueKeyEditor
     }
 
     if (state.currentElem.label === 'Button') {
         if (propName === 'type') {
-            return PropertyEditor.ButtonTypeEditor;
+            return PropertyEditor.ButtonTypeEditor
         }
         else if (propName === 'plain') {
-            return PropertyEditor.ButtonPlainEditor;
+            return PropertyEditor.ButtonPlainEditor
         }
         else if (propName === 'text') {
-            return PropertyEditor.ButtonTextEditor;
+            return PropertyEditor.ButtonTextEditor
         }
         else if (propName === 'bg') {
-            return PropertyEditor.ButtonBgEditor;
+            return PropertyEditor.ButtonBgEditor
         }
         else if (propName === 'link') {
-            return PropertyEditor.ButtonLinkEditor;
+            return PropertyEditor.ButtonLinkEditor
         }
         else if (propName === 'round') {
-            return PropertyEditor.ButtonRoundEditor;
+            return PropertyEditor.ButtonRoundEditor
         }
         else if (propName === 'circle') {
-            return PropertyEditor.ButtonCircleEditor;
+            return PropertyEditor.ButtonCircleEditor
         }
         else if (propName === 'buttonIcon') {
-            return PropertyEditor.ButtonIconEditor;
+            return PropertyEditor.ButtonIconEditor
         }
     }
 
     if (state.currentElem.label === 'Switch') {
         if (propName === 'inlinePrompt') {
-            return PropertyEditor.SwicthInlinePromptEditor;
+            return PropertyEditor.SwicthInlinePromptEditor
         }
         else if (propName === 'width') {
-            return PropertyEditor.SwitchWidthEditor;
+            return PropertyEditor.SwitchWidthEditor
         }
         else if (propName === 'activeIcon') {
-            return PropertyEditor.SwitchActiveIconEditor;
+            return PropertyEditor.SwitchActiveIconEditor
         }
         else if (propName === 'inActiveIcon') {
-            return PropertyEditor.SwitchInActiveIconEditor;
+            return PropertyEditor.SwitchInActiveIconEditor
         }
         else if (propName === 'activeText') {
-            return PropertyEditor.SwitchActiveTextEditor;
+            return PropertyEditor.SwitchActiveTextEditor
         }
         else if (propName === 'inActiveText') {
-            return PropertyEditor.SwitchInActiveTextEditor;
+            return PropertyEditor.SwitchInActiveTextEditor
         }
     }
 
     if (state.currentElem.label === 'Rate') {
         if (propName === 'allowHalf') {
-            return PropertyEditor.RateAllowHalfEditor;
+            return PropertyEditor.RateAllowHalfEditor
         }
         else if (propName === 'lowThreshold') {
-            return PropertyEditor.RateLowThresholdEditor;
+            return PropertyEditor.RateLowThresholdEditor
         }
         else if (propName === 'highThreshold') {
-            return PropertyEditor.RateHighThresholdEditor;
+            return PropertyEditor.RateHighThresholdEditor
         }
         else if (propName === 'showScore') {
-            return PropertyEditor.RateShowScoreEditor;
+            return PropertyEditor.RateShowScoreEditor
         }
         else if (propName === 'voidIcon') {
-            return PropertyEditor.RateVoidIconEditor;
+            return PropertyEditor.RateVoidIconEditor
         }
         else if (propName === 'disabledVoidIcon') {
-            return PropertyEditor.RateDisabledVoidIconEditor;
+            return PropertyEditor.RateDisabledVoidIconEditor
         }
     }
 
     if (propName === 'textContent') {
-        return PropertyEditor.TextContentEditor;
+        return PropertyEditor.TextContentEditor
     }
     else if (propName === 'showText') {
-        return PropertyEditor.ShowTextEditor;
+        return PropertyEditor.ShowTextEditor
     }
 
     if (state.currentElem.label === 'Radio' || state.currentElem.label === 'Checkbox') {
         if (propName === 'buttonStyle') {
-            return PropertyEditor.RadioButtonStyleEditor;
+            return PropertyEditor.RadioButtonStyleEditor
         }
         else if (propName === 'border') {
-            return PropertyEditor.RadioBorderEditor;
+            return PropertyEditor.RadioBorderEditor
         }
     }
 
     if (state.currentElem.label === 'Divider') {
         if (propName === 'contentPosition') {
-            return PropertyEditor.DividerContentPositionEditor;
+            return PropertyEditor.DividerContentPositionEditor
         }
         else if (propName === 'borderStyle') {
-            return PropertyEditor.DividerBorderStyleEditor;
+            return PropertyEditor.DividerBorderStyleEditor
         }
     }
     
 
     if (state.currentElem.component.props[propName]) {
-        const path = `./PropertyEditor/${editorName}.vue`;
-        const components = import.meta.glob("./PropertyEditor/*.vue");
-        return defineAsyncComponent(components[path]);
+        const path = `./PropertyEditor/${editorName}.vue`
+        const components = (import.meta as any).glob('./PropertyEditor/*.vue')
+        return defineAsyncComponent(components[path])
     }
-    else if (propName === "max") {
-        return PropertyEditor.MaxEditor;
+    else if (propName === 'max') {
+        return PropertyEditor.MaxEditor
     }
-    else if (propName === "minLength") {
-        return PropertyEditor.MinLengthEditor;
+    else if (propName === 'minLength') {
+        return PropertyEditor.MinLengthEditor
     }
-    else if (propName === "maxLength") {
-        return PropertyEditor.MaxLengthEditor;
+    else if (propName === 'maxLength') {
+        return PropertyEditor.MaxLengthEditor
     }
-    else if (propName === "prependButton") {
-        return PropertyEditor.PrependButtonEditor;
+    else if (propName === 'prependButton') {
+        return PropertyEditor.PrependButtonEditor
     }
-    else if (propName === "prepend") {
-        return PropertyEditor.PrependEditor;
+    else if (propName === 'prepend') {
+        return PropertyEditor.PrependEditor
     }
-    else if (propName === "appendButton") {
-        return PropertyEditor.AppendButtonEditor;
+    else if (propName === 'appendButton') {
+        return PropertyEditor.AppendButtonEditor
     }
-    else if (propName === "append") {
-        return PropertyEditor.AppendEditor;
+    else if (propName === 'append') {
+        return PropertyEditor.AppendEditor
     }
-    else if (propName === "rows") {
-        return PropertyEditor.RowsEditor;
+    else if (propName === 'rows') {
+        return PropertyEditor.RowsEditor
     }
-    else if (propName === "hidden") {
-        return PropertyEditor.HiddenEditor;
+    else if (propName === 'hidden') {
+        return PropertyEditor.HiddenEditor
     }
-    else if (propName === "optionItems") {
-        return PropertyEditor.OptionItemsEditor;
+    else if (propName === 'optionItems') {
+        return PropertyEditor.OptionItemsEditor
     }
 
-    else if (propName === "onFocus") {
-        return EventEditor.OnFocusEditor;
+    else if (propName === 'onFocus') {
+        return EventEditor.OnFocusEditor
     }
-    else if (propName === "onInput") {
-        return EventEditor.OnInputEditor;
+    else if (propName === 'onInput') {
+        return EventEditor.OnInputEditor
     }
-    else if (propName === "onBlur") {
-        return EventEditor.OnBlurEditor;
+    else if (propName === 'onBlur') {
+        return EventEditor.OnBlurEditor
     }
-    else if (propName === "onChange") {
-        return EventEditor.OnChangeEditor;
+    else if (propName === 'onChange') {
+        return EventEditor.OnChangeEditor
     }
-    else if (propName === "onClick") {
-        return EventEditor.OnClickEditor;
+    else if (propName === 'onClick') {
+        return EventEditor.OnClickEditor
     }
     else {
-        return null;
+        return null
     }
-};
+}
 const hasPropEditor = (propName: string) => {
     if (propName === 'uniqueKey' || propName === 'label') {
-        return true;
+        return true
     }
     
-    let showFlag = true;
-    let c: any = {};
-    const _componentsConfig = [];
-    _componentsConfig.push(...componentsConfig[0].components);
-    _componentsConfig.push(...componentsConfig[1].components);
+    let showFlag = true
+    let c: any = {}
+    const _componentsConfig = []
+    _componentsConfig.push(...componentsConfig[0].components)
+    _componentsConfig.push(...componentsConfig[1].components)
     _componentsConfig.map((_c: ComponentConfig) => {
         if(_c.title === state.currentElem.title) {
-            c = _c;
-            return;
+            c = _c
+            return
         }
-    });
+    })
 
     if (propName.startsWith('on')) {
         if (c.event[propName] === undefined) {
-            showFlag = false;
+            showFlag = false
         }
     } else {
         if (c.props[propName] === undefined) {
-            showFlag = false;
+            showFlag = false
         }
     }
 
     // XXX: 文本域不显示类型
     if (propName === 'type' && state.currentElem.title === '多行输入') {
-        return false;
+        return false
     }
-    return showFlag;
-};
+    return showFlag
+}
 const handleShowEditor = (eventName: string) => {
-    state.code = state.currentElem.event[eventName];
-    state.currentEventName = eventName;
-    state.showEditor = !state.showEditor;
+    state.code = state.currentElem.event[eventName]
+    state.currentEventName = eventName
+    state.showEditor = !state.showEditor
 
     // XXX: 切换组件后， ace 不更新问题
-    codeEditorRef.value && (codeEditorRef.value as any).setEditorValue(state.currentElem.event[state.currentEventName]);
-};
+    codeEditorRef.value && (codeEditorRef.value as any).setEditorValue(state.currentElem.event[state.currentEventName])
+}
 const handleClose = () => {
-    state.showEditor = false;
-};
+    state.showEditor = false
+}
 const handleCodeUpdate = (code: string) => {
-    state.code = code;
-}; 
+    state.code = code
+} 
 const handleSaveEvent = () => {
-    const annotations = (codeEditorRef.value as any).getEditorAnnotations();
-    let syntaxErrorFlag = false;
+    const annotations = (codeEditorRef.value as any).getEditorAnnotations()
+    let syntaxErrorFlag = false
 
     if (annotations && annotations.length > 0) {
         annotations.forEach((annotation: any) => {
             if (annotation.type === 'error') {
-                syntaxErrorFlag = true;
+                syntaxErrorFlag = true
             }
-        });
+        })
         if (syntaxErrorFlag) {
-            instance?.appContext.config.globalProperties.$message.error('代码格式错误');
-            return;
+            instance?.appContext.config.globalProperties.$message.error('代码格式错误')
+            return
         }
     }
 
-    state.currentElem.event[state.currentEventName] = state.code;
-    state.showEditor = false;
-};
+    state.currentElem.event[state.currentEventName] = state.code
+    state.showEditor = false
+}
 </script>
 
 <style lang="scss" scoped>
@@ -408,6 +408,7 @@ const handleSaveEvent = () => {
         :deep(.el-collapse) {
             border-top: none;
         }
+
         :deep(.el-collapse-item) {
             & > div {
                 border-top: 1px solid #fff !important;
@@ -417,6 +418,7 @@ const handleSaveEvent = () => {
                 padding-bottom: 0;
             }
         }
+
         :deep(.el-collapse-item__header) {
             padding-left: 8px;
             font-size: 16px;

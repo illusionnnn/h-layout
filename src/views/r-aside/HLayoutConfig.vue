@@ -1,9 +1,9 @@
 <!--
- * @Description: 
+ * @Description: 基础属性配置组件
  * @Author: Hedgehog96
  * @Date: 2022-05-11 14:09:42
  * @LastEditors: Hedgehog96
- * @LastEditTime: 2022-09-05 17:31:16
+ * @LastEditTime: 2023-01-14 22:40:55
 -->
 <template>
     <div class="h-layout-config">
@@ -30,16 +30,16 @@
 </template>
 
 <script setup lang="ts">
-import { reactive } from "vue";
-import { ElForm, ElCollapse, ElCollapseItem } from "element-plus";
-import HiddenEditor from "./PropertyEditor/HiddenEditor.vue";
+import { reactive } from 'vue'
+import { ElForm, ElCollapse, ElCollapseItem } from 'element-plus'
+import HiddenEditor from './PropertyEditor/HiddenEditor.vue'
 
 const state = reactive({
     activeNames: 'base',
     layout: {
         hidden: false
     }
-});
+})
 </script>
 
 <style lang="scss" scoped>
@@ -50,6 +50,7 @@ const state = reactive({
         :deep(.el-collapse) {
             border-top: none;
         }
+
         :deep(.el-collapse-item) {
             & > div {
                 border-top: 1px solid #fff !important;
@@ -59,6 +60,7 @@ const state = reactive({
                 padding-bottom: 0;
             }
         }
+
         :deep(.el-collapse-item__header) {
             padding-left: 8px;
             font-size: 16px;

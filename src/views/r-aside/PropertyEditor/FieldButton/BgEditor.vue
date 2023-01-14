@@ -1,9 +1,9 @@
 <!--
- * @Description: 
+ * @Description: 文字背景颜色组件
  * @Author: Hedgehog96
  * @Date: 2022-08-17 15:17:23
  * @LastEditors: Hedgehog96
- * @LastEditTime: 2022-08-17 15:17:45
+ * @LastEditTime: 2023-01-14 22:45:00
 -->
 <template>
     <el-form-item class="h-editor">
@@ -20,13 +20,12 @@
 </template>
 
 <script setup lang="ts">
-import { defineProps } from 'vue';
-import { ElFormItem, ElSwitch } from "element-plus";
+import { ElFormItem, ElSwitch } from 'element-plus'
 
 const props = defineProps({
     elem: {
         type: Object,
         default: () => Object
-    },
-});
+    }
+})
 </script>

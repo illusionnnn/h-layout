@@ -1,10 +1,9 @@
-<!-- eslint-disable vue/no-mutating-props -->
 <!--
- * @Description: 
+ * @Description: 标签组件
  * @Author: Hedgehog96
  * @Date: 2022-07-21 16:51:59
  * @LastEditors: Hedgehog96
- * @LastEditTime: 2022-08-31 14:17:45
+ * @LastEditTime: 2023-01-14 22:36:56
 -->
 <template>
     <el-form-item class="h-editor">
@@ -25,13 +24,12 @@
 </template>
 
 <script setup lang="ts">
-import { defineProps }  from "vue";
-import { ElFormItem, ElInput } from "element-plus";
+import { ElFormItem, ElInput } from 'element-plus'
 
 const props = defineProps({
     elem: {
         type: Object,
         default: () => Object
-    },
-});
+    }
+})
 </script>

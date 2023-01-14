@@ -1,9 +1,9 @@
 <!--
- * @Description: 
+ * @Description: 图标组件
  * @Author: Hedgehog96
  * @Date: 2022-08-01 15:55:51
  * @LastEditors: Hedgehog96
- * @LastEditTime: 2022-08-01 17:48:02
+ * @LastEditTime: 2023-01-14 22:42:00
 -->
 <template>
     <div class="icon-dialog">
@@ -36,17 +36,17 @@
 </template>
 
 <script setup lang="ts">
-import { defineProps, defineEmits, reactive, watch } from 'vue';
-import { ElButton, ElDialog } from 'element-plus';
-import * as ElementPlusIconsVue from '@element-plus/icons-vue';
+import { reactive, watch } from 'vue'
+import { ElButton, ElDialog } from 'element-plus'
+import * as ElementPlusIconsVue from '@element-plus/icons-vue'
 
 const getIcons = () => {
-    const icons = [];
+    const icons = []
     for (const name in ElementPlusIconsVue) {
-        icons.push(name);
+        icons.push(name)
     }
-    return icons;
-};
+    return icons
+}
 
 const props = defineProps({
     iconName: {
@@ -59,49 +59,49 @@ const props = defineProps({
         default: false,
         required: true
     }
-});
-const emits = defineEmits(['update', 'close']);
+})
+const emits = defineEmits(['update', 'close'])
 
 const state = reactive({
     visible: false,
     currentIconName: '',
     icons: getIcons()
-});
-watch(() => props.iconName, (val) => {
-    state.currentIconName = val;
-});
-watch(() => props.visible, (val) => {
-    state.visible = val;
-});
+})
+watch(() => props.iconName, val => {
+    state.currentIconName = val
+})
+watch(() => props.visible, val => {
+    state.visible = val
+})
 
 const handleClose = () => {
-    state.visible = false;
-    emits('close');
-};
+    state.visible = false
+    emits('close')
+}
 const handleOk = () => {
-    emits('update', state.currentIconName);
-    emits('close');
-    handleClose();
-};
+    emits('update', state.currentIconName)
+    emits('close')
+    handleClose()
+}
 </script>
 
 <style lang="scss">
 .icon-dialog {
-  .el-dialog {
-    .el-dialog__body {
-        display: flex !important;
-        flex-wrap: wrap !important;
-    }
+    .el-dialog {
+        .el-dialog__body {
+            display: flex !important;
+            flex-wrap: wrap !important;
+        }
 
-    .icons-dialog-item {
-      padding: 0.2rem;
-      cursor: pointer;
-    }
+        .icons-dialog-item {
+            padding: .2rem;
+            cursor: pointer;
+        }
 
-    .is-active {
-      background-color: #e6a23c;
-      color: #fff;
+        .is-active {
+            background-color: #e6a23c;
+            color: #fff;
+        }
     }
-  }
 }
 </style>

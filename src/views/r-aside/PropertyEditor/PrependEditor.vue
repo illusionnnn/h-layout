@@ -1,9 +1,9 @@
 <!--
- * @Description: 
+ * @Description: 前置内容组件
  * @Author: Hedgehog96
  * @Date: 2022-08-03 16:40:19
  * @LastEditors: Hedgehog96
- * @LastEditTime: 2022-08-03 16:42:43
+ * @LastEditTime: 2023-01-14 22:39:37
 -->
 <template>
     <el-form-item class="h-editor">
@@ -21,13 +21,12 @@
 </template>
 
 <script setup lang="ts">
-import { defineProps } from "vue";
-import { ElFormItem, ElInput } from "element-plus";
+import { ElFormItem, ElInput } from 'element-plus'
 
 const props = defineProps({
     elem: {
         type: Object,
         default: () => Object
     }
-});
+})
 </script>

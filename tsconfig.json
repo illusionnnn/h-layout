@@ -23,7 +23,8 @@
     "src/**/*.d.ts",
     "src/**/*.tsx",
     "src/**/*.vue",
-    "src/config/components.ts"
+    "src/config/components.ts",
+    "src/typings/images.d.ts"
   ],
   "references": [{ "path": "./tsconfig.node.json" }],
   "suppressImplicitAnyIndexErrors": true

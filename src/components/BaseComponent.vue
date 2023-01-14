@@ -1,9 +1,9 @@
 <!--
- * @Description: 实体组件
+ * @Description: 实体组件组件
  * @Author: Hedgehog96
  * @Date: 2022-05-25 15:37:32
  * @LastEditors: Hedgehog96
- * @LastEditTime: 2022-08-31 17:11:36
+ * @LastEditTime: 2023-01-14 22:41:39
 -->
 <template>
     <div
@@ -45,48 +45,48 @@
 </template>
 
 <script setup lang="ts">
-import { defineProps, inject } from "vue";
-import { cloneDeep, random } from "lodash-es";
-import { useIdStore } from "@/store/id";
-import { useComponentsStore } from "@/store/components";
-import { ComponentConfig } from "@/config/interfaces";
+import { inject } from 'vue'
+import { cloneDeep, random } from 'lodash-es'
+import { useIdStore } from '@/store/id'
+import { useComponentsStore } from '@/store/components'
+import { ComponentConfig } from '@/config/interfaces'
 
 const props = defineProps({
     activated: {
         type: Boolean,
-        default: false,
+        default: false
     },
     elem: {
         type: Object,
-        default: () => Object,
-    },
-});
+        default: () => Object
+    }
+})
 
-const idStore = useIdStore();
-const componentsStore = useComponentsStore();
-const EVENT_BUS: any = inject("eventBus");
+const idStore = useIdStore()
+const componentsStore = useComponentsStore()
+const EVENT_BUS: any = inject('eventBus')
 
 const handleCopy = () => {
-    const c = cloneDeep((props.elem as ComponentConfig));
-    c.id = idStore.id;
-    c.uniqueKey = c.label + random(1, 999);
+    const c = cloneDeep((props.elem as ComponentConfig))
+    c.id = idStore.id
+    c.uniqueKey = c.label + random(1, 999)
     
     if (c.pid !== -1) {
         componentsStore.components.forEach((_c: ComponentConfig) => {
             if (_c.id === c.pid) {
-                _c.children?.push(c);
+                _c.children?.push(c)
             }
-        });
+        })
     } else {
-        componentsStore.add(c);
-        componentsStore.recordSnapshot();
+        componentsStore.add(c)
+        componentsStore.recordSnapshot()
     }
-    idStore.increment();
-};
+    idStore.increment()
+}
 
 const handleDelete = () => {
-    EVENT_BUS.emit("delete", props.elem.id);
-};
+    EVENT_BUS.emit('delete', props.elem.id)
+}
 </script>
 
 <style lang="scss" scoped>
@@ -107,9 +107,10 @@ const handleDelete = () => {
         height: 16px;
         display: flex;
         color: #fff;
-        opacity: 0.6;
+        opacity: .6;
         background-color: $base-color;
         z-index: 99;
+
         &:hover {
             opacity: 1;
         }
@@ -129,10 +130,11 @@ const handleDelete = () => {
         height: 16px;
         display: flex;
         color: #fff;
-        opacity: 0.6;
+        opacity: .6;
         background-color: $base-color;
         z-index: 9;
         cursor: move;
+
         &:hover {
             opacity: 1;
         }
@@ -140,6 +142,7 @@ const handleDelete = () => {
         .iconfont {
             font-size: 14px;
         }
+
         .component-title {
             margin-left: 4px;
             font-size: 12px;

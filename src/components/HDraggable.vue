@@ -3,7 +3,7 @@
  * @Author: Hedgehog96
  * @Date: 2022-05-20 16:47:09
  * @LastEditors: Hedgehog96
- * @LastEditTime: 2022-09-18 12:00:53
+ * @LastEditTime: 2023-01-14 22:41:56
 -->
 <template>
     <draggable
@@ -83,55 +83,54 @@
 </template>
 
 <script setup lang="ts">
-import { defineProps, inject, nextTick } from "vue";
-import Draggable from "vuedraggable";
-import BaseComponent from "./BaseComponent.vue";
-import _ from "./form-widget";
+import { inject, nextTick } from 'vue'
+import Draggable from 'vuedraggable'
+import BaseComponent from './BaseComponent.vue'
 
-import { useComponentsStore } from "@/store/components";
-import { useFieldsConfigStore } from "@/store/fieldsConfig";
-import { ComponentConfig } from "@/config/interfaces";
+import { useComponentsStore } from '@/store/components'
+import { useFieldsConfigStore } from '@/store/fieldsConfig'
+import { ComponentConfig } from '@/config/interfaces'
 
 const props = defineProps({
     componentId: {
         type: Number,
-        default: -1,
+        default: -1
     },
     components: {
         type: Array,
-        default: () => [],
+        default: () => []
     },
     changeComponentId: {
         type: Function,
-        default: () => Function,
-    },
-});
+        default: () => Function
+    }
+})
 
-const EVENT_BUS: any = inject("eventBus");
-const componentsStore = useComponentsStore();
-const fieldsConfigStore = useFieldsConfigStore();
+const EVENT_BUS: any = inject('eventBus')
+const componentsStore = useComponentsStore()
+const fieldsConfigStore = useFieldsConfigStore()
 
 const handleClickComponent = (evt: Event, c: ComponentConfig) => {
-    EVENT_BUS.emit("changeComponentId", c.id);
-    EVENT_BUS.emit("clickComponent", c);
-    fieldsConfigStore.changeTabName('c');
-};
+    EVENT_BUS.emit('changeComponentId', c.id)
+    EVENT_BUS.emit('clickComponent', c)
+    fieldsConfigStore.changeTabName('c')
+}
 
 const handleAddComponent = (evt: Event, c: ComponentConfig | undefined) => {
     nextTick(() => {
-        componentsStore.recordSnapshot();
+        componentsStore.recordSnapshot()
         
         c && c.children?.forEach((cc: ComponentConfig) => {
-            cc.pid = c.id;
-        });
-    });
-};
+            cc.pid = c.id
+        })
+    })
+}
 
 const handleMoveComponent = () => {
-    componentsStore.recordSnapshot();
+    componentsStore.recordSnapshot()
     
-    return true;
-};
+    return true
+}
 </script>
 
 <style lang="scss" scoped>

@@ -1,9 +1,9 @@
 <!--
- * @Description: 分割线
+ * @Description: 分割线组件
  * @Author: Hedgehog96
  * @Date: 2022-08-25 21:37:32
  * @LastEditors: Hedgehog96
- * @LastEditTime: 2022-09-01 17:58:39
+ * @LastEditTime: 2023-01-14 22:42:17
 -->
 <template>
     <template v-if="props.elem.props.showText">
@@ -20,15 +20,14 @@
 </template>
 
 <script setup lang="ts">
-import { defineProps } from 'vue';
-import { ElDivider } from 'element-plus';
+import { ElDivider } from 'element-plus'
 
 const props = defineProps({
     elem: {
         type: Object,
         default: () => Object
     }
-});
+})
 </script>
 
 <style lang="scss" scoped>

@@ -1,9 +1,9 @@
 <!--
- * @Description: 
+ * @Description: 页面结构组件
  * @Author: Hedgehog96
  * @Date: 2022-08-11 10:52:21
  * @LastEditors: Hedgehog96
- * @LastEditTime: 2022-08-11 17:37:12
+ * @LastEditTime: 2023-01-14 22:42:09
 -->
 <template>
     <el-drawer
@@ -28,10 +28,10 @@
 </template>
 
 <script setup lang="ts">
-import { defineProps, defineEmits, inject } from 'vue';
-import { ElDrawer, ElTree } from 'element-plus';
-import { useComponentsStore } from "@/store/components";
-import { ComponentConfig } from '@/config/interfaces';
+import { inject } from 'vue'
+import { ElDrawer, ElTree } from 'element-plus'
+import { useComponentsStore } from '@/store/components'
+import { ComponentConfig } from '@/config/interfaces'
 
 const props = defineProps({
     open: {
@@ -42,22 +42,22 @@ const props = defineProps({
         type: String,
         default: ''
     }
-});
-const emits = defineEmits(['close']);
+})
+const emits = defineEmits(['close'])
 const defaultProps = {
     children: 'children',
-    label: 'uniqueKey',
-};
+    label: 'uniqueKey'
+}
 
-const componentsStore = useComponentsStore();
+const componentsStore = useComponentsStore()
 const handleClose = (done: () => void) => {
-    done();
-    emits('close');
-};
+    done()
+    emits('close')
+}
 
-const EVENT_BUS: any = inject("eventBus");
+const EVENT_BUS: any = inject('eventBus')
 const handleNodeClick = (c: ComponentConfig) => {
-    EVENT_BUS.emit("changeComponentId", c.id);
-    EVENT_BUS.emit("clickComponent", c);
-};
+    EVENT_BUS.emit('changeComponentId', c.id)
+    EVENT_BUS.emit('clickComponent', c)
+}
 </script>
