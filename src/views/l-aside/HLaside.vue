@@ -3,61 +3,49 @@
  * @Author: Hedgehog96
  * @Date: 2022-05-09 14:22:35
  * @LastEditors: Hedgehog96
- * @LastEditTime: 2023-01-14 21:45:29
+ * @LastEditTime: 2023-01-15 18:52:27
 -->
 <template>
     <div class="h-aside-l">
-        <div class="h-aside-tabs">
-            <div
-                class="h-aside-tab h-aside-tabs-components"
-                :class="currentCompsTabClass"
-                @click="handleTabClick('c')"
-            >
-                <i class="iconfont icon-h-kucunliang" />
-                <span>组件库</span>
-            </div>
-            <div
-                class="h-aside-tab h-aside-tabs-setting"
-                :class="currentSettingTabClass"
-                @click="handleTabClick('s')"
-            >
-                <i class="iconfont icon-h-mobanguanli" />
-                <span>模板</span>
-            </div>
-        </div>
-        <div class="h-aside-container">
-            <component :is="state.currentComponent" />
-        </div>
+        <el-tabs
+            v-model="currentTabName"
+            class="h-aside-tabs"
+            stretch
+            @tab-click="handleTabClick"
+        >
+            <el-tab-pane label="组件库" name="c">
+                <template #label>
+                    <span class="h-aside-tabs-label">
+                        <i class="iconfont icon-h-kucunliang" />
+                        <span>组件库</span>
+                    </span>
+                </template>
+                <h-components />
+            </el-tab-pane>
+            <el-tab-pane label="模板" name="s">
+                <template #label>
+                    <span class="h-aside-tabs-label">
+                        <i class="iconfont icon-h-mobanguanli" />
+                        <span>模板</span>
+                    </span>
+                </template>
+                <h-settings />
+            </el-tab-pane>
+        </el-tabs>
     </div>
 </template>
 
 <script setup lang="ts">
-import { reactive, computed, shallowRef } from 'vue'
+import { ref } from 'vue'
+import type { TabsPaneContext } from 'element-plus'
 import HComponents from './HComponents.vue'
 import HSettings from './HSettings.vue'
 
-const ACTIVATING_CLASS = 'activating'
-const NOTACTIVE_CLASS = ''
-const C = 'c'
-const S = 's'
+type Tab = 'c' | 's'
 
-const state = reactive({
-    currentTabName: C,
-    currentComponent: shallowRef(HComponents)
-})
-
-const currentCompsTabClass = computed(() => {
-    return state.currentTabName === C ? ACTIVATING_CLASS : NOTACTIVE_CLASS
-})
-
-const currentSettingTabClass = computed(() => {
-    return state.currentTabName === S ? ACTIVATING_CLASS : NOTACTIVE_CLASS
-})
-
-const handleTabClick = (tabName: string) => {
-    state.currentTabName = tabName
-    const currentComponent = tabName === C ? HComponents : HSettings
-    state.currentComponent = currentComponent
+const currentTabName = ref<Tab>('c')
+const handleTabClick = (tab: TabsPaneContext) => {
+    currentTabName.value = (tab.paneName as Tab)
 }
 </script>
 
@@ -65,34 +53,29 @@ const handleTabClick = (tabName: string) => {
 .h-aside-l {
     height: 100%;
 
-    .h-aside-tabs {
-        display: flex;
-        justify-content: center;
-
-        .h-aside-tab {
-            flex: 1;
-            margin: 10px 16px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            cursor: pointer;
-
-            &.activating {
-                color: $base-color;
-            }
-
-            i {
-                margin-right: 4px;
-            }
-
-            span {
-                font-size: 14px;
-            }
-        }
+    :deep(.el-tabs--border-card>.el-tabs__content) {
+        padding: 0;
     }
 
-    .h-aside-container {
-        height: calc(100% - 50px);
+    :deep(.h-aside-tabs) {
+        height: calc(100% - 2px);
+        border: none;
+
+        @include background_color('bg');
+    }
+
+    :deep(.el-tabs__content) {
+        height: calc(100% - 40px);
+    }
+
+    :deep(.el-tab-pane) {
+        height: 100%;
+        overflow-y: auto;
+    }
+
+    :deep(.iconfont) {
+        margin-right: 4px;
+        vertical-align: bottom;
     }
 }
 </style>

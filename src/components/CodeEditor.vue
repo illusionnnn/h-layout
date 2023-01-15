@@ -3,7 +3,7 @@
  * @Author: Hedgehog96
  * @Date: 2022-08-04 14:31:25
  * @LastEditors: Hedgehog96
- * @LastEditTime: 2023-01-14 22:41:52
+ * @LastEditTime: 2023-01-14 22:55:51
 -->
 <template>
     <div class="code-container">
@@ -15,7 +15,7 @@
 </template>
 
 <script setup lang="ts">
-import  { defineExpose, ref, onMounted } from 'vue'
+import  { ref, onMounted } from 'vue'
 import ace from 'ace-builds'
 import 'ace-builds/src-min-noconflict/theme-monokai'
 import 'ace-builds/src-min-noconflict/mode-javascript'

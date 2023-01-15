@@ -3,16 +3,19 @@
  * @Author: Hedgehog96
  * @Date: 2022-08-11 10:52:21
  * @LastEditors: Hedgehog96
- * @LastEditTime: 2023-01-14 22:42:09
+ * @LastEditTime: 2023-01-15 19:18:30
 -->
 <template>
     <el-drawer
+        class="h-structure-drawer"
         :model-value="props.open"
         direction="ltr"
         size="15%"
-        title="组件结构树"
         :before-close="handleClose"
     >
+        <template #header="{ titleId }">
+            <h4 :id="titleId" class="h-structure-drawer__title" style="color: #fff;">组件结构树</h4>
+        </template>
         <el-tree
             :key="props.nodeKey"
             default-expand-all
@@ -61,3 +64,14 @@ const handleNodeClick = (c: ComponentConfig) => {
     EVENT_BUS.emit('clickComponent', c)
 }
 </script>
+
+<style lang="scss">
+/* .h-structure-drawer { */
+:deep(.h-structure-drawer__title) {
+    color: #fff !important;
+
+    /* @include font_color('areaTitleColor'); */
+}
+
+/* } */
+</style>

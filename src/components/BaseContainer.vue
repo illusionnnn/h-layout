@@ -3,7 +3,7 @@
  * @Author: Hedgehog96
  * @Date: 2022-05-15 17:42:07
  * @LastEditors: Hedgehog96
- * @LastEditTime: 2023-01-14 22:41:44
+ * @LastEditTime: 2023-01-15 15:03:11
 -->
 <template>
     <div
@@ -72,7 +72,9 @@ const handleDelete = () => {
         height: 16px;
         display: flex;
         color: #fff;
-        opacity: .6;
+
+        @include opacity('opacity');
+
         background-color: $base-color;
         z-index: 99;
 
@@ -95,7 +97,9 @@ const handleDelete = () => {
         height: 16px;
         display: flex;
         color: #fff;
-        opacity: .6;
+
+        @include opacity('opacity');
+
         background-color: $base-color;
         z-index: 9;
         cursor: move;

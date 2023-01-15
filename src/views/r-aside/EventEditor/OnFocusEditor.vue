@@ -3,7 +3,7 @@
  * @Author: Hedgehog96
  * @Date: 2022-08-04 14:23:57
  * @LastEditors: Hedgehog96
- * @LastEditTime: 2023-01-14 22:21:00
+ * @LastEditTime: 2023-01-14 22:56:11
 -->
 <template>
     <el-form-item class="h-editor">
@@ -23,7 +23,6 @@
 </template>
 
 <script setup lang="ts">
-import { defineEmits } from 'vue'
 import { ElFormItem, ElButton } from 'element-plus'
 
 const emits = defineEmits(['show'])

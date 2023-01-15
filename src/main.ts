@@ -3,7 +3,7 @@
  * @Author: Hedgehog96
  * @Date: 2022-05-05 21:19:48
  * @LastEditors: Hedgehog96
- * @LastEditTime: 2022-08-12 15:06:26
+ * @LastEditTime: 2023-01-15 14:48:59
  */
 import { createApp } from 'vue'
 import { createPinia } from 'pinia'
@@ -16,6 +16,7 @@ import './styles/normalize.css'
 import './styles/editor.css'
 import './assets/fonts/iconfont.css'
 import 'element-plus/dist/index.css'
+import 'element-plus/theme-chalk/dark/css-vars.css'
 
 const PINIA = createPinia()
 const EVENT_BUS = new EventBus()

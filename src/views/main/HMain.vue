@@ -3,7 +3,7 @@
  * @Author: Hedgehog96
  * @Date: 2022-05-09 17:24:21
  * @LastEditors: Hedgehog96
- * @LastEditTime: 2023-01-14 20:42:49
+ * @LastEditTime: 2023-01-15 18:22:24
 -->
 <template>
     <div class="h-main">
@@ -103,9 +103,11 @@ EVENT_BUS.on('delete', handleDeleteComponent)
 .h-main {
     position: relative;
     padding: 20px;
-    height: calc(100% - 90px);
-    background-color: $base-bg-color;
-    border-radius: $base-border-radius;
+    height: calc(100% - 96px);
+
+    @include background_color('bg');
+
+    border-radius: $border-radius;
 
     .h-main-tip {
         position: absolute;

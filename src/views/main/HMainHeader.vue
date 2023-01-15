@@ -3,7 +3,7 @@
  * @Author: Hedgehog96
  * @Date: 2022-05-17 10:46:19
  * @LastEditors: Hedgehog96
- * @LastEditTime: 2023-01-14 20:42:53
+ * @LastEditTime: 2023-01-15 18:09:36
 -->
 <template>
     <div class="h-main-header">
@@ -20,25 +20,15 @@
             @click="handleRedo()"
         />
         <div class="h-main-header-btns">
-            <el-button
-                size="small"
-                @click="handleTree(true)"
-            >
+            <el-button @click="handleTree(true)">
                 <i class="iconfont icon-h-jiegou" />结构
             </el-button>
-            <el-button
-                size="small"
-                @click="isPreview = true"
-            >
+            <el-button @click="isPreview = true">
                 <i
                     class="iconfont icon-h-yulan"
                 />预览
             </el-button>
-            <el-button
-                size="small"
-                type="danger"
-                @click="handleCleanAll()"
-            >
+            <el-button type="danger" @click="handleCleanAll()">
                 <i class="iconfont icon-h-shanchu" />清空
             </el-button>
         </div>
@@ -110,13 +100,15 @@ const handleRedo = () => {
     width: 100%;
     height: 30px;
     margin-bottom: 20px;
-    padding: 4px 0;
+    padding: 8px 0;
     display: flex;
     align-items: center;
     justify-content: center;
-    background-color: $base-bg-color;
+
+    @include background_color('bg');
+
     text-align: center;
-    border-radius: $base-border-radius;
+    border-radius: $border-radius;
 
     .iconfont {
         margin: 0 8px;

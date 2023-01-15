@@ -3,13 +3,13 @@
  * @Author: Hedgehog96
  * @Date: 2022-05-07 16:34:02
  * @LastEditors: Hedgehog96
- * @LastEditTime: 2023-01-14 21:43:10
+ * @LastEditTime: 2023-01-15 21:33:55
 -->
 <template>
     <div class="h-base-header">
         <div class="h-base-header-area">
             <img
-                src="../assets/imgs/logo.png"
+                src="@/assets/imgs/logo.png"
                 alt="logo"
             >
             <span class="h-base-header-title">h-layout</span>
@@ -22,21 +22,29 @@
             >
                 <i class="iconfont icon-h-github" />Github
             </a>
+            <el-switch
+                class="h-theme-swicth"
+                v-model="isDarkTheme"
+                inline-prompt
+                :active-icon="Moon"
+                :inactive-icon="Sunny"
+                @click="handleThemeChange"
+            />
             <el-button
-                size="small"
+                text
                 @click="handleFullScreen"
             >
                 <i class="iconfont icon-h-quanping" />全屏
             </el-button>
             <el-button
-                size="small"
+                text
                 type="primary"
                 @click="handleSave"
             >
                 <i class="iconfont icon-h-baocun" />保存
             </el-button>
             <el-button
-                size="small"
+                text
                 type="danger"
                 @click="handleCleanCache()"
             >
@@ -47,8 +55,12 @@
 </template>
 
 <script setup lang="ts">
-import { getCurrentInstance } from 'vue'
+import { ref, getCurrentInstance } from 'vue'
+import { Sunny, Moon } from '@element-plus/icons-vue'
 import { useComponentsStore } from '@/store/components'
+import { useThemeStore } from '@/store/theme'
+import { useDark } from '@/hooks'
+import { Theme } from '@/config/interfaces'
 
 interface FullScreenHTMLElement extends HTMLElement {
   mozRequestFullScreen?: () => void;
@@ -72,6 +84,16 @@ const handleFullScreen = () => {
     }
 }
 
+const themeStore = useThemeStore()
+const isDarkTheme = ref(themeStore.theme === 'dark' ? true : false)
+useDark({ theme: themeStore.theme })
+
+const handleThemeChange = () => {
+    let _theme = isDarkTheme.value ? 'dark' : 'light'
+    useDark({ theme: _theme })
+    themeStore.changeTheme((_theme as Theme))
+}
+
 const componentsStore = useComponentsStore()
 const handleSave = () => componentsStore.save()
 const handleCleanCache = () => {
@@ -86,21 +108,29 @@ const handleCleanCache = () => {
     padding: 0 10px;
     display: flex;
     align-items: center;
-    background-color: $base-bg-color;
-    border-bottom: 1.5px solid #e8e8e8;
+
+    @include background_color('bg');
+
+    border-bottom: 1.5px solid;
+
+    @include border_bottom_color('headerBmColor');
 
     .h-base-header-area {
         display: flex;
         align-items: center;
 
         img {
-            margin-right: 6px;
-            height: 40px;
+            margin-right: 10px;
+            height: 30px;
         }
     }
 
     .h-base-header-title {
         font-size: 18px;
+    }
+
+    .h-theme-swicth {
+        margin: 0 18px;
     }
 
     .h-base-header-btns {
@@ -111,10 +141,6 @@ const handleCleanCache = () => {
         .el-icon,
         .iconfont {
             margin-right: 4px;
-        }
-
-        .iconfont {
-            font-size: 12px;
         }
 
         a {

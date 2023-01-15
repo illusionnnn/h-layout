@@ -3,7 +3,7 @@
  * @Author: Hedgehog96
  * @Date: 2022-05-05 21:19:48
  * @LastEditors: Hedgehog96
- * @LastEditTime: 2023-01-14 22:41:19
+ * @LastEditTime: 2023-01-15 15:07:01
 -->
 <template>
     <h-layout />
@@ -13,14 +13,14 @@
 import HLayout from './layouts/HLayout.vue'
 </script>
 
-<style>
+<style lang="scss">
 :-webkit-full-screen body {
     width: 100%;
     height: 100%;
 }
 
 #app {
-    background-color: #f0f0f0;
+    @include background_color('appBg');
 }
 
 ::-webkit-scrollbar-track {

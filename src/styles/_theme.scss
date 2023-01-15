@@ -1,0 +1,63 @@
+$themes: (
+    light: (
+        appBg: #f0f0f0,
+        bg: #fff,
+        areaTitleColor: #303133,
+        tipColor: #ccc,
+        opacity: .6,
+        headerBmColor: #e8e8e8,
+        configBtColor: #fff,
+    ),
+    dark: (
+        appBg: #262626,
+        bg: #141414,
+        areaTitleColor: #fff,
+        tipColor: #8b8b8b,
+        opacity: .8,
+        headerBmColor: #141414,
+        configBtColor: #141414,
+    ),
+);
+
+@mixin themeify {
+    @each $theme, $map in $themes {
+        $map: $map !global;
+        [class='#{$theme}'] & {
+            @content;
+        }
+    }
+}
+
+@function themed($key) {
+    @return map-get($map, $key);
+}
+
+@mixin background_color($color) {
+    @include themeify {
+        background-color: themed($color);
+    }
+}
+
+@mixin font_color($color) {
+    @include themeify {
+        color: themed($color);
+    }
+}
+
+@mixin opacity($number) {
+    @include themeify {
+        opacity: themed($number);
+    }
+}
+
+@mixin border_top_color($color) {
+    @include themeify {
+        border-top-color: themed($color);
+    }
+}
+
+@mixin border_bottom_color($color) {
+    @include themeify {
+        border-bottom-color: themed($color);
+    }
+}

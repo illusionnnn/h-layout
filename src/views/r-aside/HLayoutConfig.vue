@@ -3,7 +3,7 @@
  * @Author: Hedgehog96
  * @Date: 2022-05-11 14:09:42
  * @LastEditors: Hedgehog96
- * @LastEditTime: 2023-01-14 22:40:55
+ * @LastEditTime: 2023-01-15 18:20:40
 -->
 <template>
     <div class="h-layout-config">
@@ -53,7 +53,9 @@ const state = reactive({
 
         :deep(.el-collapse-item) {
             & > div {
-                border-top: 1px solid #fff !important;
+                border-top: 1px solid;
+
+                @include border_top_color('configBtColor');
             }
 
             .el-collapse-item__content {

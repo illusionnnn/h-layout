@@ -3,7 +3,7 @@
  * @Author: Hedgehog96
  * @Date: 2022-05-09 15:33:03
  * @LastEditors: Hedgehog96
- * @LastEditTime: 2023-01-14 21:45:36
+ * @LastEditTime: 2023-01-15 18:57:01
 -->
 <template>
     <div class="h-components">
@@ -31,10 +31,11 @@
                 >
                     <template #item="{ element }">
                         <el-tag
-                            :key="element.id"
-                            :data-id="element.name"
                             class="h-components-drag-area-item"
-                            effect="plain"
+                            :key="element.id"
+                            round
+                            effect="light"
+                            :data-id="element.name"
                         >
                             <i :class="['iconfont', element.icon]" />
                             {{ element.title }}
@@ -76,12 +77,14 @@ const handleCloneComponentsConfig = (d: ComponentConfig) => {
 
         .h-components-area-title {
             margin-bottom: 10px;
-            color: #303133;
+
+            @include font_color('areaTitleColor');
         }
 
         .h-components-area-tip {
             font-size: 12px;
-            color: #ccc;
+
+            @include font_color('tipColor');
         }
     }
 

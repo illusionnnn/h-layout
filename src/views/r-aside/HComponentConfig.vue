@@ -3,7 +3,7 @@
  * @Author: Hedgehog96
  * @Date: 2022-05-11 14:08:14
  * @LastEditors: Hedgehog96
- * @LastEditTime: 2023-01-14 22:40:37
+ * @LastEditTime: 2023-01-15 20:58:12
 -->
 <template>
     <div
@@ -158,6 +158,7 @@ const EVENT_BUS: any = inject('eventBus')
 const ADVANCED_KEYS = Object.keys(ADVANCED_PROPERTIES)
 const EVENT_KEYS = Object.keys(EVENT_PROPERTIES)
 EVENT_BUS.on('clickComponent', (elem: ComponentConfig) => {
+    if (!Object.keys(elem).length) return false
     emits('tabClick', 'c')
 
     state.currentElem = elem
@@ -411,7 +412,9 @@ const handleSaveEvent = () => {
 
         :deep(.el-collapse-item) {
             & > div {
-                border-top: 1px solid #fff !important;
+                border-top: 1px solid;
+
+                @include border_top_color('configBtColor');
             }
 
             .el-collapse-item__content {

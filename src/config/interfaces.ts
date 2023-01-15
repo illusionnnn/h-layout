@@ -3,7 +3,7 @@
  * @Author: Hedgehog96
  * @Date: 2022-05-24 14:43:03
  * @LastEditors: Hedgehog96
- * @LastEditTime: 2022-09-17 17:32:31
+ * @LastEditTime: 2023-01-15 20:08:37
  */
 import { Component } from 'vue'
 import { InputProps as $_InputProps, RadioProps, CheckboxProps } from 'element-plus'
@@ -62,3 +62,5 @@ export interface CheckboxElemProps extends CheckboxProps {
     hidden: boolean;
     optionItems: OptionItem[];
 }
+
+export type Theme = 'dark' | 'light'
