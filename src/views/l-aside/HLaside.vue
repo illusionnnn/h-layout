@@ -3,7 +3,7 @@
  * @Author: Hedgehog96
  * @Date: 2022-05-09 14:22:35
  * @LastEditors: Hedgehog96
- * @LastEditTime: 2023-01-15 18:52:27
+ * @LastEditTime: 2023-01-16 10:14:39
 -->
 <template>
     <div class="h-aside-l">
@@ -62,6 +62,10 @@ const handleTabClick = (tab: TabsPaneContext) => {
         border: none;
 
         @include background_color('bg');
+    }
+
+    :deep(.el-tabs__header) {
+        margin: 0;
     }
 
     :deep(.el-tabs__content) {
