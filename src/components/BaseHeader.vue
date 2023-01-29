@@ -3,7 +3,7 @@
  * @Author: Hedgehog96
  * @Date: 2022-05-07 16:34:02
  * @LastEditors: Hedgehog96
- * @LastEditTime: 2023-01-15 21:33:55
+ * @LastEditTime: 2023-01-29 22:26:55
 -->
 <template>
     <div class="h-base-header">
@@ -22,14 +22,7 @@
             >
                 <i class="iconfont icon-h-github" />Github
             </a>
-            <el-switch
-                class="h-theme-swicth"
-                v-model="isDarkTheme"
-                inline-prompt
-                :active-icon="Moon"
-                :inactive-icon="Sunny"
-                @click="handleThemeChange"
-            />
+            <SwicthDark />
             <el-button
                 text
                 @click="handleFullScreen"
@@ -55,12 +48,9 @@
 </template>
 
 <script setup lang="ts">
-import { ref, getCurrentInstance } from 'vue'
-import { Sunny, Moon } from '@element-plus/icons-vue'
+import { getCurrentInstance } from 'vue'
 import { useComponentsStore } from '@/store/components'
-import { useThemeStore } from '@/store/theme'
-import { useDark } from '@/hooks'
-import { Theme } from '@/config/interfaces'
+import SwicthDark from './SwitchDark.vue'
 
 interface FullScreenHTMLElement extends HTMLElement {
   mozRequestFullScreen?: () => void;
@@ -82,16 +72,6 @@ const handleFullScreen = () => {
     } else {
         instance?.appContext.config.globalProperties.$message.warning('使用该功能请配合最新版chrome浏览器食用')
     }
-}
-
-const themeStore = useThemeStore()
-const isDarkTheme = ref(themeStore.theme === 'dark' ? true : false)
-useDark({ theme: themeStore.theme })
-
-const handleThemeChange = () => {
-    let _theme = isDarkTheme.value ? 'dark' : 'light'
-    useDark({ theme: _theme })
-    themeStore.changeTheme((_theme as Theme))
 }
 
 const componentsStore = useComponentsStore()

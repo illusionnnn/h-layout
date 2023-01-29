@@ -92,7 +92,6 @@ const handleConfirmLoadTemplate = () => {
 <style lang="scss" scoped>
     .h-settings {
         padding: 5px;
-        height: 100%;
         overflow-y: auto;
 
         .template-image {
