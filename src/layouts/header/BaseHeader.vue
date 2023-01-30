@@ -3,7 +3,7 @@
  * @Author: Hedgehog96
  * @Date: 2022-05-07 16:34:02
  * @LastEditors: Hedgehog96
- * @LastEditTime: 2023-01-29 22:26:55
+ * @LastEditTime: 2023-01-30 17:25:34
 -->
 <template>
     <div class="h-base-header">
@@ -25,9 +25,10 @@
             <SwicthDark />
             <el-button
                 text
-                @click="handleFullScreen"
+                @click="toggle"
             >
-                <i class="iconfont icon-h-quanping" />全屏
+                <i :class="['iconfont', isFullscreen ? 'icon-h-suoxiao' : 'icon-h-quanping']" />
+                {{ isFullscreen ? '缩小' : '全屏' }}
             </el-button>
             <el-button
                 text
@@ -50,29 +51,11 @@
 <script setup lang="ts">
 import { getCurrentInstance } from 'vue'
 import { useComponentsStore } from '@/store/components'
-import SwicthDark from './SwitchDark.vue'
+import { useFullscreen } from '@/hooks'
+import SwicthDark from '@/components/SwitchDark.vue'
 
-interface FullScreenHTMLElement extends HTMLElement {
-  mozRequestFullScreen?: () => void;
-  msRequestFullscreen?: () => void;
-  webkitRequestFullscreen?: () => void;
-}
 const instance = getCurrentInstance()
-
-const handleFullScreen = () => {
-    const elem = document.querySelector('html') as FullScreenHTMLElement
-    if (elem.requestFullscreen) {
-        elem.requestFullscreen()
-    } else if (elem.mozRequestFullScreen) {
-        elem.mozRequestFullScreen()
-    } else if (elem.msRequestFullscreen) {
-        elem.msRequestFullscreen()
-    } else if (elem.webkitRequestFullscreen) {
-        elem.webkitRequestFullscreen()
-    } else {
-        instance?.appContext.config.globalProperties.$message.warning('使用该功能请配合最新版chrome浏览器食用')
-    }
-}
+const { isFullscreen, toggle } = useFullscreen()
 
 const componentsStore = useComponentsStore()
 const handleSave = () => componentsStore.save()

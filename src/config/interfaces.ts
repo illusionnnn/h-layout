@@ -3,7 +3,7 @@
  * @Author: Hedgehog96
  * @Date: 2022-05-24 14:43:03
  * @LastEditors: Hedgehog96
- * @LastEditTime: 2023-01-15 20:08:37
+ * @LastEditTime: 2023-01-30 17:11:14
  */
 import { Component } from 'vue'
 import { InputProps as $_InputProps, RadioProps, CheckboxProps } from 'element-plus'
@@ -64,3 +64,14 @@ export interface CheckboxElemProps extends CheckboxProps {
 }
 
 export type Theme = 'dark' | 'light'
+
+export interface FullScreenHTMLElement extends HTMLElement {
+    mozRequestFullScreen?: () => void;
+    msRequestFullscreen?: () => void;
+    webkitRequestFullscreen?: () => void;
+}
+
+export interface DocumentCancelFullScreenHTMLElement extends Document {
+    mozCancelFullscreen?: () => void;
+    webkitCancelFullscreen?: () => void;
+}

@@ -3,7 +3,8 @@
  * @Author: Hedgehog96
  * @Date: 2023-01-15 13:56:59
  * @LastEditors: Hedgehog96
- * @LastEditTime: 2023-01-29 23:32:21
+ * @LastEditTime: 2023-01-30 16:52:15
  */
-export { useTheme } from './useTheme'
-export { useStorage } from './useStorage'
+export * from './useTheme'
+export * from './useStorage'
+export * from './useFullscreen'
