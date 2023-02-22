@@ -3,7 +3,7 @@
  * @Author: Hedgehog96
  * @Date: 2022-07-14 15:19:28
  * @LastEditors: Hedgehog96
- * @LastEditTime: 2022-09-18 09:43:30
+ * @LastEditTime: 2023-02-22 11:05:55
  */
 import { Component } from 'vue'
 
@@ -21,6 +21,12 @@ const COMMON_PROPERTIES = {
     // "columnWidth"       :            "columnWidth-editor",
     // "autoFullWidth"     :            "autoFullWidth-editor",
     'size'              :            'SizeEditor',
+    'span'              :            'SpanEditor',
+    'offset'            :            'OffsetEditor',
+    'push'              :            'PushEditor',
+    'pull'              :            'PullEditor',
+    'gutter'            :            'GutterEditor',
+    'cols'        :            'ColsEditor',
     // "showStops"         :            "showStops-editor",
     // "displayStyle"      :            "displayStyle-editor",
     'buttonStyle'       :            'ButtonStyleEditor',

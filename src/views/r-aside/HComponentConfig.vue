@@ -3,7 +3,7 @@
  * @Author: Hedgehog96
  * @Date: 2022-05-11 14:08:14
  * @LastEditors: Hedgehog96
- * @LastEditTime: 2023-01-15 20:58:12
+ * @LastEditTime: 2023-02-22 18:03:10
 -->
 <template>
     <div
@@ -115,10 +115,9 @@
 
 <script setup lang="ts">
 import { inject, reactive, ref, defineAsyncComponent, getCurrentInstance } from 'vue'
-import { ElForm, ElButton, ElDialog, ElAlert, ElCollapse, ElCollapseItem } from 'element-plus'
 import { intersection } from 'lodash-es'
 import CodeEditor from '@/components/CodeEditor.vue'
-import { ComponentConfig } from '@/config/interfaces'
+import { ComponentNode } from '@/config/interfaces'
 import componentsConfig from '@/config/components'
 import widgetProperties from '@/config/propertyRegister'
 import PropertyEditor from './PropertyEditor/index'
@@ -154,16 +153,15 @@ const eventsParamMap = {
 }
 
 const emits = defineEmits(['tabClick'])
-const EVENT_BUS: any = inject('eventBus')
+const eventBus: any = inject('eventBus')
 const ADVANCED_KEYS = Object.keys(ADVANCED_PROPERTIES)
 const EVENT_KEYS = Object.keys(EVENT_PROPERTIES)
-EVENT_BUS.on('clickComponent', (elem: ComponentConfig) => {
-    if (!Object.keys(elem).length) return false
-    emits('tabClick', 'c')
 
-    state.currentElem = elem
-    const propKeys = Object.keys(elem.props)
-    const eventKeys = Object.keys(elem.event)
+eventBus.on('clickComponent', (elem: ComponentNode) => {
+    emits('tabClick', 'c')
+    state.currentElem = (elem as any).elem || elem
+    const propKeys = state.currentElem.props ? Object.keys(state.currentElem.props) : []
+    const eventKeys = state.currentElem.event ? Object.keys(state.currentElem.event) : []
 
     if (intersection(ADVANCED_KEYS, propKeys).length) {
         state.showAdvanced = true
@@ -181,6 +179,30 @@ EVENT_BUS.on('clickComponent', (elem: ComponentConfig) => {
 const getPropEditor = (propName: string, editorName: string) => {
     if (propName === 'uniqueKey') {
         return PropertyEditor.UniqueKeyEditor
+    }
+
+    if (state.currentElem.label === 'Grid') {
+        if (propName === 'gutter') {
+            return PropertyEditor.GutterEditor
+        } else if (propName === 'cols') {
+            return PropertyEditor.ColsEditor
+        }
+
+        return
+    }
+
+    if (state.currentElem.label === 'Col') {
+        if (propName === 'span') {
+            return PropertyEditor.SpanEditor
+        } else if (propName === 'offset') {
+            return PropertyEditor.OffsetEditor
+        } else if (propName === 'push') {
+            return PropertyEditor.PushEditor
+        } else if (propName === 'pull') {
+            return PropertyEditor.PullEditor
+        }
+
+        return
     }
 
     if (state.currentElem.label === 'Button') {
@@ -276,7 +298,6 @@ const getPropEditor = (propName: string, editorName: string) => {
             return PropertyEditor.DividerBorderStyleEditor
         }
     }
-    
 
     if (state.currentElem.component.props[propName]) {
         const path = `./PropertyEditor/${editorName}.vue`
@@ -337,13 +358,16 @@ const hasPropEditor = (propName: string) => {
     if (propName === 'uniqueKey' || propName === 'label') {
         return true
     }
+
+    // TODO: TEST
+    if (state.currentElem.label === 'Col') return true
     
     let showFlag = true
     let c: any = {}
     const _componentsConfig = []
     _componentsConfig.push(...componentsConfig[0].components)
     _componentsConfig.push(...componentsConfig[1].components)
-    _componentsConfig.map((_c: ComponentConfig) => {
+    _componentsConfig.map((_c: ComponentNode) => {
         if(_c.title === state.currentElem.title) {
             c = _c
             return

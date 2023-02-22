@@ -1,40 +1,46 @@
 <!--
- * @Description: 拖曳主区域组件
+ * @Description: 栅格列组件
  * @Author: Hedgehog96
- * @Date: 2022-05-20 16:47:09
+ * @Date: 2023-02-10 15:38:47
  * @LastEditors: Hedgehog96
- * @LastEditTime: 2023-02-22 14:30:42
+ * @LastEditTime: 2023-02-22 10:55:26
 -->
 <template>
-    <div class="h-main-layout">
+    <el-col
+        :class="state.isSelected ? 'selected' : 'unselected'"
+        :span="props.elem.props.span"
+        :offset="props.elem.props.offset"
+        :push="props.elem.props.push"
+        :pull="props.elem.props.pull"
+        @click.stop="() => handleClickComponent(props.elem as ComponentNode)"
+    >
         <vue-draggable
-            class="h-main-dragarea"
+            class="h-col-dragarea"
             item-key="id"
             handle=".component-drag-handler"
             :animation="300"
             :group="{ name: 'componentItem' }"
-            :list="props.components"
-            @add="handleAddComponent"
+            :list="props.elem.children"
+            @add="(e: Event) => handleAddComponent(e, props.elem.children)"
             @change="handleChangeComponents"
         >
             <template #item="{ element }">
-                <div class="h-main-layout-item">
+                <div class="h-col-layout-item">
                     <template v-if="element.label === 'Grid'">
                         <base-container
-                            :selected="element.id === componentId"
+                            :selected="element.id === componentsStore.selectedComponentId"
                             :elem="element"
                         >
                             <component
                                 :is="element.widget"
-                                :selected="element.id === componentId"
+                                :selected="element.id === componentsStore.selectedComponentId"
                                 :elem="element"
                             ></component>
                         </base-container>
                     </template>
-                    
                     <template v-else>
                         <base-component
-                            :selected="element.id === componentId"
+                            :selected="element.id === componentsStore.selectedComponentId"
                             :isInlineFlex="inlineFlexComponentLables.includes(element.label)"
                             :elem="element"
                         >
@@ -47,37 +53,36 @@
                 </div>
             </template>
         </vue-draggable>
-    </div>
+    </el-col>
 </template>
 
-<script setup lang="ts" name="HDraggable">
-import { inject } from 'vue'
-import BaseContainer from './BaseContainer.vue'
-import BaseComponent from './BaseComponent.vue'
+<script setup lang="ts" name="GridColWidget">
+import { reactive, watch, inject } from 'vue'
+import BaseComponent from '../BaseComponent.vue'
 
 import { useComponentsStore } from '@/store/components'
 import { useFieldsConfigStore } from '@/store/fieldsConfig'
-import { ComponentNode, GridColNode } from '@/config/interfaces'
 import { inlineFlexComponentLables } from '@/config/components'
+import { ComponentNode, GridColNode } from '@/config/interfaces'
 
 const props = defineProps({
-    componentId: {
-        type: Number,
-        default: -1
-    },
-    components: {
-        type: Array,
-        default: () => []
-    },
-    changeComponentId: {
-        type: Function,
-        default: () => Function
+    elem: {
+        type: Object,
+        default: () => Object
     }
 })
 
-const eventBus: any = inject('eventBus')
+const state = reactive({ isSelected: false })
 const componentsStore = useComponentsStore()
 const fieldsConfigStore = useFieldsConfigStore()
+const eventBus: any = inject('eventBus')
+
+watch(
+    () => componentsStore.selectedComponentId,
+    (val: number) => {
+        val === props.elem.id ? state.isSelected = true :  state.isSelected = false
+    }
+)
 
 const handleClickComponent = (c: ComponentNode) => {
     eventBus.emit('changeComponentId', c.id)
@@ -86,9 +91,10 @@ const handleClickComponent = (c: ComponentNode) => {
     fieldsConfigStore.changeTabName('c')
 }
 
-const handleAddComponent = (evt: Event) => {
+const handleAddComponent = (evt: Event, cs: ComponentNode[]) => {
     const newIndex = (evt as any).newIndex
-    handleClickComponent(componentsStore.components[newIndex])
+
+    handleClickComponent(cs[newIndex])
 }
 
 const handleChangeComponents = () => {
@@ -121,32 +127,17 @@ const handleGeneratePath = (c: ComponentNode, path: string) => {
 </script>
 
 <style lang="scss" scoped>
-.h-main-layout {
-    height: 100%;
-    overflow-y: auto;
-}
+.el-col {
+    min-height: 38px;
+    padding: 4px;
+    outline: 1px dashed #ccc;
 
-.h-main-dragarea {
-    height: 100%;
-}
-
-.h-main-layout-item {
-    padding: 5px;
-
-    .h-main-layout-item-inner {
-        display: flex;
-        align-items: center;
+    &.selected {
+        outline: 2px dashed $base-color;
     }
 
-    .h-main-layout-item-name {
-        margin-right: 20px;
+    .h-col-dragarea {
+        height: 100%;
     }
-}
-
-.fade-enter-active, .fade-leave-active {
-    transition: opacity .5s;
-}
-.fade-enter, .fade-leave-to {
-    opacity: 0;
 }
 </style>

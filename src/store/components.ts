@@ -3,12 +3,12 @@
  * @Author: Hedgehog96
  * @Date: 2022-06-30 14:58:31
  * @LastEditors: Hedgehog96
- * @LastEditTime: 2022-09-05 17:35:06
+ * @LastEditTime: 2023-02-22 14:38:30
  */
 import { defineStore } from 'pinia'
 import { cloneDeep } from 'lodash-es'
 import { ElMessage } from 'element-plus'
-import { ComponentConfig, ComponentsStore } from '@/config/interfaces'
+import { ComponentNode, ComponentsStore } from '@/config/interfaces'
 
 const $_reloadState = (state: string) => {
     switch (state) {
@@ -24,21 +24,23 @@ const $_reloadState = (state: string) => {
 export const useComponentsStore = defineStore('components', {
     state: (): ComponentsStore => {
         return {
+            selectedComponentId: -1,
             snapshotIdx: $_reloadState('s'),
             snapshotcomponents: $_reloadState('sc'),
             components: $_reloadState('c'),
             layout: {
-                hidden: false
-            }
+                size: 'default'
+            },
+            isPreview: false
         }
     },
 
     actions: {
-        $_setComponents(cs: ComponentConfig[]) {
+        $_setComponents(cs: ComponentNode[]) {
             this.components = cs
         },
 
-        add(c: ComponentConfig) {
+        add(c: ComponentNode) {
             this.components.push(c)
         },
 
@@ -67,6 +69,10 @@ export const useComponentsStore = defineStore('components', {
                 ElMessage.error('保存失败')
             }
             
+        },
+
+        changeId(id: number) {
+            this.selectedComponentId  =id
         },
 
         undo() {

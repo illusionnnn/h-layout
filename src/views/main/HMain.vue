@@ -3,7 +3,7 @@
  * @Author: Hedgehog96
  * @Date: 2022-05-09 17:24:21
  * @LastEditors: Hedgehog96
- * @LastEditTime: 2023-01-15 18:22:24
+ * @LastEditTime: 2023-02-22 17:54:18
 -->
 <template>
     <div class="h-main">
@@ -22,57 +22,34 @@
 </template>
 
 <script setup lang="ts">
-import { ref, inject, watch } from 'vue'
+import { ref, inject } from 'vue'
 import { storeToRefs } from 'pinia'
 import { useComponentsStore } from '@/store/components'
-import { ComponentConfig } from '@/config/interfaces'
+import { ComponentNode } from '@/config/interfaces'
 
 const componentsStore = useComponentsStore()
 const { components } = storeToRefs(componentsStore)
-const EVENT_BUS: any = inject('eventBus')
+const eventBus: any = inject('eventBus')
 const currentComponentId = ref(-1)
-
-watch(
-    () => componentsStore.components,
-    (newVal: ComponentConfig[]) => {
-        components.value = newVal
-
-        const layoutProperty = Object.keys(componentsStore.layout)
-        layoutProperty.forEach((k: string) => {
-            components.value.forEach((c: ComponentConfig) => {
-                if (!(c.props as object)[`$_isComponentSet${k}`]) {
-                    const v = Object.freeze(componentsStore.layout[k]);
-                    (c.props as object)[k] = v
-                }
-            })
-        })
-    },
-    { deep: true }
-)
-watch(
-    () => componentsStore.layout,
-    (newVal: object) => {
-        const keys = Object.keys(newVal)
-        components.value.forEach((c: ComponentConfig) => {
-            keys.forEach((k: string) => {
-                if ((k in (c.props as object)) && !(c.props as object)[`$_isComponentSet${k}`]) {
-                    (c.props as object)[k] = newVal[k]
-                }
-            })
-        })
-    },
-    { deep: true }
-)
 
 const handleChangeComponetId = (id: number) => {
     currentComponentId.value = id
 }
 
-const handleDeleteComponent = (id: number) => {
+type DeleteParams = [number, string]
+const handleDeleteComponent = (p: DeleteParams) => {
+    const [id, path] = p
+    if (path && path.includes('Col')) {
+        componentsStore.components.forEach((c: ComponentNode) => {
+            handleDeleteComponentForCol(id, c)
+        })
+        return
+    }
+
     let idx = -1
     componentsStore.recordSnapshot()
 
-    componentsStore.components.forEach((_c: ComponentConfig, _idx: number) => {
+    componentsStore.components.forEach((_c: ComponentNode, _idx: number) => {
         if (_c.id === id) {
             idx = _idx
             return
@@ -81,28 +58,59 @@ const handleDeleteComponent = (id: number) => {
     componentsStore.components.splice(idx, 1)
 
     if (componentsStore.components.length) {
-        EVENT_BUS.emit(
+        const _idx = idx === 0 ? 1 : idx
+        
+        const selectedId = (componentsStore.components[_idx - 1] as ComponentNode).id
+        componentsStore.changeId(selectedId)
+        eventBus.emit(
             'changeComponentId',
-            (componentsStore.components[idx - 1] as ComponentConfig).id
+            selectedId
         )
-        EVENT_BUS.emit('clickComponent', componentsStore.components[idx - 1])
+        eventBus.emit('clickComponent', componentsStore.components[_idx - 1])
     } else {
         // when only one is deleted
-        EVENT_BUS.emit('changeComponentId', -1)
-        EVENT_BUS.emit('clickComponent', {})
+        componentsStore.changeId(-1)
+        eventBus.emit('changeComponentId', -1)
+        eventBus.emit('clickComponent', {})
+    }
+}
+const handleDeleteComponentForCol = (id: number, c: any, pc?: any[]) => {
+    if (id === c.id) {
+        (pc as unknown as ComponentNode).children?.forEach((_c: ComponentNode, idx: number) => {
+            if (id === _c.id) {
+                const _pc = (pc as unknown as ComponentNode)
+                _pc.children?.splice(idx, 1)
+
+                const selectedId = (pc as unknown as ComponentNode).children?.length
+                    ? ((_pc.children as unknown as ComponentNode)[0]).id
+                    : -1
+                componentsStore.changeId(selectedId)
+                eventBus.emit(
+                    'changeComponentId',
+                    selectedId
+                )
+                selectedId !== -1
+                    ? eventBus.emit('clickComponent', (_pc.children as unknown as ComponentNode)[0])
+                    : eventBus.emit('clickComponent', {})
+            }
+        })
+    } else if (c.cols && c.cols.length) {
+        c.cols.forEach((_c: any) => handleDeleteComponentForCol(id, _c, c))
+    } else if (c.children && c.children.length) {
+        c.children.forEach((_c: any) => handleDeleteComponentForCol(id, _c, c))
     }
 }
 
-EVENT_BUS.on('changeComponentId', (id: number) => {
+eventBus.on('changeComponentId', (id: number) => {
     currentComponentId.value = id
 })
-EVENT_BUS.on('delete', handleDeleteComponent)
+eventBus.on('delete', handleDeleteComponent)
 </script>
 
 <style lang="scss" scoped>
 .h-main {
     position: relative;
-    padding: 20px;
+    padding: 10px;
     height: calc(100% - 96px);
 
     @include background_color('bg');

@@ -20,8 +20,6 @@
 </template>
 
 <script setup lang="ts">
-import { ElFormItem, ElSwitch } from 'element-plus'
-
 const props = defineProps({
     elem: {
         type: Object,

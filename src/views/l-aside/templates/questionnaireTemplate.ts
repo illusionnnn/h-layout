@@ -6,11 +6,11 @@
  * @LastEditTime: 2022-09-17 20:50:22
  */
 import { cloneDeep, random } from 'lodash-es'
-import { ComponentConfig, TextContentElemProps, RadioElemProps, CheckboxElemProps } from '@/config/interfaces'
+import { ComponentNode, TextContentElemProps, RadioElemProps, CheckboxElemProps } from '@/config/interfaces'
 import componentsConfig from '@/config/components'
 
 function $_getElem(elemTitle: string, id: number) {
-    const config = (componentsConfig[1].components as ComponentConfig[]).filter((c: ComponentConfig) => c.title === elemTitle)[0]
+    const config = (componentsConfig[1].components as ComponentNode[]).filter((c: ComponentNode) => c.title === elemTitle)[0]
     const elem = cloneDeep({
         ...config,
         id,

@@ -3,7 +3,7 @@
  * @Author: Hedgehog96
  * @Date: 2022-05-11 14:09:42
  * @LastEditors: Hedgehog96
- * @LastEditTime: 2023-01-15 18:20:40
+ * @LastEditTime: 2023-02-21 14:40:34
 -->
 <template>
     <div class="h-layout-config">
@@ -19,10 +19,7 @@
                     title="基础属性"
                     name="base"
                 >
-                    <HiddenEditor
-                        :is-layout-hidden="true"
-                        :elem="state.layout"
-                    />
+                    <size-editor :elem="state.layout"></size-editor>
                 </el-collapse-item>
             </el-collapse>
         </el-form>
@@ -31,13 +28,18 @@
 
 <script setup lang="ts">
 import { reactive } from 'vue'
-import { ElForm, ElCollapse, ElCollapseItem } from 'element-plus'
-import HiddenEditor from './PropertyEditor/HiddenEditor.vue'
+import { LayoutConfig } from '@/config/interfaces'
+import SizeEditor from './PropertyEditor/SizeEditor.vue'
 
-const state = reactive({
+interface State {
+    activeNames: string;
+    layout: LayoutConfig;
+}
+
+const state = reactive<State>({
     activeNames: 'base',
     layout: {
-        hidden: false
+        size: 'default'
     }
 })
 </script>

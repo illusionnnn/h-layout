@@ -3,7 +3,7 @@
  * @Author: Hedgehog96
  * @Date: 2022-08-25 21:37:32
  * @LastEditors: Hedgehog96
- * @LastEditTime: 2023-01-14 22:42:17
+ * @LastEditTime: 2023-02-21 11:10:34
 -->
 <template>
     <template v-if="props.elem.props.showText">
@@ -19,9 +19,7 @@
     </template>
 </template>
 
-<script setup lang="ts">
-import { ElDivider } from 'element-plus'
-
+<script setup lang="ts" name="DividerWidget">
 const props = defineProps({
     elem: {
         type: Object,

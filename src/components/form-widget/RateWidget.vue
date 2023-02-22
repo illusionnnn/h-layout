@@ -3,13 +3,13 @@
  * @Author: Hedgehog96
  * @Date: 2022-08-18 16:11:42
  * @LastEditors: Hedgehog96
- * @LastEditTime: 2023-01-14 22:42:28
+ * @LastEditTime: 2023-02-21 15:34:38
 -->
 <template>
     <el-rate
         v-model="rateValue"
         :max="props.elem.props.max"
-        :size="props.elem.props.size"
+        :size="size"
         :disabled="props.elem.props.disabled"
         :allow-half="props.elem.props.allowHalf"
         :low-threshold="props.elem.props.lowThreshold"
@@ -21,9 +21,9 @@
     />
 </template>
 
-<script setup lang="ts">
+<script setup lang="ts" name="RateWidget">
 import { ref } from 'vue'
-import { ElRate } from 'element-plus'
+import { useComponentSize } from '@/hooks'
 
 const props = defineProps({
     elem: {
@@ -31,6 +31,9 @@ const props = defineProps({
         default: () => Object
     }
 })
+
+const { computedSize } = useComponentSize()
+const size = computedSize(props.elem)
 
 const rateValue = ref(0)
 const handleChangeEvent = (value: number) => {

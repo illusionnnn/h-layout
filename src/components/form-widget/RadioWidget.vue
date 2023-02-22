@@ -3,7 +3,7 @@
  * @Author: Hedgehog96
  * @Date: 2022-08-22 14:31:48
  * @LastEditors: Hedgehog96
- * @LastEditTime: 2023-01-14 22:42:24
+ * @LastEditTime: 2023-02-21 15:31:45
 -->
 <template>
     <el-radio-group
@@ -16,7 +16,7 @@
                 v-for="(item, idx) in props.elem.props.optionItems"
                 :key="idx"
                 :label="item.label"
-                :size="props.elem.props.size"
+                :size="size"
                 :border="props.elem.props.border"
             >
                 {{ item.text }}
@@ -27,7 +27,7 @@
                 v-for="(item, idx) in props.elem.props.optionItems"
                 :key="idx"
                 :label="item.label"
-                :size="props.elem.props.size"
+                :size="size"
             >
                 {{ item.text }}
             </el-radio-button>
@@ -35,9 +35,9 @@
     </el-radio-group>
 </template>
 
-<script setup lang="ts">
+<script setup lang="ts" name="RadioWidget">
 import { ref, watch } from 'vue'
-import { ElRadioGroup, ElRadio, ElRadioButton } from 'element-plus'
+import { useComponentSize } from '@/hooks'
 
 const props = defineProps({
     elem: {
@@ -53,6 +53,9 @@ watch(
     },
     { deep: true }
 )
+
+const { computedSize } = useComponentSize()
+const size = computedSize(props.elem)
 
 const handleChangeEvent = (value: number | string | boolean) => {
     const fn = new Function('value', props.elem.event.onChange)

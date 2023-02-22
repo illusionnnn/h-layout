@@ -3,7 +3,7 @@
  * @Author: Hedgehog96
  * @Date: 2022-08-22 10:28:25
  * @LastEditors: Hedgehog96
- * @LastEditTime: 2023-01-14 22:44:05
+ * @LastEditTime: 2023-02-21 11:12:23
 -->
 <template>
     <div class="static-text">
@@ -11,7 +11,7 @@
     </div>
 </template>
 
-<script setup lang="ts">
+<script setup lang="ts" name="TextWidget">
 const props = defineProps({
     elem: {
         type: Object,

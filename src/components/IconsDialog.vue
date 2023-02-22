@@ -3,7 +3,7 @@
  * @Author: Hedgehog96
  * @Date: 2022-08-01 15:55:51
  * @LastEditors: Hedgehog96
- * @LastEditTime: 2023-01-14 22:42:00
+ * @LastEditTime: 2023-02-08 17:29:44
 -->
 <template>
     <div class="icon-dialog">
@@ -37,7 +37,6 @@
 
 <script setup lang="ts">
 import { reactive, watch } from 'vue'
-import { ElButton, ElDialog } from 'element-plus'
 import * as ElementPlusIconsVue from '@element-plus/icons-vue'
 
 const getIcons = () => {

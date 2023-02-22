@@ -3,7 +3,7 @@
  * @Author: Hedgehog96
  * @Date: 2022-08-25 14:59:12
  * @LastEditors: Hedgehog96
- * @LastEditTime: 2023-01-14 22:42:14
+ * @LastEditTime: 2023-02-21 15:30:02
 -->
 <template>
     <el-checkbox-group
@@ -17,7 +17,7 @@
                 v-for="(item, idx) in props.elem.props.optionItems"
                 :key="idx"
                 :label="item.label"
-                :size="props.elem.props.size"
+                :size="size"
                 :border="props.elem.props.border"
             >
                 {{ item.text }}
@@ -28,7 +28,7 @@
                 v-for="(item, idx) in props.elem.props.optionItems"
                 :key="idx"
                 :label="item.label"
-                :size="props.elem.props.size"
+                :size="size"
             >
                 {{ item.text }}
             </el-checkbox-button>
@@ -36,9 +36,10 @@
     </el-checkbox-group>
 </template>
 
-<script setup lang="ts">
+<script setup lang="ts" name="CheckboxWidget">
 import { ref, watch } from 'vue'
-import { ElCheckboxGroup, ElCheckbox, ElCheckboxButton, CheckboxValueType } from 'element-plus'
+import { CheckboxValueType } from 'element-plus'
+import { useComponentSize } from '@/hooks'
 
 const props = defineProps({
     elem: {
@@ -51,6 +52,9 @@ let checkboxValue = ref(['checkbox1'])
 watch(() => props.elem.props.optionItems, newVal => {
     checkboxValue.value = newVal[0].label
 })
+
+const { computedSize } = useComponentSize()
+const size = computedSize(props.elem)
 
 const handleChangeEvent = (value: CheckboxValueType[]) => {
     const fn = new Function('value', props.elem.event.onChange)

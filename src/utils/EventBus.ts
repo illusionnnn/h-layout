@@ -3,7 +3,7 @@
  * @Author: Hedgehog96
  * @Date: 2022-06-15 18:04:53
  * @LastEditors: Hedgehog96
- * @LastEditTime: 2022-09-07 11:09:24
+ * @LastEditTime: 2023-02-22 15:47:25
  */
 export default class EventBus {
     events: object

@@ -3,7 +3,7 @@
  * @Author: Hedgehog96
  * @Date: 2022-08-27 17:59:59
  * @LastEditors: Hedgehog96
- * @LastEditTime: 2023-01-14 22:42:05
+ * @LastEditTime: 2023-02-22 14:38:39
 -->
 <template>
     <div
@@ -23,44 +23,30 @@
                 v-else
             >
                 <div :key="state.reload">
-                    <base-component
+                    <template
                         v-for="comp in componentsStore.components"
                         :key="comp.id"
-                        :elem="comp"
                     >
-                        <input-widget
-                            v-if="comp.label === 'Input'"
+                        <base-container
+                            v-if="comp.label === 'Grid'"
                             :elem="comp"
-                        />
-                        <button-widget
-                            v-else-if="comp.label === 'Button'"
+                        >
+                            <component
+                                :is="comp.widget"
+                                :elem="comp"
+                            ></component>
+                        </base-container>
+
+                        <base-component
+                            v-else
                             :elem="comp"
-                        />
-                        <switch-widget
-                            v-else-if="comp.label === 'Switch'"
-                            :elem="comp"
-                        />
-                        <rate-widget
-                            v-else-if="comp.label === 'Rate'"
-                            :elem="comp"
-                        />
-                        <text-widget
-                            v-else-if="comp.label === 'Text'"
-                            :elem="comp"
-                        />
-                        <radio-widget
-                            v-else-if="comp.label === 'Radio'"
-                            :elem="comp"
-                        />
-                        <checkbox-widget
-                            v-else-if="comp.label === 'Checkbox'"
-                            :elem="comp"
-                        />
-                        <divider-widget
-                            v-else-if="comp.label === 'Divider'"
-                            :elem="comp"
-                        />
-                    </base-component>
+                        >
+                            <component
+                                :is="comp.widget"
+                                :elem="comp"
+                            ></component>
+                        </base-component>
+                    </template>
                 </div>
             </template>
         </el-dialog>
@@ -69,7 +55,7 @@
 
 <script setup lang="ts">
 import { reactive, watch } from 'vue'
-import { ElDialog } from 'element-plus'
+import BaseContainer from './BaseContainer.vue'
 import BaseComponent from './BaseComponent.vue'
 
 import { useComponentsStore } from '@/store/components'
@@ -104,6 +90,11 @@ const handleClose = () => {
 .preview-dialog {
     :deep(.el-dialog__body) {
         word-break: normal;
+
+        .el-row,
+        .el-col {
+            outline: none !important;
+        }
     }
 }
 </style>

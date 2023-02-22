@@ -3,13 +3,13 @@
  * @Author: Hedgehog96
  * @Date: 2022-07-06 11:46:39
  * @LastEditors: Hedgehog96
- * @LastEditTime: 2023-01-14 22:42:21
+ * @LastEditTime: 2023-02-21 15:30:59
 -->
 <template>
     <el-input
         v-model="inputValue"
         :type="inputType"
-        :size="props.elem.props.size"
+        :size="size"
         :rows="props.elem.props.type === 'textarea' ? props.elem.props.rows : null"
         :disabled="props.elem.props.disabled"
         :readonly="props.elem.props.readonly"
@@ -40,9 +40,9 @@
     </el-input>
 </template>
 
-<script setup lang="ts">
+<script setup lang="ts" name="InputWidget">
 import { ref, computed } from 'vue'
-import { ElInput } from 'element-plus'
+import { useComponentSize } from '@/hooks'
 
 const props = defineProps({
     elem: {
@@ -59,6 +59,9 @@ const inputType = computed(() => {
     }
     return props.elem.props.type
 })
+
+const { computedSize } = useComponentSize()
+const size = computedSize(props.elem)
 
 const handleFocusEvent = (event: Event) => {
     const fn = new Function('event', props.elem.event.onFocus)

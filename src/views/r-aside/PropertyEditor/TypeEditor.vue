@@ -29,8 +29,6 @@
 </template>
 
 <script setup lang="ts">
-import { ElFormItem, ElSelect } from 'element-plus'
-
 const props = defineProps({
     elem: {
         type: Object,

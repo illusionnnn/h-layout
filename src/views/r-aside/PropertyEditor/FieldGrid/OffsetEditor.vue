@@ -1,23 +1,20 @@
 <!--
- * @Description: 标签组件
+ * @Description: 栅格列左侧间隔格数组件
  * @Author: Hedgehog96
- * @Date: 2022-07-21 16:51:59
+ * @Date: 2023-02-10 18:45:06
  * @LastEditors: Hedgehog96
- * @LastEditTime: 2023-02-08 17:26:28
+ * @LastEditTime: 2023-02-22 11:03:48
 -->
 <template>
     <el-form-item class="h-editor">
         <span
             class="h-editor-title"
-            title="标签"
-        >标签</span>
-        <div
-            class="h-editor-container"
-        >
-            <el-input
-                v-model="props.elem.label"
-                type="text"
-                disabled
+            title="左侧间隔格数"
+        >左侧间隔格数</span>
+        <div class="h-editor-container">
+            <el-input-number
+                v-model="props.elem.props.offset"
+                :min="0"
             />
         </div>
     </el-form-item>

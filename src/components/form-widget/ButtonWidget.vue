@@ -3,12 +3,12 @@
  * @Author: Hedgehog96
  * @Date: 2022-08-17 10:59:28
  * @LastEditors: Hedgehog96
- * @LastEditTime: 2023-01-14 22:42:11
+ * @LastEditTime: 2023-02-21 15:27:33
 -->
 <template>
     <el-button
         :type="props.elem.props.type"
-        :size="props.elem.props.size"
+        :size="size"
         :plain="props.elem.props.plain"
         :text="props.elem.props.text"
         :bg="props.elem.props.bg"
@@ -23,8 +23,8 @@
     </el-button>
 </template>
 
-<script setup lang="ts">
-import { ElButton } from 'element-plus'
+<script setup lang="ts" name="ButtonWidget">
+import { useComponentSize } from '@/hooks'
 
 const props = defineProps({
     elem: {
@@ -32,6 +32,9 @@ const props = defineProps({
         default: () => Object
     }
 })
+
+const { computedSize } = useComponentSize()
+const size = computedSize(props.elem)
 
 const handleClickEvent = () => {
     const fn = new Function(props.elem.event.onClick)

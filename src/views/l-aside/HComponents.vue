@@ -3,13 +3,13 @@
  * @Author: Hedgehog96
  * @Date: 2022-05-09 15:33:03
  * @LastEditors: Hedgehog96
- * @LastEditTime: 2023-01-15 18:57:01
+ * @LastEditTime: 2023-02-21 11:25:26
 -->
 <template>
     <div class="h-components">
         <div
-            v-for="config in componentsConfig"
-            :key="config.pid"
+            v-for="(config, idx) in componentsConfig"
+            :key="idx"
             class="h-components-area"
         >
             <div class="h-components-area-title">
@@ -20,7 +20,7 @@
                     v-if="!config.components.length"
                     class="h-components-area-tip"
                 >暂无组件</span>
-                <draggable
+                <vue-draggable
                     v-else
                     class="h-components-drag-area"
                     item-key="id"
@@ -41,26 +41,34 @@
                             {{ element.title }}
                         </el-tag>
                     </template>
-                </draggable>
+                </vue-draggable>
             </div>
         </div>
     </div>
 </template>
 
 <script setup lang="ts">
-import draggable from 'vuedraggable'
 import { cloneDeep, random } from 'lodash-es'
 import { useIdStore } from '@/store/id'
 import componentsConfig from '@/config/components'
-import { ComponentConfig } from '@/config/interfaces'
+import { ComponentNode, GridColNode } from '@/config/interfaces'
 
 const idStore = useIdStore()
 
-const handleCloneComponentsConfig = (d: ComponentConfig) => {
+const handleCloneComponentsConfig = (d: ComponentNode) => {
+    let comp = d
+    if (d.label === 'Grid') {
+        comp.cols?.forEach((c: GridColNode) => {
+            c.id = idStore.id
+            c.uniqueKey = c.label + random(1, 999)
+            idStore.increment()
+        })
+    }
+    
     const _ = cloneDeep({
-        ...d,
+        ...comp,
         id: idStore.id,
-        uniqueKey: d.label + random(1, 999)
+        uniqueKey: comp.label + random(1, 999)
     })
     idStore.increment()
 

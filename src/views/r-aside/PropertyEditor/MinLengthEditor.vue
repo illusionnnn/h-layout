@@ -24,7 +24,6 @@
 
 <script setup lang="ts">
 import { computed } from 'vue'
-import { ElFormItem, ElInputNumber } from 'element-plus'
 
 const props = defineProps({
     elem: {

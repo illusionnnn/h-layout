@@ -3,49 +3,91 @@
  * @Author: Hedgehog96
  * @Date: 2022-05-09 17:30:41
  * @LastEditors: Hedgehog96
- * @LastEditTime: 2022-09-23 16:38:36
+ * @LastEditTime: 2023-02-21 18:04:38
  */
-import { ElButton, ElInput, ElSwitch, ElRate, ElRadio, ElCheckbox, ElDivider } from 'element-plus'
-// import BaseContainer from "@/components/BaseContainer.vue";
+import {
+    ElButton,
+    ElInput,
+    ElSwitch,
+    ElRate,
+    ElRadio,
+    ElCheckbox,
+    ElDivider,
+
+    ElRow,
+    ElCol
+} from 'element-plus'
 
 export default [
     {
-        pid: 0,
         title: '容器',
-        name: 'Wrapper',
+        name: 'Container',
         components: [
-            // {
-            //     id: 1,
-            //     pid: -1,
-            //     uniqueKey: "Container1",
-            //     title: "布局",
-            //     label: "Container",
-            //     icon: "icon-h-shangebuju",
-            //     showTitle: false,
-            //     component: BaseContainer,
-            //     props: {},
-            //     event: {},
-            //     children: [],
-            // },
+            {
+                id: 1,
+                uniqueKey: 'Grid1',
+                title: '栅格',
+                label: 'Grid',
+                icon: 'icon-h-shangebuju',
+                showTitle: false,
+                component: ElRow,
+                widget: 'GridWidget',
+                cols: [
+                    {
+                        id: 11,
+                        uniqueKey: 'Col11',
+                        title: '栅格列',
+                        label: 'Col',
+                        component: ElCol,
+                        props: {
+                            span: 12,
+                            offset: 0,
+                            push: 0,
+                            pull: 0
+                        },
+                        event: {},
+                        children: []
+                    },
+                    {
+                        id: 12,
+                        uniqueKey: 'Col12',
+                        title: '栅格列',
+                        label: 'Col',
+                        component: ElCol,
+                        props: {
+                            span: 12,
+                            offset: 0,
+                            push: 0,
+                            pull: 0
+                        },
+                        event: {},
+                        children: []
+                    }
+                ],
+                props: {
+                    gutter: 12,
+                    cols: ''
+                },
+                event: {}
+            }
         ]
     },
     {
-        pid: 1,
         title: '实体',
         name: 'components',
         components: [
             {
                 id: 2,
-                pid: -1,
                 uniqueKey: 'Input2',
                 title: '单行输入',
                 label: 'Input',
                 icon: 'icon-h-input',
                 showTitle: false,
                 component: ElInput,
+                widget: 'InputWidget',
                 props: {
                     defaultValue: '22',
-                    size: 'default',
+                    size: '',
                     disabled: false,
                     readonly: false,
                     clearable: false,
@@ -63,21 +105,21 @@ export default [
                     hidden: false
                 },
                 event: {
-                    onFocus: '',
-                    onInput: '',
-                    onBlur: '',
-                    onChange: ''
+                    onFocus: null,
+                    onInput: null,
+                    onBlur: null,
+                    onChange: null
                 }
             },
             {
                 id: 3,
-                pid: -1,
                 uniqueKey: 'Input3',
                 title: '多行输入',
                 label: 'Input',
                 icon: 'icon-h-textarea',
                 showTitle: false,
                 component: ElInput,
+                widget: 'InputWidget',
                 props: {
                     defaultValue: '22',
                     disabled: false,
@@ -92,23 +134,23 @@ export default [
                     hidden: false
                 },
                 event: {
-                    onFocus: '',
-                    onInput: '',
-                    onBlur: '',
-                    onChange: ''
+                    onFocus: null,
+                    onInput: null,
+                    onBlur: null,
+                    onChange: null
                 }
             },
             {
                 id: 4,
-                pid: -1,
                 uniqueKey: 'Button4',
                 title: '按钮',
                 label: 'Button',
                 icon: 'icon-h-anniu',
                 showTitle: true,
                 component: ElButton,
+                widget: 'ButtonWidget',
                 props: {
-                    size: 'default',
+                    size: '',
                     type: 'default',
                     label: 'button',
                     plain: false,
@@ -122,21 +164,21 @@ export default [
                     hidden: false
                 },
                 event: {
-                    onClick: ''
+                    onClick: null
                 }
             },
             {
                 id: 5,
-                pid: -1,
                 uniqueKey: 'Switch5',
                 title: '开关',
                 label: 'Switch',
                 icon: 'icon-h-huadonganniux',
                 showTitle: false,
                 component: ElSwitch,
+                widget: 'SwitchWidget',
                 props: {
                     disabled: false,
-                    size: 'default',
+                    size: '',
                     inlinePrompt: false,
                     width: 50,
                     activeIcon: '',
@@ -146,22 +188,22 @@ export default [
                     hidden: false
                 },
                 event: {
-                    onChange: ''
+                    onChange: null
                 }
             },
             {
                 id: 6,
-                pid: -1,
                 uniqueKey: 'Rate6',
                 title: '评分',
                 label: 'Rate',
                 icon: 'icon-h-pingfen1',
                 showTitle: false,
                 component: ElRate,
+                widget: 'RateWidget',
                 props: {
                     max: 5,
                     $_max: 10,
-                    size: 'default',
+                    size: '',
                     disabled: false,
                     allowHalf: false,
                     lowThreshold: 2,
@@ -173,18 +215,18 @@ export default [
                     hidden: false
                 },
                 event: {
-                    onChange: ''
+                    onChange: null
                 }
             },
             {
                 id: 7,
-                pid: -1,
                 uniqueKey: 'Text7',
                 title: '静态文本',
                 label: 'Text',
                 icon: 'icon-h-wenzi',
                 showTitle: false,
                 component: ElRate,
+                widget: 'TextWidget',
                 props: {
                     textContent: '文本',
                     hidden: false
@@ -193,15 +235,15 @@ export default [
             },
             {
                 id: 8,
-                pid: -1,
                 uniqueKey: 'Radio8',
                 title: '单选框',
                 label: 'Radio',
                 icon: 'icon-h-radio',
                 showTitle: false,
                 component: ElRadio,
+                widget: 'RadioWidget',
                 props: {
-                    size: 'default',
+                    size: '',
                     disabled: false,
                     border: false,
                     buttonStyle: false,
@@ -212,20 +254,20 @@ export default [
                     ]
                 },
                 event: {
-                    onChange: ''
+                    onChange: null
                 }
             },
             {
                 id: 9,
-                pid: -1,
                 uniqueKey: 'Checkbox9',
                 title: '多选框',
                 label: 'Checkbox',
                 icon: 'icon-h-checkbox-checked',
                 showTitle: false,
                 component: ElCheckbox,
+                widget: 'CheckboxWidget',
                 props: {
-                    size: 'default',
+                    size: '',
                     disabled: false,
                     border: false,
                     buttonStyle: false,
@@ -237,18 +279,18 @@ export default [
                     ]
                 },
                 event: {
-                    onChange: ''
+                    onChange: null
                 }
             },
             {
                 id: 10,
-                pid: -1,
                 uniqueKey: 'Divider10',
                 title: '分割线',
                 label: 'Divider',
                 icon: 'icon-h-hr',
                 showTitle: false,
                 component: ElDivider,
+                widget: 'DividerWidget',
                 props: {
                     showText: false,
                     textContent: 'divider',
@@ -260,4 +302,12 @@ export default [
             }
         ]
     }
+]
+
+export const inlineFlexComponentLables = [
+    'Button',
+    'Switch',
+    'Rate',
+    'Radio',
+    'Checkbox'
 ]

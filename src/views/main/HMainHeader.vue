@@ -3,7 +3,7 @@
  * @Author: Hedgehog96
  * @Date: 2022-05-17 10:46:19
  * @LastEditors: Hedgehog96
- * @LastEditTime: 2023-01-15 18:09:36
+ * @LastEditTime: 2023-02-22 14:40:44
 -->
 <template>
     <div class="h-main-header">
@@ -23,7 +23,7 @@
             <el-button @click="handleTree(true)">
                 <i class="iconfont icon-h-jiegou" />结构
             </el-button>
-            <el-button @click="isPreview = true">
+            <el-button @click="handlePreivew">
                 <i
                     class="iconfont icon-h-yulan"
                 />预览
@@ -40,7 +40,7 @@
         @close="handleTree(false)"
     />
     <preview-dialog
-        :visible="isPreview"
+        :visible="componentsStore.isPreview"
         @close="handleClosePreiview"
     />
 </template>
@@ -51,13 +51,12 @@ import StructureTree from '@/components/StructureTree.vue'
 import PreviewDialog from '@/components/PreviewDialog.vue'
 import { useComponentsStore } from '@/store/components'
 import { useFieldsConfigStore } from '@/store/fieldsConfig'
-import { ComponentConfig } from '@/config/interfaces'
+import { ComponentNode } from '@/config/interfaces'
 
 const componentsStore = useComponentsStore()
 const fieldsConfigStore = useFieldsConfigStore()
 
 const opTree = ref(false)
-const isPreview = ref(false)
 const handleTree = (op: boolean) => {
     opTree.value = op
 }
@@ -66,32 +65,36 @@ const handleCleanAll = () => {
     componentsStore.clear()
     fieldsConfigStore.changeTabName('l')
 }
+const handlePreivew = () => {
+    componentsStore.isPreview = true
+}
 const handleClosePreiview = () => {
-    isPreview.value = false
+    componentsStore.isPreview = false
 }
 
 const currentNodeKey = ref('')
-const EVENT_BUS: any = inject('eventBus')
-EVENT_BUS.on('clickComponent', (elem: ComponentConfig) => {
+const eventBus: any = inject('eventBus')
+eventBus.on('clickComponent', (elem: ComponentNode) => {
     currentNodeKey.value = elem.uniqueKey
 })
 const handleUndo = () => {
     componentsStore.undo()
     const c = componentsStore.components.slice(-1)
     if (c.length) {
-        EVENT_BUS.emit('changeComponentId', c[0].id)
-        EVENT_BUS.emit('clickComponent', c[0])
+        eventBus.emit('changeComponentId', c[0].id)
+        eventBus.emit('clickComponent', c[0])
     } else {
-        EVENT_BUS.emit('changeComponentId', -1)
-        EVENT_BUS.emit('clickComponent', {})
+        eventBus.emit('changeComponentId', -1)
+        eventBus.emit('clickComponent', {})
     }
 }
 const handleRedo = () => {
     if (!componentsStore.snapshotcomponents.length) return 
     componentsStore.redo()
+    
     const c = componentsStore.components.slice(-1)[0]
-    EVENT_BUS.emit('changeComponentId', c.id)
-    EVENT_BUS.emit('clickComponent', c)
+    eventBus.emit('changeComponentId', componentsStore.selectedComponentId)
+    eventBus.emit('clickComponent', c)
 }
 </script>
 

@@ -3,7 +3,7 @@
  * @Author: Hedgehog96
  * @Date: 2022-08-11 10:52:21
  * @LastEditors: Hedgehog96
- * @LastEditTime: 2023-01-29 22:10:03
+ * @LastEditTime: 2023-02-21 17:33:07
 -->
 <template>
     <el-drawer
@@ -21,8 +21,8 @@
             default-expand-all
             node-key="uniqueKey"
             empty-text="暂无组件"
-            :data="componentsStore.components"
             :props="defaultProps"
+            :data="data"
             :highlight-current="true"
             :current-node-key="props.nodeKey"
             @node-click="handleNodeClick"
@@ -31,10 +31,10 @@
 </template>
 
 <script setup lang="ts">
-import { inject } from 'vue'
-import { ElDrawer, ElTree } from 'element-plus'
+import { ref, inject, watch } from 'vue'
+import { cloneDeep } from 'lodash-es'
 import { useComponentsStore } from '@/store/components'
-import { ComponentConfig } from '@/config/interfaces'
+import { ComponentNode } from '@/config/interfaces'
 
 const props = defineProps({
     open: {
@@ -47,20 +47,46 @@ const props = defineProps({
     }
 })
 const emits = defineEmits(['close'])
+const eventBus: any = inject('eventBus')
+const componentsStore = useComponentsStore()
 const defaultProps = {
     children: 'children',
     label: 'uniqueKey'
 }
+const data = ref<ComponentNode[]>([])
 
-const componentsStore = useComponentsStore()
+watch(
+    () => componentsStore.components,
+    (newVal: ComponentNode[]) => {
+        data.value = cloneDeep(newVal)
+        data.value.forEach((c: ComponentNode) => {
+            handleConvertCols(c)
+        })
+    },
+    { deep: true }
+)
+
 const handleClose = (done: () => void) => {
     done()
     emits('close')
 }
 
-const EVENT_BUS: any = inject('eventBus')
-const handleNodeClick = (c: ComponentConfig) => {
-    EVENT_BUS.emit('changeComponentId', c.id)
-    EVENT_BUS.emit('clickComponent', c)
+const handleNodeClick = (c: ComponentNode) => {
+    componentsStore.changeId(c.id)
+    eventBus.emit('changeComponentId', c.id)
+    eventBus.emit('clickComponent', c)
+}
+
+const handleConvertCols = (cs: any) => {
+    if (cs.cols && cs.cols.length) {
+        cs.children = cs.cols
+        delete cs.cols
+
+        cs.children
+        && cs.children.length
+        && cs.children.forEach((c: ComponentNode) => {
+            handleConvertCols(c)
+        })
+    }
 }
 </script>

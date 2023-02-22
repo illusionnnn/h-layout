@@ -3,7 +3,7 @@
  * @Author: Hedgehog96
  * @Date: 2022-05-09 15:38:49
  * @LastEditors: Hedgehog96
- * @LastEditTime: 2023-01-14 21:45:52
+ * @LastEditTime: 2023-02-08 17:30:53
 -->
 <template>
     <div class="h-settings">
@@ -50,12 +50,12 @@
 </template>
 
 <script setup lang="ts">
-import { ElRow, ElCol, ElCard, ElTooltip, ElButton, ElMessageBox } from 'element-plus'
+import { ElMessageBox } from 'element-plus'
 import questionnaireTemplate from './templates/questionnaireTemplate'
 import questionnaireImg from '@/assets/imgs/questionnaire.jpg'
 import { useIdStore } from '@/store/id'
 import { useComponentsStore } from '@/store/components'
-import { ComponentConfig } from '@/config/interfaces'
+import { ComponentNode } from '@/config/interfaces'
 
 const $_loadText = '加载该模板'
 const templates = [
@@ -77,7 +77,7 @@ const handleConfirmLoadTemplate = () => {
         .then(() => {
             componentsStore.$_setComponents([])
             
-            questionnaireTemplate.forEach((c: (id: number) => ComponentConfig) => {
+            questionnaireTemplate.forEach((c: (id: number) => ComponentNode) => {
                 componentsStore.add(c(idStore.id))
                 idStore.increment()
             })

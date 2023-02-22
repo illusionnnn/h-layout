@@ -32,7 +32,6 @@
 
 <script setup lang="ts">
 import { reactive } from 'vue'
-import { ElFormItem, ElInput } from 'element-plus'
 import IconsDialog from '@/components/IconsDialog.vue'
 
 const props = defineProps({

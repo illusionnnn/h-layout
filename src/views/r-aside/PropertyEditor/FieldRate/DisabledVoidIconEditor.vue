@@ -3,7 +3,7 @@
  * @Author: Hedgehog96
  * @Date: 2022-08-19 15:27:34
  * @LastEditors: Hedgehog96
- * @LastEditTime: 2023-01-14 22:32:14
+ * @LastEditTime: 2023-02-08 17:32:45
 -->
 <template>
     <el-form-item class="h-editor">
@@ -32,7 +32,6 @@
 
 <script setup lang="ts">
 import { reactive } from 'vue'
-import { ElFormItem, ElInput } from 'element-plus'
 import IconsDialog from '@/components/IconsDialog.vue'
 
 const props = defineProps({

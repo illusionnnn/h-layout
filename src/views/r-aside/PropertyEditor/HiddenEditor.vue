@@ -3,7 +3,7 @@
  * @Author: Hedgehog96
  * @Date: 2022-08-22 11:28:51
  * @LastEditors: Hedgehog96
- * @LastEditTime: 2023-01-14 22:44:55
+ * @LastEditTime: 2023-02-21 14:26:56
 -->
 <template>
     <el-form-item class="h-editor">
@@ -14,26 +14,15 @@
         <div
             class="h-editor-container"
         >
-            <template v-if="!isLayoutHidden">
-                <el-switch
-                    :model-value="props.elem.props.hidden"
-                    @change="handleChange"
-                />
-            </template>
-            <template v-else>
-                <el-switch
-                    :model-value="props.elem.hidden"
-                    @change="handleLayoutHiddenChange"
-                />
-            </template>
+            <el-switch
+                :model-value="props.elem.props.hidden"
+                @change="handleChange"
+            />
         </div>
     </el-form-item>
 </template>
 
 <script setup lang="ts">
-import { ElFormItem, ElSwitch } from 'element-plus'
-import { useComponentsStore } from '@/store/components'
-
 const props = defineProps({
     isLayoutHidden: {
         type: Boolean,
@@ -45,17 +34,7 @@ const props = defineProps({
     }
 })
 
-const componentStpre = useComponentsStore()
 const handleChange = (value: number | string | boolean) => {
     props.elem.props.hidden = Boolean(value)
-    props.elem.props['$_isComponentSethidden'] = true
-}
-const handleLayoutHiddenChange = (value: number | string | boolean) => {
-    if (props.isLayoutHidden !== undefined) {
-        props.elem.hidden = Boolean(value)
-        componentStpre.setLayoutProperty('hidden', Boolean(value))
-    } else {
-        props.elem.props.hidden = Boolean(value)
-    }
 }
 </script>

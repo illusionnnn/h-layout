@@ -3,15 +3,11 @@
  * @Author: Hedgehog96
  * @Date: 2022-05-07 16:34:02
  * @LastEditors: Hedgehog96
- * @LastEditTime: 2023-01-30 17:25:34
+ * @LastEditTime: 2023-02-17 14:40:21
 -->
 <template>
     <div class="h-base-header">
         <div class="h-base-header-area">
-            <img
-                src="@/assets/imgs/logo.png"
-                alt="logo"
-            >
             <span class="h-base-header-title">h-layout</span>
         </div>
         <div class="h-base-header-btns">
@@ -40,7 +36,7 @@
             <el-button
                 text
                 type="danger"
-                @click="handleCleanCache()"
+                @click="handleCleanCache"
             >
                 <i class="iconfont icon-h-shanchu" />清除
             </el-button>
@@ -90,6 +86,7 @@ const handleCleanCache = () => {
 
     .h-base-header-title {
         font-size: 18px;
+        box-shadow: inset 0 -7px 0 $base-color;
     }
 
     .h-theme-swicth {

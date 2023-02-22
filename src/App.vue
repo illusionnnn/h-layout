@@ -21,6 +21,7 @@ import HLayout from './layouts/HLayout.vue'
 
 #app {
     @include background_color('appBg');
+    font-family: 'Helvetica Neue,Helvetica,PingFang SC,Hiragino Sans GB,Microsoft YaHei,Arial,sans-serif';
 }
 
 ::-webkit-scrollbar-track {

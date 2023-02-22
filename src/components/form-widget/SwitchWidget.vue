@@ -3,13 +3,13 @@
  * @Author: Hedgehog96
  * @Date: 2022-08-18 10:25:43
  * @LastEditors: Hedgehog96
- * @LastEditTime: 2023-01-14 22:42:31
+ * @LastEditTime: 2023-02-21 15:34:56
 -->
 <template>
     <el-switch
         v-model="swicthValue"
         :disabled="props.elem.props.disabled"
-        :size="props.elem.props.size"
+        :size="size"
         :width="props.elem.props.width"
         :inline-prompt="props.elem.props.inlinePrompt"
         :active-icon="props.elem.props.activeIcon"
@@ -20,9 +20,9 @@
     />
 </template>
 
-<script setup lang="ts">
+<script setup lang="ts" name="SwitchWidget">
 import { ref } from 'vue'
-import { ElSwitch } from 'element-plus'
+import { useComponentSize } from '@/hooks'
 
 const props = defineProps({
     elem: {
@@ -30,6 +30,9 @@ const props = defineProps({
         default: () => Object
     }
 })
+
+const { computedSize } = useComponentSize()
+const size = computedSize(props.elem)
 
 const swicthValue = ref(false)
 const handleChangeEvent =  (value: string | number | boolean) => {

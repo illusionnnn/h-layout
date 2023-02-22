@@ -3,7 +3,7 @@
  * @Author: Hedgehog96
  * @Date: 2022-08-22 16:04:45
  * @LastEditors: Hedgehog96
- * @LastEditTime: 2023-01-14 22:37:53
+ * @LastEditTime: 2023-02-22 10:19:52
 -->
 <template>
     <el-form-item class="h-editor">
@@ -35,7 +35,6 @@
         </div>
         <el-button
             type="primary"
-            link
             @click="handleAdd"
         >
             增加选项
@@ -46,7 +45,6 @@
 <script setup lang="ts">
 import { getCurrentInstance } from 'vue'
 import { Delete } from '@element-plus/icons-vue'
-import { ElFormItem, ElInput, ElButton, ElDivider } from 'element-plus'
 
 interface Item {
     text: string | number;

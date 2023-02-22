@@ -3,7 +3,7 @@
  * @Author: Hedgehog96
  * @Date: 2022-08-18 16:16:55
  * @LastEditors: Hedgehog96
- * @LastEditTime: 2023-01-14 22:37:14
+ * @LastEditTime: 2023-02-08 17:25:56
 -->
 <template>
     <el-form-item class="h-editor">
@@ -25,7 +25,6 @@
 
 <script setup lang="ts">
 import { computed } from 'vue'
-import { ElFormItem, ElInputNumber } from 'element-plus'
 
 const props = defineProps({
     elem: {

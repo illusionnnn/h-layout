@@ -3,7 +3,7 @@
  * @Author: Hedgehog96
  * @Date: 2022-07-21 11:44:24
  * @LastEditors: Hedgehog96
- * @LastEditTime: 2022-08-25 22:01:30
+ * @LastEditTime: 2023-02-22 11:09:41
  */
 import UniqueKeyEditor from './UniquekeyEditor.vue'
 import LabelEditor from './LabelEditor.vue'
@@ -57,56 +57,70 @@ import RadioBorderEditor from './FieldRadio/BorderEditor.vue'
 import DividerContentPositionEditor from './FieldDivider/ContentPositionEditor.vue'
 import DividerBorderStyleEditor from './FieldDivider/BorderStyleEditor.vue'
 
+import GutterEditor from './FieldGrid/GutterEditor.vue'
+import ColsEditor from './FieldGrid/ColsEditor.vue'
+import SpanEditor from './FieldGrid/SpanEditor.vue'
+import OffsetEditor from './FieldGrid/OffsetEditor.vue'
+import PushEditor from './FieldGrid/PushEditor.vue'
+import PullEditor from './FieldGrid/PullEditor.vue'
+
 export default {
-    'UniqueKeyEditor' :UniqueKeyEditor,
-    'LabelEditor': LabelEditor,
-    'DefaultValueEditor': DefaultValueEditor,
-    'SizeEditor': SizeEditor,
-    'RowsEditor': RowsEditor,
-    'DisabledEditoer': DisabledEditoer,
-    'ReadonlyEditor': ReadonlyEditor,
-    'MinLengthEditor': MinLengthEditor,
-    'MaxLengthEditor': MaxLengthEditor,
-    'ShowWordLimitEditor': ShowWordLimitEditor,
-    'PrefixIconEditor': PrefixIconEditor,
-    'SuffixIconEditor': SuffixIconEditor,
-    'PrependButtonEditor': PrependButtonEditor,
-    'PrependEditor': PrependEditor,
-    'AppendButtonEditor': AppendButtonEditor,
-    'AppendEditor': AppendEditor,
-    'MaxEditor': MaxEditor,
-    'HiddenEditor': HiddenEditor,
-    'OptionItemsEditor': OptionItemsEditor,
+    UniqueKeyEditor,
+    LabelEditor,
+    DefaultValueEditor,
+    SizeEditor,
+    RowsEditor,
+    DisabledEditoer,
+    ReadonlyEditor,
+    MinLengthEditor,
+    MaxLengthEditor,
+    ShowWordLimitEditor,
+    PrefixIconEditor,
+    SuffixIconEditor,
+    PrependButtonEditor,
+    PrependEditor,
+    AppendButtonEditor,
+    AppendEditor,
+    MaxEditor,
+    HiddenEditor,
+    OptionItemsEditor,
 
-    'ButtonTypeEditor': ButtonTypeEditor,
-    'ButtonPlainEditor': ButtonPlainEditor,
-    'ButtonTextEditor': ButtonTextEditor,
-    'ButtonBgEditor': ButtonBgEditor,
-    'ButtonLinkEditor': ButtonLinkEditor,
-    'ButtonRoundEditor': ButtonRoundEditor,
-    'ButtonCircleEditor': ButtonCircleEditor,
-    'ButtonIconEditor': ButtonIconEditor,
+    ButtonTypeEditor,
+    ButtonPlainEditor,
+    ButtonTextEditor,
+    ButtonBgEditor,
+    ButtonLinkEditor,
+    ButtonRoundEditor,
+    ButtonCircleEditor,
+    ButtonIconEditor,
 
-    'SwicthInlinePromptEditor': SwicthInlinePromptEditor,
-    'SwitchWidthEditor': SwitchWidthEditor,
-    'SwitchActiveIconEditor': SwitchActiveIconEditor,
-    'SwitchInActiveIconEditor': SwitchInActiveIconEditor,
-    'SwitchActiveTextEditor': SwitchActiveTextEditor,
-    'SwitchInActiveTextEditor': SwitchInActiveTextEditor,
+    SwicthInlinePromptEditor,
+    SwitchWidthEditor,
+    SwitchActiveIconEditor,
+    SwitchInActiveIconEditor,
+    SwitchActiveTextEditor,
+    SwitchInActiveTextEditor,
 
-    'RateAllowHalfEditor': RateAllowHalfEditor,
-    'RateLowThresholdEditor': RateLowThresholdEditor,
-    'RateHighThresholdEditor': RateHighThresholdEditor,
-    'ShowTextEditor': ShowTextEditor,
-    'RateShowScoreEditor': RateShowScoreEditor,
-    'RateVoidIconEditor': RateVoidIconEditor,
-    'RateDisabledVoidIconEditor': RateDisabledVoidIconEditor,
+    RateAllowHalfEditor,
+    RateLowThresholdEditor,
+    RateHighThresholdEditor,
+    ShowTextEditor,
+    RateShowScoreEditor,
+    RateVoidIconEditor,
+    RateDisabledVoidIconEditor,
 
-    'TextContentEditor': TextContentEditor,
+    TextContentEditor,
 
-    'RadioButtonStyleEditor': RadioButtonStyleEditor,
-    'RadioBorderEditor': RadioBorderEditor,
+    RadioButtonStyleEditor,
+    RadioBorderEditor,
 
-    'DividerContentPositionEditor': DividerContentPositionEditor,
-    'DividerBorderStyleEditor': DividerBorderStyleEditor
+    DividerContentPositionEditor,
+    DividerBorderStyleEditor,
+
+    GutterEditor,
+    ColsEditor,
+    SpanEditor,
+    OffsetEditor,
+    PushEditor,
+    PullEditor
 }

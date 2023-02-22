@@ -3,7 +3,7 @@
  * @Author: Hedgehog96
  * @Date: 2022-08-17 15:07:03
  * @LastEditors: Hedgehog96
- * @LastEditTime: 2023-01-14 22:45:11
+ * @LastEditTime: 2023-02-08 17:31:40
 -->
 <template>
     <el-form-item class="h-editor">
@@ -20,8 +20,6 @@
 </template>
 
 <script setup lang="ts">
-import { ElFormItem, ElSwitch } from 'element-plus'
-
 const props = defineProps({
     elem: {
         type: Object,

@@ -3,17 +3,14 @@
  * @Author: Hedgehog96
  * @Date: 2022-05-15 17:42:07
  * @LastEditors: Hedgehog96
- * @LastEditTime: 2023-01-15 15:03:11
+ * @LastEditTime: 2023-02-22 18:04:16
 -->
 <template>
-    <div
-        class="h-base-container"
-        :class="activated ? 'activated' : 'unactivated'"
-    >
+    <div class="h-base-container">
         <slot />
 
         <div
-            v-show="activated"
+            v-show="selected"
             class="container-action"
         >
             <!-- <i
@@ -28,11 +25,11 @@
         </div>
 
         <div
-            v-show="activated"
+            v-show="selected"
             class="container-drag-handler"
         >
             <i class="iconfont icon-h-yidong_huaban" />
-            <span class="container-title">容器</span>
+            <span class="container-title">{{ props.elem.title }}</span>
         </div>
     </div>
 </template>
@@ -41,7 +38,7 @@
 import { inject } from 'vue'
 
 const props = defineProps({
-    activated: {
+    selected: {
         type: Boolean,
         default: () => false
     },
@@ -53,17 +50,15 @@ const props = defineProps({
     }
 })
 
-const EVENT_BUS: any = inject('eventBus')
+const eventBus: any = inject('eventBus')
 const handleDelete = () => {
-    EVENT_BUS.emit('delete', props.elem.id)
+    eventBus.emit('delete', [props.elem.id, props.elem.path])
 }
 </script>
 
 <style lang="scss" scoped>
 .h-base-container {
     position: relative;
-    min-height: 200px;
-    border: 1px solid #ccc;
 
     .container-action {
         position: absolute;
@@ -116,14 +111,6 @@ const handleDelete = () => {
             margin: 0 4px;
             font-size: 12px;
         }
-    }
-
-    &.activated {
-        outline: 2px solid $base-color;
-    }
-
-    &.unactivated {
-        outline: none;
     }
 }
 </style>
